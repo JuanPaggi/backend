@@ -14,11 +14,11 @@ public class HelloWorldGQL {
 
 	private static final Logger log = LoggerFactory.getLogger(HelloWorldGQL.class);
 
-	@GraphQLQuery(name = "user")
+	@GraphQLQuery(name = "HelloWorldGQL_getUser")
 	public Hola getUser() {
 		log.debug("Llamada entrante a query USER.");
 		Hola out = new Hola();
-		out.mundo = "Ok";
+		out.setMundo("Ok");
 		return out;
 	}
 

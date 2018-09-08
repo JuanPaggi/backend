@@ -19,7 +19,7 @@ public class DemoService {
 	@RequestMapping(path = "/helloWorld", method = RequestMethod.GET)
 	public Hola helloWorld() { // @RequestParam(value="qd", defaultValue="1") int qdata, @RequestBody PaymentRequest request
 		Hola out = new Hola();
-		out.mundo = "Ok";
+		out.setMundo("Ok");
 		return out;
 	}
 
