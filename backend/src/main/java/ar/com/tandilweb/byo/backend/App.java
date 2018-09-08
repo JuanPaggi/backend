@@ -15,7 +15,7 @@ import ar.com.tandilweb.byo.backend.Filters.CorsFilter;
 
 @SpringBootApplication
 @ComponentScan({"ar.com.tandilweb.byo.backend.Presentation.GQLServices", "ar.com.tandilweb.byo.backend.Presentation.RestServices"})
-@Import({TransportFactory.class, ModelFactory.class})
+@Import({TransportFactory.class, ModelFactory.class, GatewayFactory.class})
 public class App 
 {
     public static void main( String[] args ) {
