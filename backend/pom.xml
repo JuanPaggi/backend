@@ -13,6 +13,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.main.class>ar.com.tandilweb.byo.backend.App</java.main.class>
 	</properties>
 
 	<dependencies>
