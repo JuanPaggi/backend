@@ -1,26 +1,41 @@
 package ar.com.tandilweb.byo.backend.Presentation.RestServices;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.Hola;
-import ar.com.tandilweb.byo.backend.Transport.UserAdapter;
+import ar.com.tandilweb.byo.backend.Transport.DemoAdapter;
+import ar.com.tandilweb.byo.backend.Transport.TablaTestAdapter;
 
 @RestController
 @RequestMapping("/demoService")
 public class DemoService {
 	
 	@Autowired
-	public UserAdapter userAdapter;
+	public TablaTestAdapter tablaTestAdapter;
+	
+	@Autowired
+	public DemoAdapter demoAdapter;
 
 	// http://localhost:38674/demoService/helloWorld
 	@RequestMapping(path = "/helloWorld", method = RequestMethod.GET)
 	public Hola helloWorld() { // @RequestParam(value="qd", defaultValue="1") int qdata, @RequestBody PaymentRequest request
-		Hola out = new Hola();
-		out.setMundo("Ok");
+		Hola out = demoAdapter.getApiDemo();
+//		out.setMundo("GG");
 		return out;
 	}
-
+	
+	@RequestMapping(path="/nuevoRegistro", method = RequestMethod.GET)
+	public boolean nuevoRegistro() {
+		return tablaTestAdapter.nuevoRegistro();
+	}
+	
+	@RequestMapping(path="/listaRegistros", method = RequestMethod.GET)
+	public List<Hola> listaRegistros() {
+		return tablaTestAdapter.listaRegistros();
+	}
 }

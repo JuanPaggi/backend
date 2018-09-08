@@ -12,6 +12,8 @@ public class TablaTest {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id_tabla;
+	
+	
 	private String namejaja;
 	
 	public Integer getId_tabla() {

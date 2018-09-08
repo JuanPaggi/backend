@@ -4,6 +4,7 @@ import io.leangen.graphql.annotations.GraphQLQuery;
 
 public class Hola {
 	private String mundo;
+	private String hola;
 
 	@GraphQLQuery(name = "mundo", description = "probando acceso a propiedad")
 	public String getMundo() {
@@ -13,4 +14,14 @@ public class Hola {
 	public void setMundo(String mundo) {
 		this.mundo = mundo;
 	}
+
+	public String getHola() {
+		return hola;
+	}
+
+	public void setHola(String hola) {
+		this.hola = hola;
+	}
+	
+	
 }
