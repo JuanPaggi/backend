@@ -1,4 +1,4 @@
-package ar.com.tandilweb.byo.byo_dmz;
+package ar.com.tandilweb.byo.backend;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
