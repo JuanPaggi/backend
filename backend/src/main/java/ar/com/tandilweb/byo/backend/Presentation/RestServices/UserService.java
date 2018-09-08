@@ -19,6 +19,7 @@ public class UserService {
 	public boolean nuevoRegistro(@RequestParam(value="nick") String nick, @RequestParam(value="password") String pass) {
 		//return tablaTestAdapter.nuevoRegistro();
 		try {
+			// probando
 			if(nick == null || nick.trim().length() < 3) throw new Exception("El nick no debe estar vacío");
 			if(pass == null || pass.trim().length() < 8) throw new Exception("La password es invalida");
 			return usuarioAdapter.crearUsuario(nick.trim(), pass.trim());
