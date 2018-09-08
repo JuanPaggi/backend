@@ -7,11 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 
 import ar.com.tandilweb.byo.backend.Filters.CorsFilter;
 
 @SpringBootApplication
 @ComponentScan({"ar.com.tandilweb.byo.backend.Presentation.GQLServices", "ar.com.tandilweb.byo.backend.Presentation.RestServices"})
+@Import({TransportFactory.class})
 public class App 
 {
     public static void main( String[] args ) {
