@@ -20,7 +20,7 @@ public class AccountServiceGQL {
 	private LinkedInAdapter linkedinAdapter;
 	
 	@GraphQLQuery(name = "AccountService_login")
-	public void login(@GraphQLArgument(name = "user") String usuario, @GraphQLArgument(name = "password") String pass) {
+	public void login(@GraphQLArgument(name = "user") String user, @GraphQLArgument(name = "password") String pass) {
 		
 	}
 	
