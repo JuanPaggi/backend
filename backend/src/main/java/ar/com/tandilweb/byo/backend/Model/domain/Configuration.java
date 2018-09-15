@@ -1,20 +1,22 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
-
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 @Entity
 public class Configuration{
 	
-	@OneToOne()
-	@JoinColumn(name="id_user")
+	@OneToOne(cascade=CascadeType.ALL)  
+	@JoinColumn(name = "id_user")
+	@MapsId
 	private Users user;
+	
+	@Id
+	private long id_user;
 	
 	private int kms_radio;
 	private boolean linkedin_autoupdate;
