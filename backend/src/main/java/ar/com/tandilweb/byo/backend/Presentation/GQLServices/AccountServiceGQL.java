@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -20,8 +21,14 @@ public class AccountServiceGQL {
 	private LinkedInAdapter linkedinAdapter;
 	
 	@GraphQLQuery(name = "AccountService_login")
-	public void login(@GraphQLArgument(name = "user") String user, @GraphQLArgument(name = "password") String pass) {
+	public ResponseDTO login(@GraphQLArgument(name = "user") String user, @GraphQLArgument(name = "password") String pass) {
+		log.debug("Log data: "+user+" : "+pass);
 		
+		// este boolean es a modo de ejemplo, habría que usar una clase que extienda ResponseDTO
+		ResponseDTO out = new ResponseDTO();
+		out.code = ResponseDTO.Code.OK;
+		out.description = "Login OK";
+		return out;
 	}
 	
 	@GraphQLQuery(name = "AccountService_signup")

@@ -39,17 +39,21 @@ public class JWTValidFilter implements Filter {
 		log.debug("Filter Validate JWT");
 		HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
 		HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
-		try {
-			JWTUnpackedData uD = (JWTUnpackedData)httpRequest.getAttribute("jwtParsed");
-			Date now = new Date();
-			if(uD.getIssuedAt() == null || uD.getIssuedAt().after(now)) throw new ExceptionInvalidJWT();
-			if(uD.getExpiration() == null || uD.getExpiration().before(now)) throw new ExceptionInvalidJWT();
-			if(uD.getNotBefore() == null || uD.getNotBefore().before(now)) throw new ExceptionInvalidJWT();
-			// chequear no repetición de hoy
+		if((Boolean) httpRequest.getAttribute("jwtTrusted")) {
+			try {
+				JWTUnpackedData uD = (JWTUnpackedData)httpRequest.getAttribute("jwtParsed");
+				Date now = new Date();
+				if(uD.getIssuedAt() == null || uD.getIssuedAt().after(now)) throw new ExceptionInvalidJWT();
+				if(uD.getExpiration() == null || uD.getExpiration().before(now)) throw new ExceptionInvalidJWT();
+				if(uD.getNotBefore() == null || uD.getNotBefore().before(now)) throw new ExceptionInvalidJWT();
+				// chequear no repetición de hoy
+				filterChain.doFilter(httpRequest, httpResponse);
+			}catch(ExceptionInvalidJWT e){
+				log.error("JWT Validation Exception", e);
+				httpResponse.setStatus(400); // Bad request
+			}
+		} else {
 			filterChain.doFilter(httpRequest, httpResponse);
-		}catch(ExceptionInvalidJWT e){
-			log.error("JWT Validation Exception", e);
-			httpResponse.setStatus(400); // Bad request
 		}
 	}
 
