@@ -1,14 +1,16 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -40,6 +42,13 @@ public class Users {
 	private boolean is_premium;
 	@NotNull
 	private String salt_jwt;
+	
+	@NotNull
+	@ManyToMany
+	@JoinTable(name="gps_data_users",
+				joinColumns= {@JoinColumn(name="id_user")},
+				inverseJoinColumns= {@JoinColumn(name="id_gps_record")})
+	private List<GpsData> gps_datas = new ArrayList<GpsData>();
 	
 	public long getId_user() {
 		return id_user;
@@ -113,4 +122,12 @@ public class Users {
 	public void setSalt_jwt(String salt_jwt) {
 		this.salt_jwt = salt_jwt;
 	}
+	
+	public List<GpsData> getGps_datas() {
+		return gps_datas;
+	}
+	public void setGps_datas(List<GpsData> gps_datas) {
+		this.gps_datas = gps_datas;
+	}
+	
 }

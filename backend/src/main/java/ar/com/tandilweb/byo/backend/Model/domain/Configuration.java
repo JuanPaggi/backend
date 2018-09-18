@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Configuration{
@@ -19,6 +20,8 @@ public class Configuration{
 	private long id_user;
 	
 	private int kms_radio;
+	
+	@NotNull
 	private boolean linkedin_autoupdate;
 	
 	public Users getId_usuario() {
