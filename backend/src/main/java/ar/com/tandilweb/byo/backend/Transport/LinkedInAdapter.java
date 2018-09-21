@@ -23,7 +23,7 @@ public class LinkedInAdapter {
 		LoginOut out = new LoginOut();
 		LinkedInProfile response = linkedInConsumer.checkAccessToken(accessToken);
 		if(response != null) {
-			Users usuario = userRepository.findByLinkedin_id(response.getId());
+			Users usuario = userRepository.findBylinkedinId(response.getId());
 			if(usuario != null) {
 				String token = "456456456456";
 				out.code = ResponseDTO.Code.OK;

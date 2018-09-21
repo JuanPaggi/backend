@@ -30,7 +30,7 @@ public class Users {
 	@NotNull
 	private Date signup_date;
 
-	private String linkedin_id;
+	private String linkedinId;
 	
 	@NotNull
 	private String busco;
@@ -87,10 +87,10 @@ public class Users {
 		this.signup_date = signup_date;
 	}
 	public String getLinkedin_id() {
-		return linkedin_id;
+		return linkedinId;
 	}
 	public void setLinkedin_id(String linkedin_id) {
-		this.linkedin_id = linkedin_id;
+		this.linkedinId = linkedin_id;
 	}
 	public String getBusco() {
 		return busco;
