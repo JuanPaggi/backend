@@ -26,7 +26,7 @@ public class Users {
 	@NotNull
 	private String email;
 	@NotNull
-	private long last_login;
+	private Date last_login;
 	@NotNull
 	private Date signup_date;
 
@@ -74,10 +74,10 @@ public class Users {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public long getLast_login() {
+	public Date getLast_login() {
 		return last_login;
 	}
-	public void setLast_login(long last_login) {
+	public void setLast_login(Date last_login) {
 		this.last_login = last_login;
 	}
 	public Date getSignup_date() {

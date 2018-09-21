@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
@@ -37,11 +38,10 @@ public class AccountServiceGQL {
 	}
 	
 	@GraphQLQuery(name = "AccountService_linkedin")
-	public boolean linkedin(@GraphQLArgument(name = "accessToken") String accessToken, @GraphQLArgument(name = "expiresOn") String expiresOn) {
-		log.debug("AccessToken: "+accessToken);
-		log.debug("ExpiresOn: "+expiresOn);
-		linkedinAdapter.validateAccessToken(accessToken);
-		return true;
+	public LoginOut linkedin(@GraphQLArgument(name = "accessToken") String accessToken, @GraphQLArgument(name = "expiresOn") String expiresOn) {
+//		log.debug("AccessToken: "+accessToken);
+//		log.debug("ExpiresOn: "+expiresOn);
+		return linkedinAdapter.validateAccessToken(accessToken);
 	}
 
 }
