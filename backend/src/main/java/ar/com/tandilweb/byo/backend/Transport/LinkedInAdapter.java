@@ -1,6 +1,7 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
 import java.util.Date;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -22,10 +23,11 @@ public class LinkedInAdapter {
 	public LoginOut validateAccessToken(String accessToken) {
 		LoginOut out = new LoginOut();
 		LinkedInProfile response = linkedInConsumer.checkAccessToken(accessToken);
+		UUID uuid = UUID.randomUUID();
 		if(response != null) {
 			Users usuario = userRepository.findBylinkedinId(response.getId());
 			if(usuario != null) {
-				String token = "456456456456";
+				String token = uuid.toString();
 				out.code = ResponseDTO.Code.OK;
 				out.description = "";
 				out.token = token;

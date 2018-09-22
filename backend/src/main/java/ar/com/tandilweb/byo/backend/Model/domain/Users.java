@@ -26,6 +26,8 @@ public class Users {
 	@NotNull
 	private String email;
 	@NotNull
+	private String password;
+	@NotNull
 	private Date last_login;
 	@NotNull
 	private Date signup_date;
