@@ -16,29 +16,29 @@ import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 @GraphQLApi
 @Service
 public class AccountServiceGQL {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(AccountServiceGQL.class);
-	
+
 	@Autowired
 	private LinkedInAdapter linkedinAdapter;
 	@Autowired
 	private UserAdapter userAdapter;
-	
+
 	@GraphQLQuery(name = "AccountService_login")
-	public ResponseDTO login(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "password") String password) {
+	public LoginOut login(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "password") String password) {
 		log.debug("Log data: "+email+" : "+password);
 		return userAdapter.validateLogin(email, password);
 	}
-	
+
 	@GraphQLQuery(name = "AccountService_signup")
-	public void signup() {
-		
+	public ResponseDTO signup(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "password") String password, @GraphQLArgument(name = "nombre") String nombre, @GraphQLArgument(name = "apellido") String apellido, @GraphQLArgument(name = "linkedin_url") String linkedin_url, @GraphQLArgument(name = "summary") String summary) {
+		return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url,summary);
 	}
-	
+
 	@GraphQLQuery(name = "AccountService_linkedin")
 	public LoginOut linkedin(@GraphQLArgument(name = "accessToken") String accessToken, @GraphQLArgument(name = "expiresOn") String expiresOn) {
-//		log.debug("AccessToken: "+accessToken);
-//		log.debug("ExpiresOn: "+expiresOn);
+		//log.debug("AccessToken: "+accessToken);
+		//log.debug("ExpiresOn: "+expiresOn);
 		return linkedinAdapter.validateAccessToken(accessToken);
 	}
 

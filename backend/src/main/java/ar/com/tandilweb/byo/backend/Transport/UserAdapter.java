@@ -29,4 +29,22 @@ public class UserAdapter {
 		}
 		return out;
 	}
+	
+	public ResponseDTO validateSignup(String email, String password, String nombre, String apellido, String linkedin_url, String summary) {
+		ResponseDTO out = new ResponseDTO();
+		if (userRepository.findByemail(email) == null) { //El mail no se encuentra en la base de datos. Se puede registrar
+			Users usuario = new Users();
+			usuario.setEmail(email);
+			usuario.setPassword(password);
+			usuario.setFirst_name(nombre);
+			usuario.setLast_name(apellido);
+			userRepository.save(usuario);
+			out.code = ResponseDTO.Code.CREATED;
+			out.description = "Usuario Creado";
+		}else {
+			out.code = ResponseDTO.Code.BAD_REQUEST;
+			out.description = "Ya existe un usuario con ese mail";
+		}
+		return out;
+	}
 }
