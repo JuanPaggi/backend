@@ -32,6 +32,7 @@ public class AccountServiceGQL {
 
 	@GraphQLQuery(name = "AccountService_signup")
 	public ResponseDTO signup(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "password") String password, @GraphQLArgument(name = "nombre") String nombre, @GraphQLArgument(name = "apellido") String apellido, @GraphQLArgument(name = "linkedin_url") String linkedin_url, @GraphQLArgument(name = "summary") String summary) {
+		log.debug("Log data: "+email+" : "+password);
 		return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url,summary);
 	}
 
