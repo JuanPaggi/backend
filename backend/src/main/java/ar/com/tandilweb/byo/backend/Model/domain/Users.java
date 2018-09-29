@@ -41,9 +41,11 @@ public class Users {
 	@NotNull
 	private String picture_url;
 	@NotNull
-	private boolean is_premium;
+	private boolean premium;
 	@NotNull
 	private String salt_jwt;
+	@NotNull
+	private boolean completoByO;
 
 	@NotNull
 	@ManyToMany
@@ -61,6 +63,9 @@ public class Users {
 	public String getFirst_name() {
 		return firstName;
 	}
+	public String getFirstName() {
+		return firstName;
+	}
 	public List<GpsData> getGps_datas() {
 		return gps_datas;
 	}
@@ -71,6 +76,9 @@ public class Users {
 		return last_login;
 	}
 	public String getLast_name() {
+		return lastName;
+	}
+	public String getLastName() {
 		return lastName;
 	}
 	public String getLinkedin_id() {
@@ -94,11 +102,17 @@ public class Users {
 	public Date getSignup_date() {
 		return signup_date;
 	}
-	public boolean isIs_premium() {
-		return is_premium;
+	public boolean isCompletoByO() {
+		return completoByO;
+	}
+	public boolean isPremium() {
+		return premium;
 	}
 	public void setBusco(String busco) {
 		this.busco = busco;
+	}
+	public void setCompletoByO(boolean completoByO) {
+		this.completoByO = completoByO;
 	}
 	public void setEmail(String email) {
 		this.email = email;
@@ -106,20 +120,26 @@ public class Users {
 	public void setFirst_name(String first_name) {
 		this.firstName = first_name;
 	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 	public void setGps_datas(List<GpsData> gps_datas) {
 		this.gps_datas = gps_datas;
 	}
 	public void setId_user(long id_user) {
 		this.id_user = id_user;
 	}
-	public void setIs_premium(boolean is_premium) {
-		this.is_premium = is_premium;
+	public void setIsPremium(boolean is_premium) {
+		this.premium = is_premium;
 	}
 	public void setLast_login(Date last_login) {
 		this.last_login = last_login;
 	}
 	public void setLast_name(String last_name) {
 		this.lastName = last_name;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public void setLinkedin_id(String linkedin_id) {
 		this.linkedinId = linkedin_id;
@@ -141,5 +161,6 @@ public class Users {
 	}
 	public void setSignup_date(Date signup_date) {
 		this.signup_date = signup_date;
-	}	
+	}
+	
 }

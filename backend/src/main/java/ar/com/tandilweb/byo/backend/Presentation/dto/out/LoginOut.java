@@ -25,4 +25,7 @@ public class LoginOut extends ResponseDTO {
 	@GraphQLQuery(name = "token", description = "token del usuario")
 	public String token;
 	
+	@GraphQLQuery(name = "completoByO", description = "se ha completado las pestañas de ByO?")
+	public boolean completoByO;
+	
 }

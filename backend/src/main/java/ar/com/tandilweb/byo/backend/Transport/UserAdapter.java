@@ -25,6 +25,7 @@ public class UserAdapter {
 			out.description = "usuario encontrado";
 			out.token = uuid.toString();
 			out.userId = usuario.getId_user();
+			out.completoByO = usuario.isCompletoByO();
 		} else {
 			out.code = ResponseDTO.Code.FORBIDDEN;
 			out.description = "Acceso denegado";
@@ -46,16 +47,18 @@ public class UserAdapter {
 			usuario.setPicture_url("urlHardcodeada");
 			usuario.setOfrezco("ofrezco hardcodeado");
 			usuario.setBusco("Busco Hardcodeado");
-			usuario.setSalt_jwt("salt harcodeado");
+			usuario.setSalt_jwt(UUID.randomUUID().toString());
 			usuario.setLast_login(new Date());
+			usuario.setCompletoByO(false);
 			userRepository.save(usuario);
 			out.userId = usuario.getId_user();
 			out.code = ResponseDTO.Code.CREATED;
 			out.description = "Usuario Creado";
-			out.first_name = nombre;
-			out.last_name = apellido;
-			out.is_premium = false;
+			out.first_name = usuario.getFirst_name();
+			out.last_name = usuario.getLast_name();
+			out.is_premium = usuario.isPremium();
 			out.picture_url = "imagenURL";
+			out.completoByO = usuario.isCompletoByO();
 		} else {
 			out.code = ResponseDTO.Code.BAD_REQUEST;
 			out.description = "Ya existe un usuario con ese mail";

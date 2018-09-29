@@ -36,7 +36,7 @@ public class LinkedInAdapter {
 				Users user = new Users();
 				user.setEmail(response.getEmailAddress());
 				user.setFirst_name(response.getFirstName());
-				user.setIs_premium(false);
+				user.setIsPremium(false);
 				user.setLast_login(new Date());
 				user.setLast_name(response.getLastName());
 				user.setLinkedin_id(response.getId());
