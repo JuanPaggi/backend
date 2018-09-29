@@ -63,7 +63,7 @@ public class JWTFilter implements Filter {
 				Optional<Users> user = repository.findById(Long.parseLong(identity));
 				if(user == null || user.get() == null) throw new ExceptionJWT();
 				// secret traerlo usando el identity
-				String key = new String(Base64.encodeBase64("secret".getBytes()));
+				String key = new String(Base64.encodeBase64(user.get().getSalt_jwt().getBytes()));
 				Jws<Claims> jt = Jwts.parser().setSigningKey(key).parseClaimsJws(jwToken);
 				Claims data = jt.getBody();
 				if(!identity.equals(data.getSubject())) throw new ExceptionJWT();
