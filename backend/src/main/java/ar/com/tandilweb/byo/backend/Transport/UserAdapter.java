@@ -9,6 +9,7 @@ import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
+import ar.com.tandilweb.byo.backend.utils.CryptDES;
 
 
 public class UserAdapter {
@@ -32,12 +33,12 @@ public class UserAdapter {
 		return out;
 	}
 	
-	public LoginOut validateSignup(String email, String password, String nombre, String apellido, String linkedin_url, String summary) {
+	public LoginOut validateSignup(String email, String password, String nombre, String apellido, String linkedin_url, String summary) throws Exception {
 		LoginOut out = new LoginOut();
 		if (userRepository.findByemail(email) == null) { //El mail no se encuentra en la base de datos. Se puede registrar
 			Users usuario = new Users();
 			usuario.setEmail(email);
-			usuario.setPassword(password);
+			usuario.setPassword(CryptDES.getSaltedHash(password));
 			usuario.setFirst_name(nombre);
 			usuario.setLast_name(apellido);
 			usuario.setSignup_date(new Date());
@@ -54,9 +55,7 @@ public class UserAdapter {
 			out.last_name = apellido;
 			out.is_premium = false;
 			out.picture_url = "imagenURL";
-			
-			
-		}else {
+		} else {
 			out.code = ResponseDTO.Code.BAD_REQUEST;
 			out.description = "Ya existe un usuario con ese mail";
 		}

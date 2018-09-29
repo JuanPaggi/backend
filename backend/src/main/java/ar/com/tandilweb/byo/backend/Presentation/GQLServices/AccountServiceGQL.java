@@ -25,21 +25,37 @@ public class AccountServiceGQL {
 	private UserAdapter userAdapter;
 
 	@GraphQLQuery(name = "AccountService_login")
-	public LoginOut login(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "password") String password) {
+	public LoginOut login(
+			@GraphQLArgument(name = "email") String email, 
+			@GraphQLArgument(name = "password") String password) {
 		log.debug("Log data: "+email+" : "+password);
 		return userAdapter.validateLogin(email, password);
 	}
 
 	@GraphQLQuery(name = "AccountService_signup")
-	public ResponseDTO signup(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "password") String password, @GraphQLArgument(name = "nombre") String nombre, @GraphQLArgument(name = "apellido") String apellido, @GraphQLArgument(name = "linkedin_url") String linkedin_url, @GraphQLArgument(name = "summary") String summary) {
+	public ResponseDTO signup(
+			@GraphQLArgument(name = "email") String email, 
+			@GraphQLArgument(name = "password") String password, 
+			@GraphQLArgument(name = "nombre") String nombre, 
+			@GraphQLArgument(name = "apellido") String apellido, 
+			@GraphQLArgument(name = "linkedin_url") String linkedin_url, 
+			@GraphQLArgument(name = "summary") String summary) {
 		log.debug("Log data: "+email+" : "+password);
-		return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url,summary);
+		try {
+			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary);
+		} catch(Exception e) {
+			e.printStackTrace();
+			ResponseDTO out = new ResponseDTO();
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Error en encriptación";
+			return out;
+		}
 	}
 
 	@GraphQLQuery(name = "AccountService_linkedin")
-	public LoginOut linkedin(@GraphQLArgument(name = "accessToken") String accessToken, @GraphQLArgument(name = "expiresOn") String expiresOn) {
-		//log.debug("AccessToken: "+accessToken);
-		//log.debug("ExpiresOn: "+expiresOn);
+	public LoginOut linkedin(
+			@GraphQLArgument(name = "accessToken") String accessToken,
+			@GraphQLArgument(name = "expiresOn") String expiresOn) {
 		return linkedinAdapter.validateAccessToken(accessToken);
 	}
 
