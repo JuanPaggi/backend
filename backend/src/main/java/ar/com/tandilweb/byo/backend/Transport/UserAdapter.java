@@ -11,7 +11,6 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
 
-
 public class UserAdapter {
 
 	@Autowired
@@ -21,26 +20,23 @@ public class UserAdapter {
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
 		UUID uuid = UUID.randomUUID();
-		if(usuario != null) {
-			if(CryptDES.check(password, usuario.getPassword())) {
-				out.code = ResponseDTO.Code.OK;
-				out.description = "usuario encontrado";
-				out.token = uuid.toString();
-				out.userId = usuario.getId_user();
-			} else {
-				out.code = ResponseDTO.Code.FORBIDDEN;
-				out.description = "Acceso denegado";
-			}
+		if (usuario != null && CryptDES.check(password, usuario.getPassword())) {
+			out.code = ResponseDTO.Code.OK;
+			out.description = "usuario encontrado";
+			out.token = uuid.toString();
+			out.userId = usuario.getId_user();
 		} else {
-			out.code = ResponseDTO.Code.NOT_FOUND;
-			out.description = "Usuario no encontrado";
+			out.code = ResponseDTO.Code.FORBIDDEN;
+			out.description = "Acceso denegado";
 		}
 		return out;
 	}
-	
-	public LoginOut validateSignup(String email, String password, String nombre, String apellido, String linkedin_url, String summary) throws Exception {
+
+	public LoginOut validateSignup(String email, String password, String nombre, String apellido, String linkedin_url,
+			String summary) throws Exception {
 		LoginOut out = new LoginOut();
-		if (userRepository.findByemail(email) == null) { //El mail no se encuentra en la base de datos. Se puede registrar
+		if (userRepository.findByemail(email) == null) { // El mail no se encuentra en la base de datos. Se puede
+															// registrar
 			Users usuario = new Users();
 			usuario.setEmail(email);
 			usuario.setPassword(CryptDES.getSaltedHash(password));
