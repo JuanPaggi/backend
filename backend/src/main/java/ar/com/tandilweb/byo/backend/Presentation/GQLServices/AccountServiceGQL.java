@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestAttribute;
 
+import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
@@ -65,6 +67,20 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "accessToken") String accessToken,
 			@GraphQLArgument(name = "expiresOn") String expiresOn) {
 		return linkedinAdapter.validateAccessToken(accessToken);
+	}
+	
+	@GraphQLQuery(name = "AccountService_buscoYOfrezco")
+	public void buscoYOfrezco(
+			@GraphQLArgument(name = "busco") String busco, 
+			@GraphQLArgument(name = "ofrezco") String ofrezco,
+			@RequestAttribute("jwtUserOrigin") Users usuario,
+			@RequestAttribute("jwtTrusted") boolean trusted
+			) {
+		if(trusted) {
+			
+		} else {
+			
+		}
 	}
 
 }

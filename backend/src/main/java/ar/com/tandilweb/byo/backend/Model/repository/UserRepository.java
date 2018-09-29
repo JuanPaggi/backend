@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 
-public interface UserRepository extends CrudRepository<Users, Integer>{
+public interface UserRepository extends CrudRepository<Users, Long>{
 	Users findBylinkedinId(String linkedin_id);
 	Users findByemail(String email);
 }
