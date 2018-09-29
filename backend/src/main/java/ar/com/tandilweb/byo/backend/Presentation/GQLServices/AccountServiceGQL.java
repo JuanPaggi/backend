@@ -29,7 +29,15 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "email") String email, 
 			@GraphQLArgument(name = "password") String password) {
 		log.debug("Log data: "+email+" : "+password);
-		return userAdapter.validateLogin(email, password);
+		try {
+			return userAdapter.validateLogin(email, password);
+		} catch (Exception e) {
+			e.printStackTrace();
+			LoginOut out = new LoginOut();
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Error en encriptación";
+			return out;
+		}
 	}
 
 	@GraphQLQuery(name = "AccountService_signup")
