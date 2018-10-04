@@ -30,7 +30,6 @@ public class AccountServiceGQL {
 	public LoginOut login(
 			@GraphQLArgument(name = "email") String email, 
 			@GraphQLArgument(name = "password") String password) {
-		log.debug("Log data: "+email+" : "+password);
 		try {
 			return userAdapter.validateLogin(email, password);
 		} catch (Exception e) {
@@ -50,7 +49,6 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "apellido") String apellido, 
 			@GraphQLArgument(name = "linkedin_url") String linkedin_url, 
 			@GraphQLArgument(name = "summary") String summary) {
-		log.debug("Log data: "+email+" : "+password);
 		try {
 			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary);
 		} catch(Exception e) {
@@ -69,18 +67,26 @@ public class AccountServiceGQL {
 		return linkedinAdapter.validateAccessToken(accessToken);
 	}
 	
-	@GraphQLQuery(name = "AccountService_buscoYOfrezco")
-	public void buscoYOfrezco(
+	@GraphQLQuery(name = "AccountService_setBuscoYofrezco")
+	public ResponseDTO buscoYOfrezco(
 			@GraphQLArgument(name = "busco") String busco, 
 			@GraphQLArgument(name = "ofrezco") String ofrezco,
 			@RequestAttribute("jwtUserOrigin") Users usuario,
 			@RequestAttribute("jwtTrusted") boolean trusted
 			) {
+		ResponseDTO out = new ResponseDTO();
+		log.debug("setBuscoYofrezco Log data : "+busco+" : "+ofrezco);
+		System.out.println(busco+ ofrezco+ usuario+ trusted);
 		if(trusted) {
-			
+			System.out.println("trusteado");
+			out.code = ResponseDTO.Code.OK;
+			out.description = "Busco y ofrezco seteados";
 		} else {
-			
+			System.out.println("No trusteado");
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Error datos no seteados";
 		}
+		return out;
 	}
 
 }
