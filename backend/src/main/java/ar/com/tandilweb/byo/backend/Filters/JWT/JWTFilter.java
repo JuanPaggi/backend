@@ -1,6 +1,7 @@
 package ar.com.tandilweb.byo.backend.Filters.JWT;
 
 import java.io.IOException;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import javax.servlet.Filter;
@@ -15,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
@@ -28,7 +29,6 @@ public class JWTFilter implements Filter {
 
 	private static final Logger log = LoggerFactory.getLogger(JWTFilter.class);
 	
-	@Autowired
 	public UserRepository repository;
 
 	public void destroy() {
@@ -61,7 +61,7 @@ public class JWTFilter implements Filter {
 			try {
 				if(identity == null) throw new ExceptionJWT();
 				Optional<Users> user = repository.findById(Long.parseLong(identity));
-				if(user == null || user.get() == null) throw new ExceptionJWT();
+				if(user == null || !user.isPresent()) throw new ExceptionJWT();
 				// secret traerlo usando el identity
 				String key = new String(Base64.encodeBase64(user.get().getSalt_jwt().getBytes()));
 				Jws<Claims> jt = Jwts.parser().setSigningKey(key).parseClaimsJws(jwToken);
@@ -91,9 +91,11 @@ public class JWTFilter implements Filter {
 		}
 	}
 
-	public void init(FilterConfig arg0) throws ServletException {
+	public void init(FilterConfig filterConfig) throws ServletException {
 		// TODO Auto-generated method stub
 		log.debug("Filter JWT Initialized");
+		repository = (UserRepository)WebApplicationContextUtils.getRequiredWebApplicationContext(filterConfig.getServletContext()).
+			    getBean(UserRepository.class);
 	}
 
 }
