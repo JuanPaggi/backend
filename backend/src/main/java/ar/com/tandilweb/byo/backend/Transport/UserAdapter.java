@@ -20,10 +20,15 @@ public class UserAdapter {
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
 		UUID uuid = UUID.randomUUID();
+		// actualizamos los salts:
+		usuario.setSalt_jwt(uuid.toString());
+		userRepository.save(usuario);
+		// fin actualización
 		if (usuario != null && CryptDES.check(password, usuario.getPassword())) {
 			out.code = ResponseDTO.Code.OK;
 			out.description = "usuario encontrado";
-			out.token = uuid.toString();
+			// usamos el salt nuevo:
+			out.token = usuario.getSalt_jwt();
 			out.userId = usuario.getId_user();
 			out.completoByO = usuario.isCompletoByO();
 		} else {
@@ -58,6 +63,8 @@ public class UserAdapter {
 			out.last_name = usuario.getLast_name();
 			out.is_premium = usuario.isPremium();
 			out.picture_url = "imagenURL";
+			// enviamos el token.
+			out.token = usuario.getSalt_jwt();
 			out.completoByO = usuario.isCompletoByO();
 		} else {
 			out.code = ResponseDTO.Code.BAD_REQUEST;
