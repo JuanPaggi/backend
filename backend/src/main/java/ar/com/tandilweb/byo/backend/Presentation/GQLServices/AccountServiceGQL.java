@@ -4,15 +4,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestAttribute;
 
+import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
 import ar.com.tandilweb.byo.backend.Transport.UserAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
+import io.leangen.graphql.annotations.GraphQLEnvironment;
 import io.leangen.graphql.annotations.GraphQLQuery;
+import io.leangen.graphql.execution.ResolutionEnvironment;
 import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 
 @GraphQLApi
@@ -71,13 +73,16 @@ public class AccountServiceGQL {
 	public ResponseDTO buscoYOfrezco(
 			@GraphQLArgument(name = "busco") String busco, 
 			@GraphQLArgument(name = "ofrezco") String ofrezco,
-			@RequestAttribute("jwtUserOrigin") Users usuario,
-			@RequestAttribute("jwtTrusted") boolean trusted
+			@GraphQLEnvironment ResolutionEnvironment environment
 			) {
+		
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users usuario = header.getUser();
+		
 		ResponseDTO out = new ResponseDTO();
 		log.debug("setBuscoYofrezco Log data : "+busco+" : "+ofrezco);
-		System.out.println(busco+ ofrezco+ usuario+ trusted);
-		if(trusted) {
+		System.out.println(busco+ ofrezco+ usuario+ header.isTrusted());
+		if(header.isTrusted()) {
 			System.out.println("trusteado");
 			out.code = ResponseDTO.Code.OK;
 			out.description = "Busco y ofrezco seteados";
