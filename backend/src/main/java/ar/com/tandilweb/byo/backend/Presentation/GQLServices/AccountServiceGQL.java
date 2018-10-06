@@ -44,7 +44,7 @@ public class AccountServiceGQL {
 	}
 
 	@GraphQLQuery(name = "AccountService_signup")
-	public ResponseDTO signup(
+	public LoginOut signup(
 			@GraphQLArgument(name = "email") String email, 
 			@GraphQLArgument(name = "password") String password, 
 			@GraphQLArgument(name = "nombre") String nombre, 
@@ -55,7 +55,7 @@ public class AccountServiceGQL {
 			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary);
 		} catch(Exception e) {
 			e.printStackTrace();
-			ResponseDTO out = new ResponseDTO();
+			LoginOut out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error en encriptación";
 			return out;
