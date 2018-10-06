@@ -80,11 +80,11 @@ public class JWTFilter implements Filter {
 				filterChain.doFilter(httpRequest, httpResponse);
 			} catch (ExceptionJWT e) {
 				// TODO Auto-generated catch block
-				log.error("JWT token isnt detected in headers");
+				//log.error("JWT token isnt detected in headers");
 				httpResponse.setHeader("Authorization-Requested", "jwt.0.14.1");
 				httpResponse.setStatus(403);
 			} catch (SignatureException e) {
-				log.error("JWT token Signature Exception", e);
+				//log.error("JWT token Signature Exception", e);
 				httpResponse.setHeader("Authorization-Requested", "jwt.0.14.1");
 				httpResponse.setStatus(403);
 			}
