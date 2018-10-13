@@ -64,6 +64,12 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+			<version>2.0.2.RELEASE</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
