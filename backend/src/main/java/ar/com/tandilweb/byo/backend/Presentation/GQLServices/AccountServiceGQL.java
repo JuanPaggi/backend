@@ -74,24 +74,34 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "busco") String busco, 
 			@GraphQLArgument(name = "ofrezco") String ofrezco,
 			@GraphQLEnvironment ResolutionEnvironment environment
-			) {
+			) throws Exception {
 		
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users usuario = header.getUser();
-		
 		ResponseDTO out = new ResponseDTO();
-		log.debug("setBuscoYofrezco Log data : "+busco+" : "+ofrezco);
-		System.out.println(busco+ ofrezco+ usuario+ header.isTrusted());
+		
 		if(header.isTrusted()) {
 			System.out.println("trusteado");
-			out.code = ResponseDTO.Code.OK;
-			out.description = "Busco y ofrezco seteados";
+			return userAdapter.setBuscoYofrezco(busco, ofrezco, usuario);
 		} else {
 			System.out.println("No trusteado");
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error datos no seteados";
 		}
 		return out;
+	}
+	
+	@GraphQLQuery(name = "AccountService_rememberEmail")
+	public ResponseDTO rememberEmail(@GraphQLArgument(name = "email") String email) {
+		try {
+			return userAdapter.rememberEmail(email);
+		} catch (Exception e) {
+			e.printStackTrace();
+			LoginOut out = new LoginOut();
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "El email no se encuentra registrado";
+			return out;
+		}
 	}
 
 }

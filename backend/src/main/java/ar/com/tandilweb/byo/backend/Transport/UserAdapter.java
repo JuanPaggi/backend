@@ -5,7 +5,9 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
@@ -15,7 +17,9 @@ public class UserAdapter {
 
 	@Autowired
 	UserRepository userRepository;
-
+	@Autowired
+	RememberTokensRepository rememberTokenRepository;
+	
 	public LoginOut validateLogin(String email, String password) throws Exception {
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
@@ -69,6 +73,30 @@ public class UserAdapter {
 		} else {
 			out.code = ResponseDTO.Code.BAD_REQUEST;
 			out.description = "Ya existe un usuario con ese mail";
+		}
+		return out;
+	}
+	
+	public ResponseDTO setBuscoYofrezco(String busco, String ofrezco, Users usuario) throws Exception {
+		ResponseDTO out = new ResponseDTO();
+		out.code = ResponseDTO.Code.OK;
+		out.description = "Busco y ofrezco seteados";
+		usuario.setBusco(busco);
+		usuario.setOfrezco(ofrezco);
+		usuario.setCompletoByO(true);
+		userRepository.save(usuario);
+		return out;
+	}
+	
+	public ResponseDTO rememberEmail(String email) throws Exception {
+		ResponseDTO out = new ResponseDTO();
+		Users usuario = userRepository.findByemail(email);
+		if (usuario != null) {
+			RememberTokens token = rememberTokenRepository.findById(usuario.getId_user());
+			System.out.println(token+" ");
+		}else {
+			out.code = ResponseDTO.Code.FORBIDDEN;
+			out.description = "Acceso denegado";
 		}
 		return out;
 	}
