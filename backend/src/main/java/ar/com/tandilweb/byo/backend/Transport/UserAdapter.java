@@ -23,12 +23,14 @@ public class UserAdapter {
 	public LoginOut validateLogin(String email, String password) throws Exception {
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
-		UUID uuid = UUID.randomUUID();
-		// actualizamos los salts:
-		usuario.setSalt_jwt(uuid.toString());
-		userRepository.save(usuario);
+
 		// fin actualización
 		if (usuario != null && CryptDES.check(password, usuario.getPassword())) {
+			// actualizamos los salts:
+			UUID uuid = UUID.randomUUID();
+			usuario.setSalt_jwt(uuid.toString());
+			userRepository.save(usuario);
+			
 			out.code = ResponseDTO.Code.OK;
 			out.description = "usuario encontrado";
 			// usamos el salt nuevo:
