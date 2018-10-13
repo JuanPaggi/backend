@@ -3,17 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>ar.com.tandilweb.byo</groupId>
-	<artifactId>backend</artifactId>
-	<version>0.0.1</version>
-	<packaging>jar</packaging>
+	<groupId>ar.com.tandilweb</groupId>
+	<artifactId>byo</artifactId>
+	<version>alpha</version>
+	<packaging>war</packaging>
 
 	<name>backend</name>
 	<url>http://maven.apache.org</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.main.class>ar.com.tandilweb.byo.backend.App</java.main.class>
 	</properties>
 
 	<dependencies>
@@ -65,5 +64,22 @@
 			<version>3.8.1</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+			<version>2.0.2.RELEASE</version>
+		</dependency>
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.2.2</version>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
