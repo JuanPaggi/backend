@@ -43,7 +43,7 @@ public class UserAdapter {
 	}
 
 	public LoginOut validateSignup(String email, String password, String nombre, String apellido, String linkedin_url,
-			String summary) throws Exception {
+			String summary, String picture_url) throws Exception {
 		LoginOut out = new LoginOut();
 		if (userRepository.findByemail(email) == null) { // El mail no se encuentra en la base de datos. Se puede
 															// registrar
@@ -59,6 +59,7 @@ public class UserAdapter {
 			usuario.setSalt_jwt(UUID.randomUUID().toString());
 			usuario.setLast_login(new Date());
 			usuario.setCompletoByO(false);
+			usuario.setPicture_url(picture_url);
 			userRepository.save(usuario);
 			out.userId = usuario.getId_user();
 			out.code = ResponseDTO.Code.CREATED;
