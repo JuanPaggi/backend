@@ -50,9 +50,10 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "nombre") String nombre, 
 			@GraphQLArgument(name = "apellido") String apellido, 
 			@GraphQLArgument(name = "linkedin_url") String linkedin_url, 
-			@GraphQLArgument(name = "summary") String summary) {
+			@GraphQLArgument(name = "summary") String summary,
+			@GraphQLArgument(name = "picture_url") String pic_url){
 		try {
-			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary);
+			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary, pic_url);
 		} catch(Exception e) {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();
