@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
@@ -23,7 +24,7 @@ import ar.com.tandilweb.byo.backend.Filters.JWT.JWTValidFilter;
 @EntityScan("ar.com.tandilweb.byo.backend.Model.domain")
 @EnableJpaRepositories("ar.com.tandilweb.byo.backend.Model.repository")
 @Import({ TransportFactory.class, GatewayFactory.class })
-public class App {
+public class App extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
 	}

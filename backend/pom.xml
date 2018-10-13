@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ar.com.tandilweb</groupId>
-	<artifactId>byo-backend</artifactId>
+	<artifactId>byo</artifactId>
 	<version>alpha</version>
 	<packaging>war</packaging>
 
@@ -78,6 +78,8 @@
 				<version>3.2.2</version>
 				<configuration>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
+					<source>1.8</source>
+        <target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>
