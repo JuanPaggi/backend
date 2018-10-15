@@ -61,6 +61,7 @@ public class UserAdapter {
 			usuario.setSalt_jwt(UUID.randomUUID().toString());
 			usuario.setLast_login(new Date());
 			usuario.setCompletoByO(false);
+			if(picture_url == null) picture_url = "DEFAULT PICTURE";
 			usuario.setPicture_url(picture_url);
 			userRepository.save(usuario);
 			out.userId = usuario.getId_user();
