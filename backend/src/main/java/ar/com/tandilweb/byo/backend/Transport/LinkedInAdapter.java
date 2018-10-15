@@ -46,7 +46,7 @@ public class LinkedInAdapter {
 				user.setPassword("password hardcodeado");
 				user.setOfrezco("ofrezco hardcodeado");
 				user.setBusco("Busco Hardcodeado");
-				usuario.setSalt_jwt(uuid.toString());
+				user.setSalt_jwt(uuid.toString());
 				user = userRepository.save(user);
 				out.code = ResponseDTO.Code.CREATED;
 				out.description = "Usuario Creado";
