@@ -27,10 +27,11 @@ public class LinkedInAdapter {
 		if(response != null) {
 			Users usuario = userRepository.findBylinkedinId(response.getId());
 			if(usuario != null) {
-				String token = uuid.toString();
 				out.code = ResponseDTO.Code.OK;
 				out.description = "";
-				out.token = token;
+				out.token = uuid.toString();
+				usuario.setSalt_jwt(uuid.toString());
+				userRepository.save(usuario);
 				out.userId = usuario.getId_user();
 			} else {
 				Users user = new Users();
@@ -45,12 +46,11 @@ public class LinkedInAdapter {
 				user.setPassword("password hardcodeado");
 				user.setOfrezco("ofrezco hardcodeado");
 				user.setBusco("Busco Hardcodeado");
-				String token = "456456456456";
-				user.setSalt_jwt(token);
+				usuario.setSalt_jwt(uuid.toString());
 				user = userRepository.save(user);
 				out.code = ResponseDTO.Code.CREATED;
 				out.description = "Usuario Creado";
-				out.token = token;
+				out.token = uuid.toString();
 				out.userId = user.getId_user();
 			}
 		} else {
