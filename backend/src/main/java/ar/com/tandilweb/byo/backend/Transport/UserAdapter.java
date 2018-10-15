@@ -55,7 +55,6 @@ public class UserAdapter {
 			usuario.setFirst_name(nombre);
 			usuario.setLast_name(apellido);
 			usuario.setSignup_date(new Date());
-			usuario.setPicture_url("urlHardcodeada");
 			usuario.setOfrezco("ofrezco hardcodeado");
 			usuario.setBusco("Busco Hardcodeado");
 			usuario.setSalt_jwt(UUID.randomUUID().toString());

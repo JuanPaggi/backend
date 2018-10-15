@@ -42,6 +42,9 @@ public class LinkedInAdapter {
 				user.setLinkedin_id(response.getId());
 				user.setPicture_url(response.getPictureUrl());
 				user.setSignup_date(new Date());
+				user.setPassword("password hardcodeado");
+				user.setOfrezco("ofrezco hardcodeado");
+				user.setBusco("Busco Hardcodeado");
 				String token = "456456456456";
 				user.setSalt_jwt(token);
 				user = userRepository.save(user);
