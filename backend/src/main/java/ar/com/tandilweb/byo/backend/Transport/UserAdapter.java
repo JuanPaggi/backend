@@ -95,7 +95,14 @@ public class UserAdapter {
 		ResponseDTO out = new ResponseDTO();
 		Users usuario = userRepository.findByemail(email);
 		if (usuario != null) {
-			RememberTokens token = rememberTokenRepository.findById(usuario.getId_user());
+			RememberTokens token = new RememberTokens();
+			token.setAttempts(0);
+			token.setId_user(usuario.getId_user());
+			token.setUnlock_key(UUID.randomUUID().toString().replaceAll("-", ""));
+			token.setRequest_date(new Date());
+			System.out.println("token "+token);
+			out.code = ResponseDTO.Code.OK;
+			out.description = "Email encontrado";
 			System.out.println(token+" ");
 		}else {
 			out.code = ResponseDTO.Code.FORBIDDEN;

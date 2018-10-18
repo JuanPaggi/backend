@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -55,6 +56,9 @@ public class Users {
 	joinColumns= {@JoinColumn(name="id_user")},
 	inverseJoinColumns= {@JoinColumn(name="id_gps_record")})
 	private List<GpsData> gps_datas = new ArrayList<GpsData>();
+	
+	@OneToOne(mappedBy="user")
+    private RememberTokens rememberToken;
 
 	public String getBusco() {
 		return busco;
@@ -164,5 +168,10 @@ public class Users {
 	public void setSignup_date(Date signup_date) {
 		this.signup_date = signup_date;
 	}
-	
+	public RememberTokens getRememberToken() {
+		return rememberToken;
+	}
+	public void setRememberToken(RememberTokens rememberToken) {
+		this.rememberToken = rememberToken;
+	}
 }
