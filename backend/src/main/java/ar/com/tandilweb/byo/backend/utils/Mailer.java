@@ -2,6 +2,8 @@ package ar.com.tandilweb.byo.backend.utils;
 
 import java.util.Properties;
 
+import javax.activation.CommandMap;
+import javax.activation.MailcapCommandMap;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
@@ -18,7 +20,7 @@ public class Mailer {
 	public static Logger logger = LoggerFactory.getLogger(Mailer.class);
 	
 	public static String host = "server1.tandilserver.com";
-	public static String from = "mails@tandilweb.com.ar";
+	public static String from = "Mailer <mails@tandilweb.com.ar>";
 	public static String user = "mails@tandilweb.com.ar";
 	public static String password = "123456789*";
 	
@@ -41,9 +43,12 @@ public class Mailer {
 	        message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 	        message.setSubject(sub);
 	        message.setText(msg);
-	        
+	        MailcapCommandMap mc = (MailcapCommandMap) CommandMap.getDefaultCommandMap();
+	        mc.addMailcap("text/html;; x-java-content-handler=com.sun.mail.handlers.text_html");
+	        CommandMap.setDefaultCommandMap(mc);
 	        SMTPTransport t = (SMTPTransport)session.getTransport("smtp");
 	        t.connect(host, user, password);
+	        message.setContent(msg, "text/html");
 	        t.sendMessage(message, message.getAllRecipients());
 	        t.close();
 	        
