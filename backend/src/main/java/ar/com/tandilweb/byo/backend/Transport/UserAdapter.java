@@ -1,7 +1,8 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
-import java.util.UUID;
 import java.util.Date;
+import java.util.Optional;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,8 +11,11 @@ import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
+import ar.com.tandilweb.byo.backend.utils.Mailer;
 
 public class UserAdapter {
 
@@ -91,23 +95,66 @@ public class UserAdapter {
 		return out;
 	}
 	
-	public ResponseDTO rememberEmail(String email) throws Exception {
-		ResponseDTO out = new ResponseDTO();
+	public RememberEmailOut rememberEmail(String email) throws Exception {
 		Users usuario = userRepository.findByemail(email);
+		return rememberEmail(usuario);
+	}
+	
+	public RememberEmailOut rememberEmail(Users usuario) throws Exception {
+		RememberEmailOut out = new RememberEmailOut();
 		if (usuario != null) {
-			RememberTokens token = new RememberTokens();
-			token.setAttempts(0);
-			token.setId_user(usuario.getId_user());
-			token.setUnlock_key(UUID.randomUUID().toString().replaceAll("-", ""));
-			token.setRequest_date(new Date());
-			System.out.println("token "+token);
+			RememberTokens token = rememberTokenRepository.findById(usuario.getId_user());
+			String tokenRemember = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 4);
+			if(token != null) {
+				token.setAttempts(0);
+				token.setUnlock_key(tokenRemember);
+				token.setRequest_date(new Date());
+			} else {
+				token = new RememberTokens();
+				token.setAttempts(0);
+				token.setId_user(usuario.getId_user());
+				token.setUnlock_key(tokenRemember);
+				token.setRequest_date(new Date());
+			}
+			rememberTokenRepository.save(token);
+			Mailer.send(usuario.getEmail(), "Código para recordar contraseña", "Hola mundo: "+tokenRemember);
+			out.idUser = usuario.getId_user();
 			out.code = ResponseDTO.Code.OK;
 			out.description = "Email encontrado";
-			System.out.println(token+" ");
 		}else {
 			out.code = ResponseDTO.Code.FORBIDDEN;
 			out.description = "Acceso denegado";
 		}
 		return out;
 	}
+	
+	public ResponseDTO checkCode(Long idUsuario, String codigo, String password) throws Exception {
+		ResponseDTO out = new ResponseDTO();
+		Optional<RememberTokens> token = rememberTokenRepository.findById(idUsuario);
+		if(token != null && token.isPresent()) {
+			RememberTokens rT = token.get();
+			if(rT.getAttempts() <= 3) {
+				if(rT.getUnlock_key() != null && codigo != null && !rT.getUnlock_key().equals("") && rT.getUnlock_key().equals(codigo)) {
+					rT.setUnlock_key("");
+					Users u = rT.getUser();
+					u.setPassword(CryptDES.getSaltedHash(password));
+					userRepository.save(u);
+					out.code = Code.ACCEPTED;
+					out.description = "Gracias por usar aerolineas roberto";
+				} else {
+					rT.setAttempts(rT.getAttempts()+1);
+					out.code = Code.FORBIDDEN;
+					out.description = "Código no válido";
+				}
+				rememberTokenRepository.save(rT);
+			} else {
+				rememberEmail(rT.getUser());
+				out.code = Code.AUTHORIZATION_REQUIRED;
+				out.description = "Enviamos otro email";
+			}
+		}
+		return out;
+	}
+	
+
 }

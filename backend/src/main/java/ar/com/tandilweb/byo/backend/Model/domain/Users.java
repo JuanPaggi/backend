@@ -35,7 +35,7 @@ public class Users {
 	private Date signup_date;
 
 	private String linkedinId;
-
+	
 	@NotNull
 	private String busco;
 	@NotNull

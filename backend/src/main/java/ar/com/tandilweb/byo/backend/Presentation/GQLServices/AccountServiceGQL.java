@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
 import ar.com.tandilweb.byo.backend.Transport.UserAdapter;
@@ -93,16 +94,30 @@ public class AccountServiceGQL {
 	}
 	
 	@GraphQLQuery(name = "AccountService_rememberEmail")
-	public ResponseDTO rememberEmail(@GraphQLArgument(name = "email") String email) {
+	public RememberEmailOut rememberEmail(@GraphQLArgument(name = "email") String email) {
 		try {
 			return userAdapter.rememberEmail(email);
 		} catch (Exception e) {
 			e.printStackTrace();
-			LoginOut out = new LoginOut();
+			RememberEmailOut out = new RememberEmailOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "El email no se encuentra registrado";
 			return out;
 		}
 	}
+	
+	@GraphQLQuery(name = "AccountService_checkCode")
+	public ResponseDTO checkCode(@GraphQLArgument(name = "id") Long idUsuario, @GraphQLArgument(name = "codigo") String codigo, @GraphQLArgument(name = "password") String password) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			out = userAdapter.checkCode(idUsuario, codigo, password);
+		} catch (Exception e) {
+			out.code = ResponseDTO.Code.FORBIDDEN;
+			out.description = "Codigo incorrecto";
+			return out;
+		}
+		return out;
+	}
+	 
 
 }

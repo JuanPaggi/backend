@@ -32,9 +32,9 @@
 			<version>2.0.2.RELEASE</version>
 		</dependency>
 		<dependency>
-		    <groupId>io.leangen.graphql</groupId>
-		    <artifactId>spqr</artifactId>
-		    <version>0.9.7</version>
+			<groupId>io.leangen.graphql</groupId>
+			<artifactId>spqr</artifactId>
+			<version>0.9.7</version>
 		</dependency>
 		<dependency>
 			<groupId>io.leangen.graphql</groupId>
@@ -54,9 +54,9 @@
 			<version>5.1.6</version>
 		</dependency>
 		<dependency>
-		    <groupId>io.jsonwebtoken</groupId>
-		    <artifactId>jjwt</artifactId>
-		    <version>0.6.0</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.6.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
@@ -69,6 +69,12 @@
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
 			<version>2.0.2.RELEASE</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.mail/mail -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
 		</dependency>
 	</dependencies>
 	<build>
