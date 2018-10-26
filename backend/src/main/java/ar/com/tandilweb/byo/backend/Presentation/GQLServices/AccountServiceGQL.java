@@ -106,11 +106,24 @@ public class AccountServiceGQL {
 		}
 	}
 	
-	@GraphQLQuery(name = "AccountService_checkCode")
-	public ResponseDTO checkCode(@GraphQLArgument(name = "id") Long idUsuario, @GraphQLArgument(name = "codigo") String codigo, @GraphQLArgument(name = "password") String password) {
+	@GraphQLQuery(name = "AccountService_validateRememberMailCode")
+	public ResponseDTO checkCode(@GraphQLArgument(name = "idUser") Long idUsuario, @GraphQLArgument(name = "codigo") String codigo, @GraphQLArgument(name = "password") String password) {
 		ResponseDTO out = new ResponseDTO();
 		try {
-			out = userAdapter.checkCode(idUsuario, codigo, password);
+			out = userAdapter.validateRememberMailCode(idUsuario, codigo, password);
+		} catch (Exception e) {
+			out.code = ResponseDTO.Code.FORBIDDEN;
+			out.description = "Codigo incorrecto";
+			return out;
+		}
+		return out;
+	}
+	
+	@GraphQLQuery(name = "AccountService_validateUnlockCode")
+	public ResponseDTO validateUnlockCode(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "codigo") String codigo) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			out = userAdapter.validateUnlockCode(email,codigo);
 		} catch (Exception e) {
 			out.code = ResponseDTO.Code.FORBIDDEN;
 			out.description = "Codigo incorrecto";

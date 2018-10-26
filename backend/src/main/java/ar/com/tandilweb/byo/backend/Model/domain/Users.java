@@ -49,35 +49,48 @@ public class Users {
 	private String salt_jwt;
 	@NotNull
 	private boolean completoByO;
-
+	@NotNull
+	private boolean locked;
+	@NotNull
+	private int failedLoginAttempts;
+	@NotNull
+	private String unLockAccountCode;
+	
 	@NotNull
 	@ManyToMany
 	@JoinTable(name="gps_data_users",
 	joinColumns= {@JoinColumn(name="id_user")},
 	inverseJoinColumns= {@JoinColumn(name="id_gps_record")})
 	private List<GpsData> gps_datas = new ArrayList<GpsData>();
-	
 	@OneToOne(mappedBy="user")
     private RememberTokens rememberToken;
-
+	
+	//GETTERS & SETTERS
 	public String getBusco() {
 		return busco;
 	}
 	public String getEmail() {
 		return email;
 	}
+	public int getFailedLoginAttempts() {
+		return failedLoginAttempts;
+	}
 	public String getFirst_name() {
 		return firstName;
 	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
+	
 	public List<GpsData> getGps_datas() {
 		return gps_datas;
 	}
+	
 	public long getId_user() {
 		return id_user;
 	}
+
 	public Date getLast_login() {
 		return last_login;
 	}
@@ -102,14 +115,23 @@ public class Users {
 	public String getPicture_url() {
 		return picture_url;
 	}
+	public RememberTokens getRememberToken() {
+		return rememberToken;
+	}
 	public String getSalt_jwt() {
 		return salt_jwt;
 	}
 	public Date getSignup_date() {
 		return signup_date;
 	}
+	public String getUnLockAccountCode() {
+		return unLockAccountCode;
+	}
 	public boolean isCompletoByO() {
 		return completoByO;
+	}
+	public boolean isLocked() {
+		return locked;
 	}
 	public boolean isPremium() {
 		return premium;
@@ -122,6 +144,9 @@ public class Users {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public void setFailedLoginAttempts(int failedLoginAttempts) {
+		this.failedLoginAttempts = failedLoginAttempts;
 	}
 	public void setFirst_name(String first_name) {
 		this.firstName = first_name;
@@ -153,6 +178,9 @@ public class Users {
 	public void setLinkedinId(String linkedinId) {
 		this.linkedinId = linkedinId;
 	}
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
 	public void setOfrezco(String ofrezco) {
 		this.ofrezco = ofrezco;
 	}
@@ -162,16 +190,19 @@ public class Users {
 	public void setPicture_url(String picture_url) {
 		this.picture_url = picture_url;
 	}
+	public void setPremium(boolean premium) {
+		this.premium = premium;
+	}
+	public void setRememberToken(RememberTokens rememberToken) {
+		this.rememberToken = rememberToken;
+	}
 	public void setSalt_jwt(String salt_jwt) {
 		this.salt_jwt = salt_jwt;
 	}
 	public void setSignup_date(Date signup_date) {
 		this.signup_date = signup_date;
 	}
-	public RememberTokens getRememberToken() {
-		return rememberToken;
-	}
-	public void setRememberToken(RememberTokens rememberToken) {
-		this.rememberToken = rememberToken;
+	public void setUnLockAccountCode(String unLockAccountCode) {
+		this.unLockAccountCode = unLockAccountCode;
 	}
 }

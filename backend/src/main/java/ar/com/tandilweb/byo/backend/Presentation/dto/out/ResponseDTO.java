@@ -14,7 +14,7 @@ public class ResponseDTO {
 		METHOD_NOT_IMPLEMENTED (501), // la rama de flujo no está implementada
 		UPGRADE_REQUIRED (426), // se está enviando una petición obsoleta o una versión del protocolo obsoleto
 		BAD_GATEWAY (503), // si la api a la que queremos consumir no responde correctamente
-		AUTHORIZATION_REQUIRED (403), // UNAUTHORIZED, no se están enviando los datos necesarios para autentificar.
+		AUTHORIZATION_REQUIRED (401), // UNAUTHORIZED, no se están enviando los datos necesarios para autentificar.
 		INTERNAL_SERVER_ERROR (500)
 		;
 		private final int codeNumber;
