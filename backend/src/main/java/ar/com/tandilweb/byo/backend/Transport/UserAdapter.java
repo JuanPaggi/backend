@@ -27,38 +27,42 @@ public class UserAdapter {
 	public LoginOut validateLogin(String email, String password) throws Exception {
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
-			
-		if (!usuario.isLocked()) {
-			if (usuario != null && CryptDES.check(password, usuario.getPassword())) {
-				// actualizamos los salts:
-				UUID uuid = UUID.randomUUID();
-				usuario.setSalt_jwt(uuid.toString());
-				usuario.setFailedLoginAttempts(0);
-				out.code = ResponseDTO.Code.OK;
-				out.description = "usuario encontrado";
-				// usamos el salt nuevo:
-				out.token = usuario.getSalt_jwt();
-				out.userId = usuario.getId_user();
-				out.completoByO = usuario.isCompletoByO();
-			} else {
-				//Ingreso mal algun campo
-				usuario.setFailedLoginAttempts(usuario.getFailedLoginAttempts()+1);
-				if(usuario.getFailedLoginAttempts() >= 3) {
-					String unlockCode = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 4);
-					usuario.setUnLockAccountCode(unlockCode);
-					Mailer.send(usuario.getEmail(), "Código para recordar desbloquear cuenta",unlockCode);
-					usuario.setLocked(true);					
+		if(usuario != null) {
+			if (!usuario.isLocked()) {
+				if (CryptDES.check(password, usuario.getPassword())) {
+					// actualizamos los salts:
+					UUID uuid = UUID.randomUUID();
+					usuario.setSalt_jwt(uuid.toString());
+					usuario.setFailedLoginAttempts(0);
+					out.code = ResponseDTO.Code.OK;
+					out.description = "usuario encontrado";
+					// usamos el salt nuevo:
+					out.token = usuario.getSalt_jwt();
+					out.userId = usuario.getId_user();
+					out.completoByO = usuario.isCompletoByO();
+				} else {
+					//Ingreso mal algun campo
+					usuario.setFailedLoginAttempts(usuario.getFailedLoginAttempts()+1);
+					if(usuario.getFailedLoginAttempts() >= 3) {
+						String unlockCode = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 4);
+						usuario.setUnLockAccountCode(unlockCode);
+						Mailer.send(usuario.getEmail(), "Código para recordar desbloquear cuenta",unlockCode);
+						usuario.setLocked(true);					
+					}
+					out.code = ResponseDTO.Code.FORBIDDEN;
+					out.description = "Acceso denegado";
 				}
-				out.code = ResponseDTO.Code.FORBIDDEN;
-				out.description = "Acceso denegado";
+			}else {
+				//Si el usuario esta bloqueado
+//				String unlockCode = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 4);
+//				usuario.setUnLockAccountCode(unlockCode);
+//				Mailer.send(usuario.getEmail(), "Código para recordar desbloquear cuenta",unlockCode);
+				out.code = ResponseDTO.Code.BAD_REQUEST;
+				out.description = "Por favor ingrese el codigo que le mandamos por mail para desbloquear";
 			}
-		}else {
-			//Si el usuario esta bloqueado
-//			String unlockCode = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 4);
-//			usuario.setUnLockAccountCode(unlockCode);
-//			Mailer.send(usuario.getEmail(), "Código para recordar desbloquear cuenta",unlockCode);
-			out.code = ResponseDTO.Code.BAD_REQUEST;
-			out.description = "Por favor ingrese el codigo que le mandamos por mail para desbloquear";
+		} else {
+			out.code = ResponseDTO.Code.NOT_FOUND;
+			out.description = "El usuario no existe.";
 		}
 		userRepository.save(usuario);
 		return out;
