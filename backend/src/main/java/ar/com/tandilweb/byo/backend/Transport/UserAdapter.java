@@ -60,11 +60,11 @@ public class UserAdapter {
 				out.code = ResponseDTO.Code.BAD_REQUEST;
 				out.description = "Por favor ingrese el codigo que le mandamos por mail para desbloquear";
 			}
+			userRepository.save(usuario);
 		} else {
 			out.code = ResponseDTO.Code.NOT_FOUND;
 			out.description = "El usuario no existe.";
 		}
-		userRepository.save(usuario);
 		return out;
 	}
 
