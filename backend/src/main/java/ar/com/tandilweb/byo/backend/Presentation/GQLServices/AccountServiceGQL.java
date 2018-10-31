@@ -23,7 +23,7 @@ import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 public class AccountServiceGQL {
 
 	private static final Logger log = LoggerFactory.getLogger(AccountServiceGQL.class);
-
+	
 	@Autowired
 	private LinkedInAdapter linkedinAdapter;
 	@Autowired
@@ -131,6 +131,20 @@ public class AccountServiceGQL {
 		}
 		return out;
 	}
+	
+	@GraphQLQuery(name = "AccountService_setGeoLocation")
+	public ResponseDTO setGeoLocation(@GraphQLArgument(name = "latitude") Float lat, @GraphQLArgument(name = "longitude") Float lon) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			out = userAdapter.setGeoLocation(lat,lon);
+		} catch (Exception e) {
+			out.code = ResponseDTO.Code.FORBIDDEN;
+			out.description = "Codigo incorrecto";
+			return out;
+		}
+		return out;
+	}
+	
 	 
 
 }

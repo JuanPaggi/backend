@@ -18,10 +18,10 @@ public class GpsData {
 	private long id_gps_record;
 	
 	@NotNull
-	private double latitude;
+	private float latitude;
 	
 	@NotNull
-	private double longitude;
+	private float longitude;
 	
 	@NotNull
 	private Date date_recorded;
@@ -41,11 +41,11 @@ public class GpsData {
 		this.id_gps_record = id_gps_record;
 	}
 
-	public double getLatitude() {
+	public float getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(double latitude) {
+	public void setLatitude(float latitude) {
 		this.latitude = latitude;
 	}
 
@@ -53,7 +53,7 @@ public class GpsData {
 		return longitude;
 	}
 
-	public void setLongitude(double longitude) {
+	public void setLongitude(float longitude) {
 		this.longitude = longitude;
 	}
 

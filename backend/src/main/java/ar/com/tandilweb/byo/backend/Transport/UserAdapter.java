@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
@@ -23,6 +24,8 @@ public class UserAdapter {
 	UserRepository userRepository;
 	@Autowired
 	RememberTokensRepository rememberTokenRepository;
+	@Autowired
+	private GpsDataRepository gpsDataRepository;
 
 	public LoginOut validateLogin(String email, String password) throws Exception {
 		LoginOut out = new LoginOut();
@@ -197,6 +200,13 @@ public class UserAdapter {
 			out.code = Code.FORBIDDEN;
 			out.description = "Codigo no valido";
 		}
+		return out;
+	}
+	
+	public ResponseDTO setGeoLocation(Float latitude, Float longitude) throws Exception {
+		ResponseDTO out = new ResponseDTO();
+		out.code = ResponseDTO.Code.OK;
+		out.description = "latitud: "+latitude;
 		return out;
 	}
 }
