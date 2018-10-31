@@ -52,6 +52,16 @@ public class LinkedInAdapter {
 				user.setFailedLoginAttempts(0);
 				user.setUnLockAccountCode("");
 				user = userRepository.save(user);
+				
+				out.userId = user.getId_user();
+				out.first_name = user.getFirst_name();
+				out.last_name = user.getLast_name();
+				out.is_premium = user.isPremium();
+				out.picture_url = "imagenURL";
+				// enviamos el token.
+				out.token = user.getSalt_jwt();
+				out.completoByO = user.isCompletoByO();
+				
 				out.code = ResponseDTO.Code.CREATED;
 				out.description = "Usuario Creado";
 				out.token = uuid.toString();
