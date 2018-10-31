@@ -73,7 +73,7 @@ public class UserAdapter {
 		LoginOut out = new LoginOut();
 		if (userRepository.findByemail(email) == null) { // El mail no se encuentra en la base de datos. Se puede
 			// registrar
-			Users usuario = null;
+			Users usuario = new Users();
 			usuario.setEmail(email);
 			usuario.setPassword(CryptDES.getSaltedHash(password));
 			usuario.setFirst_name(nombre);
