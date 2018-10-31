@@ -46,7 +46,11 @@ public class LinkedInAdapter {
 				user.setPassword("password hardcodeado");
 				user.setOfrezco("ofrezco hardcodeado");
 				user.setBusco("Busco Hardcodeado");
+				user.setCompletoByO(false);
 				user.setSalt_jwt(uuid.toString());
+				user.setLocked(false);
+				user.setFailedLoginAttempts(0);
+				user.setUnLockAccountCode("");
 				user = userRepository.save(user);
 				out.code = ResponseDTO.Code.CREATED;
 				out.description = "Usuario Creado";
