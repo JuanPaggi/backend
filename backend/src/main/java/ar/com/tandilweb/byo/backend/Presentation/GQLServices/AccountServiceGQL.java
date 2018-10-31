@@ -39,7 +39,7 @@ public class AccountServiceGQL {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
-			out.description = "Error en encriptación";
+			out.description = "Error el servidor a fallado";
 			return out;
 		}
 	}
@@ -59,7 +59,7 @@ public class AccountServiceGQL {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
-			out.description = "Error en encriptación";
+			out.description = "Error, no se ha podido registrar el usuario";
 			return out;
 		}
 	}
