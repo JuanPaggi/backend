@@ -1,13 +1,13 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
@@ -18,20 +18,30 @@ public class GpsData {
 	private long id_gps_record;
 	
 	@NotNull
-	private float latitude;
+	private double latitude;
 	
 	@NotNull
-	private float longitude;
+	private double longitude;
 	
 	@NotNull
 	private Date date_recorded;
 	
 	@NotNull
-	@ManyToMany
-	@JoinTable(name="gps_data_users",
-				joinColumns= {@JoinColumn(name="id_gps_record")},
-				inverseJoinColumns= {@JoinColumn(name="id_user")})
-	private List<Users> users = new ArrayList<Users>();
+	@ManyToMany(fetch = FetchType.LAZY,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+                },
+            mappedBy = "gps_datas")
+	private Set<Users> users = new HashSet<Users>();
+	
+	public GpsData(){}
+	
+	public GpsData(double latitude, double longitude, Date date_recorded) {
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.date_recorded = date_recorded;
+	}
 
 	public long getId_gps_record() {
 		return id_gps_record;
@@ -41,11 +51,11 @@ public class GpsData {
 		this.id_gps_record = id_gps_record;
 	}
 
-	public float getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(float latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
@@ -53,7 +63,7 @@ public class GpsData {
 		return longitude;
 	}
 
-	public void setLongitude(float longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
@@ -65,11 +75,11 @@ public class GpsData {
 		this.date_recorded = date_recorded;
 	}
 	
-	public List<Users> getUsers() {
+	public Set<Users> getUsers() {
 		return users;
 	}
 
-	public void setUsers(List<Users> users) {
+	public void setUsers(Set<Users> users) {
 		this.users = users;
 	}
 	

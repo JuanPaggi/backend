@@ -1,10 +1,12 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -35,7 +37,7 @@ public class Users {
 	private Date signup_date;
 
 	private String linkedinId;
-	
+
 	@NotNull
 	private String busco;
 	@NotNull
@@ -55,16 +57,59 @@ public class Users {
 	private int failedLoginAttempts;
 	@NotNull
 	private String unLockAccountCode;
-	
+
 	@NotNull
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.LAZY,
+		cascade = { 
+			CascadeType.PERSIST, 
+			CascadeType.MERGE
+	})
 	@JoinTable(name="gps_data_users",
 	joinColumns= {@JoinColumn(name="id_user")},
 	inverseJoinColumns= {@JoinColumn(name="id_gps_record")})
-	private List<GpsData> gps_datas = new ArrayList<GpsData>();
+
+	private Set<GpsData> gps_datas = new HashSet<GpsData>();
+
 	@OneToOne(mappedBy="user")
-    private RememberTokens rememberToken;
+	private RememberTokens rememberToken;
 	
+	//CONSTRUCTORS
+	public Users() {}
+	
+	public Users(String firstName, String lastName, String email, String password, Date last_login, Date signup_date,
+			String linkedinId, String busco, String ofrezco, String picture_url, boolean premium, String salt_jwt,
+			boolean completoByO, boolean locked, int failedLoginAttempts, String unLockAccountCode,
+			RememberTokens rememberToken) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.password = password;
+		this.last_login = last_login;
+		this.signup_date = signup_date;
+		this.linkedinId = linkedinId;
+		this.busco = busco;
+		this.ofrezco = ofrezco;
+		this.picture_url = picture_url;
+		this.premium = premium;
+		this.salt_jwt = salt_jwt;
+		this.completoByO = completoByO;
+		this.locked = locked;
+		this.failedLoginAttempts = failedLoginAttempts;
+		this.unLockAccountCode = unLockAccountCode;
+		this.rememberToken = rememberToken;
+	}
+	
+	//METHODS
+	public void addGps(GpsData gps) {
+		gps_datas.add(gps);
+		gps.getUsers().add(this);
+	}
+
+	public void removeGps(GpsData gps) {
+		gps_datas.remove(gps);
+		gps.getUsers().remove(this);
+	}
+
 	//GETTERS & SETTERS
 	public String getBusco() {
 		return busco;
@@ -78,19 +123,15 @@ public class Users {
 	public String getFirst_name() {
 		return firstName;
 	}
-	
 	public String getFirstName() {
 		return firstName;
 	}
-	
-	public List<GpsData> getGps_datas() {
+	public Set<GpsData> getGps_datas() {
 		return gps_datas;
 	}
-	
 	public long getId_user() {
 		return id_user;
 	}
-
 	public Date getLast_login() {
 		return last_login;
 	}
@@ -154,7 +195,7 @@ public class Users {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public void setGps_datas(List<GpsData> gps_datas) {
+	public void setGps_datas(Set<GpsData> gps_datas) {
 		this.gps_datas = gps_datas;
 	}
 	public void setId_user(long id_user) {

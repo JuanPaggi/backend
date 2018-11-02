@@ -23,7 +23,7 @@ import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 public class AccountServiceGQL {
 
 	private static final Logger log = LoggerFactory.getLogger(AccountServiceGQL.class);
-	
+
 	@Autowired
 	private LinkedInAdapter linkedinAdapter;
 	@Autowired
@@ -70,18 +70,18 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "expiresOn") String expiresOn) {
 		return linkedinAdapter.validateAccessToken(accessToken);
 	}
-	
+
 	@GraphQLQuery(name = "AccountService_setBuscoYofrezco")
 	public ResponseDTO buscoYOfrezco(
 			@GraphQLArgument(name = "busco") String busco, 
 			@GraphQLArgument(name = "ofrezco") String ofrezco,
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) throws Exception {
-		
+
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users usuario = header.getUser();
 		ResponseDTO out = new ResponseDTO();
-		
+
 		if(header.isTrusted()) {
 			System.out.println("trusteado");
 			return userAdapter.setBuscoYofrezco(busco, ofrezco, usuario);
@@ -92,7 +92,7 @@ public class AccountServiceGQL {
 		}
 		return out;
 	}
-	
+
 	@GraphQLQuery(name = "AccountService_rememberEmail")
 	public RememberEmailOut rememberEmail(@GraphQLArgument(name = "email") String email) {
 		try {
@@ -105,9 +105,13 @@ public class AccountServiceGQL {
 			return out;
 		}
 	}
-	
+
 	@GraphQLQuery(name = "AccountService_validateRememberMailCode")
-	public ResponseDTO checkCode(@GraphQLArgument(name = "idUser") Long idUsuario, @GraphQLArgument(name = "codigo") String codigo, @GraphQLArgument(name = "password") String password) {
+	public ResponseDTO checkCode(
+			@GraphQLArgument(name = "idUser") Long idUsuario,
+			@GraphQLArgument(name = "codigo") String codigo, 
+			@GraphQLArgument(name = "password") String password
+			) {
 		ResponseDTO out = new ResponseDTO();
 		try {
 			out = userAdapter.validateRememberMailCode(idUsuario, codigo, password);
@@ -118,7 +122,7 @@ public class AccountServiceGQL {
 		}
 		return out;
 	}
-	
+
 	@GraphQLQuery(name = "AccountService_validateUnlockCode")
 	public ResponseDTO validateUnlockCode(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "codigo") String codigo) {
 		ResponseDTO out = new ResponseDTO();
@@ -131,20 +135,29 @@ public class AccountServiceGQL {
 		}
 		return out;
 	}
-	
+
 	@GraphQLQuery(name = "AccountService_setGeoLocation")
-	public ResponseDTO setGeoLocation(@GraphQLArgument(name = "latitude") Float lat, @GraphQLArgument(name = "longitude") Float lon) {
+	public ResponseDTO setGeoLocation(
+			@GraphQLArgument(name = "latitude") String lat, 
+			@GraphQLArgument(name = "longitude") String lon, 
+			@GraphQLEnvironment ResolutionEnvironment environment
+			) throws Exception {
+
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users usuario = header.getUser();
 		ResponseDTO out = new ResponseDTO();
-		try {
-			out = userAdapter.setGeoLocation(lat,lon);
-		} catch (Exception e) {
-			out.code = ResponseDTO.Code.FORBIDDEN;
-			out.description = "Codigo incorrecto";
-			return out;
+
+		if(header.isTrusted()) {
+			double dlat = Double.parseDouble(lat);
+			double dlon = Double.parseDouble(lon);
+			return userAdapter.setGeoLocation(dlat, dlon, usuario);
+		} else {
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Usuario no confiable";
 		}
 		return out;
 	}
-	
-	 
+
+
 
 }

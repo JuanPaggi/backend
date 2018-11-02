@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
@@ -203,10 +204,14 @@ public class UserAdapter {
 		return out;
 	}
 	
-	public ResponseDTO setGeoLocation(Float latitude, Float longitude) throws Exception {
+	public ResponseDTO setGeoLocation(double latitude, double longitude, Users usuario) throws Exception {
 		ResponseDTO out = new ResponseDTO();
+		GpsData gps = new GpsData(latitude,longitude,new Date());
+		//List<Users> lista = userRepository.findAllUsersWithGps();
+		//System.out.println(lista);
+		userRepository.save(usuario);
 		out.code = ResponseDTO.Code.OK;
-		out.description = "latitud: "+latitude;
+		out.description = "latitud: "+latitude+" longitud: "+longitude+ " usuarioid: "+usuario.getId_user();
 		return out;
 	}
 }
