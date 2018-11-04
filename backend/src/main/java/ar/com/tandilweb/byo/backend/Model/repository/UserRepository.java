@@ -30,7 +30,7 @@ public class UserRepository extends BaseRepository<Users, Long>{
 	                "select * from users where linkedin_id=?",
 	                new Object[]{linkedin_id}, new UserRowMapper());
 		} catch(DataAccessException e) {
-			logger.debug("UserRepository :: findByLinkedinID");
+//			logger.debug("UserRepository :: findByLinkedinID");
 			return null;
 		}
 	}
@@ -41,7 +41,7 @@ public class UserRepository extends BaseRepository<Users, Long>{
 	                "select * from users where email=?",
 	                new Object[]{email}, new UserRowMapper());
 		} catch(DataAccessException e) {
-			logger.debug("UserRepository :: findByEmail");
+//			logger.debug("UserRepository :: findByEmail");
 			return null;
 		}
 	}
@@ -52,7 +52,7 @@ public class UserRepository extends BaseRepository<Users, Long>{
 	                "select * from users where id_user=?",
 	                new Object[]{id}, new UserRowMapper());
 		} catch(DataAccessException e) {
-			logger.debug("UserRepository :: findById",e);
+//			logger.debug("UserRepository :: findById",e);
 			return null;
 		}
 	}

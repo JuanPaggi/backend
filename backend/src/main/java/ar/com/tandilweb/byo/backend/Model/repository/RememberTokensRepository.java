@@ -30,7 +30,7 @@ public class RememberTokensRepository extends BaseRepository<RememberTokens, Lon
 					});
 			return record;
 		} catch(DataAccessException e) {
-			e.printStackTrace();
+			logger.error("RememberTokensRepository::create", e);
 			return null;
 		}
 	}
@@ -46,7 +46,7 @@ public class RememberTokensRepository extends BaseRepository<RememberTokens, Lon
 					record.getId_user()
 			});
 		} catch(DataAccessException e) {
-			e.printStackTrace();
+			logger.error("RememberTokensRepository::update", e);
 		}
 	}
 
@@ -57,6 +57,7 @@ public class RememberTokensRepository extends BaseRepository<RememberTokens, Lon
                 "select * from remember_tokens where id_user = ?",
                 new Object[]{id}, new RememberTokensRowMapper());
 		} catch(DataAccessException e) {
+//			logger.debug("RememberTokensRepository::findById", e);
 			return null;
 		}
 	}

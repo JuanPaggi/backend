@@ -69,7 +69,7 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 	                "SELECT * FROM gps_data WHERE id_gps_record = ?",
 	                new Object[]{id}, new GpsDataRowMapper());
 		} catch(DataAccessException e) {
-			logger.debug("GpsDataRepository :: findById",e);
+//			logger.debug("GpsDataRepository :: findById",e);
 			return null;
 		}
 	}
