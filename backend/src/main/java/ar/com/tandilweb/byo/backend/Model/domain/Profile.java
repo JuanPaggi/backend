@@ -1,28 +1,22 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
-import javax.validation.constraints.NotNull;
-
 public class Profile {
 
-	private Users user;
 	private long id_user;
 	private String headline;
 	private String industry;
 	private Countries country;
-	
-	@NotNull
 	private String location;
-	
 	private String linkedin_url;
-	
 	private String summary;
-
-	public Users getUser() {
-		return user;
-	}
-
-	public void setUser(Users user) {
-		this.user = user;
+	
+	public Profile(long id_user, String headline, String industry, String location, String linkedin_url, String summary) {
+		this.id_user = id_user;
+		this.headline = headline;
+		this.industry = industry;
+		this.location = location;
+		this.linkedin_url = linkedin_url;
+		this.summary = summary;
 	}
 
 	public long getId_user() {

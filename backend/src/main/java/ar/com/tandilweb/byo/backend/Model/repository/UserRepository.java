@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,6 +23,17 @@ import ar.com.tandilweb.byo.backend.Model.domain.Users;
 public class UserRepository extends BaseRepository<Users, Long>{
 	
 	public static Logger logger = LoggerFactory.getLogger(UserRepository.class);
+	
+	public List<Users> getAllRecords(int limit) {
+		try {
+	    	return jdbcTemplate.query(
+	                "SELECT * FROM users LIMIT ?", 
+	                new UserRowMapper(),
+	                new Object[]{limit});
+		} catch(DataAccessException e) {
+			return null;
+		}
+	}
 
     //@Transactional(readOnly=true) esto es para el isolation de las consultas (el bloqueo por funcion)
 	public Users findBylinkedinId(String linkedin_id) {
@@ -30,7 +42,6 @@ public class UserRepository extends BaseRepository<Users, Long>{
 	                "select * from users where linkedin_id=?",
 	                new Object[]{linkedin_id}, new UserRowMapper());
 		} catch(DataAccessException e) {
-//			logger.debug("UserRepository :: findByLinkedinID");
 			return null;
 		}
 	}
@@ -41,7 +52,6 @@ public class UserRepository extends BaseRepository<Users, Long>{
 	                "select * from users where email=?",
 	                new Object[]{email}, new UserRowMapper());
 		} catch(DataAccessException e) {
-//			logger.debug("UserRepository :: findByEmail");
 			return null;
 		}
 	}
@@ -52,7 +62,6 @@ public class UserRepository extends BaseRepository<Users, Long>{
 	                "select * from users where id_user=?",
 	                new Object[]{id}, new UserRowMapper());
 		} catch(DataAccessException e) {
-//			logger.debug("UserRepository :: findById",e);
 			return null;
 		}
 	}
