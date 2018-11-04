@@ -21,6 +21,11 @@ import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 @GraphQLApi
 @Service
 public class AccountServiceGQL {
+	
+	/**
+	 * Servicio especializado en el control de la cuenta del usuario que accede (es decir de modificar datos de la cuenta, registrarlo, etc.)
+	 * Pero referentes al usuario actual.
+	 */
 
 	private static final Logger log = LoggerFactory.getLogger(AccountServiceGQL.class);
 
