@@ -10,7 +10,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
 
 import ar.com.tandilweb.byo.backend.Filters.CorsFilter;
@@ -21,7 +20,6 @@ import ar.com.tandilweb.byo.backend.Model.JDBConfig;
 @SpringBootApplication
 @ComponentScan({ "ar.com.tandilweb.byo.backend.Presentation.GQLServices",
 		"ar.com.tandilweb.byo.backend.Presentation.RestServices"})
-@EnableTransactionManagement
 @Import({ TransportFactory.class, GatewayFactory.class, JDBConfig.class })
 public class App extends SpringBootServletInitializer {
 	public static void main(String[] args) {
