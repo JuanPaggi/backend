@@ -1,7 +1,6 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
 import java.util.Date;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +63,7 @@ public class UserAdapter {
 				out.code = ResponseDTO.Code.BAD_REQUEST;
 				out.description = "Por favor ingrese el codigo que le mandamos por mail para desbloquear";
 			}
-			userRepository.save(usuario);
+			userRepository.update(usuario);
 		} else {
 			out.code = ResponseDTO.Code.NOT_FOUND;
 			out.description = "El usuario no existe.";
@@ -93,7 +92,7 @@ public class UserAdapter {
 			usuario.setUnLockAccountCode("");
 			if(picture_url == null) picture_url = "DEFAULT PICTURE";
 			usuario.setPicture_url(picture_url);
-			userRepository.save(usuario);
+			userRepository.create(usuario);
 			out.userId = usuario.getId_user();
 			out.code = ResponseDTO.Code.CREATED;
 			out.description = "Usuario Creado";
@@ -118,7 +117,7 @@ public class UserAdapter {
 		usuario.setBusco(busco);
 		usuario.setOfrezco(ofrezco);
 		usuario.setCompletoByO(true);
-		userRepository.save(usuario);
+		userRepository.update(usuario);
 		return out;
 	}
 
@@ -135,18 +134,18 @@ public class UserAdapter {
 			String tokenRemember = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 4);
 			if(token != null) {
 				token.setAttempts(0);
+				token.setId_user(usuario.getId_user());
 				token.setUnlock_key(tokenRemember);
 				token.setRequest_date(new Date());
+				rememberTokenRepository.update(token);
 			} else {
 				token = new RememberTokens();
 				token.setAttempts(0);
-				token.setUser(usuario);
+				token.setId_user(usuario.getId_user());
 				token.setUnlock_key(tokenRemember);
 				token.setRequest_date(new Date());
-				usuario.setRememberToken(token);
+				rememberTokenRepository.create(token);
 			}
-			rememberTokenRepository.save(token);
-
 			Mailer.send(usuario.getEmail(), "Código para recordar contraseña", "Hola mundo: "+tokenRemember);
 			out.idUser = idUsuario;
 			out.code = ResponseDTO.Code.OK;
@@ -160,28 +159,27 @@ public class UserAdapter {
 
 	public RememberEmailOut validateRememberMailCode(Long idUsuario, String codigo, String password) throws Exception {
 		RememberEmailOut out = new RememberEmailOut();
-		Optional<RememberTokens> token = rememberTokenRepository.findById(idUsuario);
-		if(token != null && token.isPresent()) {
-			RememberTokens rT = token.get();
-			if(rT.getAttempts() < 3) {
-				if(rT.getUnlock_key() != null && codigo != null && !rT.getUnlock_key().equals("") && rT.getUnlock_key().equals(codigo)) {
-					rT.setUnlock_key("");
-					Users u = rT.getUser();
-					u.setPassword(CryptDES.getSaltedHash(password));
-					userRepository.save(u);
+		RememberTokens token = rememberTokenRepository.findById(idUsuario);
+		if(token != null) {
+			Users user = userRepository.findById(token.getId_user());
+			if(token.getAttempts() < 3) {
+				if(token.getUnlock_key() != null && codigo != null && !"".equals(token.getUnlock_key()) && codigo.equals(token.getUnlock_key())) {
+					token.setUnlock_key("");
+					user.setPassword(CryptDES.getSaltedHash(password));
+					userRepository.update(user);
 					out.code = Code.ACCEPTED;
 					out.description = "Su contraseña a sido cambiada";
 				} else {
-					rT.setAttempts(rT.getAttempts()+1);
+					token.setAttempts(token.getAttempts()+1);
 					out.code = Code.FORBIDDEN;
 					out.description = "Código incorrecto, intentelo de nuevo";
 				}
 			} else {
-				rememberEmail(rT.getUser());
+				rememberEmail(user);
 				out.code = Code.AUTHORIZATION_REQUIRED;
 				out.description = "Ha fallado multiples veces, enviamos otro email";
 			}
-			rememberTokenRepository.save(rT);
+			rememberTokenRepository.update(token);
 		}
 		return out;
 	}
@@ -194,7 +192,7 @@ public class UserAdapter {
 			usuario.setFailedLoginAttempts(0);
 			usuario.setLocked(false);
 			usuario.setUnLockAccountCode("");
-			userRepository.save(usuario);
+			userRepository.update(usuario);
 			out.code = ResponseDTO.Code.OK;
 			out.description = "Cuenta desbloqueada";
 		}else {
@@ -206,10 +204,8 @@ public class UserAdapter {
 	
 	public ResponseDTO setGeoLocation(double latitude, double longitude, Users usuario) throws Exception {
 		ResponseDTO out = new ResponseDTO();
-		GpsData gps = new GpsData(latitude,longitude,new Date());
-		//List<Users> lista = userRepository.findAllUsersWithGps();
-		//System.out.println(lista);
-		userRepository.save(usuario);
+		GpsData gps = gpsDataRepository.getOrCreate(latitude, longitude);
+		gpsDataRepository.assocPositionWithUser(gps.getId_gps_record(), usuario.getId_user());
 		out.code = ResponseDTO.Code.OK;
 		out.description = "latitud: "+latitude+" longitud: "+longitude+ " usuarioid: "+usuario.getId_user();
 		return out;

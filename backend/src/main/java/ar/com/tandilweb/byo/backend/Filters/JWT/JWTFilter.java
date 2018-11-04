@@ -60,10 +60,10 @@ public class JWTFilter implements Filter {
 			String identity = httpRequest.getHeader("Identity");
 			try {
 				if(identity == null) throw new ExceptionJWT();
-				Optional<Users> user = repository.findById(Long.parseLong(identity));
-				if(user == null || !user.isPresent()) throw new ExceptionJWT();
+				Users user = repository.findById(Long.parseLong(identity));
+				if(user == null) throw new ExceptionJWT();
 				// secret traerlo usando el identity
-				String key = new String(Base64.encodeBase64(user.get().getSalt_jwt().getBytes()));
+				String key = new String(Base64.encodeBase64(user.getSalt_jwt().getBytes()));
 				Jws<Claims> jt = Jwts.parser().setSigningKey(key).parseClaimsJws(jwToken);
 				Claims data = jt.getBody();
 				if(!identity.equals(data.getSubject())) throw new ExceptionJWT();
@@ -76,7 +76,7 @@ public class JWTFilter implements Filter {
 				uD.setSubject(data.getSubject()); // identificador de usuario.
 				httpRequest.setAttribute("jwtParsed", uD);
 				httpRequest.setAttribute("jwtTrusted", true);
-				httpRequest.setAttribute("jwtUserOrigin", user.get());
+				httpRequest.setAttribute("jwtUserOrigin", user);
 				filterChain.doFilter(httpRequest, httpResponse);
 			} catch (ExceptionJWT e) {
 				// TODO Auto-generated catch block

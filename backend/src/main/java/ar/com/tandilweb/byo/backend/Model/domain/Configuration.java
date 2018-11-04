@@ -1,27 +1,10 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
-@Entity
 public class Configuration{
 	
-	@OneToOne(cascade=CascadeType.ALL)  
-	@JoinColumn(name = "id_user")
-	@MapsId
 	private Users user;
-	
-	@Id
 	private long id_user;
-	
 	private int kms_radio;
-	
-	@NotNull
 	private boolean linkedin_autoupdate;
 	
 	public Users getId_usuario() {

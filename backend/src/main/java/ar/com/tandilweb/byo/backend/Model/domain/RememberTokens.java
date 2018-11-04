@@ -2,40 +2,22 @@ package ar.com.tandilweb.byo.backend.Model.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
-@Entity
 public class RememberTokens {
 	
-	@OneToOne(cascade=CascadeType.ALL)  
-	@JoinColumn(name = "id_user")
-	@MapsId
-	private Users user;
-	
-	@Id
 	private long id_user;
-	
-	@NotNull
 	private String unlock_key;
-	
-	@NotNull
 	private Date request_date;
-	
-	@NotNull
 	private int attempts;
-
-	public Users getUser() {
-		return user;
+	
+	public RememberTokens(long id_user, String unlock_key, Date request_date, int attempts) {
+		this.id_user = id_user;
+		this.unlock_key = unlock_key;
+		this.request_date = request_date;
+		this.attempts = attempts;
 	}
-
-	public void setUser(Users user) {
-		this.user = user;
+	
+	public RememberTokens() {
+		
 	}
 
 	public long getId_user() {

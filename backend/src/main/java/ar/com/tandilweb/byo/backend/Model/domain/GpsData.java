@@ -1,41 +1,17 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.validation.constraints.NotNull;
-
-@Entity
 public class GpsData {
-	
-	@Id
+
 	private long id_gps_record;
-	
-	@NotNull
 	private double latitude;
-	
-	@NotNull
 	private double longitude;
-	
-	@NotNull
 	private Date date_recorded;
 	
-	@NotNull
-	@ManyToMany(fetch = FetchType.LAZY,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-                },
-            mappedBy = "gps_datas")
-	private Set<Users> users = new HashSet<Users>();
-	
 	public GpsData(){}
+	
+	public GpsData(long id_gps_record, double latitude, double longitude, Date date_recorded){}
 	
 	public GpsData(double latitude, double longitude, Date date_recorded) {
 		this.latitude = latitude;
@@ -73,14 +49,6 @@ public class GpsData {
 
 	public void setDate_recorded(Date date_recorded) {
 		this.date_recorded = date_recorded;
-	}
-	
-	public Set<Users> getUsers() {
-		return users;
-	}
-
-	public void setUsers(Set<Users> users) {
-		this.users = users;
 	}
 	
 }

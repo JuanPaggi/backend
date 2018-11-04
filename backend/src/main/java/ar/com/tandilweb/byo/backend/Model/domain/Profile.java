@@ -1,29 +1,13 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
 public class Profile {
-	@OneToOne(cascade=CascadeType.ALL)  
-	@JoinColumn(name = "id_user")
-	@MapsId
+
 	private Users user;
-	
-	@Id
 	private long id_user;
-	
 	private String headline;
-	
 	private String industry;
-	
-	@OneToOne(cascade=CascadeType.ALL)  
-	@JoinColumn(name = "country")
 	private Countries country;
 	
 	@NotNull

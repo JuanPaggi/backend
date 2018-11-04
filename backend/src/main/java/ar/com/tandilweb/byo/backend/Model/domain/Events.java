@@ -2,36 +2,14 @@ package ar.com.tandilweb.byo.backend.Model.domain;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
-@Entity
 public class Events {
-	
-	@Id
+
 	private long id_event;
-	
-	@NotNull
 	private Date start_date;
-	
-	@NotNull
 	private Date end_date;
-	
-	@NotNull
 	private String name;
-	
-	@NotNull
 	private String logo;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="id_gps_record")
 	private GpsData gps_data;
-	
-	@NotNull
 	private String location_description;
 
 	public long getId_event() {

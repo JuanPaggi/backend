@@ -4,24 +4,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
-@Entity
 public class Users {
 
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private long id_user;
 	@NotNull
 	private String firstName;
@@ -42,44 +28,32 @@ public class Users {
 	private String busco;
 	@NotNull
 	private String ofrezco;
-	@Lob
-	@NotNull
+
 	private String picture_url;
-	@NotNull
+
 	private boolean premium;
-	@NotNull
+
 	private String salt_jwt;
-	@NotNull
+
 	private boolean completoByO;
-	@NotNull
+
 	private boolean locked;
-	@NotNull
+
 	private int failedLoginAttempts;
-	@NotNull
+
 	private String unLockAccountCode;
 
-	@NotNull
-	@ManyToMany(fetch = FetchType.LAZY,
-		cascade = { 
-			CascadeType.PERSIST, 
-			CascadeType.MERGE
-	})
-	@JoinTable(name="gps_data_users",
-	joinColumns= {@JoinColumn(name="id_user")},
-	inverseJoinColumns= {@JoinColumn(name="id_gps_record")})
-
-	private Set<GpsData> gps_datas = new HashSet<GpsData>();
-
-	@OneToOne(mappedBy="user")
-	private RememberTokens rememberToken;
+//	private Set<GpsData> gps_datas = new HashSet<GpsData>();
+//
+//	private RememberTokens rememberToken;
 	
 	//CONSTRUCTORS
 	public Users() {}
 	
-	public Users(String firstName, String lastName, String email, String password, Date last_login, Date signup_date,
+	public Users(Long id_user, String firstName, String lastName, String email, String password, Date last_login, Date signup_date,
 			String linkedinId, String busco, String ofrezco, String picture_url, boolean premium, String salt_jwt,
-			boolean completoByO, boolean locked, int failedLoginAttempts, String unLockAccountCode,
-			RememberTokens rememberToken) {
+			boolean completoByO, boolean locked, int failedLoginAttempts, String unLockAccountCode) {
+		this.id_user = id_user;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -96,19 +70,18 @@ public class Users {
 		this.locked = locked;
 		this.failedLoginAttempts = failedLoginAttempts;
 		this.unLockAccountCode = unLockAccountCode;
-		this.rememberToken = rememberToken;
 	}
 	
 	//METHODS
-	public void addGps(GpsData gps) {
-		gps_datas.add(gps);
-		gps.getUsers().add(this);
-	}
-
-	public void removeGps(GpsData gps) {
-		gps_datas.remove(gps);
-		gps.getUsers().remove(this);
-	}
+//	public void addGps(GpsData gps) {
+//		gps_datas.add(gps);
+//		gps.getUsers().add(this);
+//	}
+//
+//	public void removeGps(GpsData gps) {
+//		gps_datas.remove(gps);
+//		gps.getUsers().remove(this);
+//	}
 
 	//GETTERS & SETTERS
 	public String getBusco() {
@@ -126,9 +99,9 @@ public class Users {
 	public String getFirstName() {
 		return firstName;
 	}
-	public Set<GpsData> getGps_datas() {
-		return gps_datas;
-	}
+//	public Set<GpsData> getGps_datas() {
+//		return gps_datas;
+//	}
 	public long getId_user() {
 		return id_user;
 	}
@@ -156,9 +129,9 @@ public class Users {
 	public String getPicture_url() {
 		return picture_url;
 	}
-	public RememberTokens getRememberToken() {
-		return rememberToken;
-	}
+//	public RememberTokens getRememberToken() {
+//		return rememberToken;
+//	}
 	public String getSalt_jwt() {
 		return salt_jwt;
 	}
@@ -195,9 +168,9 @@ public class Users {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public void setGps_datas(Set<GpsData> gps_datas) {
-		this.gps_datas = gps_datas;
-	}
+//	public void setGps_datas(Set<GpsData> gps_datas) {
+//		this.gps_datas = gps_datas;
+//	}
 	public void setId_user(long id_user) {
 		this.id_user = id_user;
 	}
@@ -234,9 +207,9 @@ public class Users {
 	public void setPremium(boolean premium) {
 		this.premium = premium;
 	}
-	public void setRememberToken(RememberTokens rememberToken) {
-		this.rememberToken = rememberToken;
-	}
+//	public void setRememberToken(RememberTokens rememberToken) {
+//		this.rememberToken = rememberToken;
+//	}
 	public void setSalt_jwt(String salt_jwt) {
 		this.salt_jwt = salt_jwt;
 	}

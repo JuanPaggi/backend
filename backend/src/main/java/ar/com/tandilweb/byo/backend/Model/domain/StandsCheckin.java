@@ -3,24 +3,12 @@ package ar.com.tandilweb.byo.backend.Model.domain;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-
-@Entity
 public class StandsCheckin implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@NotNull
+	
 	Long id_stand;
-	
-	@Id
-	@NotNull
 	Long id_user;
-	
-	@NotNull
 	Date date_checkin;
 
 //	public Stands getId_stand() {

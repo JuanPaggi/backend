@@ -1,16 +1,8 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-
-@Entity
 public class Countries {
 	
-	@Id
 	private long id_country;
-	
-	@NotNull
 	private String name;
 
 	public long getId_country() {

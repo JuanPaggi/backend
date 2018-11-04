@@ -4,27 +4,25 @@ import javax.servlet.Filter;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
 
 import ar.com.tandilweb.byo.backend.Filters.CorsFilter;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTFilter;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTValidFilter;
-import ar.com.tandilweb.byo.backend.utils.Mailer;
+import ar.com.tandilweb.byo.backend.Model.JDBConfig;
 
 @SpringBootApplication
 @ComponentScan({ "ar.com.tandilweb.byo.backend.Presentation.GQLServices",
-		"ar.com.tandilweb.byo.backend.Presentation.RestServices" })
-@EntityScan("ar.com.tandilweb.byo.backend.Model.domain")
-@EnableJpaRepositories("ar.com.tandilweb.byo.backend.Model.repository")
-@Import({ TransportFactory.class, GatewayFactory.class })
+		"ar.com.tandilweb.byo.backend.Presentation.RestServices"})
+@EnableTransactionManagement
+@Import({ TransportFactory.class, GatewayFactory.class, JDBConfig.class })
 public class App extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);

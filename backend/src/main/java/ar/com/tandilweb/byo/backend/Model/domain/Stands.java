@@ -1,35 +1,11 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.validation.constraints.NotNull;
-
-@Entity
 public class Stands {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+
 	private long id_stand;
-	
-	@NotNull
-	@OneToOne(cascade=CascadeType.ALL)  
-	@JoinColumn(name = "id_event")
 	private Events id_event;
-	
-	@NotNull
 	private String name;
-	
-	@NotNull
 	private String logo;
-	
-	@NotNull
-	@OneToOne(cascade=CascadeType.ALL)  
-	@JoinColumn(name = "id_user_organizer")
 	private Users id_user_organizer;
 	
 	public long getId_stand() {

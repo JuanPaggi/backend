@@ -31,7 +31,7 @@ public class LinkedInAdapter {
 				out.description = "";
 				out.token = uuid.toString();
 				usuario.setSalt_jwt(uuid.toString());
-				userRepository.save(usuario);
+				userRepository.update(usuario);
 				out.userId = usuario.getId_user();
 			} else {
 				Users user = new Users();
@@ -51,7 +51,7 @@ public class LinkedInAdapter {
 				user.setLocked(false);
 				user.setFailedLoginAttempts(0);
 				user.setUnLockAccountCode("");
-				user = userRepository.save(user);
+				user = userRepository.create(user);
 				
 				out.userId = user.getId_user();
 				out.first_name = user.getFirst_name();
