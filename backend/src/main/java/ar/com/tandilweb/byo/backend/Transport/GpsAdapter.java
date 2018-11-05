@@ -46,12 +46,14 @@ public class GpsAdapter {
 					vcard.busco = user.getBusco();
 					vcard.ofrezco = user.getOfrezco();
 					vcard.id_usuario = user.getId_user();
-					vcard.linkedin_link = profile.getLinkedin_url();
+					if(profile != null) {
+						vcard.linkedin_link = profile.getLinkedin_url();
+						vcard.sinopsis = profile.getSummary();
+						vcard.titulo = profile.getHeadline();
+					}
 					vcard.nombre = user.getFirstName()+" "+user.getLastName();
 					vcard.pais = "????"; // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN)
 					vcard.picture = user.getPicture_url();
-					vcard.sinopsis = profile.getSummary();
-					vcard.titulo = profile.getHeadline();
 					vcards.add(vcard);
 				}
 			}

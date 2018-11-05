@@ -31,6 +31,7 @@ public class UserRepository extends BaseRepository<Users, Long>{
 	                new UserRowMapper(),
 	                new Object[]{limit});
 		} catch(DataAccessException e) {
+			e.printStackTrace();
 			return null;
 		}
 	}

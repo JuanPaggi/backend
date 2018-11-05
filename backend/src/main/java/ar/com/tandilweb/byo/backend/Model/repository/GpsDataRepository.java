@@ -79,7 +79,7 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 			GpsData data = jdbcTemplate.queryForObject(
 	                "SELECT * from gps_data WHERE latitude = ? AND longitude = ?",
 	                new Object[]{latitude, longitude}, new GpsDataRowMapper());
-			if(data == null) {
+			if(data == null || data.getDate_recorded() == null) {
 				data = create(new GpsData(latitude, longitude, new Date()));
 			}
 			return data;

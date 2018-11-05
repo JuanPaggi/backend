@@ -27,11 +27,12 @@ public class LinkedInAdapter {
 		if(response != null) {
 			Users usuario = userRepository.findBylinkedinId(response.getId());
 			if(usuario != null) {
+				usuario.setSalt_jwt(uuid.toString());
+				userRepository.update(usuario);
 				out.code = ResponseDTO.Code.OK;
 				out.description = "";
 				out.token = uuid.toString();
-				usuario.setSalt_jwt(uuid.toString());
-				userRepository.update(usuario);
+				out.completoByO = usuario.isCompletoByO();
 				out.userId = usuario.getId_user();
 			} else {
 				Users user = new Users();
