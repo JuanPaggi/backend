@@ -1,4 +1,4 @@
 mvn clean package
 cd target
-scp byo-alpha.war tomcatdeploy@144.76.43.230:/home/tomcatdeploy/buscoyofrezco.war
-ssh tomcatdeploy@144.76.43.230 /home/tomcatdeploy/deploy-byo.sh
+scp byo-alpha.war deployer@138.68.59.180:/home/deployer/buscoyofrezco.war
+ssh deployer@138.68.59.180 /home/deployer/deploy-byo.sh
