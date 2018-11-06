@@ -1,3 +1,4 @@
+USE desa_byo;
 -- ---
 -- Globals
 -- ---
@@ -26,10 +27,10 @@ CREATE TABLE `users` (
   `picture_url` VARCHAR(250) NOT NULL,
   `is_premium` bit NOT NULL,
   `salt_jwt` VARCHAR(120) NOT NULL,
-  `completoByO` bit NOT NULL DEFAULT NULL,
-  `locked` bit NOT NULL DEFAULT NULL,
-  `failed_login_attempts` INTEGER NOT NULL DEFAULT NULL,
-  `unlock_account_code` VARCHAR(5) NOT NULL DEFAULT 'NULL',
+  `completoByO` bit NOT NULL,
+  `locked` bit NOT NULL,
+  `failed_login_attempts` INTEGER NOT NULL,
+  `unlock_account_code` VARCHAR(5) NOT NULL,
   PRIMARY KEY (`id_user`),
 KEY (`linkedin_id`)
 );
@@ -104,7 +105,7 @@ DROP TABLE IF EXISTS `friendships`;
 		
 CREATE TABLE `friendships` (
   `id_user_requester` BIGINT NOT NULL,
-  `id_user_target` BIGINT NULL DEFAULT NULL,
+  `id_user_target` BIGINT NOT NULL,
   `is_accepted` bit NOT NULL,
   `date_emitted` DATE NOT NULL,
   `is_viewed` bit NOT NULL,
