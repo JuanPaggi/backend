@@ -11,9 +11,14 @@ public class GpsData {
 	
 	public GpsData(){}
 	
-	public GpsData(long id_gps_record, double latitude, double longitude, Date date_recorded){}
-	
 	public GpsData(double latitude, double longitude, Date date_recorded) {
+		this.latitude = latitude;
+		this.longitude = longitude;
+		this.date_recorded = date_recorded;
+	}
+	
+	public GpsData(long id_gps_record, double latitude, double longitude, Date date_recorded){
+		this.id_gps_record = id_gps_record;
 		this.latitude = latitude;
 		this.longitude = longitude;
 		this.date_recorded = date_recorded;

@@ -30,6 +30,7 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 			final String sql = "INSERT INTO gps_data"
 					+ "(latitude, longitude, date_recorded) VALUES(?,?,?)";
 			KeyHolder holder = new GeneratedKeyHolder();
+			
 			jdbcTemplate.update(new PreparedStatementCreator() {
 	            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
 	                PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
@@ -39,6 +40,7 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 	                return ps;
 	            }
 	        }, holder);
+			
 			record.setId_gps_record(holder.getKey().longValue());
 			return record;
 		} catch(DataAccessException e) {

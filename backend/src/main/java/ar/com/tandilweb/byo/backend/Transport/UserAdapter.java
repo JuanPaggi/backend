@@ -28,6 +28,7 @@ public class UserAdapter {
 	private GpsDataRepository gpsDataRepository;
 
 	public LoginOut validateLogin(String email, String password) throws Exception {
+		System.out.println("logeando");
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
 		if(usuario != null) {
@@ -90,7 +91,7 @@ public class UserAdapter {
 			usuario.setLocked(false);
 			usuario.setFailedLoginAttempts(0);
 			usuario.setUnLockAccountCode("");
-			if(picture_url == null) picture_url = "DEFAULT PICTURE";
+			if(picture_url == null) picture_url = "../../assets/imgs/512x512.png";
 			usuario.setPicture_url(picture_url);
 			userRepository.create(usuario);
 			out.userId = usuario.getId_user();

@@ -61,7 +61,7 @@ CREATE TABLE `profile` (
 DROP TABLE IF EXISTS `gps_data`;
 		
 CREATE TABLE `gps_data` (
-  `id_gps_record` BIGINT NOT NULL,
+  `id_gps_record` BIGINT NOT NULL AUTO_INCREMENT,
   `latitude` DOUBLE NOT NULL,
   `longitude` DOUBLE NOT NULL,
   `date_recorded` DATE NOT NULL,
