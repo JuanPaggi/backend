@@ -77,7 +77,7 @@ KEY (`latitude`, `longitude`)
 DROP TABLE IF EXISTS `gps_data_users`;
 		
 CREATE TABLE `gps_data_users` (
-  `id_gps_record` INTEGER NOT NULL,
+  `id_gps_record` BIGINT NOT NULL,
   `id_user` BIGINT NOT NULL,
   PRIMARY KEY (`id_gps_record`, `id_user`)
 );
