@@ -141,27 +141,27 @@ public class AccountServiceGQL {
 		return out;
 	}
 
-//	@GraphQLQuery(name = "AccountService_setGeoLocation")
-//	public ResponseDTO setGeoLocation(
-//			@GraphQLArgument(name = "latitude") String lat, 
-//			@GraphQLArgument(name = "longitude") String lon, 
-//			@GraphQLEnvironment ResolutionEnvironment environment
-//			) throws Exception {
-//
-//		JWTHeader header = JWTHeader.getHeader(environment);
-//		Users usuario = header.getUser();
-//		ResponseDTO out = new ResponseDTO();
-//
-//		if(header.isTrusted()) {
-//			double dlat = Double.parseDouble(lat);
-//			double dlon = Double.parseDouble(lon);
-//			return userAdapter.setGeoLocation(dlat, dlon, usuario);
-//		} else {
-//			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
-//			out.description = "Usuario no confiable";
-//		}
-//		return out;
-//	}
+	@GraphQLQuery(name = "AccountService_setGeoLocation")
+	public ResponseDTO setGeoLocation(
+			@GraphQLArgument(name = "latitude") String lat, 
+			@GraphQLArgument(name = "longitude") String lon, 
+			@GraphQLEnvironment ResolutionEnvironment environment
+			) throws Exception {
+
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users usuario = header.getUser();
+		ResponseDTO out = new ResponseDTO();
+
+		if(header.isTrusted()) {
+			double dlat = Double.parseDouble(lat);
+			double dlon = Double.parseDouble(lon);
+			return userAdapter.setGeoLocation(dlat, dlon, usuario);
+		} else {
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Usuario no confiable";
+		}
+		return out;
+	}
 
 
 

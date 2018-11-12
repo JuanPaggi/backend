@@ -5,10 +5,13 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.tandilweb.byo.backend.Model.domain.Countries;
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
+import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
+import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
@@ -21,11 +24,13 @@ import ar.com.tandilweb.byo.backend.utils.Mailer;
 public class UserAdapter {
 
 	@Autowired
-	UserRepository userRepository;
+	private UserRepository userRepository;
 	@Autowired
-	RememberTokensRepository rememberTokenRepository;
+	private RememberTokensRepository rememberTokenRepository;
 	@Autowired
 	private GpsDataRepository gpsDataRepository;
+	@Autowired
+	private ProfileRepository profileRepository;
 
 	public LoginOut validateLogin(String email, String password) throws Exception {
 		System.out.println("logeando");
@@ -94,6 +99,17 @@ public class UserAdapter {
 			if(picture_url == null) picture_url = "../../assets/imgs/512x512.png";
 			usuario.setPicture_url(picture_url);
 			userRepository.create(usuario);
+			
+			//Creamos el perfil del usuario
+//			Profile profile = new Profile();	
+//			profile.setId_user(usuario.getId_user());
+//			profile.setCountry(new Countries(1,"Argentina"));
+//			profile.setSummary(summary);
+//			profile.setLinkedin_url(linkedin_url);
+//			
+//			profileRepository.create(profile);
+			
+			//Respuesta
 			out.userId = usuario.getId_user();
 			out.code = ResponseDTO.Code.CREATED;
 			out.description = "Usuario Creado";

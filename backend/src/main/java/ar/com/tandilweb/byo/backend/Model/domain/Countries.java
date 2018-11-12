@@ -4,7 +4,14 @@ public class Countries {
 	
 	private long id_country;
 	private String name;
-
+		
+	public Countries() {}
+	
+	public Countries(long id, String name) {
+		this.id_country = id;
+		this.name = name;
+	}
+	
 	public long getId_country() {
 		return id_country;
 	}

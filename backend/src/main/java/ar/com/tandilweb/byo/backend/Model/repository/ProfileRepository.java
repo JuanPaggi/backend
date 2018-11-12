@@ -3,6 +3,8 @@ package ar.com.tandilweb.byo.backend.Model.repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -12,6 +14,8 @@ import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 
 @Repository
 public class ProfileRepository extends BaseRepository<Profile, Long>{
+		
+	public static Logger logger = LoggerFactory.getLogger(ProfileRepository.class);
 	
 	@Override
 	public Profile findById(Long id_usuario) { 
@@ -26,13 +30,38 @@ public class ProfileRepository extends BaseRepository<Profile, Long>{
 
 	@Override
 	public Profile create(Profile record) {
-		// TODO Función pendiente
-		return null;
+		try {
+			final String sql = "INSERT INTO profile"
+					+ "(`id_user`,`headline`,`industry`,`location`,`linkedin_url`,`summary`) VALUES(?,?,?,?,?,?)";
+			jdbcTemplate.update(sql, new Object[] {
+					record.getId_user(),
+					record.getHeadline(),
+					record.getIndustry(),
+					record.getCountry(),
+					record.getLocation(),
+					record.getLinkedin_url(),
+					record.getSummary()
+					});
+			return record;
+		} catch(DataAccessException e) {
+			logger.error("RememberTokensRepository::create", e);
+			return null;
+		}
 	}
 
 	@Override
 	public void update(Profile record) {
-		// TODO Función pendiente
+		try {
+			final String sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, last_login = ?, signup_date = ?,"
+					+ " linkedin_id = ?, busco = ?, ofrezco = ?, picture_url = ?, is_premium = ?, salt_jwt = ?, completoByO = ?, locked = ?,"
+					+ " failed_login_attempts = ?, unlock_account_code = ? WHERE id_user = ?";
+			jdbcTemplate.update(sql, new Object[] {
+
+					record.getId_user()
+			});
+		} catch(DataAccessException e) {
+			logger.debug("UserRepository :: update", e);
+		}
 		
 	}
 

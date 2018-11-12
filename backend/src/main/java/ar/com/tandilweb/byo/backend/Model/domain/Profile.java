@@ -9,11 +9,14 @@ public class Profile {
 	private String location;
 	private String linkedin_url;
 	private String summary;
+		
+	public Profile(){}
 	
 	public Profile(long id_user, String headline, String industry, String location, String linkedin_url, String summary) {
 		this.id_user = id_user;
 		this.headline = headline;
 		this.industry = industry;
+		//this.country = country;
 		this.location = location;
 		this.linkedin_url = linkedin_url;
 		this.summary = summary;
