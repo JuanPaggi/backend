@@ -96,7 +96,7 @@ public class UserAdapter {
 			usuario.setLocked(false);
 			usuario.setFailedLoginAttempts(0);
 			usuario.setUnLockAccountCode("");
-			if(picture_url == null) picture_url = "../../assets/imgs/512x512.png";
+			if(picture_url == null || picture_url == "") picture_url = "../../assets/imgs/512x512.png";
 			usuario.setPicture_url(picture_url);
 			userRepository.create(usuario);
 			
