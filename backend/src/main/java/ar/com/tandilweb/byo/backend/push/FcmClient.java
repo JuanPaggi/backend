@@ -35,7 +35,7 @@ public class FcmClient {
       FirebaseApp.initializeApp(options);
     }
     catch (IOException e) {
-      Application.logger.error("init fcm", e);
+      //Application.logger.error("init fcm", e);
     }
   }
 }

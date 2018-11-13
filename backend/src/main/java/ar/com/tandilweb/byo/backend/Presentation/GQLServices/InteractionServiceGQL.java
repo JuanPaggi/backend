@@ -34,7 +34,7 @@ public class InteractionServiceGQL {
 	private FriendshipsAdapter friendshipAdapter;
 	
 	@GraphQLQuery(name = "InteractionService_friendshipRequest")
-	public ResponseDTO login(
+	public ResponseDTO friendshipRequest(
 			@GraphQLArgument(name = "id_user_target") long idtar,
 			@GraphQLEnvironment ResolutionEnvironment environment){
 		try {
