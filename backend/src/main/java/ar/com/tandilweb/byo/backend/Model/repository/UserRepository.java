@@ -35,6 +35,22 @@ public class UserRepository extends BaseRepository<Users, Long>{
 			return null;
 		}
 	}
+	
+	public List<Users> getAllNotContacts(int limit,long me) {
+		try {
+	    	return jdbcTemplate.query(
+	                "SELECT * FROM users " + 
+	                "LEFT JOIN friendships " + 
+	                "ON (friendships.id_user_target = users.id_user AND friendships.id_user_requester = ?) " + 
+	                "OR (friendships.id_user_requester = users.id_user AND friendships.id_user_target = ?) " + 
+	                "WHERE (id_user_requester <> ? AND id_user_target <> ? OR id_user_requester is NULL) AND id_user <> ? LIMIT ?;", 
+	                new UserRowMapper(),
+	                new Object[]{me, me, me, me, me, limit});
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 
     //@Transactional(readOnly=true) esto es para el isolation de las consultas (el bloqueo por funcion)
 	public Users findBylinkedinId(String linkedin_id) {

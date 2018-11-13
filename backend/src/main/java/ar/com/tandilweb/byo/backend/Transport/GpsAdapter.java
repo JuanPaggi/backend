@@ -26,7 +26,8 @@ public class GpsAdapter {
 		// objeto de salida:
 		List<VCard> vcards = new ArrayList<VCard>();
 		// hacer busqueda por lat long, de momento traemos todo para facilitar las pruebas:
-		List<Users> users = userRepository.getAllRecords(10);
+		//List<Users> users = userRepository.getAllRecords(10);
+		List<Users> users = userRepository.getAllNotContacts(10, userRequester.getId_user());
 		// chequeamos que tengamos resultados:
 		if(users != null) {
 			// creamos y empaquetamos las vcard
