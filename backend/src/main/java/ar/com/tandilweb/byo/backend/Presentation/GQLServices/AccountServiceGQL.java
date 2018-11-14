@@ -40,6 +40,9 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "password") String password,
 			@GraphQLArgument(name = "fcm") String fcmToken) {
 		try {
+			if(fcmToken == null || "".equals(fcmToken)) {
+				fcmToken = "no-Token";
+			}
 			return userAdapter.validateLogin(email, password, fcmToken);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,6 +64,9 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "picture_url") String pic_url,
 			@GraphQLArgument(name = "fcm") String fcmToken){
 		try {
+			if(fcmToken == null || "".equals(fcmToken)) {
+				fcmToken = "no-Token";
+			}
 			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary, pic_url, fcmToken);
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -76,6 +82,9 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "accessToken") String accessToken,
 			@GraphQLArgument(name = "expiresOn") String expiresOn,
 			@GraphQLArgument(name = "fcm") String fcmToken) {
+		if(fcmToken == null || "".equals(fcmToken)) {
+			fcmToken = "no-Token";
+		}
 		return linkedinAdapter.validateAccessToken(accessToken, fcmToken);
 	}
 
