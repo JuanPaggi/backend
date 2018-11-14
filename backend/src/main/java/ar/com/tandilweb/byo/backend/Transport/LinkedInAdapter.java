@@ -20,7 +20,7 @@ public class LinkedInAdapter {
 	@Autowired
 	UserRepository userRepository;
 	
-	public LoginOut validateAccessToken(String accessToken) {
+	public LoginOut validateAccessToken(String accessToken, String fcmToken) {
 		LoginOut out = new LoginOut();
 		LinkedInProfile response = linkedInConsumer.checkAccessToken(accessToken);
 		UUID uuid = UUID.randomUUID();
@@ -28,6 +28,7 @@ public class LinkedInAdapter {
 			Users usuario = userRepository.findBylinkedinId(response.getId());
 			if(usuario != null) {
 				usuario.setSalt_jwt(uuid.toString());
+				usuario.setFcmToken(fcmToken);
 				userRepository.update(usuario);
 				out.code = ResponseDTO.Code.OK;
 				out.description = "";
@@ -52,6 +53,7 @@ public class LinkedInAdapter {
 				user.setLocked(false);
 				user.setFailedLoginAttempts(0);
 				user.setUnLockAccountCode("");
+				user.setFcmToken(fcmToken);
 				user = userRepository.create(user);
 				
 				out.userId = user.getId_user();

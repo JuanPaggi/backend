@@ -37,9 +37,10 @@ public class AccountServiceGQL {
 	@GraphQLQuery(name = "AccountService_login")
 	public LoginOut login(
 			@GraphQLArgument(name = "email") String email, 
-			@GraphQLArgument(name = "password") String password) {
+			@GraphQLArgument(name = "password") String password,
+			@GraphQLArgument(name = "fcm") String fcmToken) {
 		try {
-			return userAdapter.validateLogin(email, password);
+			return userAdapter.validateLogin(email, password, fcmToken);
 		} catch (Exception e) {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();
@@ -57,9 +58,10 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "apellido") String apellido, 
 			@GraphQLArgument(name = "linkedin_url") String linkedin_url, 
 			@GraphQLArgument(name = "summary") String summary,
-			@GraphQLArgument(name = "picture_url") String pic_url){
+			@GraphQLArgument(name = "picture_url") String pic_url,
+			@GraphQLArgument(name = "fcm") String fcmToken){
 		try {
-			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary, pic_url);
+			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary, pic_url, fcmToken);
 		} catch(Exception e) {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();
@@ -72,8 +74,9 @@ public class AccountServiceGQL {
 	@GraphQLQuery(name = "AccountService_linkedin")
 	public LoginOut linkedin(
 			@GraphQLArgument(name = "accessToken") String accessToken,
-			@GraphQLArgument(name = "expiresOn") String expiresOn) {
-		return linkedinAdapter.validateAccessToken(accessToken);
+			@GraphQLArgument(name = "expiresOn") String expiresOn,
+			@GraphQLArgument(name = "fcm") String fcmToken) {
+		return linkedinAdapter.validateAccessToken(accessToken, fcmToken);
 	}
 
 	@GraphQLQuery(name = "AccountService_setBuscoYofrezco")

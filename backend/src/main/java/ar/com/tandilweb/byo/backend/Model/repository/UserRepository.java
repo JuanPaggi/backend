@@ -89,7 +89,7 @@ public class UserRepository extends BaseRepository<Users, Long>{
 			final String sql = "INSERT INTO users"
 					+ "(first_name, last_name, email, password, last_login, signup_date,"
 					+ " linkedin_id, busco, ofrezco, picture_url, is_premium, salt_jwt, completoByO,"
-					+ " locked, failed_login_attempts, unlock_account_code) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ " locked, failed_login_attempts, unlock_account_code, fcm_token) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			KeyHolder holder = new GeneratedKeyHolder();
 
 			jdbcTemplate.update(new PreparedStatementCreator() {
@@ -111,6 +111,7 @@ public class UserRepository extends BaseRepository<Users, Long>{
 	                ps.setBoolean(14, record.isLocked());
 	                ps.setInt(15, record.getFailedLoginAttempts());
 	                ps.setString(16, record.getUnLockAccountCode());
+	                ps.setString(17, record.getFcmToken());
 	                return ps;
 	            }
 	        }, holder);
@@ -127,7 +128,7 @@ public class UserRepository extends BaseRepository<Users, Long>{
 		try {
 			final String sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, last_login = ?, signup_date = ?,"
 					+ " linkedin_id = ?, busco = ?, ofrezco = ?, picture_url = ?, is_premium = ?, salt_jwt = ?, completoByO = ?, locked = ?,"
-					+ " failed_login_attempts = ?, unlock_account_code = ? WHERE id_user = ?";
+					+ " failed_login_attempts = ?, unlock_account_code = ?, fcm_token = ? WHERE id_user = ?";
 			jdbcTemplate.update(sql, new Object[] {
 					record.getFirst_name(),
 					record.getLast_name(),
@@ -145,6 +146,7 @@ public class UserRepository extends BaseRepository<Users, Long>{
 					record.isLocked(),
 					record.getFailedLoginAttempts(),
 					record.getUnLockAccountCode(),
+					record.getFcmToken(),
 					record.getId_user()
 			});
 		} catch(DataAccessException e) {
@@ -174,7 +176,8 @@ class UserRowMapper implements RowMapper<Users>
         		rs.getBoolean("completoByO"),
         		rs.getBoolean("locked"),
         		rs.getInt("failed_login_attempts"),
-        		rs.getString("unlock_account_code")
+        		rs.getString("unlock_account_code"),
+        		rs.getString("fcm_token")
         		);
     }
 }

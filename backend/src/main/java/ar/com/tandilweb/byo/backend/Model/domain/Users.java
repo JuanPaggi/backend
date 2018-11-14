@@ -42,6 +42,8 @@ public class Users {
 	private int failedLoginAttempts;
 
 	private String unLockAccountCode;
+	
+	private String fcmToken;
 
 //	private Set<GpsData> gps_datas = new HashSet<GpsData>();
 //
@@ -52,7 +54,7 @@ public class Users {
 	
 	public Users(Long id_user, String firstName, String lastName, String email, String password, Date last_login, Date signup_date,
 			String linkedinId, String busco, String ofrezco, String picture_url, boolean premium, String salt_jwt,
-			boolean completoByO, boolean locked, int failedLoginAttempts, String unLockAccountCode) {
+			boolean completoByO, boolean locked, int failedLoginAttempts, String unLockAccountCode, String fcmToken) {
 		this.id_user = id_user;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -70,6 +72,7 @@ public class Users {
 		this.locked = locked;
 		this.failedLoginAttempts = failedLoginAttempts;
 		this.unLockAccountCode = unLockAccountCode;
+		this.fcmToken = fcmToken;
 	}
 	
 	//METHODS
@@ -218,5 +221,13 @@ public class Users {
 	}
 	public void setUnLockAccountCode(String unLockAccountCode) {
 		this.unLockAccountCode = unLockAccountCode;
+	}
+
+	public String getFcmToken() {
+		return fcmToken;
+	}
+
+	public void setFcmToken(String fcmToken) {
+		this.fcmToken = fcmToken;
 	}
 }

@@ -32,7 +32,7 @@ public class UserAdapter {
 	@Autowired
 	private ProfileRepository profileRepository;
 
-	public LoginOut validateLogin(String email, String password) throws Exception {
+	public LoginOut validateLogin(String email, String password, String fcmToken) throws Exception {
 		System.out.println("logeando");
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
@@ -42,6 +42,7 @@ public class UserAdapter {
 					// actualizamos los salts:
 					UUID uuid = UUID.randomUUID();
 					usuario.setSalt_jwt(uuid.toString());
+					usuario.setFcmToken(fcmToken);
 					usuario.setFailedLoginAttempts(0);
 					out.code = ResponseDTO.Code.OK;
 					out.description = "usuario encontrado";
@@ -78,7 +79,7 @@ public class UserAdapter {
 	}
 
 	public LoginOut validateSignup(String email, String password, String nombre, String apellido, String linkedin_url,
-			String summary, String picture_url) throws Exception {
+			String summary, String picture_url, String fcmToken) throws Exception {
 		LoginOut out = new LoginOut();
 		if (userRepository.findByemail(email) == null) { // El mail no se encuentra en la base de datos. Se puede
 			// registrar
@@ -96,6 +97,7 @@ public class UserAdapter {
 			usuario.setLocked(false);
 			usuario.setFailedLoginAttempts(0);
 			usuario.setUnLockAccountCode("");
+			usuario.setFcmToken(fcmToken);
 			if(picture_url == null || picture_url == "") picture_url = "../../assets/imgs/512x512.png";
 			usuario.setPicture_url(picture_url);
 			userRepository.create(usuario);

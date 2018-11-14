@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,32 @@ import ar.com.tandilweb.byo.backend.Model.domain.Users;
 public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 	
 	public static Logger logger = LoggerFactory.getLogger(FriendshipsRepository.class);
+	
+	public List<Friendships> getRequestsSendedBy(long id) {
+		try {
+	    	return jdbcTemplate.query(
+	                "SELECT * FROM friendships " + 
+	                "WHERE id_user_requester = ? AND is_accepted = false", 
+	                new FriendshipsRowMapper(),
+	                new Object[]{ id });
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public List<Friendships> getRequestsReceived(long id) {
+		try {
+	    	return jdbcTemplate.query(
+	                "SELECT * FROM friendships " + 
+	                "WHERE id_user_target = ? AND is_accepted = false", 
+	                new FriendshipsRowMapper(),
+	                new Object[]{ id });
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
 	
 	@Override
 	public Friendships create(final Friendships record) {
