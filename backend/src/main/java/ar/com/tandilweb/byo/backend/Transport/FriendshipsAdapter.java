@@ -90,5 +90,20 @@ public class FriendshipsAdapter {
 		}
 		return notifys;
 	}
+	
+	public ResponseDTO validateFriendAcceptance(long idAcceptor, long idRequester) {
+		ResponseDTO out = new ResponseDTO();
+		Friendships friendship = friendShipRepository.getFriendship(idRequester, idAcceptor).get(0);
+		if (friendship != null) {
+			friendship.setIs_accepted(true);
+			friendShipRepository.update(friendship);
+			out.code = Code.OK;
+			out.description = "Solicitud aceptada";
+		} else {
+			out.code = Code.BAD_REQUEST;
+			out.description = "Uno de los usuarios no existe";
+		}
+		return out;
+	}
 
 }

@@ -38,6 +38,19 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 		}
 	}
 	
+	public List<Friendships> getFriendship(long idRequester, long idTarget) {
+		try {
+	    	return jdbcTemplate.query(
+	                "SELECT * FROM friendships " + 
+	                "WHERE id_user_requester = ? AND id_user_target = ? AND is_accepted = false", 
+	                new FriendshipsRowMapper(),
+	                new Object[]{ idRequester, idTarget });
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	@Override
 	public Friendships create(final Friendships record) {
 		try {

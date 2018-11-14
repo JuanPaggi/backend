@@ -50,4 +50,21 @@ public class InteractionServiceGQL {
 		}
 	}
 
+	@GraphQLQuery(name = "InteractionService_acceptFriend")
+	public ResponseDTO acceptFriend(
+			@GraphQLArgument(name = "id_user_requester") long idreq,
+			@GraphQLEnvironment ResolutionEnvironment environment){
+		try {
+			JWTHeader header = JWTHeader.getHeader(environment);
+			Users usuario = header.getUser();
+			return friendshipAdapter.validateFriendAcceptance(usuario.getId_user(),idreq);
+		} catch (Exception e) {
+			e.printStackTrace();
+			ResponseDTO out = new LoginOut();
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Error el servidor a fallado";
+			return out;
+		}
+	}
+	
 }
