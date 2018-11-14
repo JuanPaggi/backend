@@ -101,7 +101,7 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 	        		rs.getLong("id_user_target"),
 	        		rs.getBoolean("is_accepted"),
 	        		rs.getDate("date_emitted"),
-	        		rs.getBoolean("boolean")
+	        		rs.getBoolean("is_viewed")
 	        		);
 	    }
 	}
