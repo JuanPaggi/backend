@@ -19,6 +19,9 @@ public class GpsAdapter {
 	@Autowired
 	ProfileRepository profileRepository;
 	
+	@Autowired
+	private UserAdapter userAdapter;
+	
 	public List<VCard> getUsersClose(double lat, double lon, Users userRequester) {
 		// hay que verificar antes que nada que los parametros estén ok
 		// en este caso lat y lon pueden ser valores negativos, cero o positivos asique no hace falta revisarlo
@@ -43,19 +46,7 @@ public class GpsAdapter {
 					 * cuando se cree esa función de busqueda por cercanía ya nos traemos el perfil
 					 * para no hacer multiples consultas separadas, directamente le metemos un join.
 					 */
-					Profile profile = profileRepository.findById(user.getId_user());
-					vcard.busco = user.getBusco();
-					vcard.ofrezco = user.getOfrezco();
-					vcard.id_usuario = user.getId_user();
-					if(profile != null) {
-						vcard.linkedin_link = profile.getLinkedin_url();
-						vcard.sinopsis = profile.getSummary();
-						vcard.titulo = profile.getHeadline();
-					}
-					vcard.nombre = user.getFirstName()+" "+user.getLastName();
-					vcard.pais = "????"; // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN)
-					vcard.picture = user.getPicture_url();
-					vcards.add(vcard);
+					vcards.add(userAdapter.getVCardByUser(user));
 				}
 			}
 		}

@@ -32,6 +32,9 @@ public class FriendshipsAdapter {
 
 	@Autowired
 	private FirebaseCloudMessaging firebaseCloudMessaging;
+	
+	@Autowired
+	private UserAdapter userAdapter;
 
 	public ResponseDTO validateFriendshipRequest(long idreq, long idtar) {
 		ResponseDTO out = new ResponseDTO();
@@ -71,18 +74,21 @@ public class FriendshipsAdapter {
 	}
 
 	// Todo pendiente.
-	public List<Notification> getRequestSended(Users me) {
-		List<Notification> notify = new ArrayList<Notification>();
-		List<Friendships> fss = friendShipRepository.getRequestsSendedBy(me.getId_user());
+	public List<Notification> getRequestSendedReceived(Users me) {
+		List<Notification> notifys = new ArrayList<Notification>();
+		List<Friendships> fss = friendShipRepository.getRequestsSendedReceivedBy(me.getId_user());
 		for(Friendships fs : fss) {
 			Notification n = new Notification();
-			n.tipo = Types.SOLICITUD_ENVIADA;
-			
+			if(fs.getId_user_requester() == me.getId_user()) {
+				n.tipo = Types.SOLICITUD_ENVIADA;
+				n.userTarget = userAdapter.getVCardByUser(fs.getId_user_target());
+			} else {
+				n.tipo = Types.SOLICITUD_RECIBIDA;
+				n.userTarget = userAdapter.getVCardByUser(fs.getId_user_requester());
+			}
+			notifys.add(n);
 		}
-		return null;
+		return notifys;
 	}
 
-	public void getRequestReceived(Users me) {
-		
-	}
 }

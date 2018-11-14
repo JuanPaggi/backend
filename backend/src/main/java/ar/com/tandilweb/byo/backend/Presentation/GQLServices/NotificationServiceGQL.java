@@ -27,13 +27,11 @@ public class NotificationServiceGQL {
 	 */
 	@GraphQLQuery(name = "NotificationService_getLastNotifications")
 	public List<Notification> getUsersClose(@GraphQLEnvironment ResolutionEnvironment environment) {
-		List<Notification> out = new ArrayList<Notification>();
 		// nos traemos el usuario que está llamando a este servicio:
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users me = header.getUser();
-		fsAdapter.getRequestSended(me);
-		fsAdapter.getRequestReceived(me);
-		return out;
+		// acá vamos a tener que mergear las notificaciones con las de otros tipos
+		return fsAdapter.getRequestSendedReceived(me);
 	}
 
 }

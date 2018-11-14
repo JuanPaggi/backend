@@ -25,26 +25,13 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 	
 	public static Logger logger = LoggerFactory.getLogger(FriendshipsRepository.class);
 	
-	public List<Friendships> getRequestsSendedBy(long id) {
+	public List<Friendships> getRequestsSendedReceivedBy(long id) {
 		try {
 	    	return jdbcTemplate.query(
 	                "SELECT * FROM friendships " + 
-	                "WHERE id_user_requester = ? AND is_accepted = false", 
+	                "WHERE id_user_requester = ? OR id_user_target = ? AND is_accepted = false", 
 	                new FriendshipsRowMapper(),
-	                new Object[]{ id });
-		} catch(DataAccessException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
-	
-	public List<Friendships> getRequestsReceived(long id) {
-		try {
-	    	return jdbcTemplate.query(
-	                "SELECT * FROM friendships " + 
-	                "WHERE id_user_target = ? AND is_accepted = false", 
-	                new FriendshipsRowMapper(),
-	                new Object[]{ id });
+	                new Object[]{ id, id });
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			return null;

@@ -5,7 +5,6 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.com.tandilweb.byo.backend.Model.domain.Countries;
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
@@ -18,6 +17,7 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
 import ar.com.tandilweb.byo.backend.utils.Mailer;
 
@@ -228,5 +228,27 @@ public class UserAdapter {
 		out.code = ResponseDTO.Code.OK;
 		out.description = "latitud: "+latitude+" longitud: "+longitude+ " usuarioid: "+usuario.getId_user();
 		return out;
+	}
+	
+	public VCard getVCardByUser(long userID) {
+		Users user = userRepository.findById(userID);
+		return getVCardByUser(user);
+	}
+	
+	public VCard getVCardByUser(Users user) {
+		VCard vcard = new VCard();
+		vcard.busco = user.getBusco();
+		vcard.ofrezco = user.getOfrezco();
+		vcard.id_usuario = user.getId_user();
+		vcard.nombre = user.getFirstName()+" "+user.getLastName();
+		vcard.pais = "????"; // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN)
+		vcard.picture = user.getPicture_url();
+		Profile profile = profileRepository.findById(user.getId_user());
+		if(profile != null) {
+			vcard.linkedin_link = profile.getLinkedin_url();
+			vcard.sinopsis = profile.getSummary();
+			vcard.titulo = profile.getHeadline();
+		}
+		return vcard;
 	}
 }
