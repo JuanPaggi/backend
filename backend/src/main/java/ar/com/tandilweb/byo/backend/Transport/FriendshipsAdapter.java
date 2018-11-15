@@ -91,9 +91,10 @@ public class FriendshipsAdapter {
 		return notifys;
 	}
 	
-	public ResponseDTO validateFriendAcceptance(long idAcceptor, long idRequester) {
+	public ResponseDTO validateFriendAcceptance(long idRequester, long idTarget) {
 		ResponseDTO out = new ResponseDTO();
-		Friendships friendship = friendShipRepository.getFriendship(idRequester, idAcceptor).get(0);
+		//el get(0) no me gusta mucho
+		Friendships friendship = friendShipRepository.getFriendship(idRequester, idTarget).get(0);
 		if (friendship != null) {
 			friendship.setIs_accepted(true);
 			friendShipRepository.update(friendship);
@@ -102,6 +103,19 @@ public class FriendshipsAdapter {
 		} else {
 			out.code = Code.BAD_REQUEST;
 			out.description = "Uno de los usuarios no existe";
+		}
+		return out;
+	}
+	
+	public ResponseDTO cancelFriendRequest(long idRequester, long idTarget) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			friendShipRepository.delete(idRequester, idTarget);
+			out.code = Code.OK;
+			out.description = "Solicitud cancelada";
+		} catch (Exception e) {
+			out.code = Code.BAD_REQUEST;
+			out.description = "No existe peticion de amistad";
 		}
 		return out;
 	}

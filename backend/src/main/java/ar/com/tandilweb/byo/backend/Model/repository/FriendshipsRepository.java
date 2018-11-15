@@ -76,7 +76,16 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 			return null;
 		}
 	}
-
+	
+	public void delete(long id_requester, long id_target) {
+		try {
+			final String sql = "DELETE FROM friendships WHERE id_user_requester = ? AND id_user_target = ?";
+			jdbcTemplate.update(sql,new Object[]{ id_requester, id_target });
+		} catch(DataAccessException e) {
+			logger.debug("FriendshipsRepository :: delete", e);
+		}
+	}
+	
 	@Override
 	public void update(Friendships record) {
 		try {
