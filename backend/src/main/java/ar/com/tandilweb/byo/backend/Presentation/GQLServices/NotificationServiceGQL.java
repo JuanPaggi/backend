@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Transport.FriendshipsAdapter;
 import io.leangen.graphql.annotations.GraphQLEnvironment;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -32,5 +34,13 @@ public class NotificationServiceGQL {
 		// acá vamos a tener que mergear las notificaciones con las de otros tipos
 		return fsAdapter.getRequestSendedReceived(me);
 	}
+	
+	@GraphQLQuery(name = "NotificationService_getLastNotificationsNumber")
+	public ResponseDTO getLastNotificationsNumber(@GraphQLEnvironment ResolutionEnvironment environment) {
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users me = header.getUser();
+		return fsAdapter.getLastNotificationsNumber(me.getId_user());
+	}
+
 
 }

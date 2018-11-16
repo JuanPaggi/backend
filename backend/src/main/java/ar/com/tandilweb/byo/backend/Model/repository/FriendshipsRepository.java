@@ -38,6 +38,18 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 		}
 	}
 	
+	public int getLastNotificationsNumber(long idTarget) {
+		try {
+	    	return jdbcTemplate.queryForObject(
+	                "SELECT COUNT(*) FROM friendships WHERE id_user_target = ? AND is_viewed = false ", 
+	                new Object[]{ idTarget },
+	                Integer.class);
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+		
 	public List<Friendships> getFriendship(long idRequester, long idTarget) {
 		try {
 	    	return jdbcTemplate.query(

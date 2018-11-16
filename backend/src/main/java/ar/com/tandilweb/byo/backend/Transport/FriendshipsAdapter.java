@@ -119,5 +119,18 @@ public class FriendshipsAdapter {
 		}
 		return out;
 	}
+	
+	public ResponseDTO getLastNotificationsNumber(long idTarget) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			int notifications = friendShipRepository.getLastNotificationsNumber(idTarget);
+			out.code = Code.OK;
+			out.description = String.valueOf(notifications);
+		} catch (Exception e) {
+			out.code = Code.BAD_REQUEST;
+			out.description = "El usuario no existe";
+		}
+		return out;
+	}
 
 }
