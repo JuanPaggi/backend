@@ -18,6 +18,7 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification.Types;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 
 public class FriendshipsAdapter {
 
@@ -131,6 +132,25 @@ public class FriendshipsAdapter {
 			out.code = Code.BAD_REQUEST;
 			out.description = "El usuario no existe";
 		}
+		return out;
+	}
+	
+	public List<VCard> getFriends(Users me) {
+		
+		List<VCard> out = new ArrayList<VCard>();
+		
+		List<Friendships> fs = friendShipRepository.getFriendsAccepted(me.getId_user());
+		
+		if(fs!=null)
+			for(Friendships f: fs) {
+				VCard vcard;
+				if(f.getId_user_requester() == me.getId_user())
+					vcard = userAdapter.getVCardByUser(f.getId_user_target());
+				else
+					vcard = userAdapter.getVCardByUser(f.getId_user_requester());
+				out.add(vcard);
+			}
+		
 		return out;
 	}
 

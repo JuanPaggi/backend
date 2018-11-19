@@ -9,6 +9,8 @@ import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCardList;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Transport.FriendshipsAdapter;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
@@ -84,4 +86,17 @@ public class InteractionServiceGQL {
 		}
 	}
 	
+	
+	@GraphQLQuery(name = "InteractionService_getContacts")
+	public VCardList getContacts(
+			@GraphQLEnvironment ResolutionEnvironment environment){
+		try {
+			JWTHeader header = JWTHeader.getHeader(environment);
+			if(!header.isTrusted()) throw new Exception("isn't trusteado gil.");
+			Users usuario = header.getUser();
+			return new VCardList(Code.ACCEPTED, "ok.", friendshipAdapter.getFriends(usuario));
+		} catch (Exception e) {
+			return new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
+		}
+	}
 }
