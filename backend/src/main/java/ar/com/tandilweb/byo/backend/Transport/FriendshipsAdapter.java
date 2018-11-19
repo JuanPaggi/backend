@@ -91,5 +91,47 @@ public class FriendshipsAdapter {
 			}
 		return notifys;
 	}
+	
+	public ResponseDTO validateFriendAcceptance(long idRequester, long idTarget) {
+		ResponseDTO out = new ResponseDTO();
+		//el get(0) no me gusta mucho
+		Friendships friendship = friendShipRepository.getFriendship(idRequester, idTarget).get(0);
+		if (friendship != null) {
+			friendship.setIs_accepted(true);
+			friendShipRepository.update(friendship);
+			out.code = Code.OK;
+			out.description = "Solicitud aceptada";
+		} else {
+			out.code = Code.BAD_REQUEST;
+			out.description = "Uno de los usuarios no existe";
+		}
+		return out;
+	}
+	
+	public ResponseDTO cancelFriendRequest(long idRequester, long idTarget) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			friendShipRepository.delete(idRequester, idTarget);
+			out.code = Code.OK;
+			out.description = "Solicitud cancelada";
+		} catch (Exception e) {
+			out.code = Code.BAD_REQUEST;
+			out.description = "No existe peticion de amistad";
+		}
+		return out;
+	}
+	
+	public ResponseDTO getLastNotificationsNumber(long idTarget) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			int notifications = friendShipRepository.getLastNotificationsNumber(idTarget);
+			out.code = Code.OK;
+			out.description = String.valueOf(notifications);
+		} catch (Exception e) {
+			out.code = Code.BAD_REQUEST;
+			out.description = "El usuario no existe";
+		}
+		return out;
+	}
 
 }

@@ -38,6 +38,31 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 		}
 	}
 	
+	public int getLastNotificationsNumber(long idTarget) {
+		try {
+	    	return jdbcTemplate.queryForObject(
+	                "SELECT COUNT(*) FROM friendships WHERE id_user_target = ? AND is_viewed = false ", 
+	                new Object[]{ idTarget },
+	                Integer.class);
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+		
+	public List<Friendships> getFriendship(long idRequester, long idTarget) {
+		try {
+	    	return jdbcTemplate.query(
+	                "SELECT * FROM friendships " + 
+	                "WHERE id_user_requester = ? AND id_user_target = ? AND is_accepted = false", 
+	                new FriendshipsRowMapper(),
+	                new Object[]{ idRequester, idTarget });
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
 	@Override
 	public Friendships create(final Friendships record) {
 		try {
@@ -63,7 +88,16 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 			return null;
 		}
 	}
-
+	
+	public void delete(long id_requester, long id_target) {
+		try {
+			final String sql = "DELETE FROM friendships WHERE id_user_requester = ? AND id_user_target = ?";
+			jdbcTemplate.update(sql,new Object[]{ id_requester, id_target });
+		} catch(DataAccessException e) {
+			logger.debug("FriendshipsRepository :: delete", e);
+		}
+	}
+	
 	@Override
 	public void update(Friendships record) {
 		try {
@@ -101,7 +135,7 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 	        		rs.getLong("id_user_target"),
 	        		rs.getBoolean("is_accepted"),
 	        		rs.getDate("date_emitted"),
-	        		rs.getBoolean("boolean")
+	        		rs.getBoolean("is_viewed")
 	        		);
 	    }
 	}
