@@ -77,17 +77,18 @@ public class FriendshipsAdapter {
 	public List<Notification> getRequestSendedReceived(Users me) {
 		List<Notification> notifys = new ArrayList<Notification>();
 		List<Friendships> fss = friendShipRepository.getRequestsSendedReceivedBy(me.getId_user());
-		for(Friendships fs : fss) {
-			Notification n = new Notification();
-			if(fs.getId_user_requester() == me.getId_user()) {
-				n.tipo = Types.SOLICITUD_ENVIADA;
-				n.userTarget = userAdapter.getVCardByUser(fs.getId_user_target());
-			} else {
-				n.tipo = Types.SOLICITUD_RECIBIDA;
-				n.userTarget = userAdapter.getVCardByUser(fs.getId_user_requester());
+		if(fss != null)
+			for(Friendships fs : fss) {
+				Notification n = new Notification();
+				if(fs.getId_user_requester() == me.getId_user()) {
+					n.tipo = Types.SOLICITUD_ENVIADA;
+					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_target());
+				} else {
+					n.tipo = Types.SOLICITUD_RECIBIDA;
+					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_requester());
+				}
+				notifys.add(n);
 			}
-			notifys.add(n);
-		}
 		return notifys;
 	}
 
