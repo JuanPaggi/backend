@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 import ar.com.tandilweb.byo.backend.Gateway.fcm.FCMNotify;
+import ar.com.tandilweb.byo.backend.Gateway.fcm.FCMPayloadData;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.HttpFCMPayload;
 import ar.com.tandilweb.byo.backend.Model.domain.Friendships;
@@ -53,12 +54,14 @@ public class FriendshipsAdapter {
 				firebaseCloudMessaging.setServerKey(serverKey);
 				List<String> rids = new ArrayList<String>();
 				rids.add(target.getFcmToken());
-				payload.setRegistration_ids(rids);
+				//payload.setRegistration_ids(rids);
 				// payload.setTopic('generalTopic');
 				FCMNotify notificacion = new FCMNotify("Solicitud de contacto",
 						"Recibiste una nueva solicitud de contacto de " + requester.getFirst_name() + " "
 								+ requester.getLast_name());
 				payload.setNotification(notificacion);
+				payload.setTarget(target.getFcmToken());
+				System.out.println(payload.getBody());
 				firebaseCloudMessaging.send(payload);
 
 				out.code = Code.CREATED;
@@ -74,7 +77,6 @@ public class FriendshipsAdapter {
 		return out;
 	}
 
-	// Todo pendiente.
 	public List<Notification> getRequestSendedReceived(Users me) {
 		List<Notification> notifys = new ArrayList<Notification>();
 		List<Friendships> fss = friendShipRepository.getRequestsSendedReceivedBy(me.getId_user());

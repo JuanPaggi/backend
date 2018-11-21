@@ -6,26 +6,35 @@ import com.google.gson.Gson;
 
 public class HttpFCMPayload implements Fcmp {
 	
-	private String target;
+	private FCMNotify notification;
+	private FCMPayloadData data;
+	private String to;
+	private String priority;
+	private String restricted_package_name;
+	
 	private List<String> registration_ids;
 	private String condition;
-	private String priority;
-	private Object data;
 	private Long time_to_live = 432000L;
-	private FCMNotify notification = new FCMNotify("demo", "gg izi");
-
+	
+	public HttpFCMPayload(){
+		this.notification = new FCMNotify("Titulo Notificacion","Cuerpo Notificacion");
+		this.data = new FCMPayloadData();
+		//this.to = "/topic/topicExample";
+		this.priority = "high";
+		this.restricted_package_name = "";
+	}
+	
 	public String getBody() {
-		// TODO Auto-generated method stub
 		Gson gs = new Gson();
 		return gs.toJson(this);
 	}
 
 	public String getTarget() {
-		return target;
+		return to;
 	}
 
 	public void setTarget(String target) {
-		this.target = target;
+		this.to = target;
 	}
 
 	public List<String> getRegistration_ids() {
@@ -44,6 +53,14 @@ public class HttpFCMPayload implements Fcmp {
 		this.condition = condition;
 	}
 
+	public String getRestricted_package_name() {
+		return restricted_package_name;
+	}
+
+	public void setRestricted_package_name(String restricted_package_name) {
+		this.restricted_package_name = restricted_package_name;
+	}
+
 	public String getPriority() {
 		return priority;
 	}
@@ -52,11 +69,11 @@ public class HttpFCMPayload implements Fcmp {
 		this.priority = priority;
 	}
 
-	public Object getData() {
+	public FCMPayloadData getData() {
 		return data;
 	}
 
-	public void setData(Object data) {
+	public void setData(FCMPayloadData data) {
 		this.data = data;
 	}
 
@@ -75,7 +92,4 @@ public class HttpFCMPayload implements Fcmp {
 	public void setNotification(FCMNotify notification) {
 		this.notification = notification;
 	}
-	
-	
-
 }
