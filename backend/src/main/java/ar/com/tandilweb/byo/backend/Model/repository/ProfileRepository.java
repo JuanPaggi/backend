@@ -32,12 +32,12 @@ public class ProfileRepository extends BaseRepository<Profile, Long>{
 	public Profile create(Profile record) {
 		try {
 			final String sql = "INSERT INTO profile"
-					+ "(`id_user`,`headline`,`industry`,`location`,`linkedin_url`,`summary`) VALUES(?,?,?,?,?,?)";
+					+ "(`id_user`,`headline`,`industry`,`country`,`location`,`linkedin_url`,`summary`) VALUES(?,?,?,?,?,?,?)";
 			jdbcTemplate.update(sql, new Object[] {
 					record.getId_user(),
 					record.getHeadline(),
 					record.getIndustry(),
-					record.getCountry(),
+					1,//country
 					record.getLocation(),
 					record.getLinkedin_url(),
 					record.getSummary()

@@ -120,9 +120,7 @@ public class Users {
 	public String getLinkedin_id() {
 		return linkedinId;
 	}
-	public String getLinkedinId() {
-		return linkedinId;
-	}
+
 	public String getOfrezco() {
 		return ofrezco;
 	}
@@ -192,9 +190,7 @@ public class Users {
 	public void setLinkedin_id(String linkedin_id) {
 		this.linkedinId = linkedin_id;
 	}
-	public void setLinkedinId(String linkedinId) {
-		this.linkedinId = linkedinId;
-	}
+
 	public void setLocked(boolean locked) {
 		this.locked = locked;
 	}
