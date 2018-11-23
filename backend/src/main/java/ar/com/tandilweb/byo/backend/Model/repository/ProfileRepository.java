@@ -52,15 +52,20 @@ public class ProfileRepository extends BaseRepository<Profile, Long>{
 	@Override
 	public void update(Profile record) {
 		try {
-			final String sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, last_login = ?, signup_date = ?,"
-					+ " linkedin_id = ?, busco = ?, ofrezco = ?, picture_url = ?, is_premium = ?, salt_jwt = ?, completoByO = ?, locked = ?,"
-					+ " failed_login_attempts = ?, unlock_account_code = ? WHERE id_user = ?";
+			final String sql = "UPDATE profile SET headline = ?, industry = ?, location = ?, linkedin_url = ?, summary = ?, current_position = ?, company_name = ?"
+							+ " WHERE id_user = ?";
 			jdbcTemplate.update(sql, new Object[] {
-
+					record.getHeadline(),
+					record.getIndustry(),
+					record.getLocation(),
+					record.getLinkedin_url(),
+					record.getSummary(),
+					record.getCurrent_position(),
+					record.getCompany_name(),
 					record.getId_user()
 			});
 		} catch(DataAccessException e) {
-			logger.debug("UserRepository :: update", e);
+			logger.debug("ProfileRepository :: update", e);
 		}
 		
 	}
@@ -76,7 +81,9 @@ class ProfileRowMapper implements RowMapper<Profile>
         		rs.getString("industry"),
         		rs.getString("location"),
         		rs.getString("linkedin_url"),
-        		rs.getString("summary")
+        		rs.getString("summary"),
+        		rs.getString("current_position"),
+        		rs.getString("company_name")
         		// TODO: a esto le falta poner el country (hay que mapear el de linkedin con el de la db)
         		);
     }

@@ -9,10 +9,12 @@ public class Profile {
 	private String location;
 	private String linkedin_url;
 	private String summary;
+	private String current_position;
+	private String company_name;
 		
 	public Profile(){}
 	
-	public Profile(long id_user, String headline, String industry, String location, String linkedin_url, String summary) {
+	public Profile(long id_user, String headline, String industry, String location, String linkedin_url, String summary, String current_position, String company_name) {
 		this.id_user = id_user;
 		this.headline = headline;
 		this.industry = industry;
@@ -20,6 +22,8 @@ public class Profile {
 		this.location = location;
 		this.linkedin_url = linkedin_url;
 		this.summary = summary;
+		this.current_position = current_position;
+		this.company_name = company_name;
 	}
 
 	public long getId_user() {
@@ -76,6 +80,22 @@ public class Profile {
 
 	public void setSummary(String summary) {
 		this.summary = summary;
+	}
+
+	public String getCurrent_position() {
+		return current_position;
+	}
+
+	public void setCurrent_position(String current_position) {
+		this.current_position = current_position;
+	}
+
+	public String getCompany_name() {
+		return company_name;
+	}
+
+	public void setCompany_name(String company_name) {
+		this.company_name = company_name;
 	}
 	
 }

@@ -241,13 +241,16 @@ public class UserAdapter {
 		vcard.ofrezco = user.getOfrezco();
 		vcard.id_usuario = user.getId_user();
 		vcard.nombre = user.getFirstName()+" "+user.getLastName();
-		vcard.pais = "????"; // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN)
 		vcard.picture = user.getPicture_url();
 		Profile profile = profileRepository.findById(user.getId_user());
 		if(profile != null) {
+			vcard.pais = profile.getLocation(); // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN)
 			vcard.linkedin_link = profile.getLinkedin_url();
 			vcard.sinopsis = profile.getSummary();
 			vcard.titulo = profile.getHeadline();
+			vcard.sector = profile.getIndustry();
+			vcard.empresa = profile.getCompany_name();
+			vcard.puesto_actual = profile.getCurrent_position();
 		}
 		return vcard;
 	}

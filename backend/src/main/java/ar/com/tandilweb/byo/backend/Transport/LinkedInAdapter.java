@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.tandilweb.byo.backend.Gateway.LinkedInConsumer;
 import ar.com.tandilweb.byo.backend.Gateway.dto.LinkedInProfile;
+import ar.com.tandilweb.byo.backend.Gateway.dto.linkedIn.Positions;
 import ar.com.tandilweb.byo.backend.Model.domain.Countries;
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
@@ -32,10 +33,13 @@ public class LinkedInAdapter {
 		UUID uuid = UUID.randomUUID();
 		if(response != null) {
 			Users usuario = userRepository.findBylinkedinId(response.getId());	
+			System.out.println("linkedin id: "+usuario==null);
 			if(usuario != null) {
+				//Este usuario ya accedio por linkedin previamente
 				usuario.setSalt_jwt(uuid.toString());
 				usuario.setFcmToken(fcmToken);
 				userRepository.update(usuario);
+				updateProfile(usuario.getId_user(), response);
 				out.code = ResponseDTO.Code.OK;
 				out.description = "";
 				out.token = uuid.toString();
@@ -46,7 +50,7 @@ public class LinkedInAdapter {
 				//que no exista un usuario registrado con el mismo mail que el de linkedin
 				usuario = userRepository.findByemail(response.getEmailAddress());
 				if(usuario != null) {
-					usuario.setLinkedin_id(response.getPublicProfileUrl());
+					usuario.setLinkedin_id(response.getId());
 					usuario.setSalt_jwt(uuid.toString());
 					usuario.setFcmToken(fcmToken);
 					usuario.setPicture_url(response.getPictureUrl());
@@ -81,16 +85,27 @@ public class LinkedInAdapter {
 	
 	private void createProfile(long userId, LinkedInProfile lp) {
 		Profile userProfile = new Profile();
-		userProfile.setId_user(userId);
+		userProfile = updateProfileData(userProfile, lp);
+		profileRepository.create(userProfile);
+	}
+		
+	private void updateProfile(long userId, LinkedInProfile lp){
+		Profile userProfile = profileRepository.findById(userId);
+		userProfile = updateProfileData(userProfile, lp);
+		profileRepository.update(userProfile);
+	}
+	
+	private Profile updateProfileData(Profile userProfile, LinkedInProfile lp) {
 		userProfile.setHeadline(lp.getHeadline());
 		userProfile.setIndustry(lp.getIndustry());
 		userProfile.setLocation(lp.getLocation().getName());
 		userProfile.setLinkedin_url(lp.getPublicProfileUrl());
 		userProfile.setSummary(lp.getSummary());
-		userProfile.setCountry(new Countries());
-		profileRepository.create(userProfile);
+		userProfile.setCompany_name(lp.getPositions().getValues().get(0).getCompany().getName());
+		userProfile.setCurrent_position(lp.getPositions().getValues().get(0).getTitle());
+		return userProfile;
 	}
-
+	
 	private Users createUser(LinkedInProfile lp, String fcmToken, UUID uuid) {
 		Users user = new Users();
 		user.setEmail(lp.getEmailAddress());

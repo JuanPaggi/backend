@@ -18,6 +18,12 @@ public class VCard {
 	public String picture;
 	@GraphQLQuery(name = "pais")
 	public String pais;
+	@GraphQLQuery(name = "sector")
+	public String sector;
+	@GraphQLQuery(name = "puesto_actual")
+	public String puesto_actual;
+	@GraphQLQuery(name = "empresa")
+	public String empresa;
 	@GraphQLQuery(name = "sinopsis")
 	public String sinopsis; // sumary en linkedin
 	@GraphQLQuery(name = "linkedin_link")
