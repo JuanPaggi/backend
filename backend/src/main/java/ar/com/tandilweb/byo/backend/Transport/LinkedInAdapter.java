@@ -85,17 +85,17 @@ public class LinkedInAdapter {
 	
 	private void createProfile(long userId, LinkedInProfile lp) {
 		Profile userProfile = new Profile();
-		userProfile = updateProfileData(userProfile, lp);
+		userProfile = setProfileData(userProfile, lp);
 		profileRepository.create(userProfile);
 	}
 		
 	private void updateProfile(long userId, LinkedInProfile lp){
 		Profile userProfile = profileRepository.findById(userId);
-		userProfile = updateProfileData(userProfile, lp);
+		userProfile = setProfileData(userProfile, lp);
 		profileRepository.update(userProfile);
 	}
 	
-	private Profile updateProfileData(Profile userProfile, LinkedInProfile lp) {
+	private Profile setProfileData(Profile userProfile, LinkedInProfile lp) {
 		userProfile.setHeadline(lp.getHeadline());
 		userProfile.setIndustry(lp.getIndustry());
 		userProfile.setLocation(lp.getLocation().getName());

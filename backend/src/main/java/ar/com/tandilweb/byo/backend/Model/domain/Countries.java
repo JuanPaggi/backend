@@ -8,9 +8,10 @@ public class Countries {
 		
 	public Countries() {}
 	
-	public Countries(long id, String name) {
+	public Countries(long id, String name, String code) {
 		this.id_country = id;
 		this.name = name;
+		this.code = code;
 	}
 	
 	public String getCode() {

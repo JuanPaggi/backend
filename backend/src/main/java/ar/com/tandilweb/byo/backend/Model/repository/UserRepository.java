@@ -36,6 +36,24 @@ public class UserRepository extends BaseRepository<Users, Long>{
 		}
 	}
 	
+	/*
+	public List<Users> getUsersClose(double lat, double lon, int radio) {
+		try {
+	    	return jdbcTemplate.query(
+	                "SELECT id_gps_record, latitude, longitude, "
+	                + "( 6371 * acos(cos(radians("+lat+")) * cos(radians(latitude)) * cos(radians(longitude) - radians("+lon+")) + sin(radians("+lat+")) * sin(radians(latitude)))) "
+	                + "AS distance FROM gps_data "
+	                + "HAVING distance < "+radio+""
+	                + "ORDER BY distance;", 
+	                new UserRowMapper(),
+	                new Object[]{me, me, me, me, me, limit});
+		} catch(DataAccessException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	*/
+	
 	public List<Users> getAllNotContacts(int limit,long me) {
 		try {
 	    	return jdbcTemplate.query(

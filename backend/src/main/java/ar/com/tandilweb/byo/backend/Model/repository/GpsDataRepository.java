@@ -102,7 +102,9 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 			// existing association (actualizar fecha)
 		}
 	}
-
+	
+	
+	
 }
 
 class GpsDataRowMapper implements RowMapper<GpsData>

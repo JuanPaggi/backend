@@ -5,10 +5,12 @@ import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.tandilweb.byo.backend.Gateway.dto.LinkedInProfile;
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Model.repository.CountriesRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
@@ -31,7 +33,9 @@ public class UserAdapter {
 	private GpsDataRepository gpsDataRepository;
 	@Autowired
 	private ProfileRepository profileRepository;
-
+	@Autowired
+	private CountriesRepository countriesRepository;
+	
 	public LoginOut validateLogin(String email, String password, String fcmToken) throws Exception {
 		System.out.println("logeando");
 		LoginOut out = new LoginOut();
@@ -103,13 +107,7 @@ public class UserAdapter {
 			userRepository.create(usuario);
 			
 			//Creamos el perfil del usuario
-//			Profile profile = new Profile();	
-//			profile.setId_user(usuario.getId_user());
-//			profile.setCountry(new Countries(1,"Argentina"));
-//			profile.setSummary(summary);
-//			profile.setLinkedin_url(linkedin_url);
-//			
-//			profileRepository.create(profile);
+			createProfile(usuario.getId_user(),summary,linkedin_url);
 			
 			//Respuesta
 			out.userId = usuario.getId_user();
@@ -253,5 +251,30 @@ public class UserAdapter {
 			vcard.puesto_actual = profile.getCurrent_position();
 		}
 		return vcard;
+	}
+	
+	private void createProfile(long userId, String summary, String linkedin_url) {
+		Profile userProfile = new Profile();
+		userProfile = setProfileData(userProfile, userId, summary, linkedin_url);
+		profileRepository.create(userProfile);
+	}
+		
+	private void updateProfile(long userId, String summary, String linkedin_url){
+		Profile userProfile = profileRepository.findById(userId);
+		userProfile = setProfileData(userProfile, userId, summary, linkedin_url);
+		profileRepository.update(userProfile);
+	}
+	
+	private Profile setProfileData(Profile userProfile, long userId, String summary, String linkedin_url) {
+		userProfile.setId_user(userId);
+		userProfile.setSummary(summary);
+		userProfile.setCountry(countriesRepository.findById(1L)); //esto esta hardcodeado
+		userProfile.setLocation("Argentina");
+		
+		if(!(linkedin_url == null || "".equals(linkedin_url))) {
+			//seteamos el linkedin si llego algo
+			userProfile.setLinkedin_url(linkedin_url);			
+		}
+		return userProfile;
 	}
 }
