@@ -85,6 +85,7 @@ public class LinkedInAdapter {
 	
 	private void createProfile(long userId, LinkedInProfile lp) {
 		Profile userProfile = new Profile();
+		userProfile.setId_user(userId);
 		userProfile = setProfileData(userProfile, lp);
 		profileRepository.create(userProfile);
 	}
