@@ -41,6 +41,13 @@ public class NotificationServiceGQL {
 		Users me = header.getUser();
 		return fsAdapter.getLastNotificationsNumber(me.getId_user());
 	}
+	
+	@GraphQLQuery(name = "NotificationService_markRequestNotificationsAsViewed")
+	public ResponseDTO markRequestedNotificationsAsViewed(@GraphQLEnvironment ResolutionEnvironment environment) {
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users me = header.getUser();
+		return fsAdapter.markRequestNotificationsAsViewed(me.getId_user());
+	}
 
 
 }

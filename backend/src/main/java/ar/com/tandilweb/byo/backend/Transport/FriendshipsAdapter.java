@@ -137,6 +137,19 @@ public class FriendshipsAdapter {
 		return out;
 	}
 	
+	public ResponseDTO markRequestNotificationsAsViewed(long idUser) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			friendShipRepository.markRequestNotificationsAsViewed(idUser);
+			out.code = Code.OK;
+			out.description = "Notificaciones Vistas";
+		} catch (Exception e) {
+			out.code = Code.BAD_REQUEST;
+			out.description = "Este usuario no tiene notificaciones";
+		}
+		return out;
+	}
+	
 	public List<VCard> getFriends(Users me) {
 		
 		List<VCard> out = new ArrayList<VCard>();

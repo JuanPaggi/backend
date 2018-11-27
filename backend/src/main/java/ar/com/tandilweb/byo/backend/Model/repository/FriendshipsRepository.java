@@ -76,6 +76,20 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 		}
 	}
 	
+	public void markRequestNotificationsAsViewed(long idUser) {
+		try {
+			final String sql = "UPDATE friendships"
+							+ " SET is_viewed = true"
+							+ " WHERE id_user_target = ?";
+			jdbcTemplate.update(sql, new Object[] {
+				idUser
+			});
+			
+		} catch(DataAccessException e) {
+			logger.error("FriendshipsRepository :: create", e);
+		}
+	}
+	
 	@Override
 	public Friendships create(final Friendships record) {
 		try {
