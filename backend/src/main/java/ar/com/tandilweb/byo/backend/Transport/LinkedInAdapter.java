@@ -91,8 +91,12 @@ public class LinkedInAdapter {
 		
 	private void updateProfile(long userId, LinkedInProfile lp){
 		Profile userProfile = profileRepository.findById(userId);
-		userProfile = setProfileData(userProfile, lp);
-		profileRepository.update(userProfile);
+		if (userProfile != null) {
+			userProfile = setProfileData(userProfile, lp);
+			profileRepository.update(userProfile);
+		} else { // si el usuario no tenía perfil lo creamos.
+			this.createProfile(userId, lp);
+		}
 	}
 	
 	private Profile setProfileData(Profile userProfile, LinkedInProfile lp) {
@@ -100,7 +104,11 @@ public class LinkedInAdapter {
 		userProfile.setIndustry(lp.getIndustry());
 		userProfile.setLocation(lp.getLocation().getName());
 		userProfile.setLinkedin_url(lp.getPublicProfileUrl());
-		userProfile.setSummary(lp.getSummary());
+		String summary = lp.getSummary();
+		if(summary.length() > 250) {
+			summary = summary.substring(0, 250);
+		}
+		userProfile.setSummary(summary);
 		userProfile.setCompany_name(lp.getPositions().getValues().get(0).getCompany().getName());
 		userProfile.setCurrent_position(lp.getPositions().getValues().get(0).getTitle());
 		return userProfile;
