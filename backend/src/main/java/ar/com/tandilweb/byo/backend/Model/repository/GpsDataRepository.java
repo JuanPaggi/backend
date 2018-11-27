@@ -105,13 +105,17 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 		}
 	}
 	
-	public List<Users> getUsersClose(double lat, double lon, int radio) {
+	public List<Users> getUsersClose(double lat, double lon, int radio, long me) {
 		final String sql = "SELECT DISTINCT u.*"
 				+ " FROM gps_data g, gps_data_users gu, users u"
+				+ " LEFT JOIN friendships"
+				+ " ON (friendships.id_user_target = u.id_user AND friendships.id_user_requester = ?)"
+				+ " OR (friendships.id_user_requester = u.id_user AND friendships.id_user_target = ?)"
 				+ " WHERE g.id_gps_record = gu.id_gps_record"
 				+ " AND gu.id_user = u.id_user"
-				+ " AND  ( 6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))))< ?";
-		return jdbcTemplate.query(sql, new UserRowMapper(),new Object[]{lat,lon,lat,radio});
+				+ " AND  ( 6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))))< ?"
+				+ " AND ((id_user_requester <> ? AND id_user_target <> ? OR id_user_requester is NULL) AND u.id_user <> ?)";
+		return jdbcTemplate.query(sql, new UserRowMapper(),new Object[]{me,me,lat,lon,lat,radio,me,me,me});
 	}
 	
 }

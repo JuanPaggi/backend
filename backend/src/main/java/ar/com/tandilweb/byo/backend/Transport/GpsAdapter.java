@@ -35,7 +35,7 @@ public class GpsAdapter {
 		// hacer busqueda por lat long, de momento traemos todo para facilitar las pruebas:
 		
 		//List<Users> users = userRepository.getAllNotContacts(10, userRequester.getId_user());
-		List<Users> users = gpsRepository.getUsersClose(lat, lon, 70);
+		List<Users> users = gpsRepository.getUsersClose(lat, lon, 70,userRequester.getId_user());
 		
 		// chequeamos que tengamos resultados:
 		if(users != null) {
