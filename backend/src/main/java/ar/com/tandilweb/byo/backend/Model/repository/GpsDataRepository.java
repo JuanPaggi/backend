@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Repository;
 
 import ar.com.tandilweb.byo.backend.Model.BaseRepository;
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
+import ar.com.tandilweb.byo.backend.Model.domain.Users;
 
 @Repository
 public class GpsDataRepository extends BaseRepository<GpsData, Long>{
@@ -103,7 +105,14 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 		}
 	}
 	
-	
+	public List<Users> getUsersClose(double lat, double lon, int radio) {
+		final String sql = "SELECT DISTINCT u.*"
+				+ " FROM gps_data g, gps_data_users gu, users u"
+				+ " WHERE g.id_gps_record = gu.id_gps_record"
+				+ " AND gu.id_user = u.id_user"
+				+ " AND  ( 6371 * acos(cos(radians(?)) * cos(radians(latitude)) * cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))))< ?";
+		return jdbcTemplate.query(sql, new UserRowMapper(),new Object[]{lat,lon,lat,radio});
+	}
 	
 }
 

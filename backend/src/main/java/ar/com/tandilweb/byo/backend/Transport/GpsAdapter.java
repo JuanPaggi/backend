@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
@@ -22,6 +23,9 @@ public class GpsAdapter {
 	@Autowired
 	private UserAdapter userAdapter;
 	
+	@Autowired
+	private GpsDataRepository gpsRepository;
+	
 	public List<VCard> getUsersClose(double lat, double lon, Users userRequester) {
 		// hay que verificar antes que nada que los parametros estén ok
 		// en este caso lat y lon pueden ser valores negativos, cero o positivos asique no hace falta revisarlo
@@ -29,8 +33,10 @@ public class GpsAdapter {
 		// objeto de salida:
 		List<VCard> vcards = new ArrayList<VCard>();
 		// hacer busqueda por lat long, de momento traemos todo para facilitar las pruebas:
-		//List<Users> users = userRepository.getAllRecords(10);
-		List<Users> users = userRepository.getAllNotContacts(10, userRequester.getId_user());
+		
+		//List<Users> users = userRepository.getAllNotContacts(10, userRequester.getId_user());
+		List<Users> users = gpsRepository.getUsersClose(lat, lon, 70);
+		
 		// chequeamos que tengamos resultados:
 		if(users != null) {
 			// creamos y empaquetamos las vcard
