@@ -31,6 +31,7 @@ public class AccountServiceGQL {
 
 	@Autowired
 	private LinkedInAdapter linkedinAdapter;
+	
 	@Autowired
 	private UserAdapter userAdapter;
 

@@ -46,6 +46,7 @@ public class GeoposysServiceGQL {
 		// nos traemos el usuario que está llamando a este servicio:
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users me = header.getUser();
+
 		// casteamos las variables (limitación de graphql)
 		double lat = Double.parseDouble(latitude);
 		double lon = Double.parseDouble(longitude);

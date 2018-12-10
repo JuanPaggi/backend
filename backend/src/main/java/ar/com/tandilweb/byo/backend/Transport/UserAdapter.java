@@ -3,6 +3,8 @@ package ar.com.tandilweb.byo.backend.Transport;
 import java.util.Date;
 import java.util.UUID;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.tandilweb.byo.backend.Gateway.dto.LinkedInProfile;
@@ -15,6 +17,7 @@ import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
+import ar.com.tandilweb.byo.backend.Presentation.GQLServices.AccountServiceGQL;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
@@ -24,6 +27,8 @@ import ar.com.tandilweb.byo.backend.utils.CryptDES;
 import ar.com.tandilweb.byo.backend.utils.Mailer;
 
 public class UserAdapter {
+	
+	private static final Logger log = LoggerFactory.getLogger(UserAdapter.class);
 
 	@Autowired
 	private UserRepository userRepository;
@@ -37,7 +42,7 @@ public class UserAdapter {
 	private CountriesRepository countriesRepository;
 	
 	public LoginOut validateLogin(String email, String password, String fcmToken) throws Exception {
-		System.out.println("logeando");
+		log.debug("logeando");
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
 		if(usuario != null) {
@@ -102,7 +107,7 @@ public class UserAdapter {
 			usuario.setFailedLoginAttempts(0);
 			usuario.setUnLockAccountCode("");
 			usuario.setFcmToken(fcmToken);
-			if(picture_url == null || picture_url == "") picture_url = "../../assets/imgs/512x512.png";
+			if(picture_url == null || picture_url == "") picture_url = "../../assets/imgs/user.png";
 			usuario.setPicture_url(picture_url);
 			userRepository.create(usuario);
 			
