@@ -14,7 +14,7 @@ public class HttpFCMPayload implements Fcmp {
 	
 	private List<String> registration_ids;
 	private String condition;
-	private Long time_to_live = 432000L;
+	private Long time_to_live = 86400L;
 	
 	public HttpFCMPayload(){
 		this.notification = new FCMNotify("Titulo Notificacion","Cuerpo Notificacion");
