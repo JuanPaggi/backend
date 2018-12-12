@@ -42,7 +42,7 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 		try {
 	    	return jdbcTemplate.query(
 	                "SELECT * FROM friendships " + 
-	                "WHERE id_user_requester = ? OR id_user_target = ? AND is_accepted = true", 
+	                "WHERE (id_user_requester = ? OR id_user_target = ?) AND is_accepted = true", 
 	                new FriendshipsRowMapper(),
 	                new Object[]{ id, id });
 		} catch(DataAccessException e) {
