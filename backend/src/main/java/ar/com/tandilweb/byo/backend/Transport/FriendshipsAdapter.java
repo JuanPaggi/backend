@@ -99,6 +99,7 @@ public class FriendshipsAdapter {
 		ResponseDTO out = new ResponseDTO();
 		//el get(0) no me gusta mucho
 		Friendships friendship = friendShipRepository.getFriendship(idRequester, idTarget).get(0);
+		//
 		if (friendship != null) {
 			friendship.setIs_accepted(true);
 			friendShipRepository.update(friendship);
