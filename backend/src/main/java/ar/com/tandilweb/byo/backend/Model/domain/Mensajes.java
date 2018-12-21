@@ -8,5 +8,12 @@ public class Mensajes {
 	public long id_target;
 	public String message;
 	public Date fecha;
+	
+	public Mensajes(long id_sender, long id_target, String message, Date fecha) {
+		this.id_sender = id_sender;
+		this.id_target = id_target;
+		this.message = message;
+		this.fecha = fecha;
+	}
 
 }
