@@ -97,10 +97,12 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	{
 	    public Mensajes mapRow(ResultSet rs, int rowNum) throws SQLException {
 	        return new Mensajes(
+	        		rs.getLong("id_mensaje"),
 	        		rs.getLong("id_sender"),
 	        		rs.getLong("id_target"),
 	        		rs.getString("mensaje"),
-	        		rs.getDate("fecha")
+	        		rs.getDate("fecha"),
+	        		rs.getBoolean("is_viewed")
 	        		);
 	    }
 	}

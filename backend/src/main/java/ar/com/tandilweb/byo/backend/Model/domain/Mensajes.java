@@ -15,11 +15,13 @@ public class Mensajes {
 		
 	}
 	
-	public Mensajes(long id_sender, long id_target, String message, Date fecha) {
+	public Mensajes(long id_message, long id_sender, long id_target, String message, Date fecha, boolean is_viewed) {
 		this.id_sender = id_sender;
 		this.id_target = id_target;
 		this.message = message;
 		this.fecha = fecha;
+		this.is_viewed = is_viewed;
+		this.id_message = id_message;
 	}
 
 }

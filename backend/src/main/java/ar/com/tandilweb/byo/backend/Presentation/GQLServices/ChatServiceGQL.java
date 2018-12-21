@@ -31,6 +31,7 @@ public class ChatServiceGQL {
 	@Autowired
 	private ChatAdapter chatAdapter;
 	
+	// TODO: para la lista de chats activos hay que reworkear para usar una tabla de conversaciones.
 	
 	@GraphQLQuery(name = "ChatService_listaInicial")
 	public ListMessageDTO listaInicial(
@@ -47,6 +48,7 @@ public class ChatServiceGQL {
 			return out;
 		}
 	}
+	
 	
 
 }
