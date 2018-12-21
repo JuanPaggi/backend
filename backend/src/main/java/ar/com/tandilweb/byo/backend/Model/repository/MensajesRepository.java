@@ -27,7 +27,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	public Mensajes create(final Mensajes record) {
 		try {
 			final String sql = "INSERT INTO mensajes"
-					+ "(id_sender, id_target, mensaje, fecha) VALUES(?,?,?,?)";
+					+ "(id_sender, id_target, messages, fecha, is_viewed) VALUES(?,?,?,?,?)";
 			KeyHolder holder = new GeneratedKeyHolder();
 			
 			jdbcTemplate.update(new PreparedStatementCreator() {
@@ -37,6 +37,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	                ps.setDouble(2, record.id_target);
 	                ps.setString(3, record.message);
 	                ps.setDate(4, new java.sql.Date(record.fecha.getTime()));
+	                ps.setBoolean(5, record.is_viewed);
 	                return ps;
 	            }
 	        }, holder);
@@ -50,7 +51,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	@Override
 	public void update(Mensajes record) {
 		try {
-			final String sql = "UPDATE mensajes SET id_sender = ?, id_target = ?, mensaje = ?, fecha = ?, is_viewed = ?"
+			final String sql = "UPDATE mensajes SET id_sender = ?, id_target = ?, messages = ?, fecha = ?, is_viewed = ?"
 					+" WHERE id_sender = ? AND id_target = ?";
 			jdbcTemplate.update(sql, new Object[] {
 					record.id_sender,
@@ -100,7 +101,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	        		rs.getLong("id_mensaje"),
 	        		rs.getLong("id_sender"),
 	        		rs.getLong("id_target"),
-	        		rs.getString("mensaje"),
+	        		rs.getString("messages"),
 	        		rs.getDate("fecha"),
 	        		rs.getBoolean("is_viewed")
 	        		);

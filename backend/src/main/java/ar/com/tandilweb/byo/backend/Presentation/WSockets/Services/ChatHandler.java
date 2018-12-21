@@ -67,7 +67,8 @@ public class ChatHandler {
 	}
 	
 	@MessageMapping("/send")
-	public void send(MessageDataIn msg, SimpMessageHeaderAccessor headerAccessor) {
+	@SendToUser("/chatService/data")
+	public Mensajes send(MessageDataIn msg, SimpMessageHeaderAccessor headerAccessor) {
 		
 		ClientData cd = userService.getClient(msg.userID);
 		if (cd != null && cd.socketID.equals(headerAccessor.getSessionId()) && msg.targetID != null) {
@@ -87,7 +88,7 @@ public class ChatHandler {
 						
 			if(cdTarget != null) {
 				// enviamos el mensaje por el sistema de chat
-				userService.sendToSessID("/clientInterceptor/data", cdTarget.socketID, mensaje);
+				userService.sendToSessID("/chatService/data", cdTarget.socketID, mensaje);
 			} else {
 				// enviamos notificacion
 				Users target = userRepository.findById(mensaje.id_target);
@@ -102,8 +103,9 @@ public class ChatHandler {
 				payload.setTarget(target.getFcmToken());
 				firebaseCloudMessaging.send(payload);
 			}
-
+			return mensaje;
 		}
+		return null;
 		
 	}
 	

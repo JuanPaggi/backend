@@ -33,15 +33,15 @@ public class WebSocketConfig extends  WebSocketMessageBrokerConfigurationSupport
     }
 	
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
-        RequestUpgradeStrategy upgradeStrategy = new TomcatRequestUpgradeStrategy();
+//        RequestUpgradeStrategy upgradeStrategy = new TomcatRequestUpgradeStrategy();
 //        registry.addEndpoint("/internal").withSockJS(); //endpoints internos
 //        registry.addEndpoint("/internal")
 //                .setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy));
 
         registry.addEndpoint("/external").setAllowedOrigins("http://localhost:8100", "*").withSockJS(); //endpoints externos
-        registry.addEndpoint("/external")
-        .setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
-        .setAllowedOrigins("*");
+//        registry.addEndpoint("/external")
+//        .setHandshakeHandler(new DefaultHandshakeHandler(upgradeStrategy))
+//        .setAllowedOrigins("*");
     }
 	
 	public boolean configureMessageConverters(List<MessageConverter> messageConverters) {
