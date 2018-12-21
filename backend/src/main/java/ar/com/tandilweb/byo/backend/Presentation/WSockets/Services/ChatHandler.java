@@ -1,16 +1,25 @@
 package ar.com.tandilweb.byo.backend.Presentation.WSockets.Services;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
+import ar.com.tandilweb.byo.backend.Gateway.fcm.FCMNotify;
+import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
+import ar.com.tandilweb.byo.backend.Gateway.fcm.HttpFCMPayload;
 import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
+import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Model.repository.MensajesRepository;
+import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.WSockets.UserService;
 import ar.com.tandilweb.byo.backend.Presentation.WSockets.DTO.ClientData;
 import ar.com.tandilweb.byo.backend.Presentation.WSockets.DTO.MessageDataIn;
@@ -24,6 +33,18 @@ public class ChatHandler {
 
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private MensajesRepository mensajesRepository;
+	
+	@Autowired
+	private FirebaseCloudMessaging firebaseCloudMessaging;
+	
+	@Value("${fcm.serverkey}")
+	private String serverKey;
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@MessageMapping("/start")
 	// @SendTo("/userService/popup")
@@ -52,19 +73,32 @@ public class ChatHandler {
 			mensaje.id_sender = Long.parseLong(msg.userID);
 			mensaje.id_target = Long.parseLong(msg.targetID);
 			mensaje.message = msg.message;
+			mensaje.is_viewed = false;
 			
 			// chequeamos si ya hay alguien en el sistema de chat con este targetID
 			ClientData cdTarget = userService.getClient(msg.targetID);
+			
+			// registramos en la DB
+			mensajesRepository.create(mensaje);
+						
 			if(cdTarget != null) {
 				// enviamos el mensaje por el sistema de chat
 				userService.sendToSessID("/clientInterceptor/data", cdTarget.socketID, mensaje);
 			} else {
 				// enviamos notificacion
-				
+				Users target = userRepository.findById(mensaje.id_target);
+				Users sender = userRepository.findById(mensaje.id_sender);
+				HttpFCMPayload payload = new HttpFCMPayload();
+				firebaseCloudMessaging.setServerKey(serverKey);
+				List<String> rids = new ArrayList<String>();
+				rids.add(target.getFcmToken());
+				FCMNotify notificacion = new FCMNotify("Mensaje recibido",
+						"Recibiste un mensaje de " + sender.getFirst_name());
+				payload.setNotification(notificacion);
+				payload.setTarget(target.getFcmToken());
+				firebaseCloudMessaging.send(payload);
 			}
-			// registramos en la DB
-			
-			
+
 		}
 		
 	}

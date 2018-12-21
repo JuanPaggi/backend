@@ -50,13 +50,14 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	@Override
 	public void update(Mensajes record) {
 		try {
-			final String sql = "UPDATE mensajes SET id_sender = ?, id_target = ?, mensaje = ?, fecha = ?, is_viewed = false"
+			final String sql = "UPDATE mensajes SET id_sender = ?, id_target = ?, mensaje = ?, fecha = ?, is_viewed = ?"
 					+" WHERE id_sender = ? AND id_target = ?";
 			jdbcTemplate.update(sql, new Object[] {
 					record.id_sender,
 					record.id_target,
 					record.message,
 					record.fecha,
+					record.is_viewed,
 					record.id_sender,
 					record.id_target
 			});
