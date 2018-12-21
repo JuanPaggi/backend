@@ -19,8 +19,9 @@ import ar.com.tandilweb.byo.backend.Model.JDBConfig;
 
 @SpringBootApplication
 @ComponentScan({ "ar.com.tandilweb.byo.backend.Presentation.GQLServices",
-		"ar.com.tandilweb.byo.backend.Presentation.RestServices"})
-@Import({ TransportFactory.class, GatewayFactory.class, JDBConfig.class })
+		"ar.com.tandilweb.byo.backend.Presentation.RestServices",
+		"ar.com.tandilweb.byo.backend.Presentation.WSockets.Services"})
+@Import({ TransportFactory.class, GatewayFactory.class, JDBConfig.class, WebSocketConfig.class })
 public class App extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
@@ -30,7 +31,7 @@ public class App extends SpringBootServletInitializer {
 	public FilterRegistrationBean<Filter> registerCorsFilter() {
 		FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<Filter>();
 		registration.setFilter(corsFilter());
-		registration.addUrlPatterns("/*");
+		registration.addUrlPatterns("/graphql/*");
 		// registration.addInitParameter("paramName", "paramValue");
 		registration.setName("corsFilter");
 		registration.setOrder(1);
@@ -45,7 +46,7 @@ public class App extends SpringBootServletInitializer {
 	public FilterRegistrationBean<Filter> jwtFilterRegistration() {
 		FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<Filter>();
 		registration.setFilter(getJwtFilter());
-		registration.addUrlPatterns("/*");
+		registration.addUrlPatterns("/graphql/*");
 		// registration.addInitParameter("paramName", "paramValue");
 		registration.setName("jwtFilter");
 		registration.setOrder(1);
@@ -56,7 +57,7 @@ public class App extends SpringBootServletInitializer {
 	public FilterRegistrationBean<Filter> jwtValidFilterRegistration() {
 		FilterRegistrationBean<Filter> registration = new FilterRegistrationBean<Filter>();
 		registration.setFilter(getJwtValidFilter());
-		registration.addUrlPatterns("/*");
+		registration.addUrlPatterns("/graphql/*");
 		// registration.addInitParameter("paramName", "paramValue");
 		registration.setName("jwtValidFilter");
 		registration.setOrder(1);
