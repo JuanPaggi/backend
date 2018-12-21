@@ -4,10 +4,12 @@ import java.util.Date;
 
 public class Mensajes {
 	
+	public long id_message;
 	public long id_sender;
 	public long id_target;
 	public String message;
 	public Date fecha;
+	public boolean is_viewed;
 	
 	public Mensajes() {
 		

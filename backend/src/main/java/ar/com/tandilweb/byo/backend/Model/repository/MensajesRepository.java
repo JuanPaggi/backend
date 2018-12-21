@@ -15,9 +15,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-
 import ar.com.tandilweb.byo.backend.Model.BaseRepository;
-import ar.com.tandilweb.byo.backend.Model.domain.Friendships;
 import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
 
 @Repository
@@ -52,7 +50,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	@Override
 	public void update(Mensajes record) {
 		try {
-			final String sql = "UPDATE mensajes SET id_sender = ?, id_target = ?, mensaje = ?, fecha = ?"
+			final String sql = "UPDATE mensajes SET id_sender = ?, id_target = ?, mensaje = ?, fecha = ?, is_viewed = false"
 					+" WHERE id_sender = ? AND id_target = ?";
 			jdbcTemplate.update(sql, new Object[] {
 					record.id_sender,
