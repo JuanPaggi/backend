@@ -27,7 +27,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	public Mensajes create(final Mensajes record) {
 		try {
 			final String sql = "INSERT INTO mensajes"
-					+ "(id_sender, id_target, mensaje, fecha) VALUES(?,?,?,?,?)";
+					+ "(id_sender, id_target, mensaje, fecha) VALUES(?,?,?,?)";
 			KeyHolder holder = new GeneratedKeyHolder();
 			
 			jdbcTemplate.update(new PreparedStatementCreator() {
@@ -36,7 +36,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	                ps.setDouble(1, record.id_sender);
 	                ps.setDouble(2, record.id_target);
 	                ps.setString(3, record.message);
-	                ps.setDate(3, new java.sql.Date(record.fecha.getTime()));
+	                ps.setDate(4, new java.sql.Date(record.fecha.getTime()));
 	                return ps;
 	            }
 	        }, holder);
