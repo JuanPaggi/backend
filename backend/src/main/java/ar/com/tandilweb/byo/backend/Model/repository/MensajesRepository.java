@@ -80,13 +80,13 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 		}
 	}
 	
-	public List<Mensajes> getChatWith(long id_target) {
+	public List<Mensajes> getChatWith(long id_me, long id_target) {
 		try {
 	    	return jdbcTemplate.query(
 	                "SELECT * FROM mensajes " + 
-	                "WHERE id_sender = ? OR id_user_target = ? ORDER BY fecha ASC LIMIT 25", 
+	                "WHERE (id_sender = ? AND id_target = ?) OR (id_target = ? AND id_sender = ?) ORDER BY fecha ASC LIMIT 25", 
 	                new MensajesRowMapper(),
-	                new Object[]{ id_target, id_target });
+	                new Object[]{ id_me, id_target, id_me, id_target });
 		} catch(DataAccessException e) {
 			logger.debug("MensajesRepository :: getChatWith", e);
 			return null;

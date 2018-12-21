@@ -24,6 +24,7 @@ import ar.com.tandilweb.byo.backend.Presentation.WSockets.UserService;
 import ar.com.tandilweb.byo.backend.Presentation.WSockets.DTO.ClientData;
 import ar.com.tandilweb.byo.backend.Presentation.WSockets.DTO.MessageDataIn;
 import ar.com.tandilweb.byo.backend.Presentation.WSockets.DTO.Response;
+import ar.com.tandilweb.byo.backend.Transport.ChatAdapter;
 
 @Controller
 @MessageMapping("/chatHandler")
@@ -36,6 +37,9 @@ public class ChatHandler {
 	
 	@Autowired
 	private MensajesRepository mensajesRepository;
+	
+//	@Autowired
+//	private ChatAdapter chatAdapter;
 	
 	@Autowired
 	private FirebaseCloudMessaging firebaseCloudMessaging;
