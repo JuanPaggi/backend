@@ -101,10 +101,8 @@ public class AccountServiceGQL {
 		ResponseDTO out = new ResponseDTO();
 
 		if(header.isTrusted()) {
-			System.out.println("trusteado");
 			return userAdapter.setBuscoYofrezco(busco, ofrezco, usuario);
 		} else {
-			System.out.println("No trusteado");
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error datos no seteados";
 		}

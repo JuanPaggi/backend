@@ -98,8 +98,8 @@ public class UserAdapter {
 			usuario.setFirst_name(nombre);
 			usuario.setLast_name(apellido);
 			usuario.setSignup_date(new Date());
-			usuario.setOfrezco("ofrezco hardcodeado");
-			usuario.setBusco("Busco Hardcodeado");
+			usuario.setOfrezco("Nada en particular");
+			usuario.setBusco("Nada en particular");
 			usuario.setSalt_jwt(UUID.randomUUID().toString());
 			usuario.setLast_login(new Date());
 			usuario.setCompletoByO(false);
