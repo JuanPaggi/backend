@@ -52,10 +52,10 @@ public class MensajeDTO {
 		// TODO: en algun futuro chequear que haya pasado un año y poner el año.
 		if(fecha != null && fecha.after(today)) {
 			SimpleDateFormat dt = new SimpleDateFormat("hh:mm"); 
-			return "hoy";
+			return dt.format(fecha);
 		} else {
 			SimpleDateFormat dt = new SimpleDateFormat("dd/MM"); 
-			return "antes";
+			return dt.format(fecha);
 		}
 	}
 	
