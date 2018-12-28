@@ -36,7 +36,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	                ps.setDouble(1, record.id_sender);
 	                ps.setDouble(2, record.id_target);
 	                ps.setString(3, record.message);
-	                ps.setDate(4, new java.sql.Date(record.fecha.getTime()));
+	                ps.setTimestamp(4, new java.sql.Timestamp(record.fecha.getTime()));
 	                ps.setBoolean(5, record.is_viewed);
 	                return ps;
 	            }
@@ -84,8 +84,8 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	public List<Mensajes> getChatWith(long id_me, long id_target) {
 		try {
 	    	return jdbcTemplate.query(
-	                "SELECT * FROM mensajes " + 
-	                "WHERE (id_sender = ? AND id_target = ?) OR (id_target = ? AND id_sender = ?) ORDER BY fecha ASC LIMIT 25", 
+	                "SELECT * FROM ( SELECT * FROM mensajes AS m " + 
+	                "WHERE (m.id_sender = ? AND m.id_target = ?) OR (m.id_target = ? AND m.id_sender = ?) ORDER BY m.fecha DESC, m.id_mensaje DESC LIMIT 25 ) AS r ORDER BY r.fecha ASC, r.id_mensaje ASC", 
 	                new MensajesRowMapper(),
 	                new Object[]{ id_me, id_target, id_me, id_target });
 		} catch(DataAccessException e) {

@@ -1,5 +1,7 @@
 package ar.com.tandilweb.byo.backend.Presentation.dto.out;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
@@ -34,5 +36,27 @@ public class MensajeDTO {
 		this.fecha = mensaje.fecha;
 		this.is_viewed = mensaje.is_viewed;
 	}
+	
+	@GraphQLQuery(name = "fechaStr")
+	public String getFormattedTime() {
+		return parseDate(fecha);
+	}
 
+	public static String parseDate(Date fecha) {
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.HOUR_OF_DAY, 0);
+		c.set(Calendar.MINUTE, 0);
+		c.set(Calendar.SECOND, 0);
+		c.set(Calendar.MILLISECOND, 0);
+		Date today = c.getTime();
+		// TODO: en algun futuro chequear que haya pasado un año y poner el año.
+		if(fecha != null && fecha.after(today)) {
+			SimpleDateFormat dt = new SimpleDateFormat("hh:mm"); 
+			return "hoy";
+		} else {
+			SimpleDateFormat dt = new SimpleDateFormat("dd/MM"); 
+			return "antes";
+		}
+	}
+	
 }

@@ -1,5 +1,6 @@
 package ar.com.tandilweb.byo.backend.Presentation.WSockets.Services;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -75,6 +76,8 @@ public class ChatHandler {
 			
 			Mensajes mensaje = new Mensajes();
 			mensaje.fecha = new Date();
+			SimpleDateFormat dt = new SimpleDateFormat("hh:mm"); 
+			mensaje.fechaStr = dt.format(mensaje.fecha);
 			mensaje.id_sender = Long.parseLong(msg.userID);
 			mensaje.id_target = Long.parseLong(msg.targetID);
 			mensaje.message = msg.message;

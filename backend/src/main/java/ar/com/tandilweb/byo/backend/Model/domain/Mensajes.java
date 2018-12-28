@@ -9,6 +9,7 @@ public class Mensajes {
 	public long id_target;
 	public String message;
 	public Date fecha;
+	public String fechaStr;
 	public boolean is_viewed;
 	
 	public Mensajes() {
