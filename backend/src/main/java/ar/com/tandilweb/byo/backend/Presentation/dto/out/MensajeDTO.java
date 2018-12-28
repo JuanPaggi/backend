@@ -3,6 +3,7 @@ package ar.com.tandilweb.byo.backend.Presentation.dto.out;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -51,10 +52,12 @@ public class MensajeDTO {
 		Date today = c.getTime();
 		// TODO: en algun futuro chequear que haya pasado un año y poner el año.
 		if(fecha != null && fecha.after(today)) {
-			SimpleDateFormat dt = new SimpleDateFormat("hh:mm"); 
+			SimpleDateFormat dt = new SimpleDateFormat("HH:mm"); 
+//			dt.setTimeZone(TimeZone.getTimeZone("GMT-03:00"));
 			return dt.format(fecha);
 		} else {
 			SimpleDateFormat dt = new SimpleDateFormat("dd/MM"); 
+//			DT.SETTIMEZONE(TIMEZONE.GETTIMEZONE("GMT-03:00"));
 			return dt.format(fecha);
 		}
 	}

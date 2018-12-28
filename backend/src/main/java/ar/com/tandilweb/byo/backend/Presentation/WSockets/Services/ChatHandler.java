@@ -76,7 +76,7 @@ public class ChatHandler {
 			
 			Mensajes mensaje = new Mensajes();
 			mensaje.fecha = new Date();
-			SimpleDateFormat dt = new SimpleDateFormat("hh:mm"); 
+			SimpleDateFormat dt = new SimpleDateFormat("HH:mm"); 
 			mensaje.fechaStr = dt.format(mensaje.fecha);
 			mensaje.id_sender = Long.parseLong(msg.userID);
 			mensaje.id_target = Long.parseLong(msg.targetID);

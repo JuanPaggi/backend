@@ -102,7 +102,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	        		rs.getLong("id_sender"),
 	        		rs.getLong("id_target"),
 	        		rs.getString("messages"),
-	        		rs.getDate("fecha"),
+	        		rs.getTimestamp("fecha"),
 	        		rs.getBoolean("is_viewed")
 	        		);
 	    }
