@@ -85,7 +85,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 		try {
 	    	return jdbcTemplate.query(
 	                "SELECT * FROM ( SELECT * FROM mensajes AS m " + 
-	                "WHERE (m.id_sender = ? AND m.id_target = ?) OR (m.id_target = ? AND m.id_sender = ?) ORDER BY m.fecha DESC, m.id_mensaje DESC LIMIT 25 ) AS r ORDER BY r.fecha ASC, r.id_mensaje ASC", 
+	                "WHERE (m.id_sender = ? AND m.id_target = ?) OR (m.id_target = ? AND m.id_sender = ?) ORDER BY m.fecha DESC, m.id_mensaje DESC LIMIT 30 ) AS r ORDER BY r.fecha ASC, r.id_mensaje ASC", 
 	                new MensajesRowMapper(),
 	                new Object[]{ id_me, id_target, id_me, id_target });
 		} catch(DataAccessException e) {
