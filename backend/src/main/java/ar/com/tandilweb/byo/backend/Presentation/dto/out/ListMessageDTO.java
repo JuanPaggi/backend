@@ -8,9 +8,9 @@ public class ListMessageDTO extends ResponseDTO{
 	@GraphQLQuery(name = "listaMensajes")
 	public List<MensajeDTO> listaMensajes;
 	
-	@GraphQLQuery(name = "me")
+	@GraphQLQuery(name = "dataMe")
 	public VCard me;
 	
-	@GraphQLQuery(name = "target")
+	@GraphQLQuery(name = "dataTarget")
 	public VCard target;
 }
