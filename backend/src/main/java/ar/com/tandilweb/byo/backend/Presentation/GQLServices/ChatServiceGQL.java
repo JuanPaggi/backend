@@ -31,6 +31,9 @@ public class ChatServiceGQL {
 	@Autowired
 	private ChatAdapter chatAdapter;
 	
+	@Autowired
+	private UserAdapter userAdapter;
+	
 	// TODO: para la lista de chats activos hay que reworkear para usar una tabla de conversaciones.
 	
 	@GraphQLQuery(name = "ChatService_listaInicial")
@@ -41,7 +44,10 @@ public class ChatServiceGQL {
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			Users usuario = header.getUser();
-			return chatAdapter.getChatWith(usuario, idtar);
+			out = chatAdapter.getChatWith(usuario, idtar);
+			out.me = userAdapter.getVCardByUser(usuario.getId_user());
+			out.target = userAdapter.getVCardByUser(idtar);
+			return out;
 		} catch (Exception e) {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor a fallado";

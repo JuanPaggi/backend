@@ -7,4 +7,10 @@ import io.leangen.graphql.annotations.GraphQLQuery;
 public class ListMessageDTO extends ResponseDTO{
 	@GraphQLQuery(name = "listaMensajes")
 	public List<MensajeDTO> listaMensajes;
+	
+	@GraphQLQuery(name = "me")
+	public VCard me;
+	
+	@GraphQLQuery(name = "target")
+	public VCard target;
 }
