@@ -34,7 +34,7 @@ public class FriendshipsAdapter {
 
 	@Autowired
 	private FirebaseCloudMessaging firebaseCloudMessaging;
-	
+
 	@Autowired
 	private UserAdapter userAdapter;
 
@@ -54,7 +54,7 @@ public class FriendshipsAdapter {
 				firebaseCloudMessaging.setServerKey(serverKey);
 				List<String> rids = new ArrayList<String>();
 				rids.add(target.getFcmToken());
-				//payload.setRegistration_ids(rids);
+				// payload.setRegistration_ids(rids);
 				// payload.setTopic('generalTopic');
 				FCMNotify notificacion = new FCMNotify("Solicitud de contacto",
 						"Recibiste una nueva solicitud de contacto de " + requester.getFirst_name() + " "
@@ -80,10 +80,10 @@ public class FriendshipsAdapter {
 	public List<Notification> getRequestSendedReceived(Users me) {
 		List<Notification> notifys = new ArrayList<Notification>();
 		List<Friendships> fss = friendShipRepository.getRequestsSendedReceivedBy(me.getId_user());
-		if(fss != null)
-			for(Friendships fs : fss) {
+		if (fss != null)
+			for (Friendships fs : fss) {
 				Notification n = new Notification();
-				if(fs.getId_user_requester() == me.getId_user()) {
+				if (fs.getId_user_requester() == me.getId_user()) {
 					n.tipo = Types.SOLICITUD_ENVIADA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_target());
 				} else {
@@ -94,10 +94,10 @@ public class FriendshipsAdapter {
 			}
 		return notifys;
 	}
-	
+
 	public ResponseDTO validateFriendAcceptance(long idRequester, long idTarget) {
 		ResponseDTO out = new ResponseDTO();
-		//el get(0) no me gusta mucho
+		// el get(0) no me gusta mucho
 		Friendships friendship = friendShipRepository.getFriendship(idRequester, idTarget).get(0);
 		//
 		if (friendship != null) {
@@ -111,7 +111,7 @@ public class FriendshipsAdapter {
 		}
 		return out;
 	}
-	
+
 	public ResponseDTO cancelFriendRequest(long idRequester, long idTarget) {
 		ResponseDTO out = new ResponseDTO();
 		try {
@@ -124,7 +124,7 @@ public class FriendshipsAdapter {
 		}
 		return out;
 	}
-	
+
 	public ResponseDTO getLastNotificationsNumber(long idTarget) {
 		ResponseDTO out = new ResponseDTO();
 		try {
@@ -137,7 +137,7 @@ public class FriendshipsAdapter {
 		}
 		return out;
 	}
-	
+
 	public ResponseDTO markRequestNotificationsAsViewed(long idUser) {
 		ResponseDTO out = new ResponseDTO();
 		try {
@@ -150,24 +150,48 @@ public class FriendshipsAdapter {
 		}
 		return out;
 	}
-	
+
 	public List<VCard> getFriends(Users me) {
-		
+
 		List<VCard> out = new ArrayList<VCard>();
-		
+
 		List<Friendships> fs = friendShipRepository.getFriendsAccepted(me.getId_user());
-		
-		if(fs!=null)
-			for(Friendships f: fs) {
+
+		if (fs != null)
+			for (Friendships f : fs) {
 				VCard vcard;
-				if(f.getId_user_requester() == me.getId_user())
+				if (f.getId_user_requester() == me.getId_user())
 					vcard = userAdapter.getVCardByUser(f.getId_user_target());
 				else
 					vcard = userAdapter.getVCardByUser(f.getId_user_requester());
 				out.add(vcard);
 			}
-		
+
 		return out;
 	}
 
+	public List<VCard> getFriendsFiltered(Users me, String busqueda) {
+
+		List<VCard> out = this.getFriends(me);
+
+		List<Friendships> fs = friendShipRepository.getFriendsAccepted(me.getId_user());
+
+		if ((fs != null)  && (busqueda != null)) {
+			for (Friendships f : fs) {	
+				
+					VCard vcard = new VCard();
+					if ((f.getId_user_requester() == me.getId_user()) && (userAdapter.getVCardByUser(f.getId_user_target()).getNombre().contains(busqueda))) {
+						vcard = userAdapter.getVCardByUser(f.getId_user_target());
+						}
+					else if(userAdapter.getVCardByUser(f.getId_user_requester()).getNombre().contains(busqueda)){
+						vcard = userAdapter.getVCardByUser(f.getId_user_requester());
+					}
+					if (vcard != null) {
+						out.add(vcard);
+					}
+					
+				}
+		}
+		return out;
+	}
 }

@@ -29,5 +29,8 @@ public class VCard {
 	@GraphQLQuery(name = "linkedin_link")
 	public String linkedin_link;
 	// hay que ver que tiene headline
+	public String getNombre() {
+		return this.nombre;
+	}
 
 }

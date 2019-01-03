@@ -92,9 +92,23 @@ public class InteractionServiceGQL {
 			@GraphQLEnvironment ResolutionEnvironment environment){
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
-			if(!header.isTrusted()) throw new Exception("isn't trusteado gil.");
+			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
 			Users usuario = header.getUser();
 			return new VCardList(Code.ACCEPTED, "ok.", friendshipAdapter.getFriends(usuario));
+		} catch (Exception e) {
+			return new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
+		}
+	}
+	
+	@GraphQLQuery(name = "InteractionService_findContact")
+	public VCardList findContact(
+			@GraphQLEnvironment ResolutionEnvironment environment){
+		try {
+			JWTHeader header = JWTHeader.getHeader(environment);
+			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
+			Users usuario = header.getUser();
+			String busqueda = "eze";
+			return new VCardList(Code.ACCEPTED, "ok.", friendshipAdapter.getFriendsFiltered(usuario, busqueda));
 		} catch (Exception e) {
 			return new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
 		}

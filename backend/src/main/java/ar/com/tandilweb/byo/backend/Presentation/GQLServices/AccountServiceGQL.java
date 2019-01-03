@@ -10,6 +10,8 @@ import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCardList;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
 import ar.com.tandilweb.byo.backend.Transport.UserAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
@@ -95,11 +97,23 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "ofrezco") String ofrezco,
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) throws Exception {
-
+		System.out.println(busco);
+		System.out.println(ofrezco);
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users usuario = header.getUser();
 		ResponseDTO out = new ResponseDTO();
-
+		System.out.println(usuario.getOfrezco());
+		System.out.println(usuario.getBusco());
+		if (busco.isEmpty() && usuario.getBusco() != null){
+			busco = usuario.getBusco();
+		} else  if(busco.isEmpty() && usuario.getBusco() == null) {
+			busco = "Nada en Particular";
+		}
+		if (ofrezco.isEmpty() && usuario.getOfrezco() != null){
+			ofrezco = usuario.getOfrezco();
+		} else  if(ofrezco.isEmpty() && usuario.getOfrezco() == null) {
+			ofrezco = "Nada en Particular";
+		}
 		if(header.isTrusted()) {
 			return userAdapter.setBuscoYofrezco(busco, ofrezco, usuario);
 		} else {
@@ -108,6 +122,7 @@ public class AccountServiceGQL {
 		}
 		return out;
 	}
+	
 
 	@GraphQLQuery(name = "AccountService_rememberEmail")
 	public RememberEmailOut rememberEmail(@GraphQLArgument(name = "email") String email) {
