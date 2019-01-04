@@ -132,13 +132,13 @@ public class UserAdapter {
 		return out;
 	}
 
-	public ResponseDTO setBuscoYofrezco(String busco, String ofrezco, Users usuario) throws Exception {
+	public ResponseDTO setBuscoYofrezco(String busco, String ofrezco,boolean completoByO, Users usuario) throws Exception {
 		ResponseDTO out = new ResponseDTO();
 		out.code = ResponseDTO.Code.OK;
 		out.description = "Busco y ofrezco seteados";
 		usuario.setBusco(busco);
 		usuario.setOfrezco(ofrezco);
-		usuario.setCompletoByO(true);
+		usuario.setCompletoByO(completoByO);
 		userRepository.update(usuario);
 		return out;
 	}

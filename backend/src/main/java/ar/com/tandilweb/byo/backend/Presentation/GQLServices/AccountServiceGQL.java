@@ -97,25 +97,35 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "ofrezco") String ofrezco,
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) throws Exception {
-		System.out.println(busco);
-		System.out.println(ofrezco);
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users usuario = header.getUser();
 		ResponseDTO out = new ResponseDTO();
-		System.out.println(usuario.getOfrezco());
-		System.out.println(usuario.getBusco());
-		if (busco.isEmpty() && usuario.getBusco() != null){
+		boolean completoByO = true;
+		boolean comp = false;
+		if (busco.isEmpty()){
 			busco = usuario.getBusco();
-		} else  if(busco.isEmpty() && usuario.getBusco() == null) {
+			comp = true;
+
+		}   if(comp && usuario.getBusco().equals("Nada en Particular")) {
+			completoByO = false;
+			System.out.println("primer if +"+ completoByO);
 			busco = "Nada en Particular";
+			
 		}
-		if (ofrezco.isEmpty() && usuario.getOfrezco() != null){
+			comp = false;
+		if (ofrezco.equals("") ){
 			ofrezco = usuario.getOfrezco();
-		} else  if(ofrezco.isEmpty() && usuario.getOfrezco() == null) {
+			comp = true;
+		}   if(comp && usuario.getOfrezco().equals("Nada en Particular")) {
+			completoByO = false;
+			System.out.println("segundo if +"+ completoByO);
 			ofrezco = "Nada en Particular";
+			
 		}
+		comp = false;
 		if(header.isTrusted()) {
-			return userAdapter.setBuscoYofrezco(busco, ofrezco, usuario);
+		System.out.println(completoByO);
+			return userAdapter.setBuscoYofrezco(busco, ofrezco, completoByO, usuario);
 		} else {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error datos no seteados";
