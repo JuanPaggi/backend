@@ -8,6 +8,7 @@ public class Friendships {
 	private boolean accepted;
 	private Calendar date_emitted;
 	private boolean viewed;
+	private boolean rejected;
 	
 	public Friendships() {}
 	
@@ -59,6 +60,14 @@ public class Friendships {
 
 	public void setViewed(boolean is_viewed) {
 		this.viewed = is_viewed;
+	}
+	
+	public boolean is_rejected() {
+		return this.rejected;
+	}
+
+	public void setRejected(boolean is_rejected) {
+		this.rejected = is_rejected;
 	}
 	
 }

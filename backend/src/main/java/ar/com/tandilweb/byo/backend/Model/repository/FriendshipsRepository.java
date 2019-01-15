@@ -31,7 +31,7 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 		try {
 	    	return jdbcTemplate.query(
 	                "SELECT * FROM friendships " + 
-	                "WHERE (id_user_requester = ? OR id_user_target = ?) AND is_accepted = false", 
+	                "WHERE (id_user_requester = ? OR id_user_target = ?) AND is_accepted = false AND is_rejected = false", 
 	                new FriendshipsRowMapper(),
 	                new Object[]{ id, id });
 		} catch(DataAccessException e) {
@@ -89,6 +89,18 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 			
 		} catch(DataAccessException e) {
 			logger.error("FriendshipsRepository :: create", e);
+		}
+	}
+	
+	public void reject(long id_requester, long id_target) {
+		try {
+			final String sql = "UPDATE friendships"
+							+ " SET is_rejected = true"
+							+ " WHERE id_user_requester = ? AND id_user_target = ?";
+			jdbcTemplate.update(sql,new Object[]{ id_requester, id_target });
+			
+		} catch(DataAccessException e) {
+			logger.error("FriendshipsRepository :: reject", e);
 		}
 	}
 	

@@ -88,14 +88,16 @@ public class FriendshipsAdapter {
 					n.tipo = Types.SOLICITUD_ENVIADA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_target());
 					n.date_emitted = fs.getDate_emitted().getTimeInMillis();
+	
 				} else {
 					n.tipo = Types.SOLICITUD_RECIBIDA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_requester());
 					n.date_emitted = fs.getDate_emitted().getTimeInMillis();
+
 				}
 				notifys.add(n);
 			}
-		
+	
 		return notifys;
 	}
 
@@ -122,6 +124,19 @@ public class FriendshipsAdapter {
 			friendShipRepository.delete(idRequester, idTarget);
 			out.code = Code.OK;
 			out.description = "Solicitud cancelada";
+		} catch (Exception e) {
+			out.code = Code.BAD_REQUEST;
+			out.description = "No existe peticion de amistad";
+		}
+		return out;
+	}
+	
+	public ResponseDTO rejectFriendRequest(long idRequester, long idTarget) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			friendShipRepository.reject(idTarget, idRequester);
+			out.code = Code.OK;
+			out.description = "Solicitud rechazada";
 		} catch (Exception e) {
 			out.code = Code.BAD_REQUEST;
 			out.description = "No existe peticion de amistad";

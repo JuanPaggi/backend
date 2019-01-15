@@ -8,7 +8,7 @@ public class Notification {
 	
 	public enum Types {
 		SOLICITUD_ENVIADA,
-		SOLICITUD_RECIBIDA
+		SOLICITUD_RECIBIDA,
 	}
 	
 	@GraphQLQuery(name = "tipo")
