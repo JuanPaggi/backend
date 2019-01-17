@@ -108,7 +108,6 @@ public class AccountServiceGQL {
 
 		}   if(comp && usuario.getBusco().equals("Nada en Particular")) {
 			completoByO = false;
-			System.out.println("primer if +"+ completoByO);
 			busco = "Nada en Particular";
 			
 		}
@@ -118,13 +117,11 @@ public class AccountServiceGQL {
 			comp = true;
 		}   if(comp && usuario.getOfrezco().equals("Nada en Particular")) {
 			completoByO = false;
-			System.out.println("segundo if +"+ completoByO);
 			ofrezco = "Nada en Particular";
 			
 		}
 		comp = false;
 		if(header.isTrusted()) {
-		System.out.println(completoByO);
 			return userAdapter.setBuscoYofrezco(busco, ofrezco, completoByO, usuario);
 		} else {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
