@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import java.util.List;
+import java.text.SimpleDateFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +31,7 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 		try {
 	    	return jdbcTemplate.query(
 	                "SELECT * FROM friendships " + 
-	                "WHERE (id_user_requester = ? OR id_user_target = ?) AND is_accepted = false", 
+	                "WHERE (id_user_requester = ? OR id_user_target = ?) AND is_accepted = false AND is_rejected = false", 
 	                new FriendshipsRowMapper(),
 	                new Object[]{ id, id });
 		} catch(DataAccessException e) {
@@ -90,6 +92,18 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 		}
 	}
 	
+	public void reject(long id_requester, long id_target) {
+		try {
+			final String sql = "UPDATE friendships"
+							+ " SET is_rejected = true"
+							+ " WHERE id_user_requester = ? AND id_user_target = ?";
+			jdbcTemplate.update(sql,new Object[]{ id_requester, id_target });
+			
+		} catch(DataAccessException e) {
+			logger.error("FriendshipsRepository :: reject", e);
+		}
+	}
+	
 	@Override
 	public Friendships create(final Friendships record) {
 		try {
@@ -104,7 +118,7 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 	                ps.setLong(1, record.getId_user_requester());
 	                ps.setLong(2, record.getId_user_target());
 	                ps.setBoolean(3, record.is_accepted());
-	                ps.setDate(4, new java.sql.Date(record.getDate_emitted().getTime()));
+	                ps.setDate(4, new java.sql.Date(record.getDate_emitted().getTimeInMillis()));
 	                ps.setBoolean(5, record.is_viewed());
 	                return ps;
 	            }
@@ -155,13 +169,15 @@ public class FriendshipsRepository extends BaseRepository<Friendships, Long>{
 	}
 	
 	class FriendshipsRowMapper implements RowMapper<Friendships>
-	{
+	{  
 	    public Friendships mapRow(ResultSet rs, int rowNum) throws SQLException {
+	    	Calendar cal = Calendar.getInstance();
+	    	cal.setTime(rs.getTimestamp("date_emitted"));
 	        return new Friendships(
 	        		rs.getLong("id_user_requester"),
 	        		rs.getLong("id_user_target"),
 	        		rs.getBoolean("is_accepted"),
-	        		rs.getDate("date_emitted"),
+	        		cal,
 	        		rs.getBoolean("is_viewed")
 	        		);
 	    }

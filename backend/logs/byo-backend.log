@@ -980,3 +980,54 @@
 2019-01-04 14:08:05.233 DEBUG 9167 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
 2019-01-04 14:08:07.861 DEBUG 9167 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
 2019-01-04 14:08:08.098 DEBUG 9167 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-01-16 21:00:23.907 ERROR 2673 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-01-16 21:00:24.009  INFO 2673 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 2673 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-01-16 21:00:24.010 DEBUG 2673 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-01-16 21:00:24.012  INFO 2673 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-01-16 21:00:24.124  INFO 2673 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@9225652: startup date [Wed Jan 16 21:00:24 ART 2019]; root of context hierarchy
+2019-01-16 21:00:25.864  INFO 2673 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$1f10667e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-01-16 21:00:26.147 ERROR 2673 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-01-16 21:00:26.238  INFO 2673 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-01-16 21:00:26.259 ERROR 2673 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-01-16 21:00:26.272  INFO 2673 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-01-16 21:00:26.272  INFO 2673 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-01-16 21:00:26.282 ERROR 2673 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-01-16 21:00:26.374  INFO 2673 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-01-16 21:00:33.139  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-01-16 21:00:33.140  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-01-16 21:00:33.140  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-01-16 21:00:33.140  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-01-16 21:00:33.140  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-01-16 21:00:33.140  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-01-16 21:00:33.140  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-01-16 21:00:33.141  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-01-16 21:00:33.141  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-01-16 21:00:33.141  INFO 2673 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-01-16 21:00:33.168 DEBUG 2673 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-01-16 21:00:33.649  INFO 2673 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-01-16 21:00:33.659  INFO 2673 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-01-16 21:00:33.780  INFO 2673 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-01-16 21:00:33.872  INFO 2673 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-01-16 21:00:34.754  INFO 2673 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-01-16 21:00:35.084  INFO 2673 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-01-16 21:00:35.095  INFO 2673 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-01-16 21:00:35.096  INFO 2673 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-01-16 21:00:35.097  INFO 2673 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-01-16 21:00:35.154  INFO 2673 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-01-16 21:00:35.166  INFO 2673 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-01-16 21:00:35.167  INFO 2673 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-01-16 21:00:35.167  INFO 2673 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-01-16 21:00:35.168  INFO 2673 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-01-16 21:00:35.204  INFO 2673 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-01-16 21:00:35.208  INFO 2673 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 11.595 seconds (JVM running for 11.937)
+2019-01-16 21:00:41.932  INFO 2673 --- [Thread-6] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@9225652: startup date [Wed Jan 16 21:00:24 ART 2019]; root of context hierarchy
+2019-01-16 21:00:41.936  INFO 2673 --- [Thread-6] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
+2019-01-16 21:00:41.944  INFO 2673 --- [Thread-6] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2019-01-16 21:00:41.945  INFO 2673 --- [Thread-6] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-01-16 21:00:41.946  INFO 2673 --- [Thread-6] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2019-01-16 21:00:41.951  INFO 2673 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
+2019-01-16 21:00:41.954  INFO 2673 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
+2019-01-16 21:00:41.967  INFO 2673 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
+2019-01-16 21:00:41.968  INFO 2673 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
+2019-01-16 21:00:41.969  INFO 2673 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
+2019-01-16 21:00:41.970  INFO 2673 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'

@@ -1,6 +1,7 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification.Types;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
+import ch.qos.logback.core.net.SyslogOutputStream;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 
 public class FriendshipsAdapter {
@@ -44,7 +46,7 @@ public class FriendshipsAdapter {
 		Users target = userRepository.findById(idtar);
 		if (requester != null && target != null) {
 			Friendships fs = new Friendships();
-			fs.setDate_emitted(new Date());
+			fs.setDate_emitted(Calendar.getInstance());
 			fs.setId_user_requester(idreq);
 			fs.setId_user_target(idtar);
 			Friendships record = friendShipRepository.create(fs);
@@ -61,7 +63,6 @@ public class FriendshipsAdapter {
 								+ requester.getLast_name());
 				payload.setNotification(notificacion);
 				payload.setTarget(target.getFcmToken());
-				System.out.println(payload.getBody());
 				firebaseCloudMessaging.send(payload);
 
 				out.code = Code.CREATED;
@@ -86,12 +87,17 @@ public class FriendshipsAdapter {
 				if (fs.getId_user_requester() == me.getId_user()) {
 					n.tipo = Types.SOLICITUD_ENVIADA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_target());
+					n.date_emitted = fs.getDate_emitted().getTimeInMillis();
+	
 				} else {
 					n.tipo = Types.SOLICITUD_RECIBIDA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_requester());
+					n.date_emitted = fs.getDate_emitted().getTimeInMillis();
+
 				}
 				notifys.add(n);
 			}
+	
 		return notifys;
 	}
 
@@ -118,6 +124,19 @@ public class FriendshipsAdapter {
 			friendShipRepository.delete(idRequester, idTarget);
 			out.code = Code.OK;
 			out.description = "Solicitud cancelada";
+		} catch (Exception e) {
+			out.code = Code.BAD_REQUEST;
+			out.description = "No existe peticion de amistad";
+		}
+		return out;
+	}
+	
+	public ResponseDTO rejectFriendRequest(long idRequester, long idTarget) {
+		ResponseDTO out = new ResponseDTO();
+		try {
+			friendShipRepository.reject(idTarget, idRequester);
+			out.code = Code.OK;
+			out.description = "Solicitud rechazada";
 		} catch (Exception e) {
 			out.code = Code.BAD_REQUEST;
 			out.description = "No existe peticion de amistad";

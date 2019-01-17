@@ -47,7 +47,7 @@ public class InteractionServiceGQL {
 			e.printStackTrace();
 			ResponseDTO out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
-			out.description = "Error el servidor a fallado";
+			out.description = "Error el servidor ha fallado";
 			return out;
 		}
 	}
@@ -64,7 +64,7 @@ public class InteractionServiceGQL {
 			e.printStackTrace();
 			ResponseDTO out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
-			out.description = "Error el servidor a fallado";
+			out.description = "Error el servidor ha fallado";
 			return out;
 		}
 	}
@@ -81,7 +81,25 @@ public class InteractionServiceGQL {
 			e.printStackTrace();
 			ResponseDTO out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
-			out.description = "Error el servidor a fallado";
+			out.description = "Error el servidor ha fallado";
+			return out;
+		}
+	}
+	@GraphQLQuery(name = "InteractionService_rejectFriendRequest")
+	public ResponseDTO rejectFriendRequest(
+			@GraphQLArgument(name = "id_user_target") long idtar,
+			@GraphQLEnvironment ResolutionEnvironment environment){
+		
+		try {
+			
+			JWTHeader header = JWTHeader.getHeader(environment);
+			Users usuario = header.getUser();
+			return friendshipAdapter.rejectFriendRequest(usuario.getId_user(), idtar);
+		} catch (Exception e) {
+			e.printStackTrace();
+			ResponseDTO out = new LoginOut();
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Error el servidor ha fallado";
 			return out;
 		}
 	}
