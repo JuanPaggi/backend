@@ -107,7 +107,7 @@ public class UserAdapter {
 			usuario.setFailedLoginAttempts(0);
 			usuario.setUnLockAccountCode("");
 			usuario.setFcmToken(fcmToken);
-			if(picture_url == null || picture_url == "") picture_url = "../../assets/imgs/user.png";
+			if(picture_url == null || picture_url == "") picture_url = "../../assets/imgs/nav-logo.png";
 			usuario.setPicture_url(picture_url);
 			userRepository.create(usuario);
 			
@@ -232,6 +232,7 @@ public class UserAdapter {
 		out.description = "latitud: "+latitude+" longitud: "+longitude+ " usuarioid: "+usuario.getId_user();
 		return out;
 	}
+	
 	
 	public VCard getVCardByUser(long userID) {
 		Users user = userRepository.findById(userID);
