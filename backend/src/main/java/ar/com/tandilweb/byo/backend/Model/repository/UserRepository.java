@@ -172,6 +172,36 @@ public class UserRepository extends BaseRepository<Users, Long>{
 		}
 	}
 
+	public void changePassword(Users record) {
+		
+		try {
+			final String sql = "UPDATE users SET password = ?  WHERE id_user = ?";
+			jdbcTemplate.update(sql, new Object[] {
+					record.getPassword(),
+					record.getId_user()
+			});
+		} catch(DataAccessException e) {
+			logger.debug("UserRepository :: update", e);
+		}
+	}
+
+	
+
+
+
+public void updatePhoto(Users record) {
+	logger.debug("USER ID:: " + record.getId_user() + " URL :: " + record.getPicture_url());
+	try {
+		final String sql = "UPDATE users SET picture_url = ?  WHERE id_user = ?";
+		jdbcTemplate.update(sql, new Object[] {
+				record.getPicture_url(),
+				record.getId_user()
+		});
+	} catch(DataAccessException e) {
+		logger.debug("UserRepository :: update", e);
+	}
+}
+
 }
 
 class UserRowMapper implements RowMapper<Users>
