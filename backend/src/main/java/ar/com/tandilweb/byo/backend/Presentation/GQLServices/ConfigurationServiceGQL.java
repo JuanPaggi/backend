@@ -61,10 +61,28 @@ public class ConfigurationServiceGQL {
 			user.setFirstName(usuario.getFirstName());
 			user.setLastName(usuario.getLast_name());
 			user.setPicture_url(usuario.getPicture_url());
+			user.setBusco(usuario.getBusco());
+			user.setOfrezco(usuario.getOfrezco());
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		}
+	} 
+	@GraphQLQuery(name = "ConfigurationService_changeByo")
+	public ResponseDTO changeByo(
+			@GraphQLArgument(name = "busco") String busco,
+			@GraphQLArgument(name = "ofrezco") String ofrezco,
+			@GraphQLEnvironment ResolutionEnvironment environment){
+		JWTHeader header = JWTHeader.getHeader(environment);
+		try {
+			return configurationAdapter.changeByo(busco, ofrezco, header.getUser());
+		} catch(Exception e) {
+			e.printStackTrace();
+			LoginOut out = new LoginOut();
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Error, no se ha podido guardar la información";
+			return out;
 		}
 	}
 	

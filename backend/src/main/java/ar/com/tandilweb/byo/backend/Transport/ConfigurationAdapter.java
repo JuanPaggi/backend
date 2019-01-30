@@ -52,6 +52,21 @@ public class ConfigurationAdapter {
 		}
 		return out;
 	}
+
+
+	public ResponseDTO changeByo(String busco, String ofrezco, Users usuario) {
+		LoginOut out = new LoginOut();
+		usuario.setBusco(busco);
+		usuario.setOfrezco(ofrezco);
+		try {
+			this.userRepository.changeByo(usuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.code = ResponseDTO.Code.BAD_REQUEST;
+			out.description = "Error de servidor";
+		}
+		return out;
+	}
 	
 	
 }

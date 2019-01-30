@@ -160,6 +160,15 @@ public class UserRepository extends BaseRepository<Users, Long> {
 		}
 	}
 
+	public void changeByo(Users record) {
+		try {
+			final String sql = "UPDATE users SET busco = ?, ofrezco = ?  WHERE id_user = ?";
+			jdbcTemplate.update(sql, new Object[] { record.getBusco(),record.getOfrezco(), record.getId_user() });
+		} catch (DataAccessException e) {
+			logger.debug("UserRepository :: changeByo", e);
+		}
+	}
+
 }
 
 class UserRowMapper implements RowMapper<Users> {
