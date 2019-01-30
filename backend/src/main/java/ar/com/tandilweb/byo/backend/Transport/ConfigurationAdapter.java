@@ -17,7 +17,7 @@ import ar.com.tandilweb.byo.backend.utils.CryptDES;
 
 public class ConfigurationAdapter {
 
-	private static final Logger log = LoggerFactory.getLogger(UserAdapter.class);
+	private static final Logger log = LoggerFactory.getLogger(ConfigurationAdapter.class);
 	
 	@Autowired
 	private UserRepository userRepository;
@@ -42,10 +42,8 @@ public class ConfigurationAdapter {
 
 	public ResponseDTO changePassword(String password, Users usuario) {
 		LoginOut out = new LoginOut();
-		log.debug("PASSWORD CA:::: " + password);
 		try {
 			usuario.setPassword(CryptDES.getSaltedHash(password));
-			log.debug("PASSWORD CA ENCRIPTADA:::: " + usuario.getPassword());
 			this.userRepository.changePassword(usuario);
 		} catch (Exception e) {
 			e.printStackTrace();

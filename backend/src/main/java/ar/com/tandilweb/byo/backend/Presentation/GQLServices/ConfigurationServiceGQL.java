@@ -57,7 +57,6 @@ public class ConfigurationServiceGQL {
 			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
 			Users usuario = header.getUser();
 			Users user = new Users();
-			log.debug("FOTO URL : : :" + usuario.getPicture_url());
 			user.setEmail(usuario.getEmail());
 			user.setFirstName(usuario.getFirstName());
 			user.setLastName(usuario.getLast_name());
@@ -90,7 +89,6 @@ public class ConfigurationServiceGQL {
 			@GraphQLArgument(name = "password") String password,
 			@GraphQLEnvironment ResolutionEnvironment environment){
 		JWTHeader header = JWTHeader.getHeader(environment);
-		log.debug("PASSWORD CS:::: " + password);
 		try {
 			return configurationAdapter.changePassword(password, header.getUser());
 		} catch(Exception e) {
