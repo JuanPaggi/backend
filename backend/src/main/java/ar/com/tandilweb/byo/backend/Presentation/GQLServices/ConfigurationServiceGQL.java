@@ -80,7 +80,6 @@ public class ConfigurationServiceGQL {
 		} catch(Exception e) {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();
-			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error, no se ha podido guardar la información";
 			return out;
 		}
@@ -112,7 +111,6 @@ public class ConfigurationServiceGQL {
 		} catch(Exception e) {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();
-			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error, no se ha podido cambiar el password";
 			return out;
 		}
