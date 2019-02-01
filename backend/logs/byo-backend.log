@@ -1,133 +1,730 @@
-2019-01-31 09:30:25.481 ERROR 3876 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
-2019-01-31 09:30:27.155  INFO 3876 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 3876 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
-2019-01-31 09:30:27.156 DEBUG 3876 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
-2019-01-31 09:30:27.172  INFO 3876 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
-2019-01-31 09:30:27.413  INFO 3876 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@4278284b: startup date [Thu Jan 31 09:30:27 ART 2019]; root of context hierarchy
-2019-01-31 09:30:31.532  INFO 3876 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2af3f8f3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-01-31 09:30:31.992 ERROR 3876 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:30:32.351  INFO 3876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
-2019-01-31 09:30:32.394 ERROR 3876 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:30:32.411  INFO 3876 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-01-31 09:30:32.411  INFO 3876 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
-2019-01-31 09:30:32.431 ERROR 3876 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:30:33.088  INFO 3876 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-01-31 09:30:43.811  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2019-01-31 09:30:43.813  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2019-01-31 09:30:43.813  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2019-01-31 09:30:43.813  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2019-01-31 09:30:43.814  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
-2019-01-31 09:30:43.814  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
-2019-01-31 09:30:43.814  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
-2019-01-31 09:30:43.814  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2019-01-31 09:30:43.815  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2019-01-31 09:30:43.816  INFO 3876 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2019-01-31 09:30:43.938 DEBUG 3876 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
-2019-01-31 09:30:45.564  INFO 3876 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
-2019-01-31 09:30:45.577  INFO 3876 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
-2019-01-31 09:30:45.816  INFO 3876 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
-2019-01-31 09:30:46.015  INFO 3876 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
-2019-01-31 09:30:50.080  INFO 3876 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
-2019-01-31 09:30:51.713  INFO 3876 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2019-01-31 09:30:51.739  INFO 3876 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-01-31 09:30:51.741  INFO 3876 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-01-31 09:30:51.745  INFO 3876 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2019-01-31 09:30:51.942  INFO 3876 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2019-01-31 09:30:51.986  INFO 3876 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
-2019-01-31 09:30:51.987  INFO 3876 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2019-01-31 09:30:51.988  INFO 3876 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
-2019-01-31 09:30:51.989  INFO 3876 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2019-01-31 09:30:52.336  INFO 3876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
-2019-01-31 09:30:52.349  INFO 3876 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 27.83 seconds (JVM running for 29.465)
-2019-01-31 09:30:57.469 ERROR 3876 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:30:57.493  INFO 3876 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2019-01-31 09:30:57.575 DEBUG 3876 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:30:57.576 DEBUG 3876 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:30:57.788 DEBUG 3876 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:30:57.788 DEBUG 3876 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:30:59.043 DEBUG 3876 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-01-31 09:31:02.795 DEBUG 3876 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:31:03.076 ERROR 3876 --- [http-nio-38674-exec-3] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:31:03.078 DEBUG 3876 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:31:05.754 DEBUG 3876 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:31:06.594 DEBUG 3876 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:31:07.506  INFO 3876 --- [http-nio-38674-exec-3] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
-2019-01-31 09:31:07.607  INFO 3876 --- [http-nio-38674-exec-3] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
-2019-01-31 09:31:21.451 DEBUG 3876 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:31:21.455 DEBUG 3876 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:31:22.559 DEBUG 3876 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:31:22.822 DEBUG 3876 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:31:47.334 DEBUG 3876 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:31:47.341 DEBUG 3876 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:31:48.484 DEBUG 3876 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:31:48.665 DEBUG 3876 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:31:57.985 DEBUG 3876 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:31:59.090 DEBUG 3876 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:31:59.617  WARN 3876 --- [http-nio-38674-exec-9] g.e.SimpleDataFetcherExceptionHandler    : Exception while fetching data (/ConfigurationService_changePassword/code) : null
+2019-02-01 15:24:15.109 ERROR 4437 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 15:24:15.690  INFO 4437 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 4437 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 15:24:15.692 DEBUG 4437 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 15:24:15.705  INFO 4437 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 15:24:15.900  INFO 4437 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@21be3395: startup date [Fri Feb 01 15:24:15 ART 2019]; root of context hierarchy
+2019-02-01 15:24:20.609  INFO 4437 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$662eb5e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-01 15:24:21.633 ERROR 4437 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:24:22.088  INFO 4437 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-02-01 15:24:22.174 ERROR 4437 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:24:22.244  INFO 4437 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-01 15:24:22.245  INFO 4437 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-01 15:24:22.299 ERROR 4437 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:24:23.220  INFO 4437 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-01 15:24:31.702  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-01 15:24:31.715  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-01 15:24:31.716  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-01 15:24:31.716  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-01 15:24:31.717  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-02-01 15:24:31.717  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-02-01 15:24:31.717  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-02-01 15:24:31.717  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-01 15:24:31.717  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-01 15:24:31.717  INFO 4437 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-01 15:24:31.826 DEBUG 4437 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-02-01 15:24:33.630  INFO 4437 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-02-01 15:24:33.653  INFO 4437 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-02-01 15:24:33.826  INFO 4437 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-02-01 15:24:34.098  INFO 4437 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-02-01 15:24:37.929  INFO 4437 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-02-01 15:24:39.086  INFO 4437 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-02-01 15:24:39.120  INFO 4437 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 15:24:39.123  INFO 4437 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 15:24:39.125  INFO 4437 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-01 15:24:39.343  INFO 4437 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-01 15:24:39.392  INFO 4437 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-02-01 15:24:39.393  INFO 4437 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-02-01 15:24:39.394  INFO 4437 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-02-01 15:24:39.398  INFO 4437 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-02-01 15:24:39.628  INFO 4437 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-02-01 15:24:39.641  INFO 4437 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 25.623 seconds (JVM running for 27.348)
+2019-02-01 15:25:49.750 ERROR 4437 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:25:49.771  INFO 4437 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-01 15:25:49.831 DEBUG 4437 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:25:49.832 DEBUG 4437 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:25:49.939 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:25:49.939 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:25:50.591 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 15:25:54.521 DEBUG 4437 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:25:55.632 ERROR 4437 --- [http-nio-38674-exec-4] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:25:55.635 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:25:55.698 DEBUG 4437 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:25:58.579 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:26:59.247 DEBUG 4437 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:26:59.247 DEBUG 4437 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:27:00.622  INFO 4437 --- [http-nio-38674-exec-6] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-02-01 15:27:00.719  INFO 4437 --- [http-nio-38674-exec-6] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2019-02-01 15:27:01.471 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:27:01.905 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:27:13.519 DEBUG 4437 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:27:13.947 DEBUG 4437 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:27:14.453 DEBUG 4437 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:27:14.882 DEBUG 4437 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:27:15.819 DEBUG 4437 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:27:16.246 DEBUG 4437 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:32:09.730 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:32:10.164 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:35:29.183 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:35:29.219 DEBUG 4437 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:35:29.620 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:35:29.841 DEBUG 4437 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:35:32.315 DEBUG 4437 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:35:32.748 DEBUG 4437 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:35:33.368 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:35:33.800 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:06.607 DEBUG 4437 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:06.607 DEBUG 4437 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:06.635 DEBUG 4437 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:06.636 DEBUG 4437 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:06.710 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:06.711 DEBUG 4437 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:07.148 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:07.384 DEBUG 4437 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:10.313 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:10.749 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:17.938 DEBUG 4437 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:18.374 DEBUG 4437 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:19.452 DEBUG 4437 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:19.882 DEBUG 4437 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:21.957 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:22.385 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:22.526 DEBUG 4437 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:23.032 DEBUG 4437 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:23.956 DEBUG 4437 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:24.389 DEBUG 4437 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:24.882 DEBUG 4437 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:25.315 DEBUG 4437 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:28.432 DEBUG 4437 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:28.863 DEBUG 4437 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:40:29.750 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:40:30.185 DEBUG 4437 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:41:54.406 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:41:54.837 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:41:56.124 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : Fcm sending payload
+2019-02-01 15:41:56.801 DEBUG 4437 --- [http-nio-38674-exec-4] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : -FCM Response-
+2019-02-01 15:41:56.959 DEBUG 4437 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:41:57.393 DEBUG 4437 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:45:12.781 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:45:13.215 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:45:14.501 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : Fcm sending payload
+2019-02-01 15:45:14.813 DEBUG 4437 --- [http-nio-38674-exec-7] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : -FCM Response-
+2019-02-01 15:45:14.901 DEBUG 4437 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:45:15.334 DEBUG 4437 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:51:38.808 ERROR 9817 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 15:51:39.041  INFO 9817 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 9817 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 15:51:39.042 DEBUG 9817 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 15:51:39.046  INFO 9817 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 15:51:39.199  INFO 9817 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@20b2475a: startup date [Fri Feb 01 15:51:39 ART 2019]; root of context hierarchy
+2019-02-01 15:51:43.134  INFO 9817 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4be82b3d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-01 15:51:43.976 ERROR 9817 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:51:44.256  INFO 9817 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-02-01 15:51:44.306 ERROR 9817 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:51:44.350  INFO 9817 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-01 15:51:44.351  INFO 9817 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-01 15:51:44.386 ERROR 9817 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:51:44.666  INFO 9817 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-01 15:51:52.317  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-01 15:51:52.320  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-01 15:51:52.320  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-01 15:51:52.320  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-01 15:51:52.321  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-02-01 15:51:52.321  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-02-01 15:51:52.321  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-02-01 15:51:52.321  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-01 15:51:52.322  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-01 15:51:52.322  INFO 9817 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-01 15:51:52.365 DEBUG 9817 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-02-01 15:51:53.506  INFO 9817 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-02-01 15:51:53.529  INFO 9817 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-02-01 15:51:53.652  INFO 9817 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-02-01 15:51:53.787  INFO 9817 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-02-01 15:51:55.924  INFO 9817 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-02-01 15:51:56.755  INFO 9817 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-02-01 15:51:56.784  INFO 9817 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 15:51:56.786  INFO 9817 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 15:51:56.787  INFO 9817 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-01 15:51:56.904  INFO 9817 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-01 15:51:56.921  INFO 9817 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-02-01 15:51:56.921  INFO 9817 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-02-01 15:51:56.921  INFO 9817 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-02-01 15:51:56.922  INFO 9817 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-02-01 15:51:57.044  INFO 9817 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-02-01 15:51:57.055  INFO 9817 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 18.745 seconds (JVM running for 19.696)
+2019-02-01 15:52:45.364 ERROR 9817 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:52:45.379  INFO 9817 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-01 15:52:45.447 DEBUG 9817 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:52:45.449 DEBUG 9817 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:52:45.523 DEBUG 9817 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:52:45.524 DEBUG 9817 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:52:46.052 DEBUG 9817 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 15:52:49.936 DEBUG 9817 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:52:50.967 ERROR 9817 --- [http-nio-38674-exec-3] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:52:50.970 DEBUG 9817 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:52:53.663 DEBUG 9817 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:52:54.510 DEBUG 9817 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:03.352 DEBUG 9817 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:04.469 DEBUG 9817 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:06.514 DEBUG 9817 --- [http-nio-38674-exec-5] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : Fcm sending payload
+2019-02-01 15:54:07.082 DEBUG 9817 --- [http-nio-38674-exec-5] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : -FCM Response-
+2019-02-01 15:54:07.197 DEBUG 9817 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:08.308 DEBUG 9817 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:09.206  INFO 9817 --- [http-nio-38674-exec-7] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-02-01 15:54:09.289  INFO 9817 --- [http-nio-38674-exec-7] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2019-02-01 15:54:11.271 DEBUG 9817 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:11.272 DEBUG 9817 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:11.280 DEBUG 9817 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:11.281 DEBUG 9817 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:11.291 DEBUG 9817 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 15:54:12.310 DEBUG 9817 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:12.681 ERROR 9817 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:54:12.682 DEBUG 9817 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:15.568 DEBUG 9817 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:15.573 DEBUG 9817 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:21.578 DEBUG 9817 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:21.585 ERROR 9817 --- [http-nio-38674-exec-4] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:54:21.586 DEBUG 9817 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:22.207 DEBUG 9817 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:24.985 DEBUG 9817 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:27.627 DEBUG 9817 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:28.466 DEBUG 9817 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:29.915 DEBUG 9817 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:30.410 DEBUG 9817 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:33.017 DEBUG 9817 --- [http-nio-38674-exec-6] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : Fcm sending payload
+2019-02-01 15:54:33.324 DEBUG 9817 --- [http-nio-38674-exec-6] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : -FCM Response-
+2019-02-01 15:54:33.349 DEBUG 9817 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:33.886 DEBUG 9817 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:54:34.321 DEBUG 9817 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:54:34.767 DEBUG 9817 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:55:34.567 ERROR 10632 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 15:55:34.700  INFO 10632 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 10632 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 15:55:34.704 DEBUG 10632 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 15:55:34.707  INFO 10632 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 15:55:34.825  INFO 10632 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5717c37: startup date [Fri Feb 01 15:55:34 ART 2019]; root of context hierarchy
+2019-02-01 15:55:36.702  INFO 10632 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5db3dac8] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-01 15:55:37.063 ERROR 10632 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:55:37.193  INFO 10632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-02-01 15:55:37.211 ERROR 10632 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:55:37.223  INFO 10632 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-01 15:55:37.224  INFO 10632 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-01 15:55:37.234 ERROR 10632 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:55:37.361  INFO 10632 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-01 15:55:44.083  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-01 15:55:44.084  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-01 15:55:44.085  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-01 15:55:44.085  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-01 15:55:44.085  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-02-01 15:55:44.086  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-02-01 15:55:44.086  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-02-01 15:55:44.086  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-01 15:55:44.087  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-01 15:55:44.087  INFO 10632 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-01 15:55:44.133 DEBUG 10632 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-02-01 15:55:44.789  INFO 10632 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-02-01 15:55:44.800  INFO 10632 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-02-01 15:55:44.883  INFO 10632 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-02-01 15:55:44.960  INFO 10632 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-02-01 15:55:46.176  INFO 10632 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-02-01 15:55:46.630  INFO 10632 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-02-01 15:55:46.649  INFO 10632 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 15:55:46.650  INFO 10632 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 15:55:46.651  INFO 10632 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-01 15:55:46.723  INFO 10632 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-01 15:55:46.734  INFO 10632 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-02-01 15:55:46.735  INFO 10632 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-02-01 15:55:46.735  INFO 10632 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-02-01 15:55:46.736  INFO 10632 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-02-01 15:55:46.780  INFO 10632 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-02-01 15:55:46.784  INFO 10632 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 12.544 seconds (JVM running for 13.046)
+2019-02-01 15:56:09.389 ERROR 10632 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:56:09.400  INFO 10632 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-01 15:56:09.443 DEBUG 10632 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:56:10.639 DEBUG 10632 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:56:12.456 DEBUG 10632 --- [http-nio-38674-exec-1] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : Fcm sending payload
+2019-02-01 15:56:12.932 DEBUG 10632 --- [http-nio-38674-exec-1] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : -FCM Response-
+2019-02-01 15:56:13.038 DEBUG 10632 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:56:13.702 DEBUG 10632 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:56:14.585  INFO 10632 --- [http-nio-38674-exec-3] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-02-01 15:56:14.641  INFO 10632 --- [http-nio-38674-exec-3] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2019-02-01 15:56:37.303 DEBUG 10632 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:56:37.303 DEBUG 10632 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:56:37.313 DEBUG 10632 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 15:56:38.310 DEBUG 10632 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:56:38.744 DEBUG 10632 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:56:53.030 DEBUG 10632 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:56:53.037 ERROR 10632 --- [http-nio-38674-exec-6] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 15:56:53.038 DEBUG 10632 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:56:55.839 DEBUG 10632 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:56:56.062 DEBUG 10632 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:57:01.888 DEBUG 10632 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:57:02.315 DEBUG 10632 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:57:04.744 DEBUG 10632 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:57:05.173 DEBUG 10632 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:57:07.553 DEBUG 10632 --- [http-nio-38674-exec-8] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : Fcm sending payload
+2019-02-01 15:57:08.067 DEBUG 10632 --- [http-nio-38674-exec-8] a.c.t.b.b.G.fcm.FirebaseCloudMessaging   : -FCM Response-
+2019-02-01 15:57:08.086 DEBUG 10632 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:57:08.516 DEBUG 10632 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 15:57:13.043 DEBUG 10632 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 15:57:13.471 DEBUG 10632 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:09:06.575 ERROR 14148 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 16:09:06.927  INFO 14148 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 14148 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 16:09:06.928 DEBUG 14148 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 16:09:06.932  INFO 14148 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 16:09:07.126  INFO 14148 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@43015c69: startup date [Fri Feb 01 16:09:07 ART 2019]; root of context hierarchy
+2019-02-01 16:09:11.401  INFO 14148 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$69684147] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-01 16:09:12.319 ERROR 14148 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 16:09:12.494  INFO 14148 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-02-01 16:09:12.537 ERROR 14148 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 16:09:12.570  INFO 14148 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-01 16:09:12.570  INFO 14148 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-01 16:09:12.596 ERROR 14148 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 16:09:12.842  INFO 14148 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-01 16:09:21.127  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-01 16:09:21.128  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-01 16:09:21.128  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-01 16:09:21.128  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-01 16:09:21.129  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-02-01 16:09:21.129  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-02-01 16:09:21.129  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-02-01 16:09:21.129  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-01 16:09:21.129  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-01 16:09:21.129  INFO 14148 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-01 16:09:21.187 DEBUG 14148 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-02-01 16:09:22.318  INFO 14148 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-02-01 16:09:22.334  INFO 14148 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-02-01 16:09:22.469  INFO 14148 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-02-01 16:09:22.605  INFO 14148 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-02-01 16:09:24.371  INFO 14148 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-02-01 16:09:25.091  INFO 14148 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-02-01 16:09:25.113  INFO 14148 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 16:09:25.115  INFO 14148 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 16:09:25.116  INFO 14148 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-01 16:09:25.239  INFO 14148 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-01 16:09:25.253  INFO 14148 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-02-01 16:09:25.254  INFO 14148 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-02-01 16:09:25.254  INFO 14148 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-02-01 16:09:25.255  INFO 14148 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-02-01 16:09:25.318  INFO 14148 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-02-01 16:09:25.324  INFO 14148 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 19.356 seconds (JVM running for 20.077)
+2019-02-01 16:09:44.324 ERROR 14148 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 16:09:44.341  INFO 14148 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-01 16:09:44.393 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:09:44.394 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:09:44.471 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:09:45.239 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:10:04.985 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:10:05.416 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:10:07.674 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:10:07.682 ERROR 14148 --- [http-nio-38674-exec-4] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 16:10:07.683 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:10:08.821 ERROR 14148 --- [http-nio-38674-exec-5] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 16:10:08.822 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:10:13.136 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:10:13.138 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:10:13.363 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:10:18.993 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:10:18.994 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:10:19.013 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 16:10:20.010 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:10:20.439 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:10:26.415 DEBUG 14148 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:10:26.420 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:10:26.847 DEBUG 14148 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:10:27.067 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:12.729 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:12.730 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:12.739 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:12.740 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:12.750 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 16:11:13.708 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:14.138 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:15.519 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:15.525 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:15.950 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:16.173 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:56.750 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:56.751 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:56.774 DEBUG 14148 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:56.774 DEBUG 14148 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:56.840 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:56.841 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:11:57.946 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:11:58.384 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:14:12.686 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:14:13.117 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:23:05.636 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:23:05.637 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:23:05.645 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:23:05.645 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:23:05.653 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 16:23:06.611 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:23:07.041 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:23:09.356 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:23:09.362 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:23:09.786 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:23:10.005 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:24:12.679 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:24:13.109 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:24:13.992  INFO 14148 --- [http-nio-38674-exec-6] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-02-01 16:24:14.114  INFO 14148 --- [http-nio-38674-exec-6] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2019-02-01 16:40:42.539 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:40:42.549 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:40:42.561 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:40:42.561 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:40:42.572 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 16:40:43.592 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:40:44.026 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:40:45.966 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:40:45.992 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:40:46.397 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:40:46.618 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:43:39.327 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:43:39.327 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:43:39.331 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 16:43:40.280 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:43:40.712 DEBUG 14148 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:43:42.730 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:43:42.745 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:43:43.161 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:43:43.378 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:43:59.171 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:43:59.184 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:43:59.600 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:43:59.823 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:44:12.686 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:44:13.117 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:46:50.434 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:46:50.434 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:46:50.455 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:46:51.562 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:53:41.133 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:53:41.143 DEBUG 14148 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:53:41.156 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:53:41.156 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:53:41.160 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 16:53:42.103 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:53:42.533 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:53:45.951 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:53:46.382 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:53:46.903 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:53:47.333 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:53:47.400 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:53:47.980 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:54:01.882 DEBUG 14148 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:54:01.892 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:54:02.314 DEBUG 14148 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:54:02.535 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 16:54:12.643 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 16:54:13.073 DEBUG 14148 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:02:50.523 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:02:50.524 DEBUG 14148 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:02:50.553 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:02:50.553 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:02:50.557 DEBUG 14148 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 17:02:54.255 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:02:55.359 DEBUG 14148 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:02:55.782 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:02:56.903 DEBUG 14148 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:03:03.134 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:03:03.171 DEBUG 14148 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:03:04.321 DEBUG 14148 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:03:04.754 DEBUG 14148 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:04:02.194 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:04:03.299 DEBUG 14148 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:09:27.125  INFO 14148 --- [Thread-6] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@43015c69: startup date [Fri Feb 01 16:09:07 ART 2019]; root of context hierarchy
+2019-02-01 17:09:36.221 ERROR 23521 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 17:09:36.591  INFO 23521 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 23521 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 17:09:36.593 DEBUG 23521 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 17:09:36.611  INFO 23521 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 17:09:36.853  INFO 23521 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2415fc55: startup date [Fri Feb 01 17:09:36 ART 2019]; root of context hierarchy
+2019-02-01 17:09:41.275  INFO 23521 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$692a7d0e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-01 17:09:41.936 ERROR 23521 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:09:42.238  INFO 23521 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-02-01 17:09:42.283 ERROR 23521 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:09:42.326  INFO 23521 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-01 17:09:42.328  INFO 23521 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-01 17:09:42.349 ERROR 23521 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:09:42.603  INFO 23521 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-01 17:09:50.447  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-01 17:09:50.449  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-01 17:09:50.450  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-01 17:09:50.450  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-01 17:09:50.450  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-02-01 17:09:50.450  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-02-01 17:09:50.451  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-02-01 17:09:50.451  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-01 17:09:50.451  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-01 17:09:50.451  INFO 23521 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-01 17:09:50.524 DEBUG 23521 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-02-01 17:09:51.899  INFO 23521 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-02-01 17:09:51.920  INFO 23521 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-02-01 17:09:52.121  INFO 23521 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-02-01 17:09:52.327  INFO 23521 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-02-01 17:09:54.243  INFO 23521 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-02-01 17:09:54.961  INFO 23521 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-02-01 17:09:54.988  INFO 23521 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 17:09:54.990  INFO 23521 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 17:09:54.993  INFO 23521 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-01 17:09:55.144  INFO 23521 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-01 17:09:55.165  INFO 23521 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-02-01 17:09:55.166  INFO 23521 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-02-01 17:09:55.167  INFO 23521 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-02-01 17:09:55.168  INFO 23521 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-02-01 17:09:55.315  INFO 23521 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-02-01 17:09:55.323  INFO 23521 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 20.043 seconds (JVM running for 22.255)
+2019-02-01 17:23:36.540 ERROR 24024 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 17:23:36.703  INFO 24024 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 24024 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 17:23:36.704 DEBUG 24024 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 17:23:36.708  INFO 24024 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 17:23:36.854  INFO 24024 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@34bde49d: startup date [Fri Feb 01 17:23:36 ART 2019]; root of context hierarchy
+2019-02-01 17:23:40.795  INFO 24024 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$8ab49a5a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-01 17:23:41.382 ERROR 24024 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:23:41.589  INFO 24024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-02-01 17:23:41.624 ERROR 24024 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:23:41.649  INFO 24024 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-01 17:23:41.650  INFO 24024 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-01 17:23:41.675 ERROR 24024 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:23:41.842  INFO 24024 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-01 17:23:49.854  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-01 17:23:49.855  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-01 17:23:49.855  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-01 17:23:49.856  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-01 17:23:49.856  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-02-01 17:23:49.856  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-02-01 17:23:49.856  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-02-01 17:23:49.856  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-01 17:23:49.857  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-01 17:23:49.857  INFO 24024 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-01 17:23:49.916 DEBUG 24024 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-02-01 17:23:51.491  INFO 24024 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-02-01 17:23:51.526  INFO 24024 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-02-01 17:23:51.664  INFO 24024 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-02-01 17:23:51.775  INFO 24024 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-02-01 17:23:53.489  INFO 24024 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-02-01 17:23:54.281  INFO 24024 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-02-01 17:23:54.313  INFO 24024 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 17:23:54.315  INFO 24024 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 17:23:54.321  INFO 24024 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-01 17:23:54.441  INFO 24024 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-01 17:23:54.468  INFO 24024 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-02-01 17:23:54.469  INFO 24024 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-02-01 17:23:54.471  INFO 24024 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-02-01 17:23:54.476  INFO 24024 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-02-01 17:23:54.569  INFO 24024 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-02-01 17:23:54.584  INFO 24024 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 18.556 seconds (JVM running for 19.481)
+2019-02-01 17:26:43.465 ERROR 24024 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:26:43.495  INFO 24024 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-01 17:26:43.662 DEBUG 24024 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:26:43.662 DEBUG 24024 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:26:43.917 DEBUG 24024 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:26:43.917 DEBUG 24024 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:26:44.711 DEBUG 24024 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 17:26:46.201 DEBUG 24024 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:26:46.816 DEBUG 24024 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:26:51.996 ERROR 24024 --- [http-nio-38674-exec-5] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:26:52.001 DEBUG 24024 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:26:52.004 DEBUG 24024 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:26:54.678 DEBUG 24024 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:26:54.902 DEBUG 24024 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:26:59.891 DEBUG 24024 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:26:59.900 DEBUG 24024 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:27:00.321 DEBUG 24024 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:27:00.545 DEBUG 24024 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:27:58.125 DEBUG 24024 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:27:58.126 DEBUG 24024 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:27:58.158 DEBUG 24024 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 17:27:59.257 DEBUG 24024 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:27:59.689 DEBUG 24024 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:28:04.442 DEBUG 24024 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:28:04.458 DEBUG 24024 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:28:04.878 DEBUG 24024 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:28:05.100 DEBUG 24024 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:28:13.142 DEBUG 24024 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:28:13.157 DEBUG 24024 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:28:13.575 DEBUG 24024 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:28:13.795 DEBUG 24024 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:28:50.510 ERROR 24261 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 17:28:50.676  INFO 24261 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 24261 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 17:28:50.677 DEBUG 24261 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 17:28:50.681  INFO 24261 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 17:28:50.836  INFO 24261 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@791d1f8b: startup date [Fri Feb 01 17:28:50 ART 2019]; root of context hierarchy
+2019-02-01 17:28:54.537  INFO 24261 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$4a1b7357] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-01 17:28:55.099 ERROR 24261 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:28:55.286  INFO 24261 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-02-01 17:28:55.330 ERROR 24261 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:28:55.350  INFO 24261 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-01 17:28:55.350  INFO 24261 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-01 17:28:55.377 ERROR 24261 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:28:55.613  INFO 24261 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-01 17:29:03.318  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-01 17:29:03.319  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-01 17:29:03.330  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-01 17:29:03.337  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-01 17:29:03.337  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-02-01 17:29:03.337  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-02-01 17:29:03.337  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-02-01 17:29:03.338  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-01 17:29:03.338  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-01 17:29:03.339  INFO 24261 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-01 17:29:03.396 DEBUG 24261 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-02-01 17:29:04.551  INFO 24261 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-02-01 17:29:04.590  INFO 24261 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-02-01 17:29:04.833  INFO 24261 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-02-01 17:29:05.060  INFO 24261 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-02-01 17:29:06.928  INFO 24261 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-02-01 17:29:07.627  INFO 24261 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-02-01 17:29:07.656  INFO 24261 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 17:29:07.657  INFO 24261 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 17:29:07.659  INFO 24261 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-01 17:29:07.781  INFO 24261 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-01 17:29:07.799  INFO 24261 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-02-01 17:29:07.800  INFO 24261 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-02-01 17:29:07.800  INFO 24261 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-02-01 17:29:07.801  INFO 24261 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-02-01 17:29:07.887  INFO 24261 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-02-01 17:29:07.896  INFO 24261 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 17.837 seconds (JVM running for 19.185)
+2019-02-01 17:29:16.154 ERROR 24261 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:29:16.172  INFO 24261 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-01 17:29:16.221 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:29:16.221 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:29:16.770 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 17:29:17.947 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:29:18.322 ERROR 24261 --- [http-nio-38674-exec-2] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:29:18.324 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:29:21.005 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:29:21.233 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:29:22.136  INFO 24261 --- [http-nio-38674-exec-2] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-02-01 17:29:22.441  INFO 24261 --- [http-nio-38674-exec-2] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2019-02-01 17:29:43.511 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:29:43.526 ERROR 24261 --- [http-nio-38674-exec-5] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 17:29:43.528 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:29:46.410 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:29:46.411 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:29:53.057 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:29:53.077 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:29:53.715 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:29:53.715 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:46:06.626 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:46:06.627 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:46:06.648 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:46:06.648 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:46:06.656 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 17:46:07.586 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:46:07.984 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:46:08.186 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:46:08.399 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:46:30.359 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:46:30.371 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:46:31.056 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:46:31.063 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:46:40.215 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:46:40.222 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:46:40.632 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:46:41.252 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:49:42.903 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:49:42.904 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 17:49:42.920 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 17:49:43.848 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 17:49:44.256 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:01:17.196 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:01:17.196 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:01:17.208 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:01:17.619 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:01:47.846 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:01:47.859 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:01:48.266 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:01:48.487 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:02:00.750 DEBUG 24261 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:02:00.762 DEBUG 24261 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:02:01.183 DEBUG 24261 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:02:01.391 DEBUG 24261 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:05:44.547 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:05:44.555 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:05:44.562 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:05:44.562 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:05:44.568 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 18:05:45.495 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:05:45.899 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:06:08.973 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:06:08.991 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:06:09.411 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:06:09.625 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:06:16.680 DEBUG 24261 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:06:16.688 DEBUG 24261 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:06:17.087 DEBUG 24261 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:06:17.306 DEBUG 24261 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:12:08.300 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:12:08.734 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:07.173 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:07.291 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:07.385 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:07.386 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:07.393 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 18:17:08.308 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:08.743 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:12.063 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:12.074 DEBUG 24261 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:12.483 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:12.699 DEBUG 24261 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:13.710 DEBUG 24261 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:14.169 DEBUG 24261 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:18.209 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:18.219 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:18.630 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:18.853 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:48.943 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:48.943 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:48.947 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 18:17:49.864 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:50.298 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:52.019 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:52.032 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:52.440 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:52.656 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:58.238 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:58.248 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:17:58.673 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:17:58.881 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:28:40.193 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:28:40.194 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:28:40.206 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:28:40.617 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:13.733 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:13.745 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:13.837 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 18:38:14.786 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:15.196 DEBUG 24261 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:40.162 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:40.178 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:40.197 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:40.782 DEBUG 24261 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:40.822 DEBUG 24261 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:41.188 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:42.094 DEBUG 24261 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:42.094 DEBUG 24261 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:42.100 DEBUG 24261 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:42.101 DEBUG 24261 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:42.133 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:42.222 ERROR 24261 --- [http-nio-38674-exec-3] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 18:38:42.281 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:45.465 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:46.361 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:50.491 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:50.502 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:38:51.128 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:38:51.534 DEBUG 24261 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:46:41.844 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:46:41.844 DEBUG 24261 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:46:41.860 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:46:41.860 DEBUG 24261 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:46:41.941 DEBUG 24261 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:46:41.977 DEBUG 24261 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:46:43.045 ERROR 24261 --- [http-nio-38674-exec-5] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
 
-java.lang.NullPointerException: null
-	at ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.getCodeNumber(ResponseDTO.java:34) ~[classes/:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at io.leangen.graphql.metadata.execution.MethodInvoker.execute(MethodInvoker.java:26) ~[spqr-0.9.7.jar:na]
-	at io.leangen.graphql.metadata.Resolver.resolve(Resolver.java:91) ~[spqr-0.9.7.jar:na]
-	at io.leangen.graphql.execution.OperationExecutor.execute(OperationExecutor.java:83) ~[spqr-0.9.7.jar:na]
-	at io.leangen.graphql.execution.OperationExecutor.execute(OperationExecutor.java:51) ~[spqr-0.9.7.jar:na]
-	at graphql.execution.ExecutionStrategy.fetchField(ExecutionStrategy.java:227) [graphql-java-8.0.jar:na]
-	at graphql.execution.ExecutionStrategy.resolveField(ExecutionStrategy.java:170) [graphql-java-8.0.jar:na]
-	at graphql.execution.AsyncExecutionStrategy.execute(AsyncExecutionStrategy.java:59) ~[graphql-java-8.0.jar:na]
-	at graphql.execution.ExecutionStrategy.completeValueForObject(ExecutionStrategy.java:551) [graphql-java-8.0.jar:na]
-	at graphql.execution.ExecutionStrategy.completeValue(ExecutionStrategy.java:375) [graphql-java-8.0.jar:na]
-	at graphql.execution.ExecutionStrategy.completeField(ExecutionStrategy.java:332) [graphql-java-8.0.jar:na]
-	at graphql.execution.ExecutionStrategy.lambda$resolveField$0(ExecutionStrategy.java:172) [graphql-java-8.0.jar:na]
-	at java.util.concurrent.CompletableFuture.uniComposeStage(CompletableFuture.java:981) ~[na:1.8.0_181]
-	at java.util.concurrent.CompletableFuture.thenCompose(CompletableFuture.java:2124) ~[na:1.8.0_181]
-	at graphql.execution.ExecutionStrategy.resolveField(ExecutionStrategy.java:171) [graphql-java-8.0.jar:na]
-	at graphql.execution.AsyncExecutionStrategy.execute(AsyncExecutionStrategy.java:59) ~[graphql-java-8.0.jar:na]
-	at graphql.execution.Execution.executeOperation(Execution.java:158) ~[graphql-java-8.0.jar:na]
-	at graphql.execution.Execution.execute(Execution.java:100) ~[graphql-java-8.0.jar:na]
-	at graphql.GraphQL.execute(GraphQL.java:558) ~[graphql-java-8.0.jar:na]
-	at graphql.GraphQL.parseValidateAndExecute(GraphQL.java:500) ~[graphql-java-8.0.jar:na]
-	at graphql.GraphQL.executeAsync(GraphQL.java:470) ~[graphql-java-8.0.jar:na]
-	at graphql.GraphQL.execute(GraphQL.java:401) ~[graphql-java-8.0.jar:na]
-	at io.leangen.graphql.spqr.spring.web.DefaultGraphQLController.executeJsonPost(DefaultGraphQLController.java:53) ~[graphql-spqr-spring-boot-autoconfigure-0.0.1.jar:na]
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
-	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
-	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:877) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:783) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:991) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:877) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:661) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:158) ~[spring-boot-actuator-2.0.2.RELEASE.jar:2.0.2.RELEASE]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:126) ~[spring-boot-actuator-2.0.2.RELEASE.jar:2.0.2.RELEASE]
-	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:111) ~[spring-boot-actuator-2.0.2.RELEASE.jar:2.0.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:84) ~[spring-boot-actuator-2.0.2.RELEASE.jar:2.0.2.RELEASE]
-	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at ar.com.tandilweb.byo.backend.Filters.JWT.JWTValidFilter.doFilter(JWTValidFilter.java:50) ~[classes/:na]
-	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at ar.com.tandilweb.byo.backend.Filters.JWT.JWTFilter.doFilter(JWTFilter.java:80) ~[classes/:na]
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-02-01T18:02:53-0300. Current time: 2019-02-01T18:46:42-0300
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:365) ~[jjwt-0.6.0.jar:0.6.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:458) ~[jjwt-0.6.0.jar:0.6.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:518) ~[jjwt-0.6.0.jar:0.6.0]
+	at ar.com.tandilweb.byo.backend.Filters.JWT.JWTFilter.doFilter(JWTFilter.java:67) ~[classes/:na]
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
 	at ar.com.tandilweb.byo.backend.Filters.CorsFilter.doFilter(CorsFilter.java:27) ~[classes/:na]
@@ -150,91 +747,319 @@ java.lang.NullPointerException: null
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) ~[na:1.8.0_181]
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) ~[na:1.8.0_181]
-	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
-	at java.lang.Thread.run(Thread.java:748) ~[na:1.8.0_181]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
 
-2019-01-31 09:42:51.682 ERROR 4557 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
-2019-01-31 09:42:51.847  INFO 4557 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 4557 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
-2019-01-31 09:42:51.850 DEBUG 4557 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
-2019-01-31 09:42:51.855  INFO 4557 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
-2019-01-31 09:42:52.018  INFO 4557 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6a192cfe: startup date [Thu Jan 31 09:42:52 ART 2019]; root of context hierarchy
-2019-01-31 09:42:55.762  INFO 4557 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d311b372] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-01-31 09:42:56.344 ERROR 4557 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:42:56.559  INFO 4557 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
-2019-01-31 09:42:56.599 ERROR 4557 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:42:56.637  INFO 4557 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-01-31 09:42:56.639  INFO 4557 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
-2019-01-31 09:42:56.688 ERROR 4557 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:42:57.051  INFO 4557 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-01-31 09:43:05.640  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2019-01-31 09:43:05.656  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2019-01-31 09:43:05.657  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2019-01-31 09:43:05.657  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2019-01-31 09:43:05.658  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
-2019-01-31 09:43:05.658  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
-2019-01-31 09:43:05.658  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
-2019-01-31 09:43:05.659  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2019-01-31 09:43:05.659  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2019-01-31 09:43:05.660  INFO 4557 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2019-01-31 09:43:05.702 DEBUG 4557 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
-2019-01-31 09:43:06.807  INFO 4557 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
-2019-01-31 09:43:06.829  INFO 4557 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
-2019-01-31 09:43:06.997  INFO 4557 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
-2019-01-31 09:43:07.186  INFO 4557 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
-2019-01-31 09:43:11.187  INFO 4557 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
-2019-01-31 09:43:12.881  INFO 4557 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2019-01-31 09:43:12.939  INFO 4557 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-01-31 09:43:12.941  INFO 4557 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-01-31 09:43:12.950  INFO 4557 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2019-01-31 09:43:13.231  INFO 4557 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2019-01-31 09:43:13.265  INFO 4557 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
-2019-01-31 09:43:13.267  INFO 4557 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2019-01-31 09:43:13.270  INFO 4557 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
-2019-01-31 09:43:13.278  INFO 4557 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2019-01-31 09:43:13.541  INFO 4557 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
-2019-01-31 09:43:13.562  INFO 4557 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 22.486 seconds (JVM running for 23.353)
-2019-01-31 09:43:57.102 ERROR 4557 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:43:57.118  INFO 4557 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2019-01-31 09:43:57.160 DEBUG 4557 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:43:57.160 DEBUG 4557 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:43:57.222 DEBUG 4557 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:43:57.222 DEBUG 4557 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:43:57.643 DEBUG 4557 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-01-31 09:44:01.352 DEBUG 4557 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:44:01.752 ERROR 4557 --- [http-nio-38674-exec-3] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:44:01.753 DEBUG 4557 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:44:04.393 DEBUG 4557 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:44:05.248 DEBUG 4557 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:44:06.155  INFO 4557 --- [http-nio-38674-exec-3] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
-2019-01-31 09:44:06.228  INFO 4557 --- [http-nio-38674-exec-3] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
-2019-01-31 09:44:09.759 DEBUG 4557 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:44:09.763 ERROR 4557 --- [http-nio-38674-exec-5] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-01-31 09:44:09.765 DEBUG 4557 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:44:12.841 DEBUG 4557 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:44:13.736 DEBUG 4557 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:44:19.898 DEBUG 4557 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-01-31 09:44:21.044 DEBUG 4557 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-01-31 09:45:09.645  INFO 4557 --- [Thread-6] ConfigServletWebServerApplicationContext : Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@6a192cfe: startup date [Thu Jan 31 09:42:52 ART 2019]; root of context hierarchy
-2019-01-31 09:45:09.648  INFO 4557 --- [Thread-6] o.s.c.support.DefaultLifecycleProcessor  : Stopping beans in phase 2147483647
-2019-01-31 09:45:09.649  INFO 4557 --- [Thread-6] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
-2019-01-31 09:45:09.650  INFO 4557 --- [Thread-6] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
-2019-01-31 09:45:09.650  INFO 4557 --- [Thread-6] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
-2019-01-31 09:45:09.651  INFO 4557 --- [Thread-6] o.s.j.e.a.AnnotationMBeanExporter        : Unregistering JMX-exposed beans on shutdown
-2019-01-31 09:45:09.652  INFO 4557 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'defaultSockJsTaskScheduler'
-2019-01-31 09:45:09.655  INFO 4557 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'brokerChannelExecutor'
-2019-01-31 09:45:09.667  INFO 4557 --- [Thread-6] o.s.s.c.ThreadPoolTaskScheduler          : Shutting down ExecutorService 'messageBrokerTaskScheduler'
-2019-01-31 09:45:09.668  INFO 4557 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientOutboundChannelExecutor'
-2019-01-31 09:45:09.669  INFO 4557 --- [Thread-6] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'clientInboundChannelExecutor'
+2019-02-01 18:46:43.263 ERROR 24261 --- [http-nio-38674-exec-4] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+io.jsonwebtoken.ExpiredJwtException: JWT expired at 2019-02-01T18:02:53-0300. Current time: 2019-02-01T18:46:43-0300
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:365) ~[jjwt-0.6.0.jar:0.6.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:458) ~[jjwt-0.6.0.jar:0.6.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseClaimsJws(DefaultJwtParser.java:518) ~[jjwt-0.6.0.jar:0.6.0]
+	at ar.com.tandilweb.byo.backend.Filters.JWT.JWTFilter.doFilter(JWTFilter.java:67) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at ar.com.tandilweb.byo.backend.Filters.CorsFilter.doFilter(CorsFilter.java:27) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
+
+2019-02-01 18:47:04.748 ERROR 26793 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 18:47:05.129  INFO 26793 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 26793 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 18:47:05.129 DEBUG 26793 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 18:47:05.161  INFO 26793 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 18:47:05.323  INFO 26793 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@30ee2816: startup date [Fri Feb 01 18:47:05 ART 2019]; root of context hierarchy
+2019-02-01 18:47:09.101 ERROR 26850 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-02-01 18:47:09.217  INFO 26850 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 26850 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-02-01 18:47:09.218 DEBUG 26850 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-02-01 18:47:09.220  INFO 26850 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-02-01 18:47:09.313  INFO 26850 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@5170bcf4: startup date [Fri Feb 01 18:47:09 ART 2019]; root of context hierarchy
+2019-02-01 18:47:12.148  INFO 26850 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7d26d8d5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-02-01 18:47:12.715 ERROR 26850 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 18:47:12.945  INFO 26850 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-02-01 18:47:13.020 ERROR 26850 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 18:47:13.056  INFO 26850 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-02-01 18:47:13.056  INFO 26850 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-02-01 18:47:13.082 ERROR 26850 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 18:47:13.271  INFO 26850 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-02-01 18:47:20.702  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-02-01 18:47:20.702  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-02-01 18:47:20.702  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-02-01 18:47:20.702  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-02-01 18:47:20.703  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-02-01 18:47:20.703  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-02-01 18:47:20.703  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-02-01 18:47:20.703  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-02-01 18:47:20.703  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-02-01 18:47:20.703  INFO 26850 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-02-01 18:47:20.767 DEBUG 26850 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-02-01 18:47:21.697  INFO 26850 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-02-01 18:47:21.735  INFO 26850 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-02-01 18:47:21.893  INFO 26850 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-02-01 18:47:22.059  INFO 26850 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-02-01 18:47:23.328  INFO 26850 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-02-01 18:47:23.821  INFO 26850 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-02-01 18:47:23.841  INFO 26850 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 18:47:23.842  INFO 26850 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-02-01 18:47:23.844  INFO 26850 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-02-01 18:47:23.936  INFO 26850 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-02-01 18:47:23.953  INFO 26850 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-02-01 18:47:23.954  INFO 26850 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-02-01 18:47:23.954  INFO 26850 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-02-01 18:47:23.955  INFO 26850 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-02-01 18:47:24.042  INFO 26850 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-02-01 18:47:24.048  INFO 26850 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 15.292 seconds (JVM running for 15.753)
+2019-02-01 18:47:29.310 ERROR 26850 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 18:47:29.319  INFO 26850 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-02-01 18:47:29.355 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:47:29.356 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:47:29.779 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 18:47:33.797 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:47:34.218 ERROR 26850 --- [http-nio-38674-exec-4] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 18:47:34.218 DEBUG 26850 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:47:36.895 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:47:37.743 DEBUG 26850 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:47:48.473 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:47:48.489 ERROR 26850 --- [http-nio-38674-exec-5] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-02-01 18:47:48.490 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:47:51.479 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:47:52.579 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:48:27.589 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:48:27.591 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:48:27.603 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:48:27.603 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:48:27.609 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 18:48:28.580 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:48:29.014 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:48:35.931 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:48:35.944 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:48:36.362 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:48:36.584 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:48:40.199 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:48:40.630 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:48:41.504  INFO 26850 --- [http-nio-38674-exec-1] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-02-01 18:48:41.608  INFO 26850 --- [http-nio-38674-exec-1] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2019-02-01 18:49:48.886 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:49:48.901 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:49:49.315 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:49:49.540 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:50:29.080 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:50:29.094 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:50:29.510 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:50:29.730 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:50:31.693 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:50:31.699 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:50:32.334 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:50:32.342 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:50:34.515 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:50:34.949 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:53:48.742 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:53:48.743 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:53:48.749 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 18:53:49.699 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:53:50.132 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:53:50.628 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:53:50.638 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:53:51.060 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:53:51.269 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:53:57.196 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:53:57.202 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:53:57.627 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:53:57.841 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:02.489 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:02.494 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:02.923 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:03.133 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:06.489 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:06.495 DEBUG 26850 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:06.923 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:07.137 DEBUG 26850 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:09.934 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:09.938 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:10.364 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:10.579 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:12.634 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:12.641 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:13.063 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:13.276 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:15.796 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:15.805 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:16.228 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:16.440 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:21.049 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:21.060 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:21.479 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:21.698 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:22.149 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:22.154 DEBUG 26850 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:22.987 DEBUG 26850 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:22.988 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:26.859 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:26.864 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:27.291 DEBUG 26850 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:27.501 DEBUG 26850 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:29.592 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:29.600 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:30.024 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:30.234 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:32.249 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:32.257 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:32.681 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:32.891 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:35.497 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:35.504 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:54:35.931 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:54:36.139 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:55:22.993 DEBUG 26850 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:55:23.009 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:55:24.100 DEBUG 26850 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:55:24.351 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:57:25.568 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:57:25.568 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:57:25.587 ERROR 26850 --- [http-nio-38674-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.lang.NullPointerException] with root cause
+
+java.lang.NullPointerException: null
+	at org.antlr.v4.runtime.CharStreams.fromString(CharStreams.java:222) ~[antlr4-runtime-4.7.1.jar:4.7.1]
+	at org.antlr.v4.runtime.CharStreams.fromString(CharStreams.java:212) ~[antlr4-runtime-4.7.1.jar:4.7.1]
+	at graphql.parser.Parser.parseDocument(Parser.java:21) ~[graphql-java-8.0.jar:na]
+	at graphql.GraphQL.parse(GraphQL.java:529) ~[graphql-java-8.0.jar:na]
+	at graphql.GraphQL.parseAndValidate(GraphQL.java:505) ~[graphql-java-8.0.jar:na]
+	at graphql.GraphQL.lambda$parseValidateAndExecute$3(GraphQL.java:494) ~[graphql-java-8.0.jar:na]
+	at graphql.execution.preparsed.NoOpPreparsedDocumentProvider.get(NoOpPreparsedDocumentProvider.java:11) ~[graphql-java-8.0.jar:na]
+	at graphql.GraphQL.parseValidateAndExecute(GraphQL.java:490) ~[graphql-java-8.0.jar:na]
+	at graphql.GraphQL.executeAsync(GraphQL.java:470) ~[graphql-java-8.0.jar:na]
+	at graphql.GraphQL.execute(GraphQL.java:401) ~[graphql-java-8.0.jar:na]
+	at io.leangen.graphql.spqr.spring.web.DefaultGraphQLController.executeGet(DefaultGraphQLController.java:118) ~[graphql-spqr-spring-boot-autoconfigure-0.0.1.jar:na]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:1.8.0_181]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:1.8.0_181]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:1.8.0_181]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[na:1.8.0_181]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:209) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:136) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:877) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:783) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:991) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:925) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:974) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:866) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:851) ~[spring-webmvc-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:52) ~[tomcat-embed-websocket-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:158) ~[spring-boot-actuator-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.filterAndRecordMetrics(WebMvcMetricsFilter.java:126) ~[spring-boot-actuator-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.boot.actuate.metrics.web.servlet.WebMvcMetricsFilter.doFilterInternal(WebMvcMetricsFilter.java:111) ~[spring-boot-actuator-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.boot.actuate.web.trace.servlet.HttpTraceFilter.doFilterInternal(HttpTraceFilter.java:84) ~[spring-boot-actuator-2.0.2.RELEASE.jar:2.0.2.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at ar.com.tandilweb.byo.backend.Filters.JWT.JWTValidFilter.doFilter(JWTValidFilter.java:56) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at ar.com.tandilweb.byo.backend.Filters.JWT.JWTFilter.doFilter(JWTFilter.java:58) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at ar.com.tandilweb.byo.backend.Filters.CorsFilter.doFilter(CorsFilter.java:27) ~[classes/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.filter.HttpPutFormContentFilter.doFilterInternal(HttpPutFormContentFilter.java:109) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:81) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.0.6.RELEASE.jar:5.0.6.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:198) ~[tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:496) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:140) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:81) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:803) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:790) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1468) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [na:1.8.0_181]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [na:1.8.0_181]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-8.5.31.jar:8.5.31]
+	at java.lang.Thread.run(Thread.java:748) [na:1.8.0_181]
+
+2019-02-01 18:59:13.492 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:59:13.493 DEBUG 26850 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:59:13.528 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:59:13.529 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:59:13.536 DEBUG 26850 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-02-01 18:59:14.577 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:59:15.005 DEBUG 26850 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:59:22.697 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:59:22.743 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:59:23.127 DEBUG 26850 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:59:23.346 DEBUG 26850 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:59:35.129 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:59:35.172 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-02-01 18:59:35.565 DEBUG 26850 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-02-01 18:59:35.821 DEBUG 26850 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT

@@ -73,7 +73,6 @@ public class ChatHandler {
 		
 		ClientData cd = userService.getClient(msg.userID);
 		if (cd != null && cd.socketID.equals(headerAccessor.getSessionId()) && msg.targetID != null) {
-			
 			Mensajes mensaje = new Mensajes();
 			mensaje.fecha = new Date();
 			SimpleDateFormat dt = new SimpleDateFormat("HH:mm"); 
@@ -92,7 +91,6 @@ public class ChatHandler {
 			if(cdTarget != null) {
 				// enviamos el mensaje por el sistema de chat
 				userService.sendToSessID("/chatService/data", cdTarget.socketID, mensaje);
-			} else {
 				// enviamos notificacion
 				Users target = userRepository.findById(mensaje.id_target);
 				Users sender = userRepository.findById(mensaje.id_sender);
@@ -101,10 +99,12 @@ public class ChatHandler {
 				List<String> rids = new ArrayList<String>();
 				rids.add(target.getFcmToken());
 				FCMNotify notificacion = new FCMNotify("Mensaje recibido",
-						"Recibiste un mensaje de " + sender.getFirst_name());
+						"Recibiste un mensaje de " + sender.getFirst_name() + " " + sender.getLast_name());
 				payload.setNotification(notificacion);
 				payload.setTarget(target.getFcmToken());
 				firebaseCloudMessaging.send(payload);
+			} else {
+		
 			}
 			return mensaje;
 		}
