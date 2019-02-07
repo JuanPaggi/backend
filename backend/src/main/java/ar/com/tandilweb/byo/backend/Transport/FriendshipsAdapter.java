@@ -50,7 +50,7 @@ public class FriendshipsAdapter {
 			fs.setId_user_requester(idreq);
 			fs.setId_user_target(idtar);
 			Friendships record = friendShipRepository.create(fs);
-			if (record != null) {
+			if (record != null && target.getReceiveNotifications()) {
 				// enviar notificacion
 				HttpFCMPayload payload = new HttpFCMPayload();
 				firebaseCloudMessaging.setServerKey(serverKey);
@@ -64,7 +64,6 @@ public class FriendshipsAdapter {
 				payload.setNotification(notificacion);
 				payload.setTarget(target.getFcmToken());
 				firebaseCloudMessaging.send(payload);
-
 				out.code = Code.CREATED;
 				out.description = "Asociación exitosa";
 			} else {
@@ -111,19 +110,22 @@ public class FriendshipsAdapter {
 		if (friendship != null) {
 			friendship.setIs_accepted(true);
 			friendShipRepository.update(friendship);
-			// enviar notificacion
-			HttpFCMPayload payload = new HttpFCMPayload();
-			firebaseCloudMessaging.setServerKey(serverKey);
-			List<String> rids = new ArrayList<String>();
-			rids.add(requester.getFcmToken());
-			// payload.setRegistration_ids(rids);
-			// payload.setTopic('generalTopic');
-			FCMNotify notificacion = new FCMNotify("Solicitud aceptada",
-					target.getFirst_name() + " "
-							+ target.getLast_name() + " aceptó su solicitud de contacto. " );
-			payload.setNotification(notificacion);
-			payload.setTarget(requester.getFcmToken());
-			firebaseCloudMessaging.send(payload);
+			if(requester.getReceiveNotifications()) {
+				// enviar notificacion
+				HttpFCMPayload payload = new HttpFCMPayload();
+				firebaseCloudMessaging.setServerKey(serverKey);
+				List<String> rids = new ArrayList<String>();
+				rids.add(requester.getFcmToken());
+				// payload.setRegistration_ids(rids);
+				// payload.setTopic('generalTopic');
+				FCMNotify notificacion = new FCMNotify("Solicitud aceptada",
+						target.getFirst_name() + " "
+								+ target.getLast_name() + " aceptó su solicitud de contacto. " );
+				payload.setNotification(notificacion);
+				payload.setTarget(requester.getFcmToken());
+				firebaseCloudMessaging.send(payload);
+			}
+			
 			out.code = Code.OK;
 			out.description = "Solicitud aceptada";
 		} else {

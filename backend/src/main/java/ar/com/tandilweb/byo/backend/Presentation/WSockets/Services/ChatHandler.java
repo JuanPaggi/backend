@@ -91,9 +91,11 @@ public class ChatHandler {
 			if(cdTarget != null) {
 				// enviamos el mensaje por el sistema de chat
 				userService.sendToSessID("/chatService/data", cdTarget.socketID, mensaje);
-				// enviamos notificacion
 				Users target = userRepository.findById(mensaje.id_target);
 				Users sender = userRepository.findById(mensaje.id_sender);
+				if(target.getReceiveNotifications()) {
+				// enviamos notificacion
+			
 				HttpFCMPayload payload = new HttpFCMPayload();
 				firebaseCloudMessaging.setServerKey(serverKey);
 				List<String> rids = new ArrayList<String>();
@@ -103,6 +105,7 @@ public class ChatHandler {
 				payload.setNotification(notificacion);
 				payload.setTarget(target.getFcmToken());
 				firebaseCloudMessaging.send(payload);
+				}
 			} else {
 		
 			}
