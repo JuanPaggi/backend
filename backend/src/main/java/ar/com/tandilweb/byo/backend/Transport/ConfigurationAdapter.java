@@ -40,18 +40,7 @@ public class ConfigurationAdapter {
 	}
 
 
-	public ResponseDTO changePassword(String password, Users usuario) {
-		LoginOut out = new LoginOut();
-		try {
-			usuario.setPassword(CryptDES.getSaltedHash(password));
-			this.userRepository.changePassword(usuario);
-		} catch (Exception e) {
-			e.printStackTrace();
-			out.code = ResponseDTO.Code.BAD_REQUEST;
-			out.description = "Error de servidor";
-		}
-		return out;
-	}
+
 
 
 	public ResponseDTO changeByo(String busco, String ofrezco, Users usuario) {
@@ -60,6 +49,32 @@ public class ConfigurationAdapter {
 		usuario.setOfrezco(ofrezco);
 		try {
 			this.userRepository.changeByo(usuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.code = ResponseDTO.Code.BAD_REQUEST;
+			out.description = "Error de servidor";
+		}
+		return out;
+	}
+	
+	public ResponseDTO changeReceiveNotifications(boolean receive_notifications, Users usuario) {
+		LoginOut out = new LoginOut();
+		try {
+			usuario.setReceiveNotifications(receive_notifications);
+			this.userRepository.changeReceiveNotifications(usuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.code = ResponseDTO.Code.BAD_REQUEST;
+			out.description = "Error de servidor";
+		}
+		return out;
+	}
+	
+	public ResponseDTO changePassword(String password, Users usuario) {
+		LoginOut out = new LoginOut();
+		try {
+			usuario.setPassword(CryptDES.getSaltedHash(password));
+			this.userRepository.changePassword(usuario);
 		} catch (Exception e) {
 			e.printStackTrace();
 			out.code = ResponseDTO.Code.BAD_REQUEST;

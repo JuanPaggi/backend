@@ -27,8 +27,10 @@ public class ResponseDTO {
 	}
 	@GraphQLQuery(name = "codeName")
 	public Code code;
+	
 	@GraphQLQuery(name = "description")
 	public String description;
+	
 	@GraphQLQuery(name = "code")
 	public int getCodeNumber() {
 		return this.code.getCodeNumber();

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
@@ -30,6 +31,8 @@ public class ConfigurationServiceGQL {
 	private UserAdapter userAdapter;
 	@Autowired
 	private ConfigurationAdapter configurationAdapter;
+	@Autowired
+	private UserRepository userRepository;
 	
 	@GraphQLQuery(name = "ConfigurationService_getBuscoYOfrezco")
 	public VCard getBuscoYOfrezco(
@@ -63,6 +66,7 @@ public class ConfigurationServiceGQL {
 			user.setPicture_url(usuario.getPicture_url());
 			user.setBusco(usuario.getBusco());
 			user.setOfrezco(usuario.getOfrezco());
+			user.setReceiveNotifications(usuario.getReceiveNotifications());
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -86,6 +90,7 @@ public class ConfigurationServiceGQL {
 	}
 	
 	
+	
 	@GraphQLQuery(name = "ConfigurationService_updatePhoto")
 	public ResponseDTO updatePhoto(
 			@GraphQLArgument(name = "picture_url") String pic_url,
@@ -101,6 +106,25 @@ public class ConfigurationServiceGQL {
 			return out;
 		}
 	}
+	
+
+	
+	@GraphQLQuery(name = "ConfigurationService_changeReceiveNotifications")
+	public ResponseDTO changeReceiveNotifications(
+			@GraphQLEnvironment ResolutionEnvironment environment){
+		JWTHeader header = JWTHeader.getHeader(environment);
+		LoginOut out = new LoginOut();
+		Users usuario = header.getUser();
+		try {
+		 return configurationAdapter.changeReceiveNotifications(!usuario.getReceiveNotifications(),usuario);
+		} catch(Exception e) {
+			e.printStackTrace();
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Error, no se ha podido guardar la información";
+			return out;
+		}
+	}
+	
 	@GraphQLQuery(name = "ConfigurationService_changePassword")
 	public ResponseDTO changePassword(
 			@GraphQLArgument(name = "password") String password,

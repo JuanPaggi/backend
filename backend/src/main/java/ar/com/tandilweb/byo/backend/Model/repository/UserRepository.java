@@ -71,7 +71,7 @@ public class UserRepository extends BaseRepository<Users, Long> {
 
 	public Users findByemail(String email) {
 		try {
-			return jdbcTemplate.queryForObject("select * from users where email=?", new Object[] { email },
+			return jdbcTemplate.queryForObject("select * from desa_byo.users where email=?", new Object[] { email },
 					new UserRowMapper());
 		} catch (DataAccessException e) {
 			return null;
@@ -91,8 +91,8 @@ public class UserRepository extends BaseRepository<Users, Long> {
 	public Users create(final Users record) {
 		try {
 			final String sql = "INSERT INTO users" + "(first_name, last_name, email, password, last_login, signup_date,"
-					+ " linkedin_id, busco, ofrezco, picture_url, is_premium, salt_jwt, completoByO,"
-					+ " locked, failed_login_attempts, unlock_account_code, fcm_token) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+					+ " linkedin_id, busco, ofrezco, picture_url, is_premium, salt_jwt, completoByO, receive_notifications,"
+					+ " locked, failed_login_attempts, unlock_account_code, fcm_token) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 			KeyHolder holder = new GeneratedKeyHolder();
 
 			jdbcTemplate.update(new PreparedStatementCreator() {
@@ -111,10 +111,11 @@ public class UserRepository extends BaseRepository<Users, Long> {
 					ps.setBoolean(11, record.isPremium());
 					ps.setString(12, record.getSalt_jwt());
 					ps.setBoolean(13, record.isCompletoByO());
-					ps.setBoolean(14, record.isLocked());
-					ps.setInt(15, record.getFailedLoginAttempts());
-					ps.setString(16, record.getUnLockAccountCode());
-					ps.setString(17, record.getFcmToken());
+					ps.setBoolean(14, record.getReceiveNotifications());
+					ps.setBoolean(15, record.isLocked());
+					ps.setInt(16, record.getFailedLoginAttempts());
+					ps.setString(17, record.getUnLockAccountCode());
+					ps.setString(18, record.getFcmToken());
 					return ps;
 				}
 			}, holder);
@@ -130,26 +131,19 @@ public class UserRepository extends BaseRepository<Users, Long> {
 	public void update(Users record) {
 		try {
 			final String sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, password = ?, last_login = ?, signup_date = ?,"
-					+ " linkedin_id = ?, busco = ?, ofrezco = ?, picture_url = ?, is_premium = ?, salt_jwt = ?, completoByO = ?, locked = ?,"
+					+ " linkedin_id = ?, busco = ?, ofrezco = ?, picture_url = ?, is_premium = ?, salt_jwt = ?, completoByO = ?, receive_notifications = ?, locked = ?,"
 					+ " failed_login_attempts = ?, unlock_account_code = ?, fcm_token = ? WHERE id_user = ?";
 			jdbcTemplate.update(sql, new Object[] { record.getFirst_name(), record.getLast_name(), record.getEmail(),
 					record.getPassword(), record.getLast_login(), record.getSignup_date(), record.getLinkedin_id(),
 					record.getBusco(), record.getOfrezco(), record.getPicture_url(), record.isPremium(),
-					record.getSalt_jwt(), record.isCompletoByO(), record.isLocked(), record.getFailedLoginAttempts(),
+					record.getSalt_jwt(), record.isCompletoByO(),record.getReceiveNotifications(), record.isLocked(), record.getFailedLoginAttempts(),
 					record.getUnLockAccountCode(), record.getFcmToken(), record.getId_user() });
 		} catch (DataAccessException e) {
 			logger.debug("UserRepository :: update", e);
 		}
 	}
 
-	public void changePassword(Users record) {
-		try {
-			final String sql = "UPDATE users SET password = ?  WHERE id_user = ?";
-			jdbcTemplate.update(sql, new Object[] { record.getPassword(), record.getId_user() });
-		} catch (DataAccessException e) {
-			logger.debug("UserRepository :: changePassword", e);
-		}
-	}
+
 
 	public void updatePhoto(Users record) {
 		try {
@@ -168,6 +162,22 @@ public class UserRepository extends BaseRepository<Users, Long> {
 			logger.debug("UserRepository :: changeByo", e);
 		}
 	}
+	public void changeReceiveNotifications(Users record) {
+		try {
+			final String sql = "UPDATE users SET receive_notifications = ?  WHERE id_user = ?";
+			jdbcTemplate.update(sql, new Object[] { record.getReceiveNotifications(), record.getId_user() });
+		} catch (DataAccessException e) {
+			logger.debug("UserRepository :: changeReceiveNotifications", e);
+		}
+	}
+	public void changePassword(Users record) {
+		try {
+			final String sql = "UPDATE users SET password = ?  WHERE id_user = ?";
+			jdbcTemplate.update(sql, new Object[] { record.getPassword(), record.getId_user() });
+		} catch (DataAccessException e) {
+			logger.debug("UserRepository :: changePassword", e);
+		}
+	}
 
 }
 
@@ -177,7 +187,7 @@ class UserRowMapper implements RowMapper<Users> {
 				rs.getString("email"), rs.getString("password"), rs.getDate("last_login"), rs.getDate("signup_date"),
 				rs.getString("linkedin_id"), rs.getString("busco"), rs.getString("ofrezco"),
 				rs.getString("picture_url"), rs.getBoolean("is_premium"), rs.getString("salt_jwt"),
-				rs.getBoolean("completoByO"), rs.getBoolean("locked"), rs.getInt("failed_login_attempts"),
+				rs.getBoolean("completoByO"),rs.getBoolean("receive_notifications"), rs.getBoolean("locked"), rs.getInt("failed_login_attempts"),
 				rs.getString("unlock_account_code"), rs.getString("fcm_token"));
 	}
 }

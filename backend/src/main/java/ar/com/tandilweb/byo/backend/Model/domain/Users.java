@@ -21,6 +21,7 @@ public class Users {
 	private Date last_login;
 	@NotNull
 	private Date signup_date;
+	
 
 	private String linkedinId;
 
@@ -36,6 +37,8 @@ public class Users {
 	private String salt_jwt;
 
 	private boolean completoByO;
+	
+	private boolean receive_notifications;
 
 	private boolean locked;
 
@@ -54,7 +57,7 @@ public class Users {
 	
 	public Users(Long id_user, String firstName, String lastName, String email, String password, Date last_login, Date signup_date,
 			String linkedinId, String busco, String ofrezco, String picture_url, boolean premium, String salt_jwt,
-			boolean completoByO, boolean locked, int failedLoginAttempts, String unLockAccountCode, String fcmToken) {
+			boolean completoByO, boolean receive_notifications, boolean locked, int failedLoginAttempts, String unLockAccountCode, String fcmToken) {
 		this.id_user = id_user;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -69,6 +72,7 @@ public class Users {
 		this.premium = premium;
 		this.salt_jwt = salt_jwt;
 		this.completoByO = completoByO;
+		this.receive_notifications = receive_notifications;
 		this.locked = locked;
 		this.failedLoginAttempts = failedLoginAttempts;
 		this.unLockAccountCode = unLockAccountCode;
@@ -145,6 +149,9 @@ public class Users {
 	public boolean isCompletoByO() {
 		return completoByO;
 	}
+	public boolean getReceiveNotifications() {
+		return this.receive_notifications;
+	}
 	public boolean isLocked() {
 		return locked;
 	}
@@ -219,6 +226,10 @@ public class Users {
 		this.unLockAccountCode = unLockAccountCode;
 	}
 
+	public void setReceiveNotifications(boolean receive_notifications) {
+		this.receive_notifications = receive_notifications;
+	}
+	
 	public String getFcmToken() {
 		return fcmToken;
 	}
