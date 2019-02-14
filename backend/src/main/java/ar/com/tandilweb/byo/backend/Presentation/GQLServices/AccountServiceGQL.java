@@ -40,13 +40,11 @@ public class AccountServiceGQL {
 	@GraphQLQuery(name = "AccountService_login")
 	public LoginOut login(
 			@GraphQLArgument(name = "email") String email, 
-			@GraphQLArgument(name = "password") String password,
-			@GraphQLArgument(name = "fcm") String fcmToken) {
+			@GraphQLArgument(name = "password") String password
+			//@GraphQLArgument(name = "fcm") String fcmToken // fcm se cambia de servicio
+			) {
 		try {
-			if(fcmToken == null || "".equals(fcmToken)) {
-				fcmToken = "no-Token";
-			}
-			return userAdapter.validateLogin(email, password, fcmToken);
+			return userAdapter.validateLogin(email, password);
 		} catch (Exception e) {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();
@@ -89,6 +87,20 @@ public class AccountServiceGQL {
 			fcmToken = "no-Token";
 		}
 		return linkedinAdapter.validateAccessToken(accessToken, fcmToken);
+	}
+	
+	@GraphQLQuery(name = "AccountService_updateFCMToken")
+	public ResponseDTO updateFCMToken(
+			@GraphQLArgument(name = "token") String fcm,
+			@GraphQLEnvironment ResolutionEnvironment environment
+			) {
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users usuario = header.getUser();
+		ResponseDTO out = new ResponseDTO();
+		userAdapter.updateFCMToken(usuario, fcm);
+		out.code = ResponseDTO.Code.ACCEPTED;
+		out.description = "OK";
+		return out;
 	}
 
 	@GraphQLQuery(name = "AccountService_setBuscoYofrezco")

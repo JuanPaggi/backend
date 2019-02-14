@@ -41,7 +41,12 @@ public class UserAdapter {
 	@Autowired
 	private CountriesRepository countriesRepository;
 	
-	public LoginOut validateLogin(String email, String password, String fcmToken) throws Exception {
+	public void updateFCMToken(Users usuario, String fcm) {
+		usuario.setFcmToken(fcm);
+		userRepository.update(usuario);
+	}
+	
+	public LoginOut validateLogin(String email, String password) throws Exception {
 		log.debug("logeando");
 		LoginOut out = new LoginOut();
 		Users usuario = userRepository.findByemail(email);
@@ -51,7 +56,6 @@ public class UserAdapter {
 					// actualizamos los salts:
 					UUID uuid = UUID.randomUUID();
 					usuario.setSalt_jwt(uuid.toString());
-					usuario.setFcmToken(fcmToken);
 					usuario.setFailedLoginAttempts(0);
 					out.code = ResponseDTO.Code.OK;
 					out.description = "usuario encontrado";
