@@ -63,12 +63,15 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "linkedin_url") String linkedin_url, 
 			@GraphQLArgument(name = "summary") String summary,
 			@GraphQLArgument(name = "picture_url") String pic_url,
-			@GraphQLArgument(name = "fcm") String fcmToken){
+			@GraphQLArgument(name = "fcm") String fcmToken,
+			@GraphQLArgument(name = "receive_notifications") Boolean receive_notifications
+			){
+		//boolean receive_notifications = false;
 		try {
 			if(fcmToken == null || "".equals(fcmToken)) {
 				fcmToken = "no-Token";
 			}
-			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary, pic_url, fcmToken);
+			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary, pic_url,receive_notifications, fcmToken);
 		} catch(Exception e) {
 			e.printStackTrace();
 			LoginOut out = new LoginOut();

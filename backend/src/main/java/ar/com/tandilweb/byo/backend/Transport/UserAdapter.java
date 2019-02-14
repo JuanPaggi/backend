@@ -25,6 +25,7 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
 import ar.com.tandilweb.byo.backend.utils.Mailer;
+import io.leangen.graphql.annotations.GraphQLQuery;
 
 public class UserAdapter {
 	
@@ -92,7 +93,7 @@ public class UserAdapter {
 	}
 
 	public LoginOut validateSignup(String email, String password, String nombre, String apellido, String linkedin_url,
-			String summary, String picture_url, String fcmToken) throws Exception {
+			String summary, String picture_url,boolean receive_notifications, String fcmToken) throws Exception {
 		LoginOut out = new LoginOut();
 		if (userRepository.findByemail(email) == null) { // El mail no se encuentra en la base de datos. Se puede
 			// registrar
@@ -107,11 +108,12 @@ public class UserAdapter {
 			usuario.setSalt_jwt(UUID.randomUUID().toString());
 			usuario.setLast_login(new Date());
 			usuario.setCompletoByO(false);
+			usuario.setReceiveNotifications(receive_notifications);
 			usuario.setLocked(false);
 			usuario.setFailedLoginAttempts(0);
 			usuario.setUnLockAccountCode("");
 			usuario.setFcmToken(fcmToken);
-			if(picture_url == null || picture_url == "") picture_url = "../../assets/imgs/user.png";
+			if(picture_url == null || picture_url == "") picture_url = "../../assets/imgs/nav-logo.png";
 			usuario.setPicture_url(picture_url);
 			userRepository.create(usuario);
 			
@@ -122,13 +124,14 @@ public class UserAdapter {
 			out.userId = usuario.getId_user();
 			out.code = ResponseDTO.Code.CREATED;
 			out.description = "Usuario Creado";
-			out.first_name = usuario.getFirst_name();
-			out.last_name = usuario.getLast_name();
-			out.is_premium = usuario.isPremium();
-			out.picture_url = "imagenURL";
+			//out.first_name = usuario.getFirst_name();
+			//out.last_name = usuario.getLast_name();
+			//out.is_premium = usuario.isPremium();
+			//out.picture_url = "imagenURL";
+			//out.receive_notifications = usuario.getReceiveNotifications();
 			// enviamos el token.
 			out.token = usuario.getSalt_jwt();
-			out.completoByO = usuario.isCompletoByO();
+			//out.completoByO = usuario.isCompletoByO();
 		} else {
 			out.code = ResponseDTO.Code.BAD_REQUEST;
 			out.description = "Ya existe un usuario con ese mail";
@@ -181,7 +184,7 @@ public class UserAdapter {
 			out.description = "Acceso denegado";
 		}
 		return out;
-	}
+	} 
 
 	public RememberEmailOut validateRememberMailCode(Long idUsuario, String codigo, String password) throws Exception {
 		RememberEmailOut out = new RememberEmailOut();
@@ -194,7 +197,7 @@ public class UserAdapter {
 					user.setPassword(CryptDES.getSaltedHash(password));
 					userRepository.update(user);
 					out.code = Code.ACCEPTED;
-					out.description = "Su contraseña a sido cambiada";
+					out.description = "Su contraseña ha sido cambiada";
 				} else {
 					token.setAttempts(token.getAttempts()+1);
 					out.code = Code.FORBIDDEN;
@@ -236,6 +239,7 @@ public class UserAdapter {
 		out.description = "latitud: "+latitude+" longitud: "+longitude+ " usuarioid: "+usuario.getId_user();
 		return out;
 	}
+	
 	
 	public VCard getVCardByUser(long userID) {
 		Users user = userRepository.findById(userID);
