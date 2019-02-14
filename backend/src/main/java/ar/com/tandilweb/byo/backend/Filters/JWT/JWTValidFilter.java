@@ -45,7 +45,7 @@ public class JWTValidFilter implements Filter {
 				Date now = new Date();
 				if(uD.getIssuedAt() == null || uD.getIssuedAt().after(now)) throw new ExceptionInvalidJWT();
 				if(uD.getExpiration() == null || uD.getExpiration().before(now)) throw new ExceptionInvalidJWT();
-				if(uD.getNotBefore() == null || uD.getNotBefore().after(now)) throw new ExceptionInvalidJWT();
+				//if(uD.getNotBefore() == null || uD.getNotBefore().after(now)) throw new ExceptionInvalidJWT();
 				// chequear no repetición de hoy
 				filterChain.doFilter(httpRequest, httpResponse);
 			}catch(ExceptionInvalidJWT e){
