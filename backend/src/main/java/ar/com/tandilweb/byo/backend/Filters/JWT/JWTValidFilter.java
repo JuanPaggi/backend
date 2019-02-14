@@ -43,7 +43,7 @@ public class JWTValidFilter implements Filter {
 			try {
 				JWTUnpackedData uD = (JWTUnpackedData)httpRequest.getAttribute("jwtParsed");
 				Date now = new Date();
-				if(uD.getIssuedAt() == null || uD.getIssuedAt().after(now)) throw new ExceptionInvalidJWT();
+				if(uD.getIssuedAt() == null) throw new ExceptionInvalidJWT();
 				if(uD.getExpiration() == null || uD.getExpiration().before(now)) throw new ExceptionInvalidJWT();
 				//if(uD.getNotBefore() == null || uD.getNotBefore().after(now)) throw new ExceptionInvalidJWT();
 				// chequear no repetición de hoy
