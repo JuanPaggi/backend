@@ -52,16 +52,13 @@ public class FriendshipsAdapter {
 			Friendships record = friendShipRepository.create(fs);
 			if (record != null && target.getReceiveNotifications()) {
 				// enviar notificacion
-				HttpFCMPayload payload = new HttpFCMPayload();
-				firebaseCloudMessaging.setServerKey(serverKey);
 				List<String> rids = new ArrayList<String>();
+				HttpFCMPayload payload = new HttpFCMPayload(
+						"Solicitud de contacto", 
+						"Recibiste una nueva solicitud de contacto de " + requester.getFirst_name() + " " + requester.getLast_name()
+				);
+				firebaseCloudMessaging.setServerKey(serverKey);
 				rids.add(target.getFcmToken());
-				// payload.setRegistration_ids(rids);
-				// payload.setTopic('generalTopic');
-				FCMNotify notificacion = new FCMNotify("Solicitud de contacto",
-						"Recibiste una nueva solicitud de contacto de " + requester.getFirst_name() + " "
-								+ requester.getLast_name());
-				payload.setNotification(notificacion);
 				payload.setTarget(target.getFcmToken());
 				firebaseCloudMessaging.send(payload);
 				out.code = Code.CREATED;
@@ -112,16 +109,13 @@ public class FriendshipsAdapter {
 			friendShipRepository.update(friendship);
 			if(requester.getReceiveNotifications()) {
 				// enviar notificacion
-				HttpFCMPayload payload = new HttpFCMPayload();
-				firebaseCloudMessaging.setServerKey(serverKey);
 				List<String> rids = new ArrayList<String>();
+				HttpFCMPayload payload = new HttpFCMPayload(
+						"Solicitud aceptada",
+						target.getFirst_name() + " " + target.getLast_name() + " aceptó su solicitud de contacto. "
+				);
+				firebaseCloudMessaging.setServerKey(serverKey);
 				rids.add(requester.getFcmToken());
-				// payload.setRegistration_ids(rids);
-				// payload.setTopic('generalTopic');
-				FCMNotify notificacion = new FCMNotify("Solicitud aceptada",
-						target.getFirst_name() + " "
-								+ target.getLast_name() + " aceptó su solicitud de contacto. " );
-				payload.setNotification(notificacion);
 				payload.setTarget(requester.getFcmToken());
 				firebaseCloudMessaging.send(payload);
 			}

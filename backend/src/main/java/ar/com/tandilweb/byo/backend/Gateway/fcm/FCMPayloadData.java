@@ -5,9 +5,9 @@ public class FCMPayloadData {
 	public String message;
 	public String count;
 	
-	public FCMPayloadData() {
-		this.title = "DATA TITLE";
-		this.message = "DATA BODY";
+	public FCMPayloadData(String title, String body) {
+		this.title = title;
+		this.message = body;
 		this.count = "5";
 	}
 }

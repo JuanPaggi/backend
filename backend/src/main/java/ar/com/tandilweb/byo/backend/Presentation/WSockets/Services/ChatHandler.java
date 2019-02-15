@@ -94,17 +94,13 @@ public class ChatHandler {
 				Users target = userRepository.findById(mensaje.id_target);
 				Users sender = userRepository.findById(mensaje.id_sender);
 				if(target.getReceiveNotifications()) {
-				// enviamos notificacion
-			
-				HttpFCMPayload payload = new HttpFCMPayload();
-				firebaseCloudMessaging.setServerKey(serverKey);
-				List<String> rids = new ArrayList<String>();
-				rids.add(target.getFcmToken());
-				FCMNotify notificacion = new FCMNotify("Mensaje recibido",
-						"Recibiste un mensaje de " + sender.getFirst_name() + " " + sender.getLast_name());
-				payload.setNotification(notificacion);
-				payload.setTarget(target.getFcmToken());
-				firebaseCloudMessaging.send(payload);
+					// enviamos notificacion
+					List<String> rids = new ArrayList<String>();
+					HttpFCMPayload payload = new HttpFCMPayload("Mensaje recibido", "Recibiste un mensaje de " + sender.getFirst_name() + " " + sender.getLast_name());
+					firebaseCloudMessaging.setServerKey(serverKey);
+					rids.add(target.getFcmToken());
+					payload.setTarget(target.getFcmToken());
+					firebaseCloudMessaging.send(payload);
 				}
 			} else {
 		

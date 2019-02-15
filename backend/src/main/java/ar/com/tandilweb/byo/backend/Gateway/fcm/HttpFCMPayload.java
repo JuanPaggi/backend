@@ -16,9 +16,19 @@ public class HttpFCMPayload implements Fcmp {
 	private String condition;
 	private Long time_to_live = 86400L;
 	
+	public HttpFCMPayload(String titulo, String message){
+		this.notification = new FCMNotify(titulo, message);
+		// for in-app notification:
+		this.data = new FCMPayloadData(titulo, message);
+		//this.to = "/topic/topicExample";
+		this.priority = "high";
+		this.restricted_package_name = "";
+	}
+	
 	public HttpFCMPayload(){
-		this.notification = new FCMNotify("Titulo Notificacion","Cuerpo Notificacion");
-		this.data = new FCMPayloadData();
+		this.notification = new FCMNotify("Titulo Notificacion", "Cuerpo Notificacion");
+		// for in-app notification:
+		this.data = new FCMPayloadData("Titulo Notificacion", "Cuerpo Notificacion");
 		//this.to = "/topic/topicExample";
 		this.priority = "high";
 		this.restricted_package_name = "";
