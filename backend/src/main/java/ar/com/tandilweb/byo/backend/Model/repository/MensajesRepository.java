@@ -41,6 +41,8 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	                return ps;
 	            }
 	        }, holder);
+			
+			record.id_message = holder.getKey().longValue();
 			return record;
 		} catch(DataAccessException e) {
 			logger.error("MensajesRepository :: create",e);

@@ -14,7 +14,6 @@ import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
-import ar.com.tandilweb.byo.backend.Gateway.fcm.FCMNotify;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.HttpFCMPayload;
 import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
@@ -37,10 +36,7 @@ public class ChatHandler {
 	private UserService userService;
 	
 	@Autowired
-	private MensajesRepository mensajesRepository;
-	
-//	@Autowired
-//	private ChatAdapter chatAdapter;
+	private ChatAdapter chatAdapter;
 	
 	@Autowired
 	private FirebaseCloudMessaging firebaseCloudMessaging;
@@ -85,9 +81,8 @@ public class ChatHandler {
 			// chequeamos si ya hay alguien en el sistema de chat con este targetID
 			ClientData cdTarget = userService.getClient(msg.targetID);
 			
-			// registramos en la DB
-			mensajesRepository.create(mensaje);
-						
+			chatAdapter.recordMessage(mensaje);
+
 			if(cdTarget != null) {
 				// enviamos el mensaje por el sistema de chat
 				userService.sendToSessID("/chatService/data", cdTarget.socketID, mensaje);
