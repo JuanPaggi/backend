@@ -33,6 +33,9 @@ public class ResponseDTO {
 	
 	@GraphQLQuery(name = "code")
 	public int getCodeNumber() {
-		return this.code.getCodeNumber();
+		if(this.code != null)
+			return this.code.getCodeNumber();
+		else
+			return -1;
 	}
 }

@@ -27,58 +27,65 @@ public class LinkedInAdapter {
 	@Autowired
 	ProfileRepository profileRepository;
 	
-	public LoginOut validateAccessToken(String accessToken, String fcmToken) {
+	public String getAccessToken(String code) {
+		return linkedInConsumer.getAccessToken(code);
+	}
+	
+	public LoginOut validateAccessToken(String accessToken) {
 		LoginOut out = new LoginOut();
-		LinkedInProfile response = linkedInConsumer.checkAccessToken(accessToken);
-		UUID uuid = UUID.randomUUID();
-		if(response != null) {
-			Users usuario = userRepository.findBylinkedinId(response.getId());	
-			System.out.println("linkedin id: "+usuario==null);
-			if(usuario != null) {
-				//Este usuario ya accedio por linkedin previamente
-				usuario.setSalt_jwt(uuid.toString());
-				usuario.setFcmToken(fcmToken);
-				userRepository.update(usuario);
-				updateProfile(usuario.getId_user(), response);
-				out.code = ResponseDTO.Code.OK;
-				out.description = "";
-				out.token = uuid.toString();
-				out.completoByO = usuario.isCompletoByO();
-				out.userId = usuario.getId_user();
-			} else { 
-				//Si no se encontro usuario con el id de linkedin nos fijamos
-				//que no exista un usuario registrado con el mismo mail que el de linkedin
-				usuario = userRepository.findByemail(response.getEmailAddress());
-				if(usuario != null) {
-					usuario.setLinkedin_id(response.getId());
-					usuario.setSalt_jwt(uuid.toString());
-					usuario.setFcmToken(fcmToken);
-					usuario.setPicture_url(response.getPictureUrl());
-					createProfile(usuario.getId_user(), response);
-					userRepository.update(usuario);			
-				}else {
-					//Se crea el nuevo usuario
-					Users user = createUser(response,fcmToken,uuid);						
-					//Creamos el perfil
-					createProfile(user.getId_user(), response);					
-					out.userId = user.getId_user();
-					out.first_name = user.getFirst_name();
-					out.last_name = user.getLast_name();
-					out.is_premium = user.isPremium();
-					out.picture_url = "imagenURL";
-					// enviamos el token.
-					out.token = user.getSalt_jwt();
-					out.completoByO = user.isCompletoByO();
-					
-					out.code = ResponseDTO.Code.CREATED;
-					out.description = "Usuario Creado";
-					out.token = uuid.toString();
-					out.userId = user.getId_user();
-				}		
-			}
-		} else {
+		if(accessToken == null) {
 			out.code = ResponseDTO.Code.FORBIDDEN;
 			out.description = "Token inválido";
+		} else {
+			LinkedInProfile response = linkedInConsumer.checkAccessToken(accessToken);
+			UUID uuid = UUID.randomUUID();
+			if(response != null) {
+				Users usuario = userRepository.findBylinkedinId(response.getId());	
+				System.out.println("linkedin id: "+usuario==null);
+				if(usuario != null) {
+					//Este usuario ya accedio por linkedin previamente
+					usuario.setSalt_jwt(uuid.toString());
+					userRepository.update(usuario);
+					updateProfile(usuario.getId_user(), response);
+					out.code = ResponseDTO.Code.OK;
+					out.description = "";
+					out.token = uuid.toString();
+					out.completoByO = usuario.isCompletoByO();
+					out.userId = usuario.getId_user();
+				} else { 
+					//Si no se encontro usuario con el id de linkedin nos fijamos
+					//que no exista un usuario registrado con el mismo mail que el de linkedin
+					usuario = userRepository.findByemail(response.getEmailAddress());
+					if(usuario != null) {
+						usuario.setLinkedin_id(response.getId());
+						usuario.setSalt_jwt(uuid.toString());
+						usuario.setPicture_url(response.getPictureUrl());
+						createProfile(usuario.getId_user(), response);
+						userRepository.update(usuario);			
+					}else {
+						//Se crea el nuevo usuario
+						Users user = createUser(response,uuid);						
+						//Creamos el perfil
+						createProfile(user.getId_user(), response);					
+						out.userId = user.getId_user();
+						out.first_name = user.getFirst_name();
+						out.last_name = user.getLast_name();
+						out.is_premium = user.isPremium();
+						out.picture_url = "imagenURL";
+						// enviamos el token.
+						out.token = user.getSalt_jwt();
+						out.completoByO = user.isCompletoByO();
+						
+						out.code = ResponseDTO.Code.CREATED;
+						out.description = "Usuario Creado";
+						out.token = uuid.toString();
+						out.userId = user.getId_user();
+					}		
+				}
+			} else {
+				out.code = ResponseDTO.Code.FORBIDDEN;
+				out.description = "Token inválido";
+			}
 		}
 		return out;
 	}
@@ -115,7 +122,7 @@ public class LinkedInAdapter {
 		return userProfile;
 	}
 	
-	private Users createUser(LinkedInProfile lp, String fcmToken, UUID uuid) {
+	private Users createUser(LinkedInProfile lp, UUID uuid) {
 		Users user = new Users();
 		user.setEmail(lp.getEmailAddress());
 		user.setFirst_name(lp.getFirstName());
@@ -133,7 +140,7 @@ public class LinkedInAdapter {
 		user.setLocked(false);
 		user.setFailedLoginAttempts(0);
 		user.setUnLockAccountCode("");
-		user.setFcmToken(fcmToken);
+		user.setFcmToken("-NOTOKEN-");
 		return userRepository.create(user);
 	}
 }

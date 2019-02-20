@@ -84,12 +84,18 @@ public class AccountServiceGQL {
 	@GraphQLQuery(name = "AccountService_linkedin")
 	public LoginOut linkedin(
 			@GraphQLArgument(name = "accessToken") String accessToken,
-			@GraphQLArgument(name = "expiresOn") String expiresOn,
-			@GraphQLArgument(name = "fcm") String fcmToken) {
-		if(fcmToken == null || "".equals(fcmToken)) {
-			fcmToken = "no-Token";
-		}
-		return linkedinAdapter.validateAccessToken(accessToken, fcmToken);
+			@GraphQLArgument(name = "expiresOn") String expiresOn) {
+		return linkedinAdapter.validateAccessToken(accessToken);
+	} 
+	
+	@GraphQLQuery(name = "AccountService_linkedinV2")
+	public LoginOut linkedinV2(
+			@GraphQLArgument(name = "codeScope") String codeScope) {
+		
+		String accessToken = linkedinAdapter.getAccessToken(codeScope);
+		
+		return linkedinAdapter.validateAccessToken(accessToken);
+		//return linkedinAdapter.validateAccessToken(accessToken, fcmToken);
 	}
 	
 	@GraphQLQuery(name = "AccountService_updateFCMToken")
