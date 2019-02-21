@@ -60,7 +60,6 @@ public class ChatRepository extends BaseRepository<Chats, Long>{
 			return jdbcTemplate.query("SELECT * FROM chats WHERE id_user_requester = ? OR id_user_sender = ?",
 					new ChatRowMapper(), new Object[] { id_me, id_me });
 		} catch (DataAccessException e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
@@ -70,7 +69,6 @@ public class ChatRepository extends BaseRepository<Chats, Long>{
 			return jdbcTemplate.queryForObject("SELECT * FROM chats WHERE (id_user_requester = ? AND id_user_sender = ?) OR (id_user_requester = ? AND id_user_sender = ?)",
 					new ChatRowMapper(), new Object[] { id_me, id_target, id_target, id_me });
 		} catch (DataAccessException e) {
-			e.printStackTrace();
 			return null;
 		}
 	}
