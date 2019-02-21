@@ -10,6 +10,8 @@ import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.ChatRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.MensajesRepository;
+import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ChatsDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ListMessageDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.MensajeDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
@@ -21,6 +23,9 @@ public class ChatAdapter {
 	
 	@Autowired
 	private ChatRepository chatRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	public ListMessageDTO getChatWith(Users me, long targetID) {
 		
@@ -56,6 +61,23 @@ public class ChatAdapter {
 					);
 			chatRepository.create(assoc);
 		}
+	}
+	
+	public List<ChatsDTO> getConversations(long me) {
+		List<Chats> chats = chatRepository.findLimitedById(me, 25);
+		List<ChatsDTO> chatsOut = new ArrayList<ChatsDTO>();
+		for(Chats chat: chats) {
+			ChatsDTO dto = new ChatsDTO();
+			long otherID = chat.getId_user_requester() != me ? chat.getId_user_requester() : chat.getId_user_sender();
+			Users user = userRepository.findById(otherID);
+			dto.id_usuario = otherID;
+			dto.nombre = user.getFirstName() + " " + user.getLast_name();
+			dto.picture = user.getPicture_url();
+			// dto.fecha
+			// dto.mensaje
+			chatsOut.add(dto);
+		}
+		return chatsOut;
 	}
 	
 }

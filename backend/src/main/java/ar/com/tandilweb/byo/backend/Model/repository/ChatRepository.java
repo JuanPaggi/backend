@@ -64,6 +64,15 @@ public class ChatRepository extends BaseRepository<Chats, Long>{
 		}
 	}
 	
+	public List<Chats> findLimitedById(Long id_me, int limit) {
+		try {
+			return jdbcTemplate.query("SELECT * FROM chats WHERE id_user_requester = ? OR id_user_sender = ? LIMIT ?",
+					new ChatRowMapper(), new Object[] { id_me, id_me, limit });
+		} catch (DataAccessException e) {
+			return null;
+		}
+	}
+	
 	public Chats findAssoc(Long id_me, Long id_target) {
 		try {
 			return jdbcTemplate.queryForObject("SELECT * FROM chats WHERE (id_user_requester = ? AND id_user_sender = ?) OR (id_user_requester = ? AND id_user_sender = ?)",
