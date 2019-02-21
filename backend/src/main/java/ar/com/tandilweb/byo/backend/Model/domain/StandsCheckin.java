@@ -1,7 +1,7 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.Calendar;
 
 public class StandsCheckin implements Serializable{
 
@@ -9,7 +9,7 @@ public class StandsCheckin implements Serializable{
 	
 	Long id_stand;
 	Long id_user;
-	Date date_checkin;
+	Calendar date_checkin;
 
 //	public Stands getId_stand() {
 //		return id_stand;
