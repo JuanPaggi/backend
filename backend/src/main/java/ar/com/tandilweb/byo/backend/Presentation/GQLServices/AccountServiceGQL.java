@@ -10,8 +10,6 @@ import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
-import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCardList;
-import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
 import ar.com.tandilweb.byo.backend.Transport.UserAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
@@ -25,7 +23,7 @@ import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 public class AccountServiceGQL {
 	
 	/**
-	 * Servicio especializado en el control de la cuenta del usuario que accede (es decir de modificar datos de la cuenta, registrarlo, etc.)
+	 * Servicio especial6izado en el control de la cuenta del usuario que accede (es decir de modificar datos de la cuenta, registrarlo, etc.)
 	 * Pero referentes al usuario actual.
 	 */
 
@@ -157,7 +155,7 @@ public class AccountServiceGQL {
 		}
 		comp = false;
 		if(header.isTrusted()) {
-			return userAdapter.setBuscoYofrezco(busco, ofrezco, completoByO, usuario);
+			out = userAdapter.setBuscoYofrezco(busco, ofrezco, completoByO, usuario);
 		} else {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error datos no seteados";
@@ -229,7 +227,7 @@ public class AccountServiceGQL {
 		if(header.isTrusted()) {
 			double dlat = Double.parseDouble(lat);
 			double dlon = Double.parseDouble(lon);
-			return userAdapter.setGeoLocation(dlat, dlon, usuario);
+			out = userAdapter.setGeoLocation(dlat, dlon, usuario);
 		} else {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Usuario no confiable";
