@@ -44,6 +44,7 @@ public class ChatServiceGQL {
 	public ListMessageDTO listaInicial(
 			@GraphQLArgument(name = "id_target") long idtar,
 			@GraphQLEnvironment ResolutionEnvironment environment) {
+		log.debug("Requesting ChatService_listaInicial");
 		ListMessageDTO out = new ListMessageDTO();
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
@@ -51,20 +52,20 @@ public class ChatServiceGQL {
 			out = chatAdapter.getChatWith(usuario, idtar);
 			out.me = userAdapter.getVCardByUser(usuario.getId_user());
 			out.target = userAdapter.getVCardByUser(idtar);
-			return out;
 		} catch (Exception e) {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor a fallado";
-			return out;
 		}
+		log.debug("Responding ChatService_listaInicial");
+		return out;
 	}
 	
 	@GraphQLQuery(name = "ChatService_listaChats")
 	public ListaChatsDTO listaChats(
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) {
+		log.debug("Requesting ChatService_listaChats");
 		ListaChatsDTO out = new ListaChatsDTO();
-		
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			Users usuario = header.getUser();
@@ -73,12 +74,12 @@ public class ChatServiceGQL {
 			
 			out.chats = chats;			
 			out.code = ResponseDTO.Code.OK;
-			return out;
 		} catch (Exception e) {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor a fallado";
-			return out;
 		}
+		log.debug("Responding ChatService_listaChats");
+		return out;
 	}
 
 }

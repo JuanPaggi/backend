@@ -37,24 +37,26 @@ public class ConfigurationServiceGQL {
 	@GraphQLQuery(name = "ConfigurationService_getBuscoYOfrezco")
 	public VCard getBuscoYOfrezco(
 			@GraphQLEnvironment ResolutionEnvironment environment){
-		
+		log.debug("Requesting ConfigurationService_getBuscoYOfrezco");
+		VCard out = null;
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
 			Users usuario = header.getUser();
-			return this.userAdapter.getVCardByUser(usuario.getId_user());
+			out = this.userAdapter.getVCardByUser(usuario.getId_user());
 		} catch (Exception e) {
-			e.printStackTrace();
-			VCard out = null;
-			
-			return out;
+			log.error("Error obteniendo configuracion", e);
 		}
+		log.debug("Responding ConfigurationService_getBuscoYOfrezco");
+		return out;
 	}
 	
 	
 	@GraphQLQuery(name = "ConfigurationService_getInfoPerfil")
 	public Users getInfoPerfil(
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting ConfigurationService_getInfoPerfil");
+		Users out = null;
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
@@ -67,26 +69,29 @@ public class ConfigurationServiceGQL {
 			user.setBusco(usuario.getBusco());
 			user.setOfrezco(usuario.getOfrezco());
 			user.setReceiveNotifications(usuario.getReceiveNotifications());
-			return user;
+			out = user;
 		} catch (Exception e) {
-			e.printStackTrace();
-			return null;
+			log.error("Error obteniendo configuracion", e);
 		}
+		log.debug("Responding ConfigurationService_getInfoPerfil");
+		return out;
 	} 
 	@GraphQLQuery(name = "ConfigurationService_changeByo")
 	public ResponseDTO changeByo(
 			@GraphQLArgument(name = "busco") String busco,
 			@GraphQLArgument(name = "ofrezco") String ofrezco,
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting ConfigurationService_changeByo");
+		ResponseDTO out = new ResponseDTO();
 		JWTHeader header = JWTHeader.getHeader(environment);
 		try {
-			return configurationAdapter.changeByo(busco, ofrezco, header.getUser());
+			out = configurationAdapter.changeByo(busco, ofrezco, header.getUser());
 		} catch(Exception e) {
-			e.printStackTrace();
-			LoginOut out = new LoginOut();
+			log.error("Error obteniendo configuracion", e);
 			out.description = "Error, no se ha podido guardar la información";
-			return out;
 		}
+		log.debug("Responding ConfigurationService_changeByo");
+		return out;
 	}
 	
 	
@@ -95,16 +100,18 @@ public class ConfigurationServiceGQL {
 	public ResponseDTO updatePhoto(
 			@GraphQLArgument(name = "picture_url") String pic_url,
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting ConfigurationService_updatePhoto");
+		ResponseDTO out = new ResponseDTO();
 		JWTHeader header = JWTHeader.getHeader(environment);
 		try {
-			return configurationAdapter.updatePhoto(pic_url, header.getUser());
+			out = configurationAdapter.updatePhoto(pic_url, header.getUser());
 		} catch(Exception e) {
 			e.printStackTrace();
-			LoginOut out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error, no se ha podido cambiar la foto de perfil";
-			return out;
 		}
+		log.debug("Responding ConfigurationService_updatePhoto");
+		return out;
 	}
 	
 
@@ -112,31 +119,35 @@ public class ConfigurationServiceGQL {
 	@GraphQLQuery(name = "ConfigurationService_changeReceiveNotifications")
 	public ResponseDTO changeReceiveNotifications(
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting ConfigurationService_changeReceiveNotifications");
 		JWTHeader header = JWTHeader.getHeader(environment);
-		LoginOut out = new LoginOut();
+		ResponseDTO out = new ResponseDTO();
 		Users usuario = header.getUser();
 		try {
-		 return configurationAdapter.changeReceiveNotifications(!usuario.getReceiveNotifications(),usuario);
+			out = configurationAdapter.changeReceiveNotifications(!usuario.getReceiveNotifications(),usuario);
 		} catch(Exception e) {
-			e.printStackTrace();
+			log.error("Error cambiando configuracion de notificaciones", e);
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error, no se ha podido guardar la información";
-			return out;
 		}
+		log.debug("Responding ConfigurationService_changeReceiveNotifications");
+		return out;
 	}
 	
 	@GraphQLQuery(name = "ConfigurationService_changePassword")
 	public ResponseDTO changePassword(
 			@GraphQLArgument(name = "password") String password,
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting ConfigurationService_changePassword");
+		ResponseDTO out = new ResponseDTO();
 		JWTHeader header = JWTHeader.getHeader(environment);
 		try {
-			return configurationAdapter.changePassword(password, header.getUser());
+			out = configurationAdapter.changePassword(password, header.getUser());
 		} catch(Exception e) {
 			e.printStackTrace();
-			LoginOut out = new LoginOut();
 			out.description = "Error, no se ha podido cambiar el password";
-			return out;
 		}
+		log.debug("Responding ConfigurationService_changePassword");
+		return out;
 	}
 }

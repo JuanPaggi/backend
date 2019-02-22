@@ -9,10 +9,9 @@ import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
-import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCardList;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCardList;
 import ar.com.tandilweb.byo.backend.Transport.FriendshipsAdapter;
-import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLEnvironment;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -30,7 +29,7 @@ public class InteractionServiceGQL {
 	 * Lista de contactos.
 	 */
 	
-	private static final Logger log = LoggerFactory.getLogger(AccountServiceGQL.class);
+	private static final Logger log = LoggerFactory.getLogger(InteractionServiceGQL.class);
 
 	@Autowired
 	private FriendshipsAdapter friendshipAdapter;
@@ -39,96 +38,113 @@ public class InteractionServiceGQL {
 	public ResponseDTO friendshipRequest(
 			@GraphQLArgument(name = "id_user_target") long idtar,
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting InteractionService_friendshipRequest");
+		ResponseDTO out;
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			Users usuario = header.getUser();
-			return friendshipAdapter.validateFriendshipRequest(usuario.getId_user(),idtar);
+			out = friendshipAdapter.validateFriendshipRequest(usuario.getId_user(),idtar);
 		} catch (Exception e) {
 			e.printStackTrace();
-			ResponseDTO out = new LoginOut();
+			out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor ha fallado";
-			return out;
+			
 		}
+		log.debug("Responding InteractionService_friendshipRequest");
+		return out;
 	}
 
 	@GraphQLQuery(name = "InteractionService_acceptFriend")
 	public ResponseDTO acceptFriend(
 			@GraphQLArgument(name = "id_user_requester") long idreq,
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting InteractionService_acceptFriend");
+		ResponseDTO out;
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			Users usuario = header.getUser();
-			return friendshipAdapter.validateFriendAcceptance(idreq, usuario.getId_user());
+			out = friendshipAdapter.validateFriendAcceptance(idreq, usuario.getId_user());
 		} catch (Exception e) {
 			e.printStackTrace();
-			ResponseDTO out = new LoginOut();
+			out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor ha fallado";
-			return out;
 		}
+		log.debug("Responding InteractionService_acceptFriend");
+		return out;
 	}
 	
 	@GraphQLQuery(name = "InteractionService_cancelFriendRequest")
 	public ResponseDTO cancelFriendRequest(
 			@GraphQLArgument(name = "id_user_target") long idtar,
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting InteractionService_cancelFriendRequest");
+		ResponseDTO out = new LoginOut();
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			Users usuario = header.getUser();
-			return friendshipAdapter.cancelFriendRequest(usuario.getId_user(), idtar);
+			out = friendshipAdapter.cancelFriendRequest(usuario.getId_user(), idtar);;
 		} catch (Exception e) {
 			e.printStackTrace();
-			ResponseDTO out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor ha fallado";
-			return out;
 		}
+		log.debug("Responding InteractionService_cancelFriendRequest");
+		return out;
 	}
 	@GraphQLQuery(name = "InteractionService_rejectFriendRequest")
 	public ResponseDTO rejectFriendRequest(
 			@GraphQLArgument(name = "id_user_target") long idtar,
 			@GraphQLEnvironment ResolutionEnvironment environment){
-		
+		log.debug("Requesting InteractionService_rejectFriendRequest");
+		ResponseDTO out = new LoginOut();
 		try {
-			
 			JWTHeader header = JWTHeader.getHeader(environment);
 			Users usuario = header.getUser();
-			return friendshipAdapter.rejectFriendRequest(usuario.getId_user(), idtar);
+			out = friendshipAdapter.rejectFriendRequest(usuario.getId_user(), idtar);
 		} catch (Exception e) {
-			e.printStackTrace();
-			ResponseDTO out = new LoginOut();
+			log.error("Error rejectFriendRequest", e);
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor ha fallado";
-			return out;
 		}
+		log.debug("Responding InteractionService_rejectFriendRequest");
+		return out;
 	}
 	
 	
 	@GraphQLQuery(name = "InteractionService_getContacts")
 	public VCardList getContacts(
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting InteractionService_getContacts");
+		VCardList out;
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
 			Users usuario = header.getUser();
-			return new VCardList(Code.ACCEPTED, "ok.", friendshipAdapter.getFriends(usuario));
+			out = new VCardList(Code.ACCEPTED, "ok.", friendshipAdapter.getFriends(usuario));
 		} catch (Exception e) {
-			return new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
+			out = new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
 		}
+		log.debug("Responding InteractionService_getContacts");
+		return out;
 	}
 	
 	@GraphQLQuery(name = "InteractionService_findContact")
 	public VCardList findContact(
 			@GraphQLEnvironment ResolutionEnvironment environment){
+		VCardList out;
+		log.debug("Requesting InteractionService_findContact");
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
 			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
 			Users usuario = header.getUser();
 			String busqueda = "eze";
-			return new VCardList(Code.ACCEPTED, "ok.", friendshipAdapter.getFriendsFiltered(usuario, busqueda));
+			out = new VCardList(Code.ACCEPTED, "ok.", friendshipAdapter.getFriendsFiltered(usuario, busqueda));
 		} catch (Exception e) {
-			return new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
+			out = new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
 		}
+		log.debug("Responding InteractionService_findContact");
+		return out;
 	}
 }

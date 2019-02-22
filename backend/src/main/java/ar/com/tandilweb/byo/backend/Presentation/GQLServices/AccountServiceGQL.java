@@ -43,15 +43,18 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "password") String password
 			//@GraphQLArgument(name = "fcm") String fcmToken // fcm se cambia de servicio
 			) {
+		LoginOut out;
 		try {
-			return userAdapter.validateLogin(email, password);
+			log.debug("Requesting AccountService_login");
+			out = userAdapter.validateLogin(email, password);
 		} catch (Exception e) {
 			e.printStackTrace();
-			LoginOut out = new LoginOut();
+			out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor a fallado";
-			return out;
 		}
+		log.debug("Responding AccountService_login");
+		return out;
 	}
 
 	@GraphQLQuery(name = "AccountService_signup")
@@ -66,35 +69,43 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "fcm") String fcmToken,
 			@GraphQLArgument(name = "receive_notifications") Boolean receive_notifications
 			){
+		log.debug("Requesting AccountService_signup");
 		//boolean receive_notifications = false;
+		LoginOut out;
 		try {
 			if(fcmToken == null || "".equals(fcmToken)) {
 				fcmToken = "no-Token";
 			}
-			return userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary, pic_url,receive_notifications, fcmToken);
+			out = userAdapter.validateSignup(email, password, nombre, apellido, linkedin_url, summary, pic_url,receive_notifications, fcmToken); 
+			
 		} catch(Exception e) {
 			e.printStackTrace();
-			LoginOut out = new LoginOut();
+			out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error, no se ha podido registrar el usuario";
-			return out;
 		}
+		log.debug("Responding AccountService_signup");
+		return out;
 	}
 
 	@GraphQLQuery(name = "AccountService_linkedin")
 	public LoginOut linkedin(
 			@GraphQLArgument(name = "accessToken") String accessToken,
 			@GraphQLArgument(name = "expiresOn") String expiresOn) {
-		return linkedinAdapter.validateAccessToken(accessToken);
+		log.debug("Requesting AccountService_linkedin");
+		LoginOut out = linkedinAdapter.validateAccessToken(accessToken);
+		log.debug("Responding AccountService_linkedin");
+		return out;
 	} 
 	
 	@GraphQLQuery(name = "AccountService_linkedinV2")
 	public LoginOut linkedinV2(
 			@GraphQLArgument(name = "codeScope") String codeScope) {
-		
+		log.debug("Requesting AccountService_linkedinV2");
 		String accessToken = linkedinAdapter.getAccessToken(codeScope);
-		
-		return linkedinAdapter.validateAccessToken(accessToken);
+		LoginOut out = linkedinAdapter.validateAccessToken(accessToken); 
+		log.debug("Responding AccountService_linkedinV2");
+		return out;
 		//return linkedinAdapter.validateAccessToken(accessToken, fcmToken);
 	}
 	
@@ -103,12 +114,14 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "token") String fcm,
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) {
+		log.debug("Requesting AccountService_updateFCMToken");
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users usuario = header.getUser();
 		ResponseDTO out = new ResponseDTO();
 		userAdapter.updateFCMToken(usuario, fcm);
 		out.code = ResponseDTO.Code.ACCEPTED;
 		out.description = "OK";
+		log.debug("Responding AccountService_updateFCMToken");
 		return out;
 	}
 
@@ -118,6 +131,7 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "ofrezco") String ofrezco,
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) throws Exception {
+		log.debug("Requesting AccountService_setBuscoYofrezco");
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users usuario = header.getUser();
 		ResponseDTO out = new ResponseDTO();
@@ -148,21 +162,25 @@ public class AccountServiceGQL {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error datos no seteados";
 		}
+		log.debug("Responding AccountService_setBuscoYofrezco");
 		return out;
 	}
 	
 
 	@GraphQLQuery(name = "AccountService_rememberEmail")
 	public RememberEmailOut rememberEmail(@GraphQLArgument(name = "email") String email) {
+		log.debug("Requesting AccountService_rememberEmail");
+		RememberEmailOut out;
 		try {
-			return userAdapter.rememberEmail(email);
+			out = userAdapter.rememberEmail(email);
 		} catch (Exception e) {
 			e.printStackTrace();
-			RememberEmailOut out = new RememberEmailOut();
+			out = new RememberEmailOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "El email no se encuentra registrado";
-			return out;
 		}
+		log.debug("Responding AccountService_rememberEmail");
+		return out;
 	}
 
 	@GraphQLQuery(name = "AccountService_validateRememberMailCode")
@@ -171,27 +189,29 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "codigo") String codigo, 
 			@GraphQLArgument(name = "password") String password
 			) {
+		log.debug("Requesting AccountService_validateRememberMailCode");
 		ResponseDTO out = new ResponseDTO();
 		try {
 			out = userAdapter.validateRememberMailCode(idUsuario, codigo, password);
 		} catch (Exception e) {
 			out.code = ResponseDTO.Code.FORBIDDEN;
 			out.description = "Codigo incorrecto";
-			return out;
 		}
+		log.debug("Responding AccountService_validateRememberMailCode");
 		return out;
 	}
 
 	@GraphQLQuery(name = "AccountService_validateUnlockCode")
 	public ResponseDTO validateUnlockCode(@GraphQLArgument(name = "email") String email, @GraphQLArgument(name = "codigo") String codigo) {
+		log.debug("Requesting AccountService_validateUnlockCode");
 		ResponseDTO out = new ResponseDTO();
 		try {
 			out = userAdapter.validateUnlockCode(email,codigo);
 		} catch (Exception e) {
 			out.code = ResponseDTO.Code.FORBIDDEN;
 			out.description = "Codigo incorrecto";
-			return out;
 		}
+		log.debug("Responding AccountService_validateUnlockCode");
 		return out;
 	}
 
@@ -201,7 +221,7 @@ public class AccountServiceGQL {
 			@GraphQLArgument(name = "longitude") String lon, 
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) throws Exception {
-
+		log.debug("Requesting AccountService_setGeoLocation");
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users usuario = header.getUser();
 		ResponseDTO out = new ResponseDTO();
@@ -214,9 +234,8 @@ public class AccountServiceGQL {
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Usuario no confiable";
 		}
+		log.debug("Responding AccountService_setGeoLocation");
 		return out;
 	}
-
-
 
 }

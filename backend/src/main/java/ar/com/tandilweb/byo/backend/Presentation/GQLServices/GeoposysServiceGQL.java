@@ -43,6 +43,8 @@ public class GeoposysServiceGQL {
 			@GraphQLArgument(name = "longitude") String longitude,
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) {
+		log.debug("Requesting GeoposysService_getUsersClose");
+		VCardList out;
 		// nos traemos el usuario que está llamando a este servicio:
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users me = header.getUser();
@@ -58,15 +60,17 @@ public class GeoposysServiceGQL {
 			List<VCard> users = gpsAdapter.getUsersClose(lat, lon, me);
 			// devolvemos la lista de vcards en un dto de respuesta con codigo si es que hay 
 			if(users != null) {
-				return new VCardList(ResponseDTO.Code.OK, "OK", users);
+				out = new VCardList(ResponseDTO.Code.OK, "OK", users);
 			} else {
-				return new VCardList(ResponseDTO.Code.NOT_FOUND, "No hay usuarios cerca.");
+				out = new VCardList(ResponseDTO.Code.NOT_FOUND, "No hay usuarios cerca.");
 			}
 		} catch (Exception e) {
 			// si alguna función arroja un error:
 			log.error("Error al obtener usuarios cercanos", e);
-			return new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
+			out = new VCardList(ResponseDTO.Code.INTERNAL_SERVER_ERROR, e.getMessage());
 		}
+		log.debug("Responding GeoposysService_getUsersClose");
+		return out;
 	}
 	
 }
