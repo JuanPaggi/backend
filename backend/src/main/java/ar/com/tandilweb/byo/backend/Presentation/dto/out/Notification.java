@@ -6,13 +6,13 @@ import io.leangen.graphql.annotations.GraphQLQuery;
 
 public class Notification {
 	
-	public enum Types {
+	public enum Typez {
 		SOLICITUD_ENVIADA,
 		SOLICITUD_RECIBIDA,
 	}
 	
 	@GraphQLQuery(name = "tipo")
-	public Types tipo;
+	public Typez tipo;
 	
 	@GraphQLQuery(name = "userTarget")
 	public VCard userTarget;
