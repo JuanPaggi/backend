@@ -8,12 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
-import ar.com.tandilweb.byo.backend.Model.domain.Events;
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
-import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.EventDTO;
 import ar.com.tandilweb.byo.backend.Transport.EventsAdapter;
-import ar.com.tandilweb.byo.backend.Transport.FriendshipsAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLEnvironment;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -32,7 +30,7 @@ public class EventServiceGQL {
 	private static final Logger log = LoggerFactory.getLogger(EventServiceGQL.class);
 	
 	@GraphQLQuery(name = "EventService_getEvents")
-	public List<Events> getEvents(@GraphQLEnvironment ResolutionEnvironment environment) {
+	public List<EventDTO> getEvents(@GraphQLEnvironment ResolutionEnvironment environment) {
 		// nos traemos el usuario que está llamando a este servicio:
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users me = header.getUser();
