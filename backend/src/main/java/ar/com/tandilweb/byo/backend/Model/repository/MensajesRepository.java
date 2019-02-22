@@ -73,7 +73,7 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 	public Mensajes findById(Long id) {
 		try {
 	    	return jdbcTemplate.queryForObject(
-	                "SELECT * FROM ( SELECT * FROM mensajes WHERE id_mensaje = ?",
+	                "SELECT * FROM mensajes WHERE id_mensaje = ?",
 	                new MensajesRowMapper(),
 	                new Object[]{ id }
 	    			);
