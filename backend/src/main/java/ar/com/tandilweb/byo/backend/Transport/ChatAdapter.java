@@ -10,11 +10,11 @@ import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.ChatRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.MensajesRepository;
-import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ChatsDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ListMessageDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.MensajeDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 
 public class ChatAdapter {
 	
@@ -25,7 +25,7 @@ public class ChatAdapter {
 	private ChatRepository chatRepository;
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserAdapter userAdapter;
 	
 	public ListMessageDTO getChatWith(Users me, long targetID) {
 		
@@ -69,10 +69,9 @@ public class ChatAdapter {
 		for(Chats chat: chats) {
 			ChatsDTO dto = new ChatsDTO();
 			long otherID = chat.getId_user_requester() != me ? chat.getId_user_requester() : chat.getId_user_sender();
-			Users user = userRepository.findById(otherID);
+			VCard user = userAdapter.getVCardByUser(otherID);
 			dto.id_usuario = otherID;
-			dto.nombre = user.getFirstName() + " " + user.getLast_name();
-			dto.picture = user.getPicture_url();
+			dto.vcard = user;
 			Mensajes mensaje = mensajesRepository.findById(chat.getLast_message_id());
 			dto.fecha = mensaje.fechaStr;
 			dto.mensaje = mensaje.message;

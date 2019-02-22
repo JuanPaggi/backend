@@ -7,11 +7,8 @@ public class ChatsDTO {
 	@GraphQLQuery(name = "id_usuario")
 	public long id_usuario;
 	
-	@GraphQLQuery(name = "nombre")
-	public String nombre;
-	
-	@GraphQLQuery(name = "picture")
-	public String picture;
+	@GraphQLQuery(name = "vcard")
+	public VCard vcard;
 	
 	@GraphQLQuery(name = "mensaje")
 	public String mensaje;

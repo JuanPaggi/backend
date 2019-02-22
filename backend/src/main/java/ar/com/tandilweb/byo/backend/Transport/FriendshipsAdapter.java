@@ -2,14 +2,11 @@ package ar.com.tandilweb.byo.backend.Transport;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import ar.com.tandilweb.byo.backend.Gateway.fcm.FCMNotify;
-import ar.com.tandilweb.byo.backend.Gateway.fcm.FCMPayloadData;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.HttpFCMPayload;
 import ar.com.tandilweb.byo.backend.Model.domain.Friendships;
@@ -17,10 +14,9 @@ import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.FriendshipsRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification;
-import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification.Types;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification.Typez;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
-import ch.qos.logback.core.net.SyslogOutputStream;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 
 public class FriendshipsAdapter {
@@ -81,12 +77,12 @@ public class FriendshipsAdapter {
 			for (Friendships fs : fss) {
 				Notification n = new Notification();
 				if (fs.getId_user_requester() == me.getId_user()) {
-					n.tipo = Types.SOLICITUD_ENVIADA;
+					n.tipo = Typez.SOLICITUD_ENVIADA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_target());
 					n.date_emitted = fs.getDate_emitted().getTimeInMillis();
 	
 				} else {
-					n.tipo = Types.SOLICITUD_RECIBIDA;
+					n.tipo = Typez.SOLICITUD_RECIBIDA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_requester());
 					n.date_emitted = fs.getDate_emitted().getTimeInMillis();
 
