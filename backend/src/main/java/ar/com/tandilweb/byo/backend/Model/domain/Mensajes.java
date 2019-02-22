@@ -1,5 +1,6 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
+import java.util.Calendar;
 import java.util.Date;
 
 public class Mensajes {
@@ -23,6 +24,9 @@ public class Mensajes {
 		this.fecha = fecha;
 		this.is_viewed = is_viewed;
 		this.id_message = id_message;
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(this.fecha);
+		this.fechaStr = cal.get(Calendar.DATE)+"/"+cal.get(Calendar.MONTH)+"/"+cal.get(Calendar.YEAR);
 	}
 
 }

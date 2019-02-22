@@ -73,8 +73,9 @@ public class ChatAdapter {
 			dto.id_usuario = otherID;
 			dto.nombre = user.getFirstName() + " " + user.getLast_name();
 			dto.picture = user.getPicture_url();
-			// dto.fecha
-			// dto.mensaje
+			Mensajes mensaje = mensajesRepository.findById(chat.getLast_message_id());
+			dto.fecha = mensaje.fechaStr;
+			dto.mensaje = mensaje.message;
 			chatsOut.add(dto);
 		}
 		return chatsOut;

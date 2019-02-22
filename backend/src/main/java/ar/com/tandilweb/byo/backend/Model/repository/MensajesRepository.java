@@ -71,7 +71,16 @@ public class MensajesRepository extends BaseRepository<Mensajes, Long> {
 
 	@Override
 	public Mensajes findById(Long id) {
-		return null;
+		try {
+	    	return jdbcTemplate.queryForObject(
+	                "SELECT * FROM ( SELECT * FROM mensajes WHERE id_mensaje = ?",
+	                new MensajesRowMapper(),
+	                new Object[]{ id }
+	    			);
+		} catch(DataAccessException e) {
+			logger.debug("MensajesRepository :: findById", e);
+			return null;
+		}
 	}
 	
 	public void delete(long id_sender, long id_target) {
