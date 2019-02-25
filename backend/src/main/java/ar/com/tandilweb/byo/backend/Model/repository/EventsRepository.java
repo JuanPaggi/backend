@@ -1,10 +1,12 @@
 package ar.com.tandilweb.byo.backend.Model.repository;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Repository;
 import ar.com.tandilweb.byo.backend.Model.BaseRepository;
 import ar.com.tandilweb.byo.backend.Model.domain.Events;
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
+import ar.com.tandilweb.byo.backend.Model.domain.StandsCheckin;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCardEvento;
 
@@ -41,12 +44,12 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 			return null;
 		}
 	}
-	public Integer getCheckin(Integer id_stand, long id_user) {
+	public List<StandsCheckin> getCheckins(long id_user) {
 		try {
-	    	return jdbcTemplate.queryForObject(
-	                "SELECT COUNT(*) FROM stands_checkin WHERE id_stand = ? AND id_user = ? ", 
-	                new Object[]{ id_stand, id_user },
-	                Integer.class);
+	    	return jdbcTemplate.query(
+	                "SELECT * FROM stands_checkin WHERE id_user = ? ", 
+	                new checkinsRowMapper(),
+	                new Object[]{ id_user });
 		} catch(DataAccessException e) {
 			e.printStackTrace();
 			return null;
@@ -55,9 +58,10 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 
 	
 	public List<Stands> getStands(Long event) {
-		
+	
 		try {	
-			return  jdbcTemplate.query("select * from stands where id_event = ?", new StandsRowMapper(), new Object[] {event});
+			return jdbcTemplate.query("select * from stands where id_event = ?", new StandsRowMapper(), new Object[] {event});
+		
 		} catch (DataAccessException e) {
 			e.printStackTrace();			
 			return null;
@@ -110,8 +114,9 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	    	cal_end.setTime(rs.getTimestamp("end_date"));
 	    	String fecha_start = this.cambiarFecha(cal_start);
 	    	String fecha_end = this.cambiarFecha(cal_end);
+
+	    
 	    	
-	    	//List<Stands> stands = er.getStands(rs.getLong("id_event"));
 	        return new Events(
 	        		rs.getLong("id_event"),
 	        		cal_start,
@@ -121,14 +126,23 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	        		rs.getString("name"),
 	        		rs.getString("logo"),
 	        		rs.getInt("id_gps_record"),
-	        		rs.getString("location_description")//,
-	        	//	stands
+	        		rs.getString("location_description"),
+	        		getStands(rs.getLong("id_event"))
 	        		);
 	    }
 	    	private String cambiarFecha(Calendar fecha) {
     	
 	    		   String[] CurrntMonth = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
 	    		   return fecha.get(Calendar.DAY_OF_MONTH) + " de " + CurrntMonth[fecha.get(Calendar.MONTH)] + " de " + fecha.get(Calendar.YEAR);
+	    	}
+	    	private List<Stands> getStands(Long event) {
+	    		
+	    		try {	
+	    			return  jdbcTemplate.query("select * from stands where id_event = ?", new StandsRowMapper(), new Object[] {event});
+	    		} catch (DataAccessException e) {
+	    			e.printStackTrace();			
+	    			return null;
+	    		}
 	    	}
 	}
 	
@@ -140,9 +154,26 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	        		rs.getLong("id_event"),
 	        		rs.getString("name"),
 	        		rs.getString("logo"),
-	        		rs.getInt("id_user_organizer")	     
+	        		rs.getInt("id_user_organizer")
 	        		);
 	    }
+	    
+	    
+	}
+	
+	class checkinsRowMapper implements RowMapper<StandsCheckin>
+	{  
+	    public StandsCheckin mapRow(ResultSet rs, int rowNum) throws SQLException {
+	    	Calendar date = Calendar.getInstance();
+	    	date.setTime(rs.getTimestamp("date_checkin"));
+	        return new StandsCheckin(
+	        		rs.getLong("id_stand"),
+	        		rs.getLong("id_user"),
+	        		date
+	        		);
+	    }
+	    
+	    
 	}
 
 	

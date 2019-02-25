@@ -1,7 +1,10 @@
 package ar.com.tandilweb.byo.backend.Presentation.dto.out;
 
 import java.util.Calendar;
+import java.util.List;
 
+import ar.com.tandilweb.byo.backend.Model.domain.Stands;
+import ar.com.tandilweb.byo.backend.Model.domain.StandsCheckin;
 import io.leangen.graphql.annotations.GraphQLQuery;
 
 public class EventDTO {
@@ -32,6 +35,28 @@ public class EventDTO {
 	
 	@GraphQLQuery(name = "location_description")
 	private String location_description;
+	
+	@GraphQLQuery(name = "stands")
+	private List<Stands> stands;
+	
+	@GraphQLQuery(name = "checkins")
+	private List<StandsCheckin> checkins;
+
+	public List<StandsCheckin> getCheckins() {
+		return checkins;
+	}
+
+	public void setCheckins(List<StandsCheckin> checkins) {
+		this.checkins = checkins;
+	}
+
+	public List<Stands> getStands() {
+		return stands;
+	}
+
+	public void setStands(List<Stands> stands) {
+		this.stands = stands;
+	}
 
 	public long getId_event() {
 		return id_event;

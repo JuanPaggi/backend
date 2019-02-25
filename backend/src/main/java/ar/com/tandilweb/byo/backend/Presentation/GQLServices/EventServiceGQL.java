@@ -35,7 +35,7 @@ public class EventServiceGQL {
 		log.debug("Requesting EventService_getEvents");
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users me = header.getUser();
-		List<EventDTO> out = evAdapter.getEvents();
+		List<EventDTO> out = evAdapter.getEvents(me);
 		log.debug("Responding EventService_getEvents");
 		return out;
 	}
@@ -45,6 +45,8 @@ public class EventServiceGQL {
 			@GraphQLArgument(name = "id_event") Long id_event,
 			@GraphQLEnvironment ResolutionEnvironment environment){
 		log.debug("Requesting EventService_getStands");
+		
+		
 		List<Stands> out = null;
 		try {
 			JWTHeader header = JWTHeader.getHeader(environment);
@@ -57,21 +59,5 @@ public class EventServiceGQL {
 		return out;
 	} 
 	
-	@GraphQLQuery(name = "EventService_getCheckin")
-	public Boolean getCheckin(
-			@GraphQLArgument(name = "stand") Integer stand,
-			@GraphQLEnvironment ResolutionEnvironment environment){
-		log.debug("Requesting EventService_getCheckin");
-		boolean out;
-		try {
-			JWTHeader header = JWTHeader.getHeader(environment);
-			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
-			out = evAdapter.getCheckin(stand,header.getUser().getId_user());
-		} catch (Exception e) {
-			log.error("Error realizando checkin", e);
-			out = false;
-		}
-		log.debug("Responding EventService_getCheckin");
-		return out;
-	} 
+	
 }
