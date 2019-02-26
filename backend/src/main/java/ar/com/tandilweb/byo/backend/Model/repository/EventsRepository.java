@@ -112,8 +112,6 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	    	cal_start.setTime(rs.getTimestamp("start_date"));
 	     	Calendar cal_end = Calendar.getInstance();
 	    	cal_end.setTime(rs.getTimestamp("end_date"));
-	    	String fecha_start = this.cambiarFecha(cal_start);
-	    	String fecha_end = this.cambiarFecha(cal_end);
 
 	    
 	    	
@@ -121,8 +119,6 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	        		rs.getLong("id_event"),
 	        		cal_start,
 	        		cal_end,
-	        		fecha_start,
-	        		fecha_end,
 	        		rs.getString("name"),
 	        		rs.getString("logo"),
 	        		rs.getInt("id_gps_record"),
@@ -130,11 +126,7 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	        		getStands(rs.getLong("id_event"))
 	        		);
 	    }
-	    	private String cambiarFecha(Calendar fecha) {
-    	
-	    		   String[] CurrntMonth = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" };
-	    		   return fecha.get(Calendar.DAY_OF_MONTH) + " de " + CurrntMonth[fecha.get(Calendar.MONTH)] + " de " + fecha.get(Calendar.YEAR);
-	    	}
+
 	    	private List<Stands> getStands(Long event) {
 	    		
 	    		try {	
@@ -157,8 +149,7 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	        		rs.getInt("id_user_organizer")
 	        		);
 	    }
-	    
-	    
+	   	    
 	}
 	
 	class checkinsRowMapper implements RowMapper<StandsCheckin>

@@ -1,6 +1,8 @@
 package ar.com.tandilweb.byo.backend.Presentation.dto.out;
 
+
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
@@ -13,16 +15,10 @@ public class EventDTO {
 	private long id_event;
 	
 	@GraphQLQuery(name = "start_date")
-	private Calendar start_date;
+	private Date start_date;
 	
 	@GraphQLQuery(name = "end_date")
-	private Calendar end_date;
-	
-	@GraphQLQuery(name = "fecha_start")
-	private String fecha_start;
-	
-	@GraphQLQuery(name = "fecha_end")
-	private String fecha_end;
+	private Date end_date;
 	
 	@GraphQLQuery(name = "name")
 	private String name;
@@ -66,37 +62,22 @@ public class EventDTO {
 		this.id_event = id_event;
 	}
 
-	public Calendar getStart_date() {
+	public Date getStart_date() {
 		return start_date;
 	}
 
 	public void setStart_date(Calendar start_date) {
-		this.start_date = start_date;
+		this.start_date = start_date.getTime();
 	}
 
-	public Calendar getEnd_date() {
+	public Date getEnd_date() {
 		return end_date;
 	}
 
 	public void setEnd_date(Calendar end_date) {
-		this.end_date = end_date;
+		this.end_date = end_date.getTime();
 	}
 
-	public String getFecha_start() {
-		return fecha_start;
-	}
-
-	public void setFecha_start(String fecha_start) {
-		this.fecha_start = fecha_start;
-	}
-
-	public String getFecha_end() {
-		return fecha_end;
-	}
-
-	public void setFecha_end(String fecha_end) {
-		this.fecha_end = fecha_end;
-	}
 
 	public String getName() {
 		return name;

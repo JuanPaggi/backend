@@ -39,8 +39,6 @@ public class EventsAdapter {
 		for(Events event: events) {
 			EventDTO dto = new EventDTO();
 			dto.setEnd_date(event.getEnd_date());
-			dto.setFecha_end(event.getFecha_end());
-			dto.setFecha_start(event.getFecha_start());
 			dto.setGps_data(event.getGps_data());
 			dto.setId_event(event.getId_event());
 			dto.setLocation_description(event.getLocation_description());
@@ -50,12 +48,12 @@ public class EventsAdapter {
 			List<Stands> stands = eventsRepository.getStands(event.getId_event());
 			dto.setStands(stands);
 			dto.setCheckins(eventsRepository.getCheckins(me.getId_user()));
-				log.debug("TAMAÑO :: : :" + dto.getCheckins().size());
 			eventsOut.add(dto);
 		}
 		
 		return eventsOut;
 	}
+	
 
 	public List<Stands> getStands(Long event) {
 		

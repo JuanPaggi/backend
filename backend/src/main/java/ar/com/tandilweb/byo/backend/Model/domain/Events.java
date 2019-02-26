@@ -33,19 +33,7 @@ public class Events {
 		this.location_description = location_description;
 		this.stands = stands;
 	}
-	public Events(long id_event, Calendar start_date, Calendar end_date,String fecha_start, String fecha_end, String name, String logo, int gps,
-			String location_description,  List<Stands> stands) {
-		this.id_event = id_event;
-		this.start_date = start_date;
-		this.end_date = end_date;
-		this.fecha_start = fecha_start;
-		this.fecha_end = fecha_end;
-		this.name = name;
-		this.logo = logo;
-		this.gps_data = gps;
-		this.location_description = location_description;
-		this.stands = stands;
-	}
+
 	public long getId_event() {
 		return id_event;
 	}
