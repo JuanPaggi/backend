@@ -133,8 +133,8 @@ public class LinkedInAdapter {
 		user.setPicture_url(lp.getPictureUrl());
 		user.setSignup_date(new Date());
 		user.setPassword("password hardcodeado");
-		user.setOfrezco("ofrezco hardcodeado");
-		user.setBusco("Busco Hardcodeado");
+		user.setOfrezco("");
+		user.setBusco("");
 		user.setCompletoByO(false);
 		user.setSalt_jwt(uuid.toString());
 		user.setLocked(false);
