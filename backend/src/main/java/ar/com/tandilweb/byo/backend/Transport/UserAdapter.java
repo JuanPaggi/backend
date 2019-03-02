@@ -280,6 +280,7 @@ public class UserAdapter {
 	
 	private Profile setProfileData(Profile userProfile, long userId, String summary, String linkedin_url) {
 		userProfile.setId_user(userId);
+		userProfile.setHeadline(summary);
 		userProfile.setSummary(summary);
 		userProfile.setCountry(countriesRepository.findById(1L)); //esto esta hardcodeado
 		userProfile.setLocation("Argentina");
