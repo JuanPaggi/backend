@@ -78,6 +78,32 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 		}
 	}
 	
+	public GpsData findUserGpsData(Long id) {
+		try {
+			return jdbcTemplate.queryForObject(
+	                "SELECT * FROM  gps_data WHERE id_gps_record= (SELECT MAX(id_gps_record) FROM gps_data_users WHERE id_user = ?)",
+	                new Object[]{id}, new GpsDataRowMapper());
+		} catch(DataAccessException e) {
+//			logger.debug("GpsDataRepository :: findUserGpsData",e);
+			return null;
+		}
+		
+		
+	}
+	
+	public GpsData findEventGpsData(Long id) {
+		try {
+			return jdbcTemplate.queryForObject(
+	                "SELECT * FROM gps_data WHERE id_gps_record = ?",
+	                new Object[]{id}, new GpsDataRowMapper());
+		} catch(DataAccessException e) {
+//			logger.debug("GpsDataRepository :: findUserGpsData",e);
+			return null;
+		}
+		
+		
+	}
+	
 	public GpsData getOrCreate(double latitude, double longitude) {
 		try {
 			GpsData data = jdbcTemplate.queryForObject(

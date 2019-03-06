@@ -5,6 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.StandsCheckin;
 import io.leangen.graphql.annotations.GraphQLQuery;
@@ -27,7 +28,7 @@ public class EventDTO {
 	private String logo;
 	
 	@GraphQLQuery(name = "gps_data")
-	private int gps_data;
+	private GpsData gps_data;
 	
 	@GraphQLQuery(name = "location_description")
 	private String location_description;
@@ -95,11 +96,11 @@ public class EventDTO {
 		this.logo = logo;
 	}
 
-	public int getGps_data() {
+	public GpsData getGps_data() {
 		return gps_data;
 	}
 
-	public void setGps_data(int gps_data) {
+	public void setGps_data(GpsData gps_data) {
 		this.gps_data = gps_data;
 	}
 

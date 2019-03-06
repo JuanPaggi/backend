@@ -12,6 +12,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
@@ -22,6 +23,7 @@ import org.springframework.stereotype.Repository;
 
 import ar.com.tandilweb.byo.backend.Model.BaseRepository;
 import ar.com.tandilweb.byo.backend.Model.domain.Events;
+import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.StandsCheckin;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
@@ -30,7 +32,8 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCardEvento;
 @Repository
 public class EventsRepository extends BaseRepository<Events, Long>{
 	public static Logger logger = LoggerFactory.getLogger(FriendshipsRepository.class);
-	
+	@Autowired
+	GpsDataRepository gpsDR = new GpsDataRepository();
 	
 	
 	public List<Events> getEvents() {
@@ -55,6 +58,8 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 			return null;
 		}
 	}
+	
+	
 
 	
 	public List<Stands> getStands(Long event) {
@@ -112,8 +117,9 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	    	cal_start.setTime(rs.getTimestamp("start_date"));
 	     	Calendar cal_end = Calendar.getInstance();
 	    	cal_end.setTime(rs.getTimestamp("end_date"));
-
-	    
+	    	logger.debug("CALENDARR:: :: : ::"+rs.getLong("id_gps_record"));
+			GpsData gps = this.findEventGpsData(rs.getLong("id_gps_record"));
+			logger.debug("GPS:: :: : ::"+gps.getLatitude());
 	    	
 	        return new Events(
 	        		rs.getLong("id_event"),
@@ -121,7 +127,7 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	        		cal_end,
 	        		rs.getString("name"),
 	        		rs.getString("logo"),
-	        		rs.getInt("id_gps_record"),
+	        		gps,
 	        		rs.getString("location_description"),
 	        		getStands(rs.getLong("id_event"))
 	        		);
@@ -136,6 +142,19 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	    			return null;
 	    		}
 	    	}
+	    	private GpsData findEventGpsData(Long id) {
+	    		try {
+	    			return jdbcTemplate.queryForObject(
+	    	                "SELECT * FROM gps_data WHERE id_gps_record = ?",
+	    	                new Object[]{id}, new GpsDataRowMapper());
+	    		} catch(DataAccessException e) {
+//	    			logger.debug("GpsDataRepository :: findUserGpsData",e);
+	    			return null;
+	    		}
+	    		
+	    		
+	    	}
+	    	
 	}
 	
 	class StandsRowMapper implements RowMapper<Stands>
@@ -165,6 +184,17 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	    }
 	    
 	    
+	}
+	class GpsDataRowMapper implements RowMapper<GpsData>
+	{
+	    public GpsData mapRow(ResultSet rs, int rowNum) throws SQLException {
+	        return new GpsData(
+	        		rs.getLong("id_gps_record"),
+	        		rs.getDouble("longitude"), //hay que ver por que queda al reves
+	        		rs.getDouble("latitude"),
+	        		rs.getDate("date_recorded")
+	        		);
+	    }
 	}
 
 	

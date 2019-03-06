@@ -3,6 +3,8 @@ package ar.com.tandilweb.byo.backend.Model.domain;
 import java.util.Calendar;
 import java.util.List;
 
+import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
+
 public class Events {
 
 	private long id_event;
@@ -12,7 +14,7 @@ public class Events {
 	private String fecha_end;
 	private String name;
 	private String logo;
-	private int gps_data;
+	private GpsData gps_data;
 	private String location_description;
 	private List<Stands> stands;
 
@@ -22,7 +24,8 @@ public class Events {
 	public void setStands(List<Stands> stands) {
 		this.stands = stands;
 	}
-	public Events(long id_event, Calendar start_date, Calendar end_date, String name, String logo, int gps,
+	public Events(long id_event, Calendar start_date, Calendar end_date, String name, String logo, GpsData
+			gps,
 			String location_description, List<Stands> stands) {
 		this.id_event = id_event;
 		this.start_date = start_date;
@@ -32,6 +35,12 @@ public class Events {
 		this.gps_data = gps;
 		this.location_description = location_description;
 		this.stands = stands;
+	}
+	
+	public GpsData getGpsData(long gps) {
+		GpsDataRepository gpsDR = new GpsDataRepository();
+		return gpsDR.findEventGpsData(gps);
+		
 	}
 
 	public long getId_event() {
@@ -87,11 +96,11 @@ public class Events {
 		this.logo = logo;
 	}
 
-	public int getGps_data() {
+	public GpsData getGps_data() {
 		return gps_data;
 	}
 
-	public void setGps_data(int gps_data) {
+	public void setGps_data(GpsData gps_data) {
 		this.gps_data = gps_data;
 	}
 

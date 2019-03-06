@@ -15,6 +15,7 @@ import ar.com.tandilweb.byo.backend.Model.domain.Events;
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.EventsRepository;
+import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Presentation.GQLServices.EventServiceGQL;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.EventDTO;
 
@@ -28,6 +29,9 @@ public class EventsAdapter {
 	private FirebaseCloudMessaging firebaseCloudMessaging;
 	@Autowired
 	private EventsRepository eventsRepository;
+	@Autowired
+	private GpsDataRepository gpsDR;
+	private final double RADIO = 0.15d;//radio de distancia entre evento y usuario
 
 	private static final Logger log = LoggerFactory.getLogger(EventsAdapter.class);
 	
@@ -37,6 +41,7 @@ public class EventsAdapter {
 		
 		
 		for(Events event: events) {
+			if(this.compareDistance(me, event) ) {
 			EventDTO dto = new EventDTO();
 			dto.setEnd_date(event.getEnd_date());
 			dto.setGps_data(event.getGps_data());
@@ -48,10 +53,29 @@ public class EventsAdapter {
 			List<Stands> stands = eventsRepository.getStands(event.getId_event());
 			dto.setStands(stands);
 			dto.setCheckins(eventsRepository.getCheckins(me.getId_user()));
-			eventsOut.add(dto);
+			eventsOut.add(dto);}
 		}
 		
 		return eventsOut;
+	}
+	
+	private boolean compareDistance(Users me, Events event) {
+		log.debug("USERRR: : " +me.getId_user() );
+		log.debug("gpsDR.findUserGpsData(me.getId_user()).getLatitude(): "+ gpsDR.findUserGpsData(me.getId_user()).getLatitude());
+		log.debug("event.getGps_data().getLatitude(): " + event.getGps_data().getLatitude());
+		if((gpsDR.findUserGpsData(me.getId_user()).getLatitude()-
+				event.getGps_data().getLatitude() < this.RADIO) && 
+				(gpsDR.findUserGpsData(me.getId_user()).getLatitude()-
+						event.getGps_data().getLatitude() > (-this.RADIO))
+				&& (gpsDR.findUserGpsData(me.getId_user()).getLongitude()-
+						event.getGps_data().getLongitude() < this.RADIO) && 
+						(gpsDR.findUserGpsData(me.getId_user()).getLongitude()-
+								event.getGps_data().getLongitude() > (-this.RADIO))) {
+			log.debug("RETURNN TRUEEEE");
+			return true;
+			
+		}
+		return false;
 	}
 	
 
