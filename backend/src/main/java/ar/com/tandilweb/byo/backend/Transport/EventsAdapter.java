@@ -42,8 +42,7 @@ public class EventsAdapter {
 		List<EventDTO> eventsOut = new ArrayList<EventDTO>();
 		
 		
-		for(Events event: events) {
-			
+		for(Events event: events) {		
 			if(event.getEnd_date().getTimeInMillis()>= new Date().getTime()) { //comprobamos que 
 			EventDTO dto = new EventDTO();									// no haya terminado
 			dto.setEnd_date(event.getEnd_date());
