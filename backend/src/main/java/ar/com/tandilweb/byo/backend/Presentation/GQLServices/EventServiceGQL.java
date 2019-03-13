@@ -11,6 +11,7 @@ import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.EventDTO;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Transport.EventsAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
 import io.leangen.graphql.annotations.GraphQLEnvironment;
@@ -32,11 +33,11 @@ public class EventServiceGQL {
 	@GraphQLQuery(name = "EventService_getEvents")
 	public List<EventDTO> getEvents(@GraphQLEnvironment ResolutionEnvironment environment) {
 		// nos traemos el usuario que está llamando a este servicio:
-		log.debug("Requesting EventService_getEvents");
+
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users me = header.getUser();
 		List<EventDTO> out = evAdapter.getEvents(me);
-		log.debug("Responding EventService_getEvents");
+
 		return out;
 	}
 	
@@ -44,7 +45,7 @@ public class EventServiceGQL {
 	public List<Stands> getStands(
 			@GraphQLArgument(name = "id_event") Long id_event,
 			@GraphQLEnvironment ResolutionEnvironment environment){
-		log.debug("Requesting EventService_getStands");
+
 		
 		
 		List<Stands> out = null;
@@ -55,9 +56,28 @@ public class EventServiceGQL {
 		} catch (Exception e) {
 			log.error("Error obteniendo stands", e);
 		}
-		log.debug("Responding EventService_getStands");
+
 		return out;
 	} 
 	
+	@GraphQLQuery(name = "EventService_setCheckin")
+	public ResponseDTO buscoYOfrezco(
+			@GraphQLArgument(name = "id_stand") long id_stand , 
+			@GraphQLEnvironment ResolutionEnvironment environment
+			) throws Exception {
+
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users usuario = header.getUser();
+		ResponseDTO out = new ResponseDTO();
+
+		if(header.isTrusted()) {
+			out = evAdapter.setCheckin(id_stand, usuario.getId_user());
+		} else {
+			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
+			out.description = "Error datos no seteados";
+		}
+
+		return out;
+	}
 	
 }

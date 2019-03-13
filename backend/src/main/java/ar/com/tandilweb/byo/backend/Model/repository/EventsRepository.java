@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -117,9 +118,7 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	    	cal_start.setTime(rs.getTimestamp("start_date"));
 	     	Calendar cal_end = Calendar.getInstance();
 	    	cal_end.setTime(rs.getTimestamp("end_date"));
-	    	logger.debug("CALENDARR:: :: : ::"+rs.getLong("id_gps_record"));
 			GpsData gps = this.findEventGpsData(rs.getLong("id_gps_record"));
-			logger.debug("GPS:: :: : ::"+gps.getLatitude());
 	    	
 	        return new Events(
 	        		rs.getLong("id_event"),
@@ -128,6 +127,7 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	        		rs.getString("name"),
 	        		rs.getString("logo"),
 	        		gps,
+	        		rs.getDouble("radio"),
 	        		rs.getString("location_description"),
 	        		getStands(rs.getLong("id_event"))
 	        		);
@@ -195,6 +195,14 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	        		rs.getDate("date_recorded")
 	        		);
 	    }
+	}
+	public void setCheckin(long id_stand, long id_user) {
+		try {
+			final String sql = "INSERT INTO stands_checkin(id_stand,id_user,date_checkin) VALUES(?,?,?);";
+			jdbcTemplate.update(sql, new Object[] { id_stand, id_user, new Date()});
+		} catch (DataAccessException e) {
+			logger.debug("EventsRepository :: setCheckin", e);
+		}
 	}
 
 	

@@ -38,6 +38,17 @@ public class EventDTO {
 	
 	@GraphQLQuery(name = "checkins")
 	private List<StandsCheckin> checkins;
+	
+	@GraphQLQuery(name = "radio")
+	private double radio;
+
+	public double getRadio() {
+		return radio;
+	}
+
+	public void setRadio(double radio) {
+		this.radio = radio;
+	}
 
 	public List<StandsCheckin> getCheckins() {
 		return checkins;

@@ -17,6 +17,7 @@ public class Events {
 	private GpsData gps_data;
 	private String location_description;
 	private List<Stands> stands;
+	private double radio;
 
 	public List<Stands> getStands() {
 		return stands;
@@ -25,7 +26,7 @@ public class Events {
 		this.stands = stands;
 	}
 	public Events(long id_event, Calendar start_date, Calendar end_date, String name, String logo, GpsData
-			gps,
+			gps, double radio,
 			String location_description, List<Stands> stands) {
 		this.id_event = id_event;
 		this.start_date = start_date;
@@ -33,6 +34,7 @@ public class Events {
 		this.name = name;
 		this.logo = logo;
 		this.gps_data = gps;
+		this.radio = radio;
 		this.location_description = location_description;
 		this.stands = stands;
 	}
@@ -110,6 +112,10 @@ public class Events {
 
 	public void setLocation_description(String location_description) {
 		this.location_description = location_description;
+	}
+	public double getRadio() {
+		// TODO Auto-generated method stub
+		return this.radio;
 	}
 	
 }
