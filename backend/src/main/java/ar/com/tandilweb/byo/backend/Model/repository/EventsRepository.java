@@ -146,8 +146,8 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 	    		
 	    		try {	
 	    			return  jdbcTemplate.query("select * from stands where id_event = ?", new StandsRowMapper(), new Object[] {event});
-	    		} catch (DataAccessException e) {
-	    			e.printStackTrace();			
+	    		} catch (DataAccessException ex) {
+	    			ex.printStackTrace();			
 	    			return null;
 	    		}
 	    	}
