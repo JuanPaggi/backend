@@ -3,7 +3,6 @@ package ar.com.tandilweb.byo.backend.Presentation.dto.out;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.TimeZone;
 
 import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
 import io.leangen.graphql.annotations.GraphQLQuery;

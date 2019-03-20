@@ -4,10 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
-import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
-import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.Transport.ConfigurationAdapter;
@@ -31,8 +30,8 @@ public class ConfigurationServiceGQL {
 	private UserAdapter userAdapter;
 	@Autowired
 	private ConfigurationAdapter configurationAdapter;
-	@Autowired
-	private UserRepository userRepository;
+//	@Autowired
+//	private UserRepository userRepository;
 	
 	@GraphQLQuery(name = "ConfigurationService_getBuscoYOfrezco")
 	public VCard getBuscoYOfrezco(

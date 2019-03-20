@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Calendar;
 import java.util.List;
-import java.text.SimpleDateFormat;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +19,6 @@ import org.springframework.stereotype.Repository;
 
 import ar.com.tandilweb.byo.backend.Model.BaseRepository;
 import ar.com.tandilweb.byo.backend.Model.domain.Friendships;
-import ar.com.tandilweb.byo.backend.Model.domain.Users;
 
 @Repository
 public class FriendshipsRepository extends BaseRepository<Friendships, Long>{

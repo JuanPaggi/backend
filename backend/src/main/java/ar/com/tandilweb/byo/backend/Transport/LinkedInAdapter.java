@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.tandilweb.byo.backend.Gateway.LinkedInConsumer;
 import ar.com.tandilweb.byo.backend.Gateway.dto.LinkedInProfile;
-import ar.com.tandilweb.byo.backend.Gateway.dto.linkedIn.Positions;
-import ar.com.tandilweb.byo.backend.Model.domain.Countries;
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;

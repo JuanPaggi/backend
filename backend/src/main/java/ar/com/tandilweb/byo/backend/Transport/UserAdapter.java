@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.com.tandilweb.byo.backend.Gateway.dto.LinkedInProfile;
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
@@ -17,7 +16,6 @@ import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
-import ar.com.tandilweb.byo.backend.Presentation.GQLServices.AccountServiceGQL;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
@@ -25,7 +23,6 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
 import ar.com.tandilweb.byo.backend.utils.Mailer;
-import io.leangen.graphql.annotations.GraphQLQuery;
 
 public class UserAdapter {
 	
@@ -272,11 +269,11 @@ public class UserAdapter {
 		profileRepository.create(userProfile);
 	}
 		
-	private void updateProfile(long userId, String summary, String linkedin_url){
-		Profile userProfile = profileRepository.findById(userId);
-		userProfile = setProfileData(userProfile, userId, summary, linkedin_url);
-		profileRepository.update(userProfile);
-	}
+//	private void updateProfile(long userId, String summary, String linkedin_url){
+//		Profile userProfile = profileRepository.findById(userId);
+//		userProfile = setProfileData(userProfile, userId, summary, linkedin_url);
+//		profileRepository.update(userProfile);
+//	}
 	
 	private Profile setProfileData(Profile userProfile, long userId, String summary, String linkedin_url) {
 		userProfile.setId_user(userId);

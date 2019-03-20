@@ -18,7 +18,6 @@ import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.HttpFCMPayload;
 import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
-import ar.com.tandilweb.byo.backend.Model.repository.MensajesRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.WSockets.UserService;
 import ar.com.tandilweb.byo.backend.Presentation.WSockets.DTO.ClientData;

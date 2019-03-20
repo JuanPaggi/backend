@@ -1,8 +1,6 @@
 package ar.com.tandilweb.byo.backend.Filters.JWT;
 
 import java.io.IOException;
-import java.util.NoSuchElementException;
-import java.util.Optional;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;

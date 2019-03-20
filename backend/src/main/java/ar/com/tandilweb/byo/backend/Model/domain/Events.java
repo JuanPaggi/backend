@@ -3,8 +3,6 @@ package ar.com.tandilweb.byo.backend.Model.domain;
 import java.util.Calendar;
 import java.util.List;
 
-import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
-
 public class Events {
 
 	private long id_event;

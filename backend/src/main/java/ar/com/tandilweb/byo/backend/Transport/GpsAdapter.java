@@ -45,6 +45,7 @@ public class GpsAdapter {
 					VCard vcard = new VCard();
 					// nos traemos el perfil por los datos que faltan:
 					/**
+					 * TODO
 					 * !!!! TENER EN CUENTA !!!!
 					 * esto está hecho así para poder probar las solicitudes de amistad
 					 * en realidad esta función debería traer los usuarios por cercanía

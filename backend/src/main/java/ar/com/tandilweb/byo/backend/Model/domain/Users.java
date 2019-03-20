@@ -1,8 +1,6 @@
 package ar.com.tandilweb.byo.backend.Model.domain;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 

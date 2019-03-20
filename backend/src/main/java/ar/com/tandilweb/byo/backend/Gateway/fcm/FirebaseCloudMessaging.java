@@ -13,9 +13,9 @@ public class FirebaseCloudMessaging {
 	private static final Logger log = LoggerFactory.getLogger(FirebaseCloudMessaging.class);
 	
 	private String endpoint = "https://fcm.googleapis.com/fcm/send";
-	private String serverKey;
+//	private String serverKey;
 	private String lastError;
-	private int timeOut = 6000;
+//	private int timeOut = 6000;
 	
 	@Autowired
 	RestTemplate restTemplate;
@@ -26,7 +26,7 @@ public class FirebaseCloudMessaging {
 	}
 	
 	public void setServerKey(String serverKey) {
-		this.serverKey = serverKey;
+//		this.serverKey = serverKey;
 		headers.set("Content-Type", "application/json");
 		headers.set("Authorization", "key="+serverKey);
 	}

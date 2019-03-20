@@ -1,22 +1,18 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.com.tandilweb.byo.backend.Model.domain.Friendships;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
-import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
 
 public class ConfigurationAdapter {
 
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(ConfigurationAdapter.class);
 	
 	@Autowired

@@ -9,7 +9,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
 import ar.com.tandilweb.byo.backend.Model.domain.EventGpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Events;
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
@@ -25,8 +24,8 @@ public class EventsAdapter {
 	@Value("${fcm.serverkey}")
 	private String serverKey;
 	
-	@Autowired
-	private FirebaseCloudMessaging firebaseCloudMessaging;
+//	@Autowired
+//	private FirebaseCloudMessaging firebaseCloudMessaging;
 	
 	@Autowired
 	private EventsRepository eventsRepository;
@@ -34,7 +33,7 @@ public class EventsAdapter {
 	@Autowired
 	private GpsDataRepository gpsRepository;
 
-
+	@SuppressWarnings("unused")
 	private static final Logger log = LoggerFactory.getLogger(EventsAdapter.class);
 	
 	public List<EventDTO> getEvents(double lat, double lon, Users me) {
