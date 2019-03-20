@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
@@ -33,11 +34,11 @@ public class DemoService {
 	}
 	
 	@RequestMapping(path="/notify", method=RequestMethod.GET)
-	public boolean sendNotification() {
+	public boolean sendNotification(@RequestParam("userID") long userID) {
 		HttpFCMPayload payload = new HttpFCMPayload();
 		fcm.setServerKey(serverKey);
 		List<String> rids = new ArrayList<String>();
-		Users user = urepo.findById(25L);
+		Users user = urepo.findById(userID);
 		rids.add(user.getFcmToken());
 		payload.setRegistration_ids(rids);
 		//payload.setTopic('generalTopic');

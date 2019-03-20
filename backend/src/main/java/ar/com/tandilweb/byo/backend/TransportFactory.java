@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 
 import ar.com.tandilweb.byo.backend.Transport.ChatAdapter;
 import ar.com.tandilweb.byo.backend.Transport.ConfigurationAdapter;
+import ar.com.tandilweb.byo.backend.Transport.EventsAdapter;
 import ar.com.tandilweb.byo.backend.Transport.FriendshipsAdapter;
 import ar.com.tandilweb.byo.backend.Transport.GpsAdapter;
 import ar.com.tandilweb.byo.backend.Transport.LinkedInAdapter;
@@ -27,6 +28,11 @@ public class TransportFactory {
 	@Bean
 	public ChatAdapter chatAdapter() {
 		return new ChatAdapter();
+	}
+	
+	@Bean
+	public EventsAdapter eventsAdapter() {
+		return new EventsAdapter();
 	}
 	
 	@Bean

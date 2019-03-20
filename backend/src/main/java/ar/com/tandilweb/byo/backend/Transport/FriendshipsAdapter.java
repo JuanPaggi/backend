@@ -2,14 +2,11 @@ package ar.com.tandilweb.byo.backend.Transport;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import ar.com.tandilweb.byo.backend.Gateway.fcm.FCMNotify;
-import ar.com.tandilweb.byo.backend.Gateway.fcm.FCMPayloadData;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
 import ar.com.tandilweb.byo.backend.Gateway.fcm.HttpFCMPayload;
 import ar.com.tandilweb.byo.backend.Model.domain.Friendships;
@@ -17,10 +14,9 @@ import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.FriendshipsRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification;
-import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification.Types;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.Notification.Typez;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
-import ch.qos.logback.core.net.SyslogOutputStream;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 
 public class FriendshipsAdapter {
@@ -50,21 +46,17 @@ public class FriendshipsAdapter {
 			fs.setId_user_requester(idreq);
 			fs.setId_user_target(idtar);
 			Friendships record = friendShipRepository.create(fs);
-			if (record != null) {
+			if (record != null && target.getReceiveNotifications()) {
 				// enviar notificacion
-				HttpFCMPayload payload = new HttpFCMPayload();
-				firebaseCloudMessaging.setServerKey(serverKey);
 				List<String> rids = new ArrayList<String>();
+				HttpFCMPayload payload = new HttpFCMPayload(
+						"Solicitud de contacto", 
+						"Recibiste una nueva solicitud de contacto de " + requester.getFirst_name() + " " + requester.getLast_name()
+				);
+				firebaseCloudMessaging.setServerKey(serverKey);
 				rids.add(target.getFcmToken());
-				// payload.setRegistration_ids(rids);
-				// payload.setTopic('generalTopic');
-				FCMNotify notificacion = new FCMNotify("Solicitud de contacto",
-						"Recibiste una nueva solicitud de contacto de " + requester.getFirst_name() + " "
-								+ requester.getLast_name());
-				payload.setNotification(notificacion);
 				payload.setTarget(target.getFcmToken());
 				firebaseCloudMessaging.send(payload);
-
 				out.code = Code.CREATED;
 				out.description = "Asociación exitosa";
 			} else {
@@ -85,12 +77,12 @@ public class FriendshipsAdapter {
 			for (Friendships fs : fss) {
 				Notification n = new Notification();
 				if (fs.getId_user_requester() == me.getId_user()) {
-					n.tipo = Types.SOLICITUD_ENVIADA;
+					n.tipo = Typez.SOLICITUD_ENVIADA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_target());
 					n.date_emitted = fs.getDate_emitted().getTimeInMillis();
 	
 				} else {
-					n.tipo = Types.SOLICITUD_RECIBIDA;
+					n.tipo = Typez.SOLICITUD_RECIBIDA;
 					n.userTarget = userAdapter.getVCardByUser(fs.getId_user_requester());
 					n.date_emitted = fs.getDate_emitted().getTimeInMillis();
 
@@ -103,12 +95,26 @@ public class FriendshipsAdapter {
 
 	public ResponseDTO validateFriendAcceptance(long idRequester, long idTarget) {
 		ResponseDTO out = new ResponseDTO();
+		Users requester = userRepository.findById(idRequester);
+		Users target = userRepository.findById(idTarget);
 		// el get(0) no me gusta mucho
 		Friendships friendship = friendShipRepository.getFriendship(idRequester, idTarget).get(0);
 		//
 		if (friendship != null) {
 			friendship.setIs_accepted(true);
 			friendShipRepository.update(friendship);
+			if(requester.getReceiveNotifications()) {
+				// enviar notificacion
+				List<String> rids = new ArrayList<String>();
+				HttpFCMPayload payload = new HttpFCMPayload(
+						"Solicitud aceptada",
+						target.getFirst_name() + " " + target.getLast_name() + " aceptó su solicitud de contacto. "
+				);
+				firebaseCloudMessaging.setServerKey(serverKey);
+				rids.add(requester.getFcmToken());
+				payload.setTarget(requester.getFcmToken());
+				firebaseCloudMessaging.send(payload);
+			}
 			out.code = Code.OK;
 			out.description = "Solicitud aceptada";
 		} else {

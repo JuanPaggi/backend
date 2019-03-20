@@ -1,0 +1,34 @@
+-- ---
+-- Population Data
+-- ---
+
+-- INSERT INTO `users` (`id_user`,`first_name`,`last_name`,`email`,`password`,`last_login`,`signup_date`,`linkedin_id`,`busco`,`ofrezco`,`picture_url`,`is_premium`,`salt_jwt`,`completoByO`,`locked`,`failed_login_attempts`,`unlock_account_code`) VALUES
+-- ('','','','','','','','','','','','','','','','','');
+-- INSERT INTO `profile` (`id_user`,`headline`,`industry`,`country`,`location`,`linkedin_url`,`summary`) VALUES
+-- ('','','','','','','');
+-- INSERT INTO `gps_data` (`id_gps_record`,`latitude`,`longitude`,`date_recorded`) VALUES
+-- ('','','','');
+-- INSERT INTO `gps_data_users` (`id_gps_record`,`id_user`) VALUES
+-- ('','');
+-- INSERT INTO `cached_users_close` (`id_user_searcher`,`id_user_finded`,`cache_date`) VALUES
+-- ('','','');
+-- INSERT INTO `friendships` (`id_user_requester`,`id_user_target`,`is_accepted`,`date_emitted`,`is_viewed`) VALUES
+-- ('','','','','');
+-- INSERT INTO `chats` (`id_user_requester`,`id_user_sender`,`last_message_id`) VALUES
+-- ('','','');
+-- INSERT INTO `messages` (`id_message`,`id_user_sender`,`id_user_requester`,`message`,`date_sended`,`is_viewed`) VALUES
+-- ('','','','','','');
+-- INSERT INTO `events` (`id_event`,`start_date`,`end_date`,`name`,`logo`,`id_gps_record`,`location_description`) VALUES
+-- ('','','','','','','');
+-- INSERT INTO `stands` (`id_stand`,`id_event`,`name`,`logo`,`id_user_organizer`) VALUES
+-- ('','','','','');
+-- INSERT INTO `external_ticket` (`id_user`,`id_event`) VALUES
+-- ('','');
+-- INSERT INTO `stands_checkin` (`id_stand`,`id_user`,`date_checkin`) VALUES
+-- ('','','');
+-- INSERT INTO `countries` (`id_country`,`name`) VALUES
+-- ('','');
+-- INSERT INTO `configuration` (`id_user`,`kms_radio`,`linkedin_autoupdate`) VALUES
+-- ('','','');
+-- INSERT INTO `remember_tokens` (`id_user`,`unlock_key`,`request_date`,`attempts`) VALUES
+-- ('','','','');
