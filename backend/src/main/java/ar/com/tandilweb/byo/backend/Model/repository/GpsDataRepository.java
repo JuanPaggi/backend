@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -18,6 +19,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import ar.com.tandilweb.byo.backend.Model.BaseRepository;
+import ar.com.tandilweb.byo.backend.Model.domain.EventGpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 
@@ -104,6 +106,8 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 		
 	}
 	
+	
+	
 	public GpsData getOrCreate(double latitude, double longitude) {
 		try {
 			GpsData data = jdbcTemplate.queryForObject(
@@ -144,6 +148,27 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 		return jdbcTemplate.query(sql, new UserRowMapper(),new Object[]{me,me,lat,lon,lat,radio,me,me,me});
 	}
 	
+	public List<EventGpsData> isInsideAnEvent(double lat, double lon) {
+		List<EventGpsData>  out = new ArrayList<EventGpsData> ();
+		final String sql = 
+				"SELECT id_gps_record, (6371 * acos(cos(radians(?)) * cos(radians(latitude)) *" + 
+				"cos(radians(longitude) - radians(?)) + sin(radians(?)) * sin(radians(latitude))))" + 
+				"AS distance,latitude,longitude FROM gps_data_events ;";
+		
+	
+		try {
+
+			out = jdbcTemplate.query(sql, new GpsDataEventsRowMapper() , new Object[]{lat,lon,lat});
+			
+		} catch(Exception e) {
+			logger.debug("EXCEPTION: " + e.getMessage());
+			e.printStackTrace();
+			logger.debug("OUT: "+ out.size());
+		}
+		return out;
+		
+	}
+	
 }
 
 class GpsDataRowMapper implements RowMapper<GpsData>
@@ -155,5 +180,20 @@ class GpsDataRowMapper implements RowMapper<GpsData>
         		rs.getDouble("longitude"),
         		rs.getDate("date_recorded")
         		);
+    }
+}
+
+class GpsDataEventsRowMapper implements RowMapper<EventGpsData>
+{
+    public EventGpsData mapRow(ResultSet rs, int rowNum) throws SQLException {
+
+       return  new EventGpsData(
+    		   rs.getLong("id_gps_record"),
+        		rs.getDouble("latitude"),
+        		rs.getDouble("longitude"),
+        		rs.getDouble("distance")
+        		);
+        
+     
     }
 }

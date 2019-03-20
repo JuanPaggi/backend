@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;

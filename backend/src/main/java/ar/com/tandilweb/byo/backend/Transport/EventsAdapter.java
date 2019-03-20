@@ -9,44 +9,59 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
-import com.mysql.cj.log.Log;
-
 import ar.com.tandilweb.byo.backend.Gateway.fcm.FirebaseCloudMessaging;
+import ar.com.tandilweb.byo.backend.Model.domain.EventGpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Events;
+import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.EventsRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
-import ar.com.tandilweb.byo.backend.Presentation.GQLServices.EventServiceGQL;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.EventDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 
-
-
-
 public class EventsAdapter {
+	
 	@Value("${fcm.serverkey}")
 	private String serverKey;
+	
 	@Autowired
 	private FirebaseCloudMessaging firebaseCloudMessaging;
+	
 	@Autowired
 	private EventsRepository eventsRepository;
+	
 	@Autowired
-	private GpsDataRepository gpsDR;
-	private final double RADIO = 0.15d;//radio de distancia entre evento y usuario
+	private GpsDataRepository gpsRepository;
+
 
 	private static final Logger log = LoggerFactory.getLogger(EventsAdapter.class);
 	
-	public List<EventDTO> getEvents(Users me) {
-		List<Events> events =  eventsRepository.getEvents();
+	public List<EventDTO> getEvents(double lat, double lon, Users me) {
+		List<Events> events =  eventsRepository.getEvents(lat, lon);
 		List<EventDTO> eventsOut = new ArrayList<EventDTO>();
 		
-		
+		List<EventGpsData> eventosInside = gpsRepository.isInsideAnEvent(lat, lon);
+		Long fecha_actual = new Date().getTime();
+		for (Events event : events) {
+			if( (event.getStart_date().getTimeInMillis()< fecha_actual) &&  //se comprueba que el evento haya empezado
+					(fecha_actual<event.getEnd_date().getTimeInMillis() ) ) {// pero aun no haya terminado
+				for(EventGpsData eventGpsData: eventosInside) {
+					if(event.getId_event() == eventGpsData.getId_gps_record()) {
+						if(eventGpsData.getDistance() < event.getRadio()) {
+							event.setDentro_radio(true);
+						}
+					}
+				}
+			}
+		}
 		for(Events event: events) {		
 			if(event.getEnd_date().getTimeInMillis()>= new Date().getTime()) { //comprobamos que 
 			EventDTO dto = new EventDTO();									// no haya terminado
+			GpsData gps = this.gpsRepository.findEventGpsData(event.getId_gps_record());
+			
 			dto.setEnd_date(event.getEnd_date());
-			dto.setGps_data(event.getGps_data());
+			dto.setGps_data( gps);
 			dto.setId_event(event.getId_event());
 			dto.setLocation_description(event.getLocation_description());
 			dto.setLogo(event.getLogo());
@@ -56,6 +71,7 @@ public class EventsAdapter {
 			List<Stands> stands = eventsRepository.getStands(event.getId_event());
 			dto.setStands(stands);
 			dto.setCheckins(eventsRepository.getCheckins(me.getId_user()));
+			dto.setDentro_radio(event.isDentro_radio());
 			eventsOut.add(dto);}
 		
 		}

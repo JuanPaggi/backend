@@ -31,12 +31,20 @@ public class EventServiceGQL {
 	private static final Logger log = LoggerFactory.getLogger(EventServiceGQL.class);
 	
 	@GraphQLQuery(name = "EventService_getEvents")
-	public List<EventDTO> getEvents(@GraphQLEnvironment ResolutionEnvironment environment) {
+	public List<EventDTO> getEvents(
+			@GraphQLArgument(name = "latitude") String latitude,
+			@GraphQLArgument(name = "longitude") String longitude,
+			@GraphQLEnvironment ResolutionEnvironment environment) {
 		// nos traemos el usuario que está llamando a este servicio:
 
 		JWTHeader header = JWTHeader.getHeader(environment);
 		Users me = header.getUser();
-		List<EventDTO> out = evAdapter.getEvents(me);
+
+		// casteamos las variables (limitación de graphql)
+				double lat = Double.parseDouble(latitude);
+				double lon = Double.parseDouble(longitude);
+				
+		List<EventDTO> out = evAdapter.getEvents(lat,lon, me);
 
 		return out;
 	}

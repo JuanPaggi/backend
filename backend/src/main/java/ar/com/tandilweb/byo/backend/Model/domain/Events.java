@@ -14,36 +14,47 @@ public class Events {
 	private String fecha_end;
 	private String name;
 	private String logo;
-	private GpsData gps_data;
 	private String location_description;
 	private List<Stands> stands;
+	private Long id_gps_record;
+	public Long getId_gps_record() {
+		return id_gps_record;
+	}
+	public void setId_gps_record(Long id_gps_record) {
+		this.id_gps_record = id_gps_record;
+	}
 	private double radio;
+	private boolean dentro_radio = false;
 
+	public boolean isDentro_radio() {
+		return dentro_radio;
+	}
+	public void setDentro_radio(boolean dentro_radio) {
+		this.dentro_radio = dentro_radio;
+	}
+	public void setRadio(double radio) {
+		this.radio = radio;
+	}
 	public List<Stands> getStands() {
 		return stands;
 	}
 	public void setStands(List<Stands> stands) {
 		this.stands = stands;
 	}
-	public Events(long id_event, Calendar start_date, Calendar end_date, String name, String logo, GpsData
-			gps, double radio,
-			String location_description, List<Stands> stands) {
+	public Events(long id_event, Calendar start_date, Calendar end_date, String name, String logo, double radio,
+			String location_description, List<Stands> stands, Long id_gps_record) {
 		this.id_event = id_event;
 		this.start_date = start_date;
 		this.end_date = end_date;
 		this.name = name;
 		this.logo = logo;
-		this.gps_data = gps;
 		this.radio = radio;
 		this.location_description = location_description;
 		this.stands = stands;
+		this.id_gps_record = id_gps_record;
 	}
 	
-	public GpsData getGpsData(long gps) {
-		GpsDataRepository gpsDR = new GpsDataRepository();
-		return gpsDR.findEventGpsData(gps);
-		
-	}
+	
 
 	public long getId_event() {
 		return id_event;
@@ -98,13 +109,6 @@ public class Events {
 		this.logo = logo;
 	}
 
-	public GpsData getGps_data() {
-		return gps_data;
-	}
-
-	public void setGps_data(GpsData gps_data) {
-		this.gps_data = gps_data;
-	}
 
 	public String getLocation_description() {
 		return location_description;

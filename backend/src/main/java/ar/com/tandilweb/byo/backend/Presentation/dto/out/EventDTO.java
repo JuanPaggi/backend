@@ -12,25 +12,25 @@ import io.leangen.graphql.annotations.GraphQLQuery;
 
 public class EventDTO {
 	
-	@GraphQLQuery(name = "id_event")
+	@GraphQLQuery(name = "id_event") 
 	private long id_event;
-	
+
 	@GraphQLQuery(name = "start_date")
 	private Date start_date;
 	
-	@GraphQLQuery(name = "end_date")
+	@GraphQLQuery(name = "end_date") 
 	private Date end_date;
 	
 	@GraphQLQuery(name = "name")
 	private String name;
 	
-	@GraphQLQuery(name = "logo")
+	@GraphQLQuery(name = "logo") 
 	private String logo;
 	
 	@GraphQLQuery(name = "gps_data")
-	private GpsData gps_data;
+	private GpsDataDTO gps_data = new GpsDataDTO();
 	
-	@GraphQLQuery(name = "location_description")
+	@GraphQLQuery(name = "location_description") 
 	private String location_description;
 	
 	@GraphQLQuery(name = "stands")
@@ -41,6 +41,43 @@ public class EventDTO {
 	
 	@GraphQLQuery(name = "radio")
 	private double radio;
+	
+	@GraphQLQuery(name = "dentro_radio")
+	private boolean dentro_radio;
+	
+	@GraphQLQuery(name = "registrado")
+	private boolean registrado;
+	
+	public boolean isDentro_radio() {
+		return dentro_radio;
+	}
+
+	public void setDentro_radio(boolean dentro_radio) {
+		this.dentro_radio = dentro_radio;
+	}
+
+	
+	public boolean isRegistrado() {
+		return registrado;
+	}
+
+	public void setRegistrado(boolean registrado) {
+		this.registrado = registrado;
+	}
+
+	public void setGps_data(GpsDataDTO gps_data) {
+		this.gps_data = gps_data;
+	}
+	
+	public void setStart_date(Date start_date) {
+		this.start_date = start_date;
+	}
+
+	public void setEnd_date(Date end_date) {
+		this.end_date = end_date;
+	}
+
+
 
 	public double getRadio() {
 		return radio;
@@ -107,12 +144,16 @@ public class EventDTO {
 		this.logo = logo;
 	}
 
-	public GpsData getGps_data() {
+	public GpsDataDTO getGps_data() {
 		return gps_data;
 	}
 
 	public void setGps_data(GpsData gps_data) {
-		this.gps_data = gps_data;
+
+		this.gps_data.setId_gps_record(gps_data.getId_gps_record()) ;
+		this.gps_data.setLatitude(gps_data.getLatitude());
+		this.gps_data.setLongitude(gps_data.getLongitude());
+		this.gps_data.setDate_recorded(gps_data.getDate_recorded());
 	}
 
 	public String getLocation_description() {
