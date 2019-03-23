@@ -75,6 +75,8 @@ public class EventsAdapter {
 			dto.setStands(stands);
 			dto.setCheckins(eventsRepository.getCheckins(me.getId_user()));
 			dto.setDentro_radio(event.isDentro_radio());
+			dto.setNombre_lugar(event.getNombre_lugar());
+			dto.setUrl(event.getUrl());
 			eventsOut.add(dto);}
 		
 		}

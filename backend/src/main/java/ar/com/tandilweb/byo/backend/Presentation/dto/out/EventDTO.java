@@ -48,6 +48,12 @@ public class EventDTO {
 	@GraphQLQuery(name = "got_ticket")
 	private boolean got_ticket = false;
 	
+	@GraphQLQuery(name = "url")
+	private String url;
+	
+	@GraphQLQuery(name = "nombre_lugar")
+	private String nombre_lugar;
+	
 	public boolean isDentro_radio() {
 		return dentro_radio;
 	}
@@ -57,6 +63,22 @@ public class EventDTO {
 	}
 
 	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public String getNombre_lugar() {
+		return nombre_lugar;
+	}
+
+	public void setNombre_lugar(String nombre_lugar) {
+		this.nombre_lugar = nombre_lugar;
+	}
+
 	public boolean getGot_ticket() {
 		return this.got_ticket;
 	}
