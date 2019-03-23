@@ -1,6 +1,8 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +41,7 @@ public class EventsAdapter {
 	public List<EventDTO> getEvents(double lat, double lon, Users me) {
 		List<Events> events =  eventsRepository.getEvents(lat, lon);
 		List<EventDTO> eventsOut = new ArrayList<EventDTO>();
-		
+		List<Long> eventos_registrado = eventsRepository.getEventosRegistrado(me.getId_user());
 		List<EventGpsData> eventosInside = gpsRepository.isInsideAnEvent(lat, lon);
 		Long fecha_actual = new Date().getTime();
 		for (Events event : events) {
@@ -58,7 +60,9 @@ public class EventsAdapter {
 			if(event.getEnd_date().getTimeInMillis()>= new Date().getTime()) { //comprobamos que 
 			EventDTO dto = new EventDTO();									// no haya terminado
 			GpsData gps = this.gpsRepository.findEventGpsData(event.getId_gps_record());
-			
+			if(eventos_registrado.contains(event.getId_event())) {
+				dto.setGot_ticket(true);
+			}
 			dto.setEnd_date(event.getEnd_date());
 			dto.setGps_data( gps);
 			dto.setId_event(event.getId_event());
@@ -104,6 +108,17 @@ public class EventsAdapter {
 		out.description = "Checkin realizado";
 		eventsRepository.setCheckin(id_stand, id_user);
 		return out;
+	}
+
+	public boolean validarCodigo(String codigo, long id_user , long id_evento) {
+			Long id_codigo = eventsRepository.getIdCodigoEIdEvento(codigo, id_evento);
+			String timeStamp = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(Calendar.getInstance().getTime());
+			if(id_codigo!= null && id_codigo != 0 && !eventsRepository.verificarCodigoSinUso(id_codigo, id_user)) {
+				eventsRepository.setCodigoComoUsado(id_codigo,id_user,timeStamp);
+				return true;
+			}
+		
+		return false;
 	}
 	
 	

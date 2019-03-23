@@ -45,8 +45,8 @@ public class EventDTO {
 	@GraphQLQuery(name = "dentro_radio")
 	private boolean dentro_radio;
 	
-	@GraphQLQuery(name = "registrado")
-	private boolean registrado;
+	@GraphQLQuery(name = "got_ticket")
+	private boolean got_ticket = false;
 	
 	public boolean isDentro_radio() {
 		return dentro_radio;
@@ -57,12 +57,12 @@ public class EventDTO {
 	}
 
 	
-	public boolean isRegistrado() {
-		return registrado;
+	public boolean getGot_ticket() {
+		return this.got_ticket;
 	}
 
-	public void setRegistrado(boolean registrado) {
-		this.registrado = registrado;
+	public void setGot_ticket(boolean gotTicket) {
+		this.got_ticket= gotTicket;
 	}
 
 	public void setGps_data(GpsDataDTO gps_data) {

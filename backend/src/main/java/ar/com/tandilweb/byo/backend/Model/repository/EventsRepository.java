@@ -189,8 +189,45 @@ public class EventsRepository extends BaseRepository<Events, Long>{
 			logger.debug("EventsRepository :: setCheckin", e);
 		}
 	}
-
+	public boolean verificarCodigoSinUso(long id_codigo, long id_user) {
+		try {
+			final String sql = "select exists (select *  from codigos_externos_usados where id_codigo = ? and id_user = ?);";
+			return jdbcTemplate.queryForObject(sql, new Object[] { id_codigo, id_user,}, Boolean.class);
+		} catch (DataAccessException e) {
+			logger.debug("EventsRepository :: setCheckin", e);
+		}
+		return false;
+	}
+	public Long getIdCodigoEIdEvento(String codigo, long id_evento) {
+		try {
+			final String sql = "SELECT id_codigo FROM codigos_externos "
+					+ "WHERE codigo_acceso = ? AND id_event = ?";
+			return jdbcTemplate.queryForObject(sql, Long.class, new Object[] {codigo, id_evento});
+			
+		} catch (DataAccessException e) {
+			logger.debug("EventsRepository :: getIdCodigo", e);
+		}
+		return 0l;
+	}
+	public void setCodigoComoUsado(Long id_codigo, long id_user, String date) {
+		try {
+			final String sql = "INSERT INTO codigos_externos_usados(id_codigo,id_user,fecha_activacion) VALUES(?,?,?);";
+			jdbcTemplate.update(sql, new Object[] { id_codigo, id_user, date});
+		} catch (DataAccessException e) {
+			logger.debug("EventsRepository :: setCodigoComoUsado", e);
+		}
+		
+	}
+	public List<Long> getEventosRegistrado(long id_user) {
+		try {
+			final String sql = "SELECT id_event FROM codigos_externos ce INNER JOIN codigos_externos_usados ceu ON ce.id_codigo = ceu.id_codigo WHERE ceu.id_user = ?;";
+			return jdbcTemplate.query(sql, new RowMapper<Long>(){ public Long mapRow(ResultSet rs, int rowNum) throws SQLException { return rs.getLong("id_event"); } }, new Object[] {id_user});
+			
+		} catch (DataAccessException e) {
+			logger.debug("EventsRepository :: getEventosRegistrado", e);
+		}
+		return null;
+	}
 	
 	
-
 }

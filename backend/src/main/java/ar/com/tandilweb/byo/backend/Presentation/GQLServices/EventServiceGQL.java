@@ -88,4 +88,22 @@ public class EventServiceGQL {
 		return out;
 	}
 	
+	@GraphQLQuery(name = "EventService_validarCodigo")
+	public boolean validarCodigo(
+			@GraphQLArgument(name = "codigo") String codigo , 
+			@GraphQLArgument(name = "id_event") Long id_event , 
+			@GraphQLEnvironment ResolutionEnvironment environment
+			) throws Exception {
+
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users usuario = header.getUser();
+		boolean out = false;
+
+		if(header.isTrusted()) {
+			out = evAdapter.validarCodigo(codigo, usuario.getId_user(), id_event);
+		} 
+
+		return out;
+	}
+	
 }
