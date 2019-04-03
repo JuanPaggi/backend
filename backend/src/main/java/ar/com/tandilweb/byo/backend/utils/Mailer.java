@@ -12,19 +12,29 @@ import javax.mail.internet.MimeMessage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 
 import com.sun.mail.smtp.SMTPTransport;
 
+@PropertySource("classpath:mailer.properties")
 public class Mailer {
 	
 	public static Logger logger = LoggerFactory.getLogger(Mailer.class);
 	
-	public static String host = "server1.tandilserver.com";
-	public static String from = "Mailer <mails@tandilweb.com.ar>";
-	public static String user = "mails@tandilweb.com.ar";
-	public static String password = "123456789*";
+	@Value("${mailer.host}")
+	public String host = "";
 	
-	public static void send(String to, String sub, String msg) {
+	@Value("${mailer.from}")
+	public String from = "";
+	
+	@Value("${mailer.user}")
+	public String user = "";
+	
+	@Value("${mailer.password}")
+	public String password = "";
+	
+	public void send(String to, String sub, String msg) {
 	    Properties prop = System.getProperties();
 	    prop.put("mail.smtp.host", host);
 	    prop.put("mail.debug", "true");

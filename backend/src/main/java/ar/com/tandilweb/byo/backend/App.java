@@ -16,6 +16,7 @@ import ar.com.tandilweb.byo.backend.Filters.CorsFilter;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTFilter;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTValidFilter;
 import ar.com.tandilweb.byo.backend.Model.JDBConfig;
+import ar.com.tandilweb.byo.backend.utils.Mailer;
 
 @SpringBootApplication
 @ComponentScan({ "ar.com.tandilweb.byo.backend.Presentation.GQLServices",
@@ -75,6 +76,11 @@ public class App extends SpringBootServletInitializer {
 
 	public Filter getJwtValidFilter() {
 		return new JWTValidFilter();
+	}
+	
+	@Bean
+	public Mailer mailer() {
+		return new Mailer();
 	}
 
 }
