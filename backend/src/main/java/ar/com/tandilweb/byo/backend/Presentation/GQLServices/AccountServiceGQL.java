@@ -1,11 +1,14 @@
 package ar.com.tandilweb.byo.backend.Presentation.GQLServices;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
+import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
@@ -235,5 +238,23 @@ public class AccountServiceGQL {
 		log.debug("Responding AccountService_setGeoLocation");
 		return out;
 	}
+	
+	@GraphQLQuery(name = "AccountService_getPremiumStatus")
+	public boolean getStands(
+			@GraphQLEnvironment ResolutionEnvironment environment){
+
+		
+		
+		boolean out = false;
+		try {
+			JWTHeader header = JWTHeader.getHeader(environment);
+			if(!header.isTrusted()) throw new Exception("isn't trusteado.");
+			out= header.getUser().isPremium();
+		} catch (Exception e) {
+			log.error("Error al chequear el estado Premium", e);
+		}
+
+		return out;
+	} 
 
 }

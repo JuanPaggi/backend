@@ -1,6 +1,7 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
+import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.CountriesRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
@@ -23,6 +25,7 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
 import ar.com.tandilweb.byo.backend.utils.Mailer;
+import io.leangen.graphql.execution.ResolutionEnvironment;
 
 public class UserAdapter {
 	
@@ -288,4 +291,5 @@ public class UserAdapter {
 		}
 		return userProfile;
 	}
+
 }
