@@ -64,6 +64,7 @@ public class UserAdapter {
 					out.token = usuario.getSalt_jwt();
 					out.userId = usuario.getId_user();
 					out.completoByO = usuario.isCompletoByO();
+					out.is_premium = usuario.isPremium(); 
 				} else {
 					//Ingreso mal algun campo
 					usuario.setFailedLoginAttempts(usuario.getFailedLoginAttempts()+1);
