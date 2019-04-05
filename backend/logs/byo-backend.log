@@ -1,642 +1,206 @@
-2019-04-03 17:29:42.792 ERROR 3384 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
-2019-04-03 17:29:43.268  INFO 3384 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 3384 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
-2019-04-03 17:29:43.271 DEBUG 3384 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
-2019-04-03 17:29:43.277  INFO 3384 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
-2019-04-03 17:29:43.490  INFO 3384 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@727eb8cb: startup date [Wed Apr 03 17:29:43 ART 2019]; root of context hierarchy
-2019-04-03 17:29:47.995  INFO 3384 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$355fb5f6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-04-03 17:29:48.311 ERROR 3384 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 17:29:48.443  INFO 3384 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
-2019-04-03 17:29:48.463 ERROR 3384 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 17:29:48.479  INFO 3384 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-04-03 17:29:48.479  INFO 3384 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
-2019-04-03 17:29:48.500 ERROR 3384 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 17:29:48.639  INFO 3384 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-04-03 17:29:54.897  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2019-04-03 17:29:54.898  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2019-04-03 17:29:54.898  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2019-04-03 17:29:54.898  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2019-04-03 17:29:54.899  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
-2019-04-03 17:29:54.899  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
-2019-04-03 17:29:54.899  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
-2019-04-03 17:29:54.899  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2019-04-03 17:29:54.899  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2019-04-03 17:29:54.900  INFO 3384 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2019-04-03 17:29:54.950 DEBUG 3384 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
-2019-04-03 17:29:55.705  INFO 3384 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
-2019-04-03 17:29:55.718  INFO 3384 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
-2019-04-03 17:29:55.796  INFO 3384 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
-2019-04-03 17:29:55.935  INFO 3384 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
-2019-04-03 17:29:57.033  INFO 3384 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
-2019-04-03 17:29:57.469  INFO 3384 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2019-04-03 17:29:57.482  INFO 3384 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-04-03 17:29:57.483  INFO 3384 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-04-03 17:29:57.484  INFO 3384 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2019-04-03 17:29:57.545  INFO 3384 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2019-04-03 17:29:57.603  INFO 3384 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
-2019-04-03 17:29:57.603  INFO 3384 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2019-04-03 17:29:57.603  INFO 3384 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
-2019-04-03 17:29:57.604  INFO 3384 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2019-04-03 17:29:57.866  INFO 3384 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
-2019-04-03 17:29:57.873  INFO 3384 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 15.673 seconds (JVM running for 16.805)
-2019-04-03 17:33:43.455 ERROR 3384 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 17:33:43.476  INFO 3384 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2019-04-03 17:33:43.537 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:33:43.538 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:33:43.620 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:33:43.620 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:33:44.224 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 17:33:44.224 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 17:33:46.276 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 17:33:46.385 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:33:46.703 ERROR 3384 --- [http-nio-38674-exec-3] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 17:33:46.705 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:33:48.822 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:33:48.835 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 17:33:49.189 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 17:33:49.381 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:33:49.403 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 17:33:50.110  INFO 3384 --- [http-nio-38674-exec-3] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
-2019-04-03 17:33:50.201  INFO 3384 --- [http-nio-38674-exec-3] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
-2019-04-03 17:33:52.571 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 17:38:33.999 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:38:34.000 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:38:34.022 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:38:34.022 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:38:34.045 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 17:38:34.046 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 17:38:34.905 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 17:38:34.960 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:38:35.248 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:38:35.420 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:38:35.430 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 17:38:35.607 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:38:35.623 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 17:38:35.791 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 17:38:38.139 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 17:44:32.621 DEBUG 3384 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:44:32.622 DEBUG 3384 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:44:32.633 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:44:32.634 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:44:32.644 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 17:44:32.645 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 17:44:33.406 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 17:44:33.456 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:44:33.753 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:44:33.928 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:44:33.935 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 17:44:34.100 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:44:34.112 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 17:44:34.281 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 17:44:36.618 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 17:53:20.128 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:53:20.128 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:53:20.140 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:53:20.141 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:53:20.147 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 17:53:20.147 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 17:53:20.904 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 17:53:20.948 DEBUG 3384 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:53:21.289 DEBUG 3384 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:53:21.293 DEBUG 3384 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 17:53:21.633 DEBUG 3384 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 17:55:04.481 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 17:55:04.812 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 17:55:04.821 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 17:55:07.358 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 18:02:43.160 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:02:43.161 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:02:43.182 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:02:43.185 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:02:43.201 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 18:02:43.202 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 18:02:43.933 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 18:02:43.966 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:02:43.967 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:02:44.009 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:02:44.339 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:02:44.343 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 18:02:44.685 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 18:03:08.786 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:03:08.786 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:03:08.798 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:03:08.798 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:03:08.804 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 18:03:08.805 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 18:03:09.574 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 18:03:09.607 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:03:09.936 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:03:09.941 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 18:03:10.281 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 18:05:04.463 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:05:04.464 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:05:04.483 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:05:04.817 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:05:04.822 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 18:05:07.354 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 18:08:00.003 DEBUG 3384 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:08:00.003 DEBUG 3384 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:08:00.013 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:08:00.013 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:08:00.023 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 18:08:00.023 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 18:08:00.756 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 18:08:00.806 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:08:00.807 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:08:00.860 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:08:01.193 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:08:01.206 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 18:08:01.552 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 18:08:25.347 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:08:25.347 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:08:25.361 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:08:25.362 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:08:25.368 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 18:08:25.369 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 18:08:26.113 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 18:08:26.162 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:08:26.495 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:08:26.499 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 18:08:26.838 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 18:10:14.484 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:10:14.484 DEBUG 3384 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:10:14.496 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:10:14.496 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:10:14.501 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 18:10:14.501 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 18:10:15.249 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 18:10:15.279 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:10:15.610 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:10:15.621 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 18:10:15.962 DEBUG 3384 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 18:13:18.544 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:13:18.544 DEBUG 3384 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:13:18.560 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:13:18.561 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:13:18.573 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 18:13:18.573 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 18:13:19.323 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 18:13:19.374 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:13:19.710 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:13:19.724 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 18:13:20.063 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 18:15:04.467 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:15:04.468 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:15:04.477 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:15:04.815 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:15:04.819 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 18:15:07.326 DEBUG 3384 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 18:22:24.144 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:22:24.144 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:22:24.151 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:22:24.151 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:22:24.156 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 18:22:24.162 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 18:22:24.898 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 18:22:24.949 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:22:25.275 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:22:25.279 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 18:22:25.614 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 18:25:04.467 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:25:04.798 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:25:04.802 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 18:25:07.305 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 18:29:47.338 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:29:47.338 DEBUG 3384 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:29:47.347 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:29:47.347 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:29:47.354 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 18:29:47.355 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 18:29:48.098 DEBUG 3384 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 18:29:48.126 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:29:48.462 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:29:48.473 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 18:29:48.812 DEBUG 3384 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 18:35:04.503 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:35:04.503 DEBUG 3384 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:35:04.511 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:35:04.842 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 18:35:04.846 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 18:35:07.353 DEBUG 3384 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 18:58:45.889 ERROR 8891 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
-2019-04-03 18:58:46.219  INFO 8891 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 8891 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
-2019-04-03 18:58:46.220 DEBUG 8891 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
-2019-04-03 18:58:46.226  INFO 8891 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
-2019-04-03 18:58:46.454  INFO 8891 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1169afe1: startup date [Wed Apr 03 18:58:46 ART 2019]; root of context hierarchy
-2019-04-03 18:58:49.904  INFO 8891 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$c7cb2f8d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-04-03 18:58:50.431 ERROR 8891 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 18:58:50.693  INFO 8891 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
-2019-04-03 18:58:50.728 ERROR 8891 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 18:58:50.751  INFO 8891 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-04-03 18:58:50.751  INFO 8891 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
-2019-04-03 18:58:50.783 ERROR 8891 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 18:58:51.023  INFO 8891 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-04-03 18:58:57.576  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2019-04-03 18:58:57.577  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2019-04-03 18:58:57.585  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2019-04-03 18:58:57.585  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2019-04-03 18:58:57.585  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
-2019-04-03 18:58:57.586  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
-2019-04-03 18:58:57.586  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
-2019-04-03 18:58:57.586  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2019-04-03 18:58:57.586  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2019-04-03 18:58:57.588  INFO 8891 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2019-04-03 18:58:57.632 DEBUG 8891 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
-2019-04-03 18:58:58.685  INFO 8891 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
-2019-04-03 18:58:58.709  INFO 8891 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
-2019-04-03 18:58:58.873  INFO 8891 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
-2019-04-03 18:58:59.002  INFO 8891 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
-2019-04-03 18:59:00.514  INFO 8891 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
-2019-04-03 18:59:01.199  INFO 8891 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2019-04-03 18:59:01.224  INFO 8891 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-04-03 18:59:01.226  INFO 8891 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-04-03 18:59:01.230  INFO 8891 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2019-04-03 18:59:01.349  INFO 8891 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2019-04-03 18:59:01.371  INFO 8891 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
-2019-04-03 18:59:01.372  INFO 8891 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2019-04-03 18:59:01.373  INFO 8891 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
-2019-04-03 18:59:01.375  INFO 8891 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2019-04-03 18:59:01.449  INFO 8891 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
-2019-04-03 18:59:01.457  INFO 8891 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 16.566 seconds (JVM running for 17.358)
-2019-04-03 18:59:20.170 ERROR 8891 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 18:59:20.183  INFO 8891 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2019-04-03 18:59:20.247 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 18:59:20.248 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:06:55.441 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:06:55.442 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:06:55.464 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:06:55.465 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:06:55.500 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 19:06:55.501 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 19:06:56.523 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 19:08:30.592 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:08:30.592 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:08:30.610 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:08:30.611 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:08:30.633 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 19:08:30.635 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 19:08:31.443 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 19:08:31.481 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:08:31.490 ERROR 8891 --- [http-nio-38674-exec-10] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 19:08:31.491 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:08:31.788 ERROR 8891 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-03 19:08:31.789 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:08:33.817 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:08:33.904 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:08:33.945 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:08:34.189 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:08:34.207 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 19:08:34.401 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:08:34.954  INFO 8891 --- [http-nio-38674-exec-1] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
-2019-04-03 19:08:35.207  INFO 8891 --- [http-nio-38674-exec-1] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
-2019-04-03 19:08:37.280 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 19:09:17.794 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:09:17.795 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:09:17.804 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:09:17.804 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:09:17.814 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 19:09:17.814 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 19:09:20.794 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 19:09:20.830 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:09:20.841 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:09:22.041 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:09:22.219 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:09:22.228 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:09:22.568 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:15:03.689 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:15:03.690 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:15:03.704 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:15:03.704 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:15:03.713 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 19:15:03.714 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 19:15:04.489 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 19:15:04.524 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:15:04.531 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:15:04.868 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:15:05.041 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:15:05.047 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:15:05.382 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:15:35.916 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:15:35.917 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:15:35.929 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:15:35.931 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:15:35.936 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 19:15:35.937 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 19:15:36.668 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 19:15:36.692 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:15:36.698 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:15:37.037 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:15:37.206 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:15:37.211 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:15:37.549 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:18:31.772 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:18:32.115 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:18:32.129 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 19:18:34.671 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 19:30:37.398 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:30:37.398 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:30:37.408 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:30:37.408 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:30:37.414 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 19:30:37.414 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 19:30:38.163 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 19:30:38.207 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:30:38.511 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:30:38.682 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:30:38.692 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:30:38.862 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:30:38.897 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 19:30:39.066 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:30:41.431 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 19:31:24.341 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:31:24.341 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:31:24.355 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:31:24.355 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:31:24.365 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 19:31:24.365 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 19:31:27.217 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 19:31:27.261 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:31:30.653 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:31:30.664 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:31:31.005 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:34:48.440 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:34:48.455 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:34:48.795 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:34:48.835 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:34:49.012 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:34:49.034 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.ConfigurationServiceGQL    : Requesting ConfigurationService_getInfoPerfil
-2019-04-03 19:34:49.035 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.ConfigurationServiceGQL    : Responding ConfigurationService_getInfoPerfil
-2019-04-03 19:34:49.171 DEBUG 8891 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:35:07.702 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:35:07.703 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:35:07.712 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 19:35:07.712 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 19:35:10.584 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 19:35:10.628 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:35:11.663 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:35:11.678 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:35:12.024 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:40:38.504 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:40:38.505 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:40:38.520 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:40:39.734 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:40:39.738 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 19:40:45.143 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 19:40:50.775 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:40:50.780 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:40:52.146 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:40:54.733 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:40:54.736 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 19:40:55.222 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 19:50:38.490 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 19:50:40.342 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 19:50:40.347 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 19:50:45.080 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 20:26:15.981 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:26:15.981 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:26:16.004 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:26:16.004 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:26:16.030 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 20:26:16.030 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 20:26:18.872 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 20:26:18.919 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:26:19.220 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:26:20.404 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:26:20.420 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 20:26:20.591 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:26:20.597 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:26:20.935 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:26:25.299 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-03 20:27:56.121 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:27:56.121 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:27:56.134 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:27:56.134 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:27:56.139 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 20:27:56.139 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 20:27:58.960 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 20:27:59.007 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:28:00.199 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:28:00.203 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:28:00.542 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:28:50.955 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:28:50.956 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:28:50.961 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:28:50.961 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:28:50.965 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 20:28:50.965 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 20:28:53.902 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 20:28:53.944 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:28:55.156 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:28:55.167 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:28:55.507 DEBUG 8891 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:30:52.640 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:30:52.641 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:30:52.650 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:30:52.650 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:30:52.655 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 20:30:52.656 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 20:30:55.431 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 20:30:55.483 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:30:56.705 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:30:56.711 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:30:57.041 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:32:23.865 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:32:23.865 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:32:23.881 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:32:23.882 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:32:23.911 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 20:32:23.914 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 20:32:26.833 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 20:32:26.899 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:32:26.899 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:32:27.031 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:32:28.210 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:32:28.212 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:32:28.551 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:32:54.846 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:32:54.846 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:32:54.853 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:32:54.854 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:32:54.858 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 20:32:54.858 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 20:32:55.588 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 20:32:55.623 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:32:55.974 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:32:55.989 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:32:56.327 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:33:37.437 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:33:37.437 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:33:37.444 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:33:37.445 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:33:37.449 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 20:33:37.449 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 20:33:38.180 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 20:33:38.218 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:33:38.561 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:33:38.578 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:33:38.919 DEBUG 8891 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:33:40.362 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:33:40.376 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:33:40.709 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:33:40.719 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:33:40.902 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:33:40.911 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.ConfigurationServiceGQL    : Requesting ConfigurationService_getInfoPerfil
-2019-04-03 20:33:40.913 DEBUG 8891 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.ConfigurationServiceGQL    : Responding ConfigurationService_getInfoPerfil
-2019-04-03 20:33:41.069 DEBUG 8891 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:34:05.037 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:34:05.037 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:34:05.041 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-03 20:34:05.042 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-03 20:34:07.914 DEBUG 8891 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-03 20:34:07.933 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:34:09.128 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:34:09.139 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-03 20:34:09.477 DEBUG 8891 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-03 20:36:19.204 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:36:19.204 DEBUG 8891 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:36:19.206 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:36:19.215 DEBUG 8891 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-03 20:36:20.420 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-03 20:36:20.427 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-03 20:36:24.658 DEBUG 8891 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-04 17:23:27.400 ERROR 3646 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
-2019-04-04 17:23:28.440  INFO 3646 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 3646 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
-2019-04-04 17:23:28.440 DEBUG 3646 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
-2019-04-04 17:23:28.443  INFO 3646 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
-2019-04-04 17:23:29.458  INFO 3646 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@27508c5d: startup date [Thu Apr 04 17:23:29 ART 2019]; root of context hierarchy
-2019-04-04 17:23:37.990  INFO 3646 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$3dd20359] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2019-04-04 17:23:38.663 ERROR 3646 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-04 17:23:38.883  INFO 3646 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
-2019-04-04 17:23:38.928 ERROR 3646 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-04 17:23:38.944  INFO 3646 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2019-04-04 17:23:38.945  INFO 3646 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
-2019-04-04 17:23:38.973 ERROR 3646 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-04 17:23:39.141  INFO 3646 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2019-04-04 17:23:47.168  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
-2019-04-04 17:23:47.169  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
-2019-04-04 17:23:47.179  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
-2019-04-04 17:23:47.180  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
-2019-04-04 17:23:47.180  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
-2019-04-04 17:23:47.181  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
-2019-04-04 17:23:47.183  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
-2019-04-04 17:23:47.184  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
-2019-04-04 17:23:47.184  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
-2019-04-04 17:23:47.184  INFO 3646 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
-2019-04-04 17:23:47.242 DEBUG 3646 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
-2019-04-04 17:23:48.757  INFO 3646 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
-2019-04-04 17:23:48.776  INFO 3646 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
-2019-04-04 17:23:48.917  INFO 3646 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
-2019-04-04 17:23:49.014  INFO 3646 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
-2019-04-04 17:23:51.268  INFO 3646 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
-2019-04-04 17:23:52.098  INFO 3646 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
-2019-04-04 17:23:52.117  INFO 3646 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-04-04 17:23:52.118  INFO 3646 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
-2019-04-04 17:23:52.119  INFO 3646 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
-2019-04-04 17:23:52.213  INFO 3646 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
-2019-04-04 17:23:52.227  INFO 3646 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
-2019-04-04 17:23:52.228  INFO 3646 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
-2019-04-04 17:23:52.228  INFO 3646 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
-2019-04-04 17:23:52.229  INFO 3646 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
-2019-04-04 17:23:52.306  INFO 3646 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
-2019-04-04 17:23:52.311  INFO 3646 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 27.008 seconds (JVM running for 30.47)
-2019-04-04 17:24:02.367 ERROR 3646 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-04 17:24:02.392  INFO 3646 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
-2019-04-04 17:24:02.483 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:24:02.484 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:24:02.678 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:24:02.678 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:24:03.665 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-04 17:24:03.665 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-04 17:24:06.540 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-04 17:24:27.528 ERROR 3646 --- [http-nio-38674-exec-5] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-04 17:24:27.532 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:24:27.532 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:24:27.556 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-04 17:24:27.557 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-04 17:24:28.537 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-04 17:24:28.569 DEBUG 3646 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:24:28.828 ERROR 3646 --- [http-nio-38674-exec-7] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
-2019-04-04 17:24:28.829 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:24:31.104 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:24:31.104 DEBUG 3646 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:24:31.114 DEBUG 3646 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-04 17:24:31.121 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-04 17:24:31.639 DEBUG 3646 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-04 17:24:31.837  INFO 3646 --- [http-nio-38674-exec-7] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
-2019-04-04 17:24:31.962  INFO 3646 --- [http-nio-38674-exec-7] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
-2019-04-04 17:24:35.163 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-04 17:26:31.308 DEBUG 3646 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:31.309 DEBUG 3646 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:31.321 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:31.321 DEBUG 3646 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:31.341 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:31.341 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:31.677 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:31.684 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-04 17:26:31.852 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:31.866 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotifications
-2019-04-04 17:26:32.032 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-04 17:26:35.861 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-04 17:26:37.263 DEBUG 3646 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:37.264 DEBUG 3646 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:37.277 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:37.278 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:37.287 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-04 17:26:37.288 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-04 17:26:38.059 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-04 17:26:38.097 DEBUG 3646 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:38.097 DEBUG 3646 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:38.140 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:38.324 DEBUG 3646 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:38.325 DEBUG 3646 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:38.342 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:26:38.510 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:38.522 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-04 17:26:38.687 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:26:38.692 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-04 17:26:38.856 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-04 17:26:42.343 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-04 17:27:21.637 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:27:21.638 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:27:21.661 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:27:21.661 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:27:21.676 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-04 17:27:21.677 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-04 17:27:22.510 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-04 17:27:22.623 DEBUG 3646 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:27:22.623 DEBUG 3646 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:27:22.738 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:27:23.072 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:27:23.100 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-04 17:27:23.446 DEBUG 3646 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-04 17:28:38.323 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:28:38.324 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:28:38.335 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:28:38.677 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:28:38.687 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
-2019-04-04 17:28:42.349 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
-2019-04-04 17:29:55.180 DEBUG 3646 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:29:55.180 DEBUG 3646 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:29:55.199 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:29:55.199 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:29:55.205 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-04 17:29:55.205 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-04 17:29:55.942 DEBUG 3646 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-04 17:29:56.026 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:29:56.026 DEBUG 3646 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:29:56.110 DEBUG 3646 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:29:56.442 DEBUG 3646 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:29:56.452 DEBUG 3646 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-04 17:29:56.791 DEBUG 3646 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
-2019-04-04 17:34:09.063 DEBUG 3646 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:34:09.064 DEBUG 3646 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:34:09.081 DEBUG 3646 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:34:09.089 DEBUG 3646 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:34:09.108 DEBUG 3646 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
-2019-04-04 17:34:09.121 DEBUG 3646 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Transport.UserAdapter  : logeando
-2019-04-04 17:34:09.857 DEBUG 3646 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
-2019-04-04 17:34:09.896 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:34:09.896 DEBUG 3646 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:34:09.936 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
-2019-04-04 17:34:10.267 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
-2019-04-04 17:34:10.270 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
-2019-04-04 17:34:10.597 DEBUG 3646 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 17:36:42.403 ERROR 3662 --- [main] o.s.b.c.l.LoggingApplicationListener     : Cannot set level: ERROR. for 'org.hibernate'
+2019-04-05 17:36:42.888  INFO 3662 --- [main] ar.com.tandilweb.byo.backend.App         : Starting App on Equipo-01 with PID 3662 (/home/ezequiel/git/byo-backend/backend/target/classes started by ezequiel in /home/ezequiel/git/byo-backend/backend)
+2019-04-05 17:36:42.890 DEBUG 3662 --- [main] ar.com.tandilweb.byo.backend.App         : Running with Spring Boot v2.0.2.RELEASE, Spring v5.0.6.RELEASE
+2019-04-05 17:36:42.893  INFO 3662 --- [main] ar.com.tandilweb.byo.backend.App         : No active profile set, falling back to default profiles: default
+2019-04-05 17:36:43.131  INFO 3662 --- [main] ConfigServletWebServerApplicationContext : Refreshing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@7357a011: startup date [Fri Apr 05 17:36:43 ART 2019]; root of context hierarchy
+2019-04-05 17:36:47.390  INFO 3662 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$7ddbe876] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2019-04-05 17:36:47.815 ERROR 3662 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-04-05 17:36:47.981  INFO 3662 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 38674 (http)
+2019-04-05 17:36:48.013 ERROR 3662 --- [main] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-04-05 17:36:48.031  INFO 3662 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-04-05 17:36:48.032  INFO 3662 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2019-04-05 17:36:48.055 ERROR 3662 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-04-05 17:36:48.215  INFO 3662 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-04-05 17:36:54.907  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'characterEncodingFilter' to: [/*]
+2019-04-05 17:36:54.919  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2019-04-05 17:36:54.919  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2019-04-05 17:36:54.926  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'requestContextFilter' to: [/*]
+2019-04-05 17:36:54.926  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'corsFilter' to urls: [/graphql/*]
+2019-04-05 17:36:54.926  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtFilter' to urls: [/graphql/*]
+2019-04-05 17:36:54.927  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'jwtValidFilter' to urls: [/graphql/*]
+2019-04-05 17:36:54.928  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'httpTraceFilter' to: [/*]
+2019-04-05 17:36:54.929  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'webMvcMetricsFilter' to: [/*]
+2019-04-05 17:36:54.930  INFO 3662 --- [localhost-startStop-1] o.s.b.w.servlet.ServletRegistrationBean  : Servlet dispatcherServlet mapped to [/]
+2019-04-05 17:36:55.010 DEBUG 3662 --- [localhost-startStop-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Initialized
+2019-04-05 17:36:56.831  INFO 3662 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientInboundChannelExecutor'
+2019-04-05 17:36:56.855  INFO 3662 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'clientOutboundChannelExecutor'
+2019-04-05 17:36:57.032  INFO 3662 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'messageBrokerTaskScheduler'
+2019-04-05 17:36:57.180  INFO 3662 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService  'brokerChannelExecutor'
+2019-04-05 17:36:59.272  INFO 3662 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService  'defaultSockJsTaskScheduler'
+2019-04-05 17:37:00.002  INFO 3662 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoint(s) beneath base path '/actuator'
+2019-04-05 17:37:00.034  INFO 3662 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/health],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-05 17:37:00.035  INFO 3662 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator/info],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto public java.lang.Object org.springframework.boot.actuate.endpoint.web.servlet.AbstractWebMvcEndpointHandlerMapping$OperationHandler.handle(javax.servlet.http.HttpServletRequest,java.util.Map<java.lang.String, java.lang.String>)
+2019-04-05 17:37:00.037  INFO 3662 --- [main] s.b.a.e.w.s.WebMvcEndpointHandlerMapping : Mapped "{[/actuator],methods=[GET],produces=[application/vnd.spring-boot.actuator.v2+json || application/json]}" onto protected java.util.Map<java.lang.String, java.util.Map<java.lang.String, org.springframework.boot.actuate.endpoint.web.Link>> org.springframework.boot.actuate.endpoint.web.servlet.WebMvcEndpointHandlerMapping.links(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
+2019-04-05 17:37:00.158  INFO 3662 --- [main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
+2019-04-05 17:37:00.181  INFO 3662 --- [main] o.s.c.support.DefaultLifecycleProcessor  : Starting beans in phase 2147483647
+2019-04-05 17:37:00.181  INFO 3662 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2019-04-05 17:37:00.182  INFO 3662 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [DefaultSubscriptionRegistry[cache[0 destination(s)], registry[0 sessions]]]]
+2019-04-05 17:37:00.184  INFO 3662 --- [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2019-04-05 17:37:00.269  INFO 3662 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 38674 (http) with context path ''
+2019-04-05 17:37:00.279  INFO 3662 --- [main] ar.com.tandilweb.byo.backend.App         : Started App in 18.849 seconds (JVM running for 20.312)
+2019-04-05 17:40:00.787 ERROR 3662 --- [http-nio-38674-exec-1] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-04-05 17:40:00.805  INFO 3662 --- [http-nio-38674-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2019-04-05 17:40:00.893 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 17:40:00.894 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 17:40:00.988 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 17:40:00.989 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 17:40:01.592 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 17:40:01.592 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 17:40:02.481 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 17:40:02.561 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 17:40:02.792 ERROR 3662 --- [http-nio-38674-exec-3] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-04-05 17:40:02.792 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 17:40:04.863 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 17:40:04.873 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 17:40:05.063 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 17:40:05.090 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 17:40:05.279 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 17:40:09.016 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:01:39.068 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:01:39.068 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:01:39.090 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:01:39.090 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:01:39.104 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:01:39.104 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:01:39.843 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:01:39.875 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:01:40.178 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:01:40.349 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:01:40.357 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:01:40.526 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:01:40.544 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:01:40.706 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:01:41.246  INFO 3662 --- [http-nio-38674-exec-9] o.s.b.f.xml.XmlBeanDefinitionReader      : Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2019-04-05 18:01:41.359  INFO 3662 --- [http-nio-38674-exec-9] o.s.jdbc.support.SQLErrorCodesFactory    : SQLErrorCodes loaded: [DB2, Derby, H2, HDB, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+2019-04-05 18:01:44.570 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:03:18.219 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:03:18.219 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:03:18.226 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:03:18.562 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:03:18.570 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:03:22.260 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:06:06.261 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:06:06.262 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:06:06.273 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:06:06.274 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:06:06.284 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:06:06.285 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:06:07.042 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:06:07.077 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:06:07.354 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:06:07.520 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:06:07.527 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:06:07.696 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:06:07.708 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:06:07.871 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:06:11.389 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:08:22.127 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:08:22.128 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:08:22.137 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:08:22.137 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:08:22.144 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:08:22.145 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:08:22.885 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:08:22.915 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:08:22.916 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:08:22.958 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:08:23.289 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:08:23.293 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:08:23.624 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:08:47.136 ERROR 3662 --- [http-nio-38674-exec-10] o.a.catalina.core.AprLifecycleListener   : An incompatible version [1.2.12] of the APR based Apache Tomcat Native library is installed, while Tomcat requires version [1.2.14]
+2019-04-05 18:08:47.137 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:08:47.141 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:08:47.150 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:08:47.151 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:08:47.163 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:08:47.163 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:08:47.894 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:08:47.929 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:08:48.263 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:08:48.269 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:08:48.599 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:12:44.192 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:12:44.192 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:12:44.201 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:12:44.201 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:12:44.919 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:12:44.941 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:12:45.275 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:12:45.280 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:12:45.608 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:14:11.205 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:14:11.205 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:14:11.218 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:14:11.218 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:14:11.231 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:14:11.231 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:14:13.018 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:14:13.058 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:14:13.893 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:14:13.901 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:14:14.236 DEBUG 3662 --- [http-nio-38674-exec-7] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:16:07.372 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:16:07.374 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:16:07.872 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:16:07.884 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:16:08.199 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:16:08.206 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:16:11.702 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:16:11.865 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:20:01.789 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:20:01.790 DEBUG 3662 --- [http-nio-38674-exec-3] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:20:01.809 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:20:01.809 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:20:01.820 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:20:01.821 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:20:02.586 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:20:02.642 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:20:02.642 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:20:02.713 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:20:03.061 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:20:03.087 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:20:03.414 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:26:07.366 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:26:07.366 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:26:07.386 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:26:07.721 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:26:07.726 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:26:11.400 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:27:19.152 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:27:19.152 DEBUG 3662 --- [http-nio-38674-exec-4] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:27:19.162 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:27:19.163 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:27:19.173 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:27:19.174 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:27:19.934 DEBUG 3662 --- [http-nio-38674-exec-5] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:27:19.976 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:27:20.315 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:27:20.328 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:27:20.671 DEBUG 3662 --- [http-nio-38674-exec-6] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:27:51.099 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:27:51.099 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:27:51.107 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:27:51.107 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:27:51.111 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.AccountServiceGQL          : Requesting AccountService_login
+2019-04-05 18:27:51.111 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Transport.UserAdapter  : logeando
+2019-04-05 18:27:51.828 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.b.b.P.G.AccountServiceGQL          : Responding AccountService_login
+2019-04-05 18:27:51.859 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:27:52.189 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:27:52.192 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Requesting NotificationService_getLastNotificationsNumber
+2019-04-05 18:27:52.519 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.NotificationServiceGQL     : Responding NotificationService_markRequestNotificationsAsViewed
+2019-04-05 18:36:07.369 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:36:07.701 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:36:07.704 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:36:11.341 DEBUG 3662 --- [http-nio-38674-exec-8] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:37:21.668 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:37:21.668 DEBUG 3662 --- [http-nio-38674-exec-9] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:37:21.674 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:37:22.006 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:37:22.012 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:37:25.656 DEBUG 3662 --- [http-nio-38674-exec-1] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose
+2019-04-05 18:37:42.583 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:37:42.583 DEBUG 3662 --- [http-nio-38674-exec-10] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:37:42.590 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.byo.backend.Filters.JWT.JWTFilter  : Filter JWT Appl
+2019-04-05 18:37:42.933 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.Filters.JWT.JWTValidFilter     : Filter Validate JWT
+2019-04-05 18:37:42.938 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.GeoposysServiceGQL         : Requesting GeoposysService_getUsersClose
+2019-04-05 18:37:46.585 DEBUG 3662 --- [http-nio-38674-exec-2] a.c.t.b.b.P.G.GeoposysServiceGQL         : Responding GeoposysService_getUsersClose

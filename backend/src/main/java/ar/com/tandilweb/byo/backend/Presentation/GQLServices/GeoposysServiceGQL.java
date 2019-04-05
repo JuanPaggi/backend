@@ -41,6 +41,7 @@ public class GeoposysServiceGQL {
 	public VCardList getUsersClose(
 			@GraphQLArgument(name = "latitude") String latitude,
 			@GraphQLArgument(name = "longitude") String longitude,
+			@GraphQLArgument(name = "distanciaDeBusqueda") String distanciaDeBusqueda,
 			@GraphQLEnvironment ResolutionEnvironment environment
 			) {
 		log.debug("Requesting GeoposysService_getUsersClose");
@@ -52,12 +53,16 @@ public class GeoposysServiceGQL {
 		// casteamos las variables (limitación de graphql)
 		double lat = Double.parseDouble(latitude);
 		double lon = Double.parseDouble(longitude);
+		int dist = Integer.parseInt(distanciaDeBusqueda);
+		if (dist > 100) {
+			dist = 100;
+		}
 		// bloque de contención de excepciones:
 		try {
 			// seteamos la ubicación para este usuario
 			userAdapter.setGeoLocation(lat, lon, me);
 			// nos traemos los usuarios cercanos a esta latitud y longitud
-			List<VCard> users = gpsAdapter.getUsersClose(lat, lon, me);
+			List<VCard> users = gpsAdapter.getUsersClose(lat, lon, me, dist);
 			// devolvemos la lista de vcards en un dto de respuesta con codigo si es que hay 
 			if(users != null) {
 				out = new VCardList(ResponseDTO.Code.OK, "OK", users);
