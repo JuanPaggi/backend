@@ -12,6 +12,20 @@ public class Events {
 	private String fecha_end;
 	private String name;
 	private String logo;
+	private String url;
+	private String nombre_lugar;
+	public String getUrl() {
+		return url;
+	}
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	public String getNombre_lugar() {
+		return nombre_lugar;
+	}
+	public void setNombre_lugar(String nombre_lugar) {
+		this.nombre_lugar = nombre_lugar;
+	}
 	private String location_description;
 	private List<Stands> stands;
 	private Long id_gps_record;
@@ -40,7 +54,7 @@ public class Events {
 		this.stands = stands;
 	}
 	public Events(long id_event, Calendar start_date, Calendar end_date, String name, String logo, double radio,
-			String location_description, List<Stands> stands, Long id_gps_record) {
+			String location_description, List<Stands> stands, Long id_gps_record, String url, String nombre_lugar) {
 		this.id_event = id_event;
 		this.start_date = start_date;
 		this.end_date = end_date;
@@ -50,6 +64,8 @@ public class Events {
 		this.location_description = location_description;
 		this.stands = stands;
 		this.id_gps_record = id_gps_record;
+		this.url = url;
+		this.nombre_lugar = nombre_lugar;
 	}
 	
 	
