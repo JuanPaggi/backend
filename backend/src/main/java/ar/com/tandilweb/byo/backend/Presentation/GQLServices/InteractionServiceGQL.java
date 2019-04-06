@@ -49,7 +49,6 @@ public class InteractionServiceGQL {
 			out = new LoginOut();
 			out.code = ResponseDTO.Code.INTERNAL_SERVER_ERROR;
 			out.description = "Error el servidor ha fallado";
-			
 		}
 		log.debug("Responding InteractionService_friendshipRequest");
 		return out;

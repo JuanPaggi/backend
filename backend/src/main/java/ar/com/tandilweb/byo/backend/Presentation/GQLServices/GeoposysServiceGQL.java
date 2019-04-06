@@ -54,8 +54,10 @@ public class GeoposysServiceGQL {
 		double lat = Double.parseDouble(latitude);
 		double lon = Double.parseDouble(longitude);
 		int dist = Integer.parseInt(distanciaDeBusqueda);
-		if (dist > 100) {
+		if (dist > 100) { //id 2
 			dist = 100;
+		} else if(dist < 3) { //id 3
+			dist = 3;
 		}
 		// bloque de contención de excepciones:
 		try {

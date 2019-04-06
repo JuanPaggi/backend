@@ -22,7 +22,7 @@ import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 public class ConfigurationServiceGQL {
 
 	/**
-	 * Servicio destinado a cambiar las configuraciones del usuario.
+	 * Servicio destinado a cambiar las configuraciones.
 	 * 
 	 */
 	private static final Logger log = LoggerFactory.getLogger(ConfigurationServiceGQL.class);
@@ -147,6 +147,22 @@ public class ConfigurationServiceGQL {
 			out.description = "Error, no se ha podido cambiar el password";
 		}
 		log.debug("Responding ConfigurationService_changePassword");
+		return out;
+	}
+	
+	@GraphQLQuery(name = "ConfigurationService_getConfigurations")
+	public ResponseDTO getConfigurations(
+			@GraphQLEnvironment ResolutionEnvironment environment){
+		log.debug("Requesting ConfigurationService_getConfigurations");
+		ResponseDTO out = new ResponseDTO();
+		JWTHeader header = JWTHeader.getHeader(environment);
+		try {
+			out = configurationAdapter.getConfigurations(header.getUser());
+		} catch(Exception e) {
+			e.printStackTrace();
+			out.description = "Error, no se ha podido conectar al servidor";
+		}
+		log.debug("Responding ConfigurationService_getConfigurations");
 		return out;
 	}
 }

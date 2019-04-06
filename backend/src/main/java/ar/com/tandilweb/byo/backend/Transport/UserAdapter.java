@@ -256,7 +256,7 @@ public class UserAdapter {
 		vcard.picture = user.getPicture_url();
 		Profile profile = profileRepository.findById(user.getId_user());
 		if(profile != null) {
-			vcard.pais = profile.getLocation(); // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN)
+			vcard.pais = profile.getLocation(); // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN) TODO
 			vcard.linkedin_link = profile.getLinkedin_url();
 			vcard.sinopsis = profile.getSummary();
 			vcard.titulo = profile.getHeadline();

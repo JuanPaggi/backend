@@ -78,6 +78,12 @@ public class ConfigurationAdapter {
 		}
 		return out;
 	}
+
+
+	public ResponseDTO getConfigurations(Users user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
