@@ -10,18 +10,25 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.web.client.RestTemplate;
 
 import ar.com.tandilweb.byo.backend.Filters.CorsFilter;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTFilter;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTValidFilter;
 import ar.com.tandilweb.byo.backend.Model.JDBConfig;
+import ar.com.tandilweb.byo.backend.utils.Mailer;
 
 @SpringBootApplication
 @ComponentScan({ "ar.com.tandilweb.byo.backend.Presentation.GQLServices",
 		"ar.com.tandilweb.byo.backend.Presentation.RestServices",
 		"ar.com.tandilweb.byo.backend.Presentation.WSockets.Services"})
 @Import({ TransportFactory.class, GatewayFactory.class, JDBConfig.class, WebSocketConfig.class })
+@PropertySources(value = {
+			@PropertySource("classpath:database.properties"),
+			@PropertySource("classpath:mailer.properties")
+		})
 public class App extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication.run(App.class, args);
@@ -75,6 +82,11 @@ public class App extends SpringBootServletInitializer {
 
 	public Filter getJwtValidFilter() {
 		return new JWTValidFilter();
+	}
+	
+	@Bean
+	public Mailer mailer() {
+		return new Mailer();
 	}
 
 }

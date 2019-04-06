@@ -38,6 +38,8 @@ public class UserAdapter {
 	private ProfileRepository profileRepository;
 	@Autowired
 	private CountriesRepository countriesRepository;
+	@Autowired
+	private Mailer mailer;
 	
 	public void updateFCMToken(Users usuario, String fcm) {
 		usuario.setFcmToken(fcm);
@@ -67,7 +69,7 @@ public class UserAdapter {
 					if(usuario.getFailedLoginAttempts() >= 3) {
 						String unlockCode = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 4);
 						usuario.setUnLockAccountCode(unlockCode);
-						Mailer.send(usuario.getEmail(), "Código para recordar desbloquear cuenta",unlockCode);
+						mailer.send(usuario.getEmail(), "Código para recordar desbloquear cuenta",unlockCode);
 						usuario.setLocked(true);					
 					}
 					out.code = ResponseDTO.Code.FORBIDDEN;
@@ -172,7 +174,7 @@ public class UserAdapter {
 				token.setRequest_date(new Date());
 				rememberTokenRepository.create(token);
 			}
-			Mailer.send(usuario.getEmail(), "Código para recordar contraseña", "Hola mundo: "+tokenRemember);
+			mailer.send(usuario.getEmail(), "Código para recordar contraseña", "Hola mundo: "+tokenRemember);
 			out.idUser = idUsuario;
 			out.code = ResponseDTO.Code.OK;
 			out.description = "Email encontrado";
