@@ -1,3 +1,7 @@
+-- Procedure addMessage(id_sender, id_target, message, fecha, is_premium, @message, @ecode, @emsg)
+-- Codigos devueltos:
+-- 1 - LIMITE DE MENSAJES
+-- 2 - LIMITE DE CHATS
 DELIMITER $$
 USE desa_byo$$
 DROP PROCEDURE addMessage$$
@@ -30,7 +34,7 @@ BEGIN
                         VALUES(p_id_target, p_id_sender, out_message_id);
 		END IF;
     ELSE
-        SELECT mensajes, chats INTO totalMensajes, totalChats FROM interacciones WHERE id_usuario = p_id_sender;
+        SELECT mensajes, chats INTO totalMensajes, totalChats FROM interacciones WHERE id_user = p_id_sender;
         SELECT valor INTO maxMensajes FROM general_configurations WHERE id = 4;
         IF maxMensajes <= totalMensajes THEN
             SET out_ecode = 1;
@@ -42,10 +46,10 @@ BEGIN
                     VALUES(p_id_sender, p_id_target, p_message, p_fecha, FALSE);
                 SET out_message_id = LAST_INSERT_ID();
                 UPDATE chats SET last_message_id = out_message_id WHERE (id_user_requester = p_id_sender AND id_user_sender = p_id_target) OR (id_user_requester = p_id_target AND id_user_sender = p_id_sender);
-                UPDATE interacciones SET mensajes = mensajes + 1 WHERE id_usuario = p_id_sender;
+                UPDATE interacciones SET mensajes = mensajes + 1 WHERE id_user = p_id_sender;
             ELSE
                 SELECT valor INTO maxChats FROM general_configurations WHERE id = 7;
-                IF totalChats >= maxChat THEN
+                IF totalChats >= maxChats THEN
                     SET out_ecode = 2;
                     SET out_emsg = 'LIMITE DE CHATS';
                 ELSE
@@ -54,7 +58,7 @@ BEGIN
                     SET out_message_id = LAST_INSERT_ID();
                     INSERT INTO chats(id_user_requester, id_user_sender, last_message_id) 
                         VALUES(p_id_target, p_id_sender, out_message_id);
-                    UPDATE interacciones SET mensajes = mensajes + 1, chats = chats + 1 WHERE id_usuario = p_id_sender;
+                    UPDATE interacciones SET mensajes = mensajes + 1, chats = chats + 1 WHERE id_user = p_id_sender;
                 END IF;
             END IF;
         END IF;
