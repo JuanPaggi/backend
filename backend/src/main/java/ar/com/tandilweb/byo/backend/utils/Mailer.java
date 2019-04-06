@@ -17,7 +17,6 @@ import org.springframework.context.annotation.PropertySource;
 
 import com.sun.mail.smtp.SMTPTransport;
 
-@PropertySource("classpath:mailer.properties")
 public class Mailer {
 	
 	public static Logger logger = LoggerFactory.getLogger(Mailer.class);
