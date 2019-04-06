@@ -1,11 +1,15 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.tandilweb.byo.backend.Model.domain.GeneralConfiguration;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ConfigurationDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
@@ -80,9 +84,22 @@ public class ConfigurationAdapter {
 	}
 
 
-	public ResponseDTO getConfigurations(Users user) {
-		// TODO Auto-generated method stub
-		return null;
+	public ConfigurationDTO getConfigurations() {
+		ConfigurationDTO out = new ConfigurationDTO();
+		
+		try {
+			List<GeneralConfiguration> configurations = this.userRepository.getConfigurations();
+			for (GeneralConfiguration gc : configurations) {
+				out.add(gc.getId(), gc.getValor());
+			}
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			out.code = ResponseDTO.Code.BAD_REQUEST;
+			out.description = "Error de servidor";
+		}
+		return out;
 	}
 	
 	

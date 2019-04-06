@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -17,7 +19,10 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import ar.com.tandilweb.byo.backend.Model.BaseRepository;
+import ar.com.tandilweb.byo.backend.Model.domain.Configuration;
+import ar.com.tandilweb.byo.backend.Model.domain.GeneralConfiguration;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ConfigurationDTO;
 
 @Repository
 public class UserRepository extends BaseRepository<Users, Long> {
@@ -179,6 +184,20 @@ public class UserRepository extends BaseRepository<Users, Long> {
 		}
 	}
 
+	public List<GeneralConfiguration> getConfigurations() {
+		try {
+			return jdbcTemplate.query("select * from general_configurations ", new Object[] { },
+					new ConfigurationRowMapper());
+		} catch (DataAccessException e) {
+			return null;
+		}
+	}
+
+}
+class ConfigurationRowMapper implements RowMapper<GeneralConfiguration> {
+	public GeneralConfiguration mapRow(ResultSet rs, int rowNum) throws SQLException {
+		return new GeneralConfiguration(rs.getLong("id"), rs.getString("clave"), rs.getString("valor") );
+	}
 }
 
 class UserRowMapper implements RowMapper<Users> {

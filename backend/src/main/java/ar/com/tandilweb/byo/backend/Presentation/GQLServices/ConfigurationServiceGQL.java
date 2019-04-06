@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ConfigurationDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.Transport.ConfigurationAdapter;
@@ -151,18 +152,24 @@ public class ConfigurationServiceGQL {
 	}
 	
 	@GraphQLQuery(name = "ConfigurationService_getConfigurations")
-	public ResponseDTO getConfigurations(
-			@GraphQLEnvironment ResolutionEnvironment environment){
+	public ConfigurationDTO getConfigurations(
+			@GraphQLEnvironment ResolutionEnvironment environment) throws Exception{
 		log.debug("Requesting ConfigurationService_getConfigurations");
-		ResponseDTO out = new ResponseDTO();
+		ConfigurationDTO out = new ConfigurationDTO();
 		JWTHeader header = JWTHeader.getHeader(environment);
-		try {
-			out = configurationAdapter.getConfigurations(header.getUser());
-		} catch(Exception e) {
-			e.printStackTrace();
-			out.description = "Error, no se ha podido conectar al servidor";
+		if(!header.isTrusted()) { throw new Exception("isn't trusteado."); }
+		else {
+			try {
+				out = configurationAdapter.getConfigurations();
+			} catch(Exception e) {
+				e.printStackTrace();
+				out.description = "Error, no se ha podido conectar al servidor";
+			}
+			log.debug("Responding ConfigurationService_getConfigurations");
+			return out;
 		}
-		log.debug("Responding ConfigurationService_getConfigurations");
-		return out;
-	}
+			
+		
+		}
+		
 }
