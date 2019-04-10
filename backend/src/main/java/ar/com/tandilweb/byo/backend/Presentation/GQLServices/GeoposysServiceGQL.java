@@ -9,9 +9,11 @@ import org.springframework.stereotype.Service;
 
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ConfigurationDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCardList;
+import ar.com.tandilweb.byo.backend.Transport.ConfigurationAdapter;
 import ar.com.tandilweb.byo.backend.Transport.GpsAdapter;
 import ar.com.tandilweb.byo.backend.Transport.UserAdapter;
 import io.leangen.graphql.annotations.GraphQLArgument;
@@ -31,6 +33,11 @@ public class GeoposysServiceGQL {
 	
 	@Autowired
 	private UserAdapter userAdapter;
+	@Autowired
+	private ConfigurationAdapter configurationAdapter;
+	
+	private int distanciaMax = -1;
+	private int distanciaMin = -1;
 	
 	/**
 	 * Servicio destinado al manejo de datos de GPS, alta de datos, busquedas por datos de gps, etc.
@@ -54,10 +61,17 @@ public class GeoposysServiceGQL {
 		double lat = Double.parseDouble(latitude);
 		double lon = Double.parseDouble(longitude);
 		int dist = Integer.parseInt(distanciaDeBusqueda);
-		if (dist > 100) { //id 2
-			dist = 100;
-		} else if(dist < 3) { //id 3
-			dist = 3;
+		if(distanciaMax<0) {
+			
+			ConfigurationDTO cdto =configurationAdapter.getConfigurations();
+			distanciaMax = new Double (Double.parseDouble(cdto.getConfigurations().get(1).getValor())).intValue();
+			distanciaMin = new Double (Double.parseDouble(cdto.getConfigurations().get(2).getValor())).intValue();
+		}
+		
+		if (dist > distanciaMax) { //id 2
+			dist = distanciaMax;
+		} else if(dist < distanciaMin) { //id 3
+			dist = distanciaMin;
 		}
 		// bloque de contención de excepciones:
 		try {

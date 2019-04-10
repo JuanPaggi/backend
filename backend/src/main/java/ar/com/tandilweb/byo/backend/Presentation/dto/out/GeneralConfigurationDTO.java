@@ -16,10 +16,10 @@ public class GeneralConfigurationDTO {
 	private long id;
 	
 	@GraphQLQuery(name = "clave") 
-	public String clave;
+	private String clave;
 
 	@GraphQLQuery(name = "valor") 
-	public String valor;
+	private String valor;
 
 	public long getId() {
 		return id;

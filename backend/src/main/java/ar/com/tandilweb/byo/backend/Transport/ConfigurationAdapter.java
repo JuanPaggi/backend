@@ -30,7 +30,7 @@ public class ConfigurationAdapter {
 		return me.getEmail();
 	}
 
-
+	
 	public ResponseDTO updatePhoto(String pic_url, Users user) {
 		user.setPicture_url(pic_url);
 			this.userRepository.updatePhoto(user);
