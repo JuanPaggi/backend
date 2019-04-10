@@ -10,6 +10,7 @@ import ar.com.tandilweb.byo.backend.Model.domain.GeneralConfiguration;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ConfigurationDTO;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.GeneralConfigurationDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
@@ -90,11 +91,15 @@ public class ConfigurationAdapter {
 		try {
 			List<GeneralConfiguration> configurations = this.userRepository.getConfigurations();
 			for (GeneralConfiguration gc : configurations) {
-				out.add(gc.getId(), gc.getValor());
+				if(gc != null) {
+					
+					out.add(new GeneralConfigurationDTO(gc.getId(), gc.getValor().toString()));
+				}
+		
 			}
 			
 			
-		} catch (Exception e) {
+		} catch (NullPointerException e) {
 			e.printStackTrace();
 			out.code = ResponseDTO.Code.BAD_REQUEST;
 			out.description = "Error de servidor";

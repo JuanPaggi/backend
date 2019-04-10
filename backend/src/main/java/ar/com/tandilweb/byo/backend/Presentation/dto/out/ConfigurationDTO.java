@@ -1,27 +1,29 @@
 package ar.com.tandilweb.byo.backend.Presentation.dto.out;
 
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
+
+
+
+import java.util.ArrayList;
 import java.util.List;
 
-import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
-import ar.com.tandilweb.byo.backend.Model.domain.Stands;
-import ar.com.tandilweb.byo.backend.Model.domain.StandsCheckin;
+
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import io.leangen.graphql.annotations.GraphQLQuery;
 
 public class ConfigurationDTO {
+	public ConfigurationDTO() {};
 	
 	@GraphQLQuery(name = "configurations") 
-	private HashMap<Long,String> configurations;
+	private List<GeneralConfigurationDTO> configurations = new ArrayList<GeneralConfigurationDTO>();
 	
 	@GraphQLQuery(name = "description") 
 	public String description;
 
-	@GraphQLQuery(name = "description") 
+	@GraphQLQuery(name = "code") 
 	public Code code;
+	
+
 	
 	public String getDescription() {
 		return description;
@@ -31,16 +33,16 @@ public class ConfigurationDTO {
 		this.description = description;
 	}
 
-	public HashMap<Long, String> getConfigurations() {
+	public List<GeneralConfigurationDTO> getConfigurations() {
 		return configurations;
 	}
 
-	public void setConfigurations(HashMap<Long, String> configurations) {
+	public void setConfigurations(List<GeneralConfigurationDTO> configurations) {
 		this.configurations = configurations;
 	}
 
-	public void add(Long id, String valor) {
-		this.configurations.put(id, valor);
+	public void add(GeneralConfigurationDTO gc) {
+		this.configurations.add(gc);
 	}
 
 

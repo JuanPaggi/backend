@@ -196,7 +196,7 @@ public class UserRepository extends BaseRepository<Users, Long> {
 }
 class ConfigurationRowMapper implements RowMapper<GeneralConfiguration> {
 	public GeneralConfiguration mapRow(ResultSet rs, int rowNum) throws SQLException {
-		return new GeneralConfiguration(rs.getLong("id"), rs.getString("clave"), rs.getString("valor") );
+		return new GeneralConfiguration(rs.getLong("id"), rs.getString("clave"), rs.getDouble("valor")+"" );
 	}
 }
 
