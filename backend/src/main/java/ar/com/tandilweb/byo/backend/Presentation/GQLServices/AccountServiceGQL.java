@@ -1,6 +1,6 @@
 package ar.com.tandilweb.byo.backend.Presentation.GQLServices;
 
-import java.util.List;
+
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
-import ar.com.tandilweb.byo.backend.Model.domain.Stands;
+
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.InteraccionesDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
@@ -56,6 +57,28 @@ public class AccountServiceGQL {
 		}
 		log.debug("Responding AccountService_login");
 		return out;
+	}
+	
+	@GraphQLQuery(name = "AccountService_getInteractions")
+	public InteraccionesDTO getInteractions(
+			@GraphQLEnvironment ResolutionEnvironment environment
+			)  throws Exception{
+		JWTHeader header = JWTHeader.getHeader(environment);
+		Users usuario = header.getUser();	
+		if(!header.isTrusted()) { throw new Exception("isn't trusteado."); }
+		else {
+		InteraccionesDTO out;
+		try {
+			
+			out = userAdapter.getInteracciones(usuario);
+		} catch (Exception e) {
+			e.printStackTrace();
+			out = new InteraccionesDTO();
+			out.setCode(ResponseDTO.Code.INTERNAL_SERVER_ERROR);
+			out.setDescription( "Error el servidor a fallado");
+		}
+		log.debug("Responding AccountService_getInteracciones" + out.getMensajes());
+		return out;}
 	}
 
 	@GraphQLQuery(name = "AccountService_signup")

@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
+import ar.com.tandilweb.byo.backend.Model.domain.Interaction;
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
 import ar.com.tandilweb.byo.backend.Model.domain.Stands;
@@ -18,6 +19,7 @@ import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.InteraccionesDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
@@ -291,6 +293,24 @@ public class UserAdapter {
 			userProfile.setLinkedin_url(linkedin_url);			
 		}
 		return userProfile;
+	}
+
+	public InteraccionesDTO getInteracciones(Users me) {
+		
+		Interaction i =  userRepository.getInteracciones(me.getId_user());
+		InteraccionesDTO out = new InteraccionesDTO();
+		if(i == null) {
+			out.setMensajes(0);
+			out.setSolicitudes(0);
+			out.setChats(0);
+		} else {
+			out.setMensajes(i.getMensajes());
+			out.setSolicitudes(i.getSolicitudes());
+			out.setChats(i.getChats());
+		}
+		
+		
+		return out;
 	}
 
 }
