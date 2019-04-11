@@ -135,7 +135,7 @@ public class GpsDataRepository extends BaseRepository<GpsData, Long>{
 		}
 	}
 	
-	public List<Users> getUsersClose(double lat, double lon, int radio, long me) {
+	public List<Users> getUsersClose(double lat, double lon, long radio, long me) {
 		final String sql = "SELECT DISTINCT u.*"
 				+ " FROM gps_data g, gps_data_users gu, users u"
 				+ " LEFT JOIN friendships"
