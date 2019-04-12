@@ -10,7 +10,7 @@ CREATE PROCEDURE addMessage(
     in p_id_target int(11),
     in p_message varchar(255),
     in p_fecha datetime,
-    in p_is_premium bit,
+    in p_is_premium boolean,
     out out_message_id int(11),
     out out_ecode tinyint(3),
     out out_emsg varchar(32)
