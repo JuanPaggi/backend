@@ -78,7 +78,7 @@ public class ChatAdapter {
 			new Date(),
 			is_premium
 		);
-		logger.debug("DEBUG RESPONSE SPCALLER", result);
+		logger.debug("DEBUG RESPONSE SPCALLER " + result.get("out_emsg"));
 		
 		// registramos en la DB
 //		Mensajes messageRecord = mensajesRepository.create(mensaje);
