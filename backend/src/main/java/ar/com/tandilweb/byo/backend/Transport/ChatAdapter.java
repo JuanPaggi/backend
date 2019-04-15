@@ -86,7 +86,10 @@ public class ChatAdapter {
 			if("1".equals(result.get("out_ecode").toString())) {
 				// LIMITE DE MENSAJES DIARIOS
 			}
-			return result.get("out_emsg").toString();
+			if("2".equals(result.get("out_ecode").toString())) {
+				// LIMITE DE CHATS
+			}
+			return result.get("out_ecode").toString();
 		}
 		//logger.debug("DEBUG RESPONSE SPCALLER " + result.get("out_emsg"));
 		//
