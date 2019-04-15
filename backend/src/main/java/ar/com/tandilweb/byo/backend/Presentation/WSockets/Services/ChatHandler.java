@@ -80,9 +80,9 @@ public class ChatHandler {
 			// chequeamos si ya hay alguien en el sistema de chat con este targetID
 			ClientData cdTarget = userService.getClient(msg.targetID);
 			Users sender = userRepository.findById(mensaje.id_sender);
-			chatAdapter.recordMessage(mensaje, sender.isPremium());
+			String result = chatAdapter.recordMessage(mensaje, sender.isPremium());
 
-			if(cdTarget != null) {
+			if(cdTarget != null && "OK".equals(result)) {
 				// enviamos el mensaje por el sistema de chat
 				userService.sendToSessID("/chatService/data", cdTarget.socketID, mensaje);
 				Users target = userRepository.findById(mensaje.id_target);
@@ -95,10 +95,14 @@ public class ChatHandler {
 					payload.setTarget(target.getFcmToken());
 					firebaseCloudMessaging.send(payload);
 				}
-			} else {
-		
+			}
+			
+			if(!"OK".equals(result)) {
+				mensaje.error = true;
+				mensaje.errorMsg = result;
 			}
 			return mensaje;
+			
 		}
 		return null;
 		
