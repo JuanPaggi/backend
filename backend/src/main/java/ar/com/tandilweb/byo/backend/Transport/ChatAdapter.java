@@ -57,7 +57,7 @@ public class ChatAdapter {
 		return out;
 	}
 
-	public void recordMessage(Mensajes mensaje, boolean is_premium) {
+	public String recordMessage(Mensajes mensaje, boolean is_premium) {
 		//CALL `desa_byo`.`addMessage`(1, 8, 'PROBANDO', now(), FALSE, @eid, @ecode, @emsg);
 		
 		SqlParameter[] paramArray = {
@@ -78,7 +78,18 @@ public class ChatAdapter {
 			new Date(),
 			is_premium
 		);
-		logger.debug("DEBUG RESPONSE SPCALLER " + result.get("out_emsg"));
+		
+		if(result.get("out_ecode") == null) {
+			long id_message = Long.valueOf(result.get("out_message_id").toString());
+			return "OK";
+		} else {
+			if("1".equals(result.get("out_ecode").toString())) {
+				// LIMITE DE MENSAJES DIARIOS
+			}
+			return result.get("out_emsg").toString();
+		}
+		//logger.debug("DEBUG RESPONSE SPCALLER " + result.get("out_emsg"));
+		//
 		
 		// registramos en la DB
 //		Mensajes messageRecord = mensajesRepository.create(mensaje);

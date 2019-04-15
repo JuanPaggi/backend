@@ -13,6 +13,9 @@ public class Mensajes {
 	public String fechaStr;
 	public boolean is_viewed;
 	
+	public boolean error;
+	public String errorMsg;
+	
 	public Mensajes() {
 		
 	}
