@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTHeader;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ConfigurationDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.Transport.ConfigurationAdapter;
@@ -22,7 +23,7 @@ import io.leangen.graphql.spqr.spring.annotation.GraphQLApi;
 public class ConfigurationServiceGQL {
 
 	/**
-	 * Servicio destinado a cambiar las configuraciones del usuario.
+	 * Servicio destinado a cambiar las configuraciones.
 	 * 
 	 */
 	private static final Logger log = LoggerFactory.getLogger(ConfigurationServiceGQL.class);
@@ -149,4 +150,26 @@ public class ConfigurationServiceGQL {
 		log.debug("Responding ConfigurationService_changePassword");
 		return out;
 	}
+	
+	@GraphQLQuery(name = "ConfigurationService_getConfigurations")
+	public ConfigurationDTO getConfigurations(
+			@GraphQLEnvironment ResolutionEnvironment environment) throws Exception{
+		log.debug("Requesting ConfigurationService_getConfigurations");
+		ConfigurationDTO out = new ConfigurationDTO();
+		JWTHeader header = JWTHeader.getHeader(environment);
+		if(!header.isTrusted()) { throw new Exception("isn't trusteado."); }
+		else {
+			try {
+				out = configurationAdapter.getConfigurations();
+			} catch(Exception e) {
+				e.printStackTrace();
+				out.description = "Error, no se ha podido conectar al servidor";
+			}
+			log.debug("Responding ConfigurationService_getConfigurations");
+			return out;
+		}
+			
+		
+		}
+		
 }

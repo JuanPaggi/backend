@@ -1,6 +1,7 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 import org.slf4j.Logger;
@@ -8,14 +9,17 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import ar.com.tandilweb.byo.backend.Model.domain.GpsData;
+import ar.com.tandilweb.byo.backend.Model.domain.Interaction;
 import ar.com.tandilweb.byo.backend.Model.domain.Profile;
 import ar.com.tandilweb.byo.backend.Model.domain.RememberTokens;
+import ar.com.tandilweb.byo.backend.Model.domain.Stands;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.CountriesRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.GpsDataRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.ProfileRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.RememberTokensRepository;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.InteraccionesDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.RememberEmailOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
@@ -23,6 +27,7 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
 import ar.com.tandilweb.byo.backend.utils.Mailer;
+import io.leangen.graphql.execution.ResolutionEnvironment;
 
 public class UserAdapter {
 	
@@ -63,6 +68,7 @@ public class UserAdapter {
 					out.token = usuario.getSalt_jwt();
 					out.userId = usuario.getId_user();
 					out.completoByO = usuario.isCompletoByO();
+					out.is_premium = usuario.isPremium(); 
 				} else {
 					//Ingreso mal algun campo
 					usuario.setFailedLoginAttempts(usuario.getFailedLoginAttempts()+1);
@@ -254,7 +260,7 @@ public class UserAdapter {
 		vcard.picture = user.getPicture_url();
 		Profile profile = profileRepository.findById(user.getId_user());
 		if(profile != null) {
-			vcard.pais = profile.getLocation(); // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN)
+			vcard.pais = profile.getLocation(); // usar country (ESTO HAY QUE CAMBIARLO, PERO TENER EN CUENTA QUE TRAE LINKEDIN TAMBIÉN) TODO
 			vcard.linkedin_link = profile.getLinkedin_url();
 			vcard.sinopsis = profile.getSummary();
 			vcard.titulo = profile.getHeadline();
@@ -290,4 +296,23 @@ public class UserAdapter {
 		}
 		return userProfile;
 	}
+
+	public InteraccionesDTO getInteracciones(Users me) {
+		
+		Interaction i =  userRepository.getInteracciones(me.getId_user());
+		InteraccionesDTO out = new InteraccionesDTO();
+		if(i == null) {
+			out.setMensajes(0);
+			out.setSolicitudes(0);
+			out.setChats(0);
+		} else {
+			out.setMensajes(i.getMensajes());
+			out.setSolicitudes(i.getSolicitudes());
+			out.setChats(i.getChats());
+		}
+		
+		
+		return out;
+	}
+
 }

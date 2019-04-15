@@ -79,14 +79,13 @@ public class ChatHandler {
 			
 			// chequeamos si ya hay alguien en el sistema de chat con este targetID
 			ClientData cdTarget = userService.getClient(msg.targetID);
-			
-			chatAdapter.recordMessage(mensaje);
+			Users sender = userRepository.findById(mensaje.id_sender);
+			chatAdapter.recordMessage(mensaje, sender.isPremium());
 
 			if(cdTarget != null) {
 				// enviamos el mensaje por el sistema de chat
 				userService.sendToSessID("/chatService/data", cdTarget.socketID, mensaje);
 				Users target = userRepository.findById(mensaje.id_target);
-				Users sender = userRepository.findById(mensaje.id_sender);
 				if(target.getReceiveNotifications()) {
 					// enviamos notificacion
 					List<String> rids = new ArrayList<String>();

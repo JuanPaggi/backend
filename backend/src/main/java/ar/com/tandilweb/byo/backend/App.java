@@ -19,6 +19,7 @@ import ar.com.tandilweb.byo.backend.Filters.JWT.JWTFilter;
 import ar.com.tandilweb.byo.backend.Filters.JWT.JWTValidFilter;
 import ar.com.tandilweb.byo.backend.Model.JDBConfig;
 import ar.com.tandilweb.byo.backend.utils.Mailer;
+import ar.com.tandilweb.byo.backend.utils.SpCaller;
 
 @SpringBootApplication
 @ComponentScan({ "ar.com.tandilweb.byo.backend.Presentation.GQLServices",
@@ -87,6 +88,11 @@ public class App extends SpringBootServletInitializer {
 	@Bean
 	public Mailer mailer() {
 		return new Mailer();
+	}
+	
+	@Bean
+	public SpCaller spCaller() {
+		return new SpCaller();
 	}
 
 }

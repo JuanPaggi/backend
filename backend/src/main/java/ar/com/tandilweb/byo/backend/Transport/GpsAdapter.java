@@ -25,7 +25,7 @@ public class GpsAdapter {
 	@Autowired
 	private GpsDataRepository gpsRepository;
 	
-	public List<VCard> getUsersClose(double lat, double lon, Users userRequester) {
+	public List<VCard> getUsersClose(double lat, double lon, Users userRequester, long distancia) {
 		// hay que verificar antes que nada que los parametros estén ok
 		// en este caso lat y lon pueden ser valores negativos, cero o positivos asique no hace falta revisarlo
 		// userRequester puede ser null si no queremos filtrar al usuario que consulta (al reutilizar la funcion en otro lugar):
@@ -34,7 +34,7 @@ public class GpsAdapter {
 		// hacer busqueda por lat long, de momento traemos todo para facilitar las pruebas:
 		
 		//List<Users> users = userRepository.getAllNotContacts(10, userRequester.getId_user());
-		List<Users> users = gpsRepository.getUsersClose(lat, lon, 70,userRequester.getId_user());
+		List<Users> users = gpsRepository.getUsersClose(lat, lon, distancia,userRequester.getId_user());
 		
 		// chequeamos que tengamos resultados:
 		if(users != null) {

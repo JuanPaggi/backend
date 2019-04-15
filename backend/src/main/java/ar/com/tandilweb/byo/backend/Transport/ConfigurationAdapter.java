@@ -1,11 +1,16 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ar.com.tandilweb.byo.backend.Model.domain.GeneralConfiguration;
 import ar.com.tandilweb.byo.backend.Model.domain.Users;
 import ar.com.tandilweb.byo.backend.Model.repository.UserRepository;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.ConfigurationDTO;
+import ar.com.tandilweb.byo.backend.Presentation.dto.out.GeneralConfigurationDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.LoginOut;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO;
 import ar.com.tandilweb.byo.backend.utils.CryptDES;
@@ -25,7 +30,7 @@ public class ConfigurationAdapter {
 		return me.getEmail();
 	}
 
-
+	
 	public ResponseDTO updatePhoto(String pic_url, Users user) {
 		user.setPicture_url(pic_url);
 			this.userRepository.updatePhoto(user);
@@ -72,6 +77,29 @@ public class ConfigurationAdapter {
 			usuario.setPassword(CryptDES.getSaltedHash(password));
 			this.userRepository.changePassword(usuario);
 		} catch (Exception e) {
+			e.printStackTrace();
+			out.code = ResponseDTO.Code.BAD_REQUEST;
+			out.description = "Error de servidor";
+		}
+		return out;
+	}
+
+
+	public ConfigurationDTO getConfigurations() {
+		ConfigurationDTO out = new ConfigurationDTO();
+		
+		try {
+			List<GeneralConfiguration> configurations = this.userRepository.getConfigurations();
+			for (GeneralConfiguration gc : configurations) {
+				if(gc != null) {
+					
+					out.add(new GeneralConfigurationDTO(gc.getId(), gc.getValor().toString()));
+				}
+		
+			}
+			
+			
+		} catch (NullPointerException e) {
 			e.printStackTrace();
 			out.code = ResponseDTO.Code.BAD_REQUEST;
 			out.description = "Error de servidor";

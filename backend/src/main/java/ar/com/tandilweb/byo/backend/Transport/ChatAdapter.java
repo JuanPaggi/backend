@@ -1,9 +1,15 @@
 package ar.com.tandilweb.byo.backend.Transport;
 
+import java.sql.Types;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.SqlParameter;
 
 import ar.com.tandilweb.byo.backend.Model.domain.Chats;
 import ar.com.tandilweb.byo.backend.Model.domain.Mensajes;
@@ -15,8 +21,12 @@ import ar.com.tandilweb.byo.backend.Presentation.dto.out.ListMessageDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.MensajeDTO;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.ResponseDTO.Code;
 import ar.com.tandilweb.byo.backend.Presentation.dto.out.VCard;
+import ar.com.tandilweb.byo.backend.utils.SpCall;
+import ar.com.tandilweb.byo.backend.utils.SpCaller;
 
 public class ChatAdapter {
+	
+	public static Logger logger = LoggerFactory.getLogger(ChatAdapter.class);
 	
 	@Autowired
 	private MensajesRepository mensajesRepository;
@@ -26,6 +36,9 @@ public class ChatAdapter {
 	
 	@Autowired
 	private UserAdapter userAdapter;
+	
+	@Autowired
+	private SpCaller spCaller;
 	
 	public ListMessageDTO getChatWith(Users me, long targetID) {
 		
@@ -44,23 +57,45 @@ public class ChatAdapter {
 		return out;
 	}
 
-	public void recordMessage(Mensajes mensaje) {
+	public void recordMessage(Mensajes mensaje, boolean is_premium) {
+		//CALL `desa_byo`.`addMessage`(1, 8, 'PROBANDO', now(), FALSE, @eid, @ecode, @emsg);
+		
+		SqlParameter[] paramArray = {
+			spCaller.makeInputParameter("p_id_sender", Types.INTEGER),
+			spCaller.makeInputParameter("p_id_target", Types.INTEGER),
+			spCaller.makeInputParameter("p_message", Types.VARCHAR),
+			spCaller.makeInputParameter("p_fecha", Types.DATE),
+			spCaller.makeInputParameter("p_is_premium", Types.BOOLEAN),
+			spCaller.makeOutputParameter("out_message_id", Types.INTEGER),
+			spCaller.makeOutputParameter("out_ecode", Types.TINYINT),
+			spCaller.makeOutputParameter("out_emsg", Types.VARCHAR),
+		};
+		SpCall call = spCaller.callSp("addMessage", paramArray);
+		Map<String, Object> result = call.execute(
+			mensaje.id_sender, 
+			mensaje.id_target, 
+			mensaje.message,
+			new Date(),
+			is_premium
+		);
+		logger.debug("DEBUG RESPONSE SPCALLER " + result.get("out_emsg"));
+		
 		// registramos en la DB
-		Mensajes messageRecord = mensajesRepository.create(mensaje);
-		Chats assoc = chatRepository.findAssoc(mensaje.id_target, mensaje.id_sender);
-		if(assoc != null) {
-			// update
-			assoc.setLast_message_id(messageRecord.id_message);
-			chatRepository.update(assoc);
-		} else {
-			// create
-			assoc = new Chats(
-					mensaje.id_target,
-					mensaje.id_sender,
-					messageRecord.id_message
-					);
-			chatRepository.create(assoc);
-		}
+//		Mensajes messageRecord = mensajesRepository.create(mensaje);
+//		Chats assoc = chatRepository.findAssoc(mensaje.id_target, mensaje.id_sender);
+//		if(assoc != null) {
+//			// update
+//			assoc.setLast_message_id(messageRecord.id_message);
+//			chatRepository.update(assoc);
+//		} else {
+//			// create
+//			assoc = new Chats(
+//					mensaje.id_target,
+//					mensaje.id_sender,
+//					messageRecord.id_message
+//					);
+//			chatRepository.create(assoc);
+//		}
 	}
 	
 	public List<ChatsDTO> getConversations(long me) {

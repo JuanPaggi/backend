@@ -28,6 +28,7 @@ public class ChatRepository extends BaseRepository<Chats, Long>{
 					record.getId_user_sender(),
 					record.getLast_message_id()
 					});
+			
 			return record;
 		} catch(DataAccessException e) {
 			logger.error("ChatRepository::create", e);
