@@ -50,6 +50,7 @@ public class LinkedInAdapter {
 					out.token = uuid.toString();
 					out.completoByO = usuario.isCompletoByO();
 					out.userId = usuario.getId_user();
+					out.is_premium = usuario.isPremium();
 				} else { 
 					//Si no se encontro usuario con el id de linkedin nos fijamos
 					//que no exista un usuario registrado con el mismo mail que el de linkedin
